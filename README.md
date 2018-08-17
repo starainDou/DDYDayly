@@ -8,6 +8,8 @@
 
 ##### [20180814](https://github.com/starainDou/DDYDayly/blob/master/2018/201808/20180814.md)
 
+##### [20180813](https://github.com/starainDou/DDYDayly/blob/master/2018/201808/20180813.md)
+
 ##### [20180808](https://github.com/starainDou/DDYDayly/blob/master/2018/201808/20180808.md)
 
 ##### [20180802](https://github.com/starainDou/DDYDayly/blob/master/2018/201808/20180802.md)
