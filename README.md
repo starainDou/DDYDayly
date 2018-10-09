@@ -1,5 +1,15 @@
 * 并不是每天更新，不过是每天积累
 
+##### [20180930](https://github.com/starainDou/DDYDayly/blob/master/2018/201809/20180930.md)
+
+##### [20180926](https://github.com/starainDou/DDYDayly/blob/master/2018/201809/20180926.md)
+
+##### [20180905](https://github.com/starainDou/DDYDayly/blob/master/2018/201809/20180905.md)
+
+##### [20180904](https://github.com/starainDou/DDYDayly/blob/master/2018/201809/20180904.md)
+
+##### [20180831](https://github.com/starainDou/DDYDayly/blob/master/2018/201808/20180831.md)
+
 ##### [20180829](https://github.com/starainDou/DDYDayly/blob/master/2018/201808/20180829.md)
 
 ##### [20180821](https://github.com/starainDou/DDYDayly/blob/master/2018/201808/20180821.md)
@@ -16,7 +26,13 @@
 
 ##### [20180813](https://github.com/starainDou/DDYDayly/blob/master/2018/201808/20180813.md)
 
+##### [20180812](https://github.com/starainDou/DDYDayly/blob/master/2018/201808/20180812.md)
+
+##### [20180811](https://github.com/starainDou/DDYDayly/blob/master/2018/201808/20180811.md)
+
 ##### [20180808](https://github.com/starainDou/DDYDayly/blob/master/2018/201808/20180808.md)
+
+##### [20180803](https://github.com/starainDou/DDYDayly/blob/master/2018/201808/20180803.md)
 
 ##### [20180802](https://github.com/starainDou/DDYDayly/blob/master/2018/201808/20180802.md)
 
