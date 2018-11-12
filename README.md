@@ -1,5 +1,9 @@
 * 并不是每天更新，不过是每天积累
 
+##### [20181111](https://github.com/starainDou/DDYDayly/blob/master/2018/201810/20181111.md)
+
+##### [20181112](https://github.com/starainDou/DDYDayly/blob/master/2018/201810/20181112.md)
+
 ##### [20181106](https://github.com/starainDou/DDYDayly/blob/master/2018/201810/20181106.md)
 
 ##### [20181105](https://github.com/starainDou/DDYDayly/blob/master/2018/201810/20181105.md)
