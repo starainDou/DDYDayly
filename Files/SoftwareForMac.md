@@ -1,5 +1,6 @@
 > #### Mac软件搜集
 
+* MarkDown文本编辑[MacDown](https://www.lanzous.com/i6zbmaj)
 * Word/PPT/Excel/PDF转换软件(国产黑者绕道) [WPS](https://www.wps.cn/)
 * 百度网盘资源下载[Proxyee Down](https://www.lanzous.com/i4dcudc) 开源地址[Github](https://github.com/proxyee-down-org/proxyee-down)
 * 百度网盘资源下载[Aria2](https://github.com/yangshun1029/aria2gui)
