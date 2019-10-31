@@ -10,6 +10,7 @@
 * [Flutter时间轴](https://blog.csdn.net/m0_37667770/article/details/93589084)
 * [模仿美团界面](https://blog.csdn.net/m0_37667770/article/details/80993571)
 * [Flutter地图](https://blog.csdn.net/m0_37667770/article/details/100693933)
+* [Flutter动画](https://blog.csdn.net/m0_37667770/article/details/100557072)
 
 
 
