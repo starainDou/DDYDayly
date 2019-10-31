@@ -8,6 +8,7 @@
 * [Bloc完整项目](https://www.jianshu.com/p/be0107298bc5)
 * [flutter调用原生](https://www.jianshu.com/p/b74416892d84)
 * [Flutter时间轴](https://blog.csdn.net/m0_37667770/article/details/93589084)
+* [模仿美团界面](https://blog.csdn.net/m0_37667770/article/details/80993571)
 
 
 
@@ -15,6 +16,7 @@
 
 * [IT小孢子](https://www.jianshu.com/u/2a813d0c9043)
 * [Sky24n](https://www.jianshu.com/u/cbf2ad25d33a)
+* [路很长~](https://blog.csdn.net/m0_37667770)
 
 
 
