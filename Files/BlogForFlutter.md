@@ -7,6 +7,7 @@
 * [高仿滴滴出行](https://www.jianshu.com/p/f6d1206aa80a)
 * [Bloc完整项目](https://www.jianshu.com/p/be0107298bc5)
 * [flutter调用原生](https://www.jianshu.com/p/b74416892d84)
+* [Flutter时间轴](https://blog.csdn.net/m0_37667770/article/details/93589084)
 
 
 
