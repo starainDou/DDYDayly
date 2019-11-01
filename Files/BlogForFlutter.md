@@ -24,13 +24,16 @@
 * [IT小孢子](https://www.jianshu.com/u/2a813d0c9043)
 * [Sky24n](https://www.jianshu.com/u/cbf2ad25d33a)
 * [路很长~](https://blog.csdn.net/m0_37667770)
-* []()
+* [睿丶清](https://www.jianshu.com/u/bc242a7f704b)
 
 
 > #### 基础  
 
-* [Listview组件](https://www.jianshu.com/p/08b1c0511978)
-* [列表综合学习](https://blog.csdn.net/yujunlong3919/article/details/97241621)
-* [Gridview组件](https://www.jianshu.com/p/cd0071390755)
+* [Listview](https://www.jianshu.com/p/08b1c0511978)
+* [Listview综合](https://blog.csdn.net/yujunlong3919/article/details/97241621)
+* [Gridview](https://www.jianshu.com/p/cd0071390755)
+* [TextField](https://www.jianshu.com/p/4049ebf0a198)
+* [Text](https://www.jianshu.com/p/ff388f62be2c)
+* [Provider](https://www.jianshu.com/p/47e5d6b6655b)
 
 
