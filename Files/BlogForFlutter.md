@@ -16,6 +16,7 @@
 * [图表库的使用](https://blog.csdn.net/m0_37667770/article/details/81033475)
 * [flutter-border](https://blog.csdn.net/yujunlong3919/article/details/98492318)
 * [flutter调用原生](https://www.jianshu.com/p/b74416892d84)
+* [Flutter Android 端热修复（热更新）实践](https://mp.weixin.qq.com/s?__biz=MzIzNjIyNTE2Nw==&mid=2651138698&idx=1&sn=4ba679384f31aeaf75a628359b0f1c6d&sharer_shareid=ba9d8a55f6cc7d21ec9412275978de72)
 
 
 
