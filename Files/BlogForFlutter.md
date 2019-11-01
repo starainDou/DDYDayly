@@ -25,6 +25,8 @@
 * [Sky24n](https://www.jianshu.com/u/cbf2ad25d33a)
 * [路很长~](https://blog.csdn.net/m0_37667770)
 * [睿丶清](https://www.jianshu.com/u/bc242a7f704b)
+* [移动端_小刚哥](https://www.jianshu.com/u/3486abae5164)
+* [PostBird](http://www.ptbird.cn/)
 
 
 > #### 基础  
@@ -35,5 +37,8 @@
 * [TextField](https://www.jianshu.com/p/4049ebf0a198)
 * [Text](https://www.jianshu.com/p/ff388f62be2c)
 * [Provider](https://www.jianshu.com/p/47e5d6b6655b)
+* [圆角，状态栏操作等](https://www.jianshu.com/p/027ab3f05ac5)
+* [去掉Container的默认边线](https://blog.csdn.net/cpcpcp123/article/details/95217585)
+* [路由导航、路由传值、ModalRoute](www.ptbird.cn/flutter-route.html#menu_index_5)
 
 
