@@ -29,6 +29,7 @@
 * [移动端_小刚哥](https://www.jianshu.com/u/3486abae5164)
 * [PostBird](http://www.ptbird.cn/)
 * [叶志陈](https://www.jianshu.com/u/9df45b87cfdf)
+* [贾鹏辉](http://www.devio.org/2018/09/09/awesome-flutter/)
 
 
 > #### 基础  
