@@ -17,6 +17,7 @@
 * [flutter-border](https://blog.csdn.net/yujunlong3919/article/details/98492318)
 * [flutter调用原生](https://www.jianshu.com/p/b74416892d84)
 * [Flutter Android 端热修复（热更新）实践](https://mp.weixin.qq.com/s?__biz=MzIzNjIyNTE2Nw==&mid=2651138698&idx=1&sn=4ba679384f31aeaf75a628359b0f1c6d&sharer_shareid=ba9d8a55f6cc7d21ec9412275978de72)
+* [Flutter插件之webview_flutter简要使用说明](https://www.jianshu.com/p/24d211e2063f)
 
 
 
