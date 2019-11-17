@@ -1,5 +1,6 @@
 > #### 大众
 
+* 播放器[ijkplayer](https://github.com/bilibili/ijkplayer)
 * 播放器[ZFPlayer](https://github.com/renzifeng/ZFPlayer)
 * 播放器[SJVideoPlayer](https://github.com/changsanjiang/SJVideoPlayer)
 
