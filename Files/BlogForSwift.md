@@ -4,6 +4,9 @@
 * [Apple 官方异步编程框架：Swift Combine 简介](https://www.ctolib.com/topics-142665.html)
 * [包装UITextView创建组合视图](https://stackoverflow.com/questions/56471973/)
 * [SwiftUI 数据流](https://xiaozhuanlan.com/topic/0528764139)
+* [PromiseKit](https://www.jianshu.com/p/18e35e1154a8)
+* [PromiseKit 入门使用](https://blog.csdn.net/weixin_34262482/article/details/91370929)
+* [优雅的PromiseKit](https://www.jianshu.com/p/21ed6695d48a)
 
 
 > #### 博主
@@ -11,6 +14,7 @@
 * 苹果官方教程[SwiftUI Tutorials](https://developer.apple.com/tutorials/swiftui/)
 * [Fucking SwiftUI](https://fuckingswiftui.com/)
 * [小专栏](https://xiaozhuanlan.com/explore)
+* [xiAo__Ju](https://www.jianshu.com/u/a155c8505859)
 
 
 
