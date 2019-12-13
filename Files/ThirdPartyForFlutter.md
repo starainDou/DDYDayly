@@ -102,8 +102,6 @@
 * [权限 simple_permissions](https://pub.flutter-io.cn/packages/simple_permissions)
 * [图表 syncfusion_flutter_charts](https://pub.flutter-io.cn/packages/syncfusion_flutter_charts)
 * [时间选择 flutter_date_picker](https://github.com/highpeaksw/flutter_date_picker)
-* [flutter例子(有图表) flutter-examples](https://github.com/syncfusion/flutter-examples)
-* [flutter例子 Flutter-Notebook](https://github.com/OpenFlutter/Flutter-Notebook)
 * [k线 k_chart](https://pub.flutter-io.cn/packages/k_chart)
 * [吐司提示 oktoast(flutter_oktoast)](https://pub.flutter-io.cn/packages/oktoast)
 * [支付宝支付AlipaySDK插件 tobias](https://pub.flutter-io.cn/packages/tobias)
@@ -127,3 +125,12 @@
 * [压缩和解压缩 archive](https://pub.flutter-io.cn/packages/archive)
 * [微信Api风格代码的蓝牙库 flutter_wechat_ble](https://pub.flutter-io.cn/packages/flutter_wechat_ble)
 * [蓝牙 rx_ble](https://pub.flutter-io.cn/packages/rx_ble)
+* [Dart拓展，方便使用 quiver](https://pub.flutter-io.cn/packages/quiver)
+
+
+> #### Demo
+
+* [Flutter电商App](https://github.com/hekaiyou/jedi)
+* [Flutter聊天App](https://github.com/hekaiyou/talk_casually)
+* [flutter例子(有图表) flutter-examples](https://github.com/syncfusion/flutter-examples)
+* [flutter例子 Flutter-Notebook](https://github.com/OpenFlutter/Flutter-Notebook)
