@@ -23,3 +23,4 @@
 * [基于 OpenCV 将实体文本转换并归档为虚拟小册](https://github.com/windstormeye/Peek)
 * [各类知识点总结](https://github.com/BigShow1949/BigShow1949)
 * [腾讯开源的微信登录分享demo](https://github.com/Tencent/WeDemo)
+* [音乐播放器(线控、锁屏、缓存)](https://github.com/ihoudf/DFPlayer)
