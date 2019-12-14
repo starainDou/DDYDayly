@@ -126,6 +126,14 @@
 * [微信Api风格代码的蓝牙库 flutter_wechat_ble](https://pub.flutter-io.cn/packages/flutter_wechat_ble)
 * [蓝牙 rx_ble](https://pub.flutter-io.cn/packages/rx_ble)
 * [Dart拓展，方便使用 quiver](https://pub.flutter-io.cn/packages/quiver)
+* [CTOLib Flutter](https://www.ctolib.com/categories/ca-689.html)
+* [Dart汉字转拼音库lpinyin](https://github.com/flutterchina/lpinyin)  
+* [城市列表，索引&悬停效果AzListView](https://github.com/flutterchina/azlistview)
+* [Sp工具类SpUtil](https://github.com/Sky24n/flustars) 
+* [屏幕工具类 ScreenUtil](https://github.com/Sky24n/flustars)  
+* [国际化fluintl](https://github.com/Sky24n/fluintl)
+* [Dart常用工具类库common_utils](https://github.com/Sky24n/common_utils)
+* [底部导航，网络demo](https://github.com/ldlywt/flutter_demo)
 
 
 > #### Demo
