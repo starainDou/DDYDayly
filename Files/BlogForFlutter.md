@@ -64,3 +64,26 @@
 * [Flutter学习](https://github.com/AweiLoveAndroid/Flutter-learning)
 
 
+> #### 权威网址
+
+* [Dart中文网](https://www.dart-china.org)
+* [Flutter中文网](https://flutterchina.club/)
+* [Flutter中文社区](https://flutter.cn/)
+* [Flutter实战](https://book.flutterchina.club/)
+* [咸鱼技术](https://www.jianshu.com/u/cf5c0e4b1111)
+* [Flutter开源app](https://itsallwidgets.com/)
+* [Flutter开发者]( http://flutter.link/)
+* [Flutter布局控件](https://juejin.im/post/5bab35ff5188255c3272c228)
+* [Dart中pub管理站](https://weishare.ml:8443/-----https://pub.dev/)
+* [Dart中pub管理中国镜像站](https://pub.flutter-io.cn/)
+* [flutter awesome](https://flutterawesome.com/)
+* [start flutter](https://startflutter.com/)
+* [It's all widgets](https://itsallwidgets.com/)
+* [Flutter 教程网](http://www.flutterj.com/)
+* [思否中文 segmentfault flutter专栏](https://segmentfault.com/t/flutter/)
+* [咸鱼技术-语雀](https://www.yuque.com/xytech/flutter)
+* [Flutter Codalabs](https://codelabs.flutter-io.cn/)
+* [Dart SDK Api](https://api.dartlang.org/dev/2.5.0-dev.5.0/index.html)
+* [库的文档](https://api.flutter-io.cn/flutter/animation/animation-library.html)
+* [控件文档](https://flutter.cn/docs/reference/widgets)
+* [实用教程CookBook](https://flutter.cn/docs/cookbook)
