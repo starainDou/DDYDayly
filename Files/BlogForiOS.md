@@ -20,6 +20,7 @@
 * [收集iOS开发框架](https://my.oschina.net/linweida/blog/749238)
 * [iOS底层原理探索—OC对象的本质](https://www.jianshu.com/p/ffd742041946)
 * [iOS底层原理探索—class的本质](https://www.jianshu.com/p/265412c910be)
+* [iOS底层原理探索—KVO的本质](https://www.jianshu.com/p/1ae6a02ffb42)
 
 > #### 博主 
 
