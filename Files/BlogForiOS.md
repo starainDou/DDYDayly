@@ -26,6 +26,7 @@
 * [iOS底层原理探索—Category的本质(二)](https://www.jianshu.com/p/bc3e9fa647cc)
 * [iOS底层原理探索—关联对象的本质](https://www.jianshu.com/p/1227f7202665)
 * [iOS底层原理探索— block的本质(一)](https://www.jianshu.com/p/cebc6e8e7a2d)
+* [iOS底层原理探索— block的本质(二)](https://www.jianshu.com/p/26ff309f00a0)
 
 > #### 博主 
 
