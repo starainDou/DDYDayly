@@ -27,6 +27,9 @@
 * [iOS底层原理探索—关联对象的本质](https://www.jianshu.com/p/1227f7202665)
 * [iOS底层原理探索— block的本质(一)](https://www.jianshu.com/p/cebc6e8e7a2d)
 * [iOS底层原理探索— block的本质(二)](https://www.jianshu.com/p/26ff309f00a0)
+* [iOS底层原理探索— Runtime之isa的本质](https://www.jianshu.com/p/a3fb0919877c)
+* [iOS底层原理探索 — Runtime之class的本质](https://www.jianshu.com/p/941cb11538aa)
+* 
 
 > #### 博主 
 
