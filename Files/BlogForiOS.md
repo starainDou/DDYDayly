@@ -21,6 +21,10 @@
 * [iOS底层原理探索—OC对象的本质](https://www.jianshu.com/p/ffd742041946)
 * [iOS底层原理探索—class的本质](https://www.jianshu.com/p/265412c910be)
 * [iOS底层原理探索—KVO的本质](https://www.jianshu.com/p/1ae6a02ffb42)
+* [iOS底层原理探索—KVC的本质](https://www.jianshu.com/p/91eb7eea2cdb)
+* [iOS底层原理探索—Category的本质(一)](https://www.jianshu.com/p/6735b7ec0fe5)
+* [iOS底层原理探索—Category的本质(二)](https://www.jianshu.com/p/bc3e9fa647cc)
+* [iOS底层原理探索—关联对象的本质](https://www.jianshu.com/p/1227f7202665)
 
 > #### 博主 
 
