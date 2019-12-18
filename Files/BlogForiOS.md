@@ -38,6 +38,7 @@
 * [iOS底层原理探索—内存管理(一)](https://www.jianshu.com/p/70cc9623caa9)
 * [iOS底层原理探索—内存管理(二)](https://www.jianshu.com/p/c38b5741919b)
 * [iOS底层原理探索—weak实现原理](https://www.jianshu.com/p/0abad3b06600)
+* [iOS底层原理探索—AutoreleasePool实现原理](https://www.jianshu.com/p/dc5227e41f2d)
 
 > #### 博主 
 
@@ -47,5 +48,6 @@
 * [忠橙_g](https://www.jianshu.com/u/85cdcc661ae0)
 * [OpenFlutter github](https://github.com/OpenFlutter)
 * [Apple_JinlongLu](https://www.jianshu.com/u/e14d5ce820c0)
+* [劳模007_Mars](https://www.jianshu.com/u/aa9cc36cc6b2)
 
 > 
