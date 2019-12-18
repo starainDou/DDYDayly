@@ -34,6 +34,7 @@
 * [iOS底层原理探索—多线程的本质](https://www.jianshu.com/p/1faf2d78136c)
 * [iOS底层原理探索—多线程的经典面试题](https://www.jianshu.com/p/3192a73fa7c2)
 * [iOS底层原理探索—多线程的“锁”](https://www.jianshu.com/p/b33090b13d24)
+* [iOS底层原理探索—多线程的读写安全](https://www.jianshu.com/p/aeae6e6d2ed5)
 * 
 
 > #### 博主 
