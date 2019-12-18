@@ -36,6 +36,7 @@
 * [iOS底层原理探索—多线程的“锁”](https://www.jianshu.com/p/b33090b13d24)
 * [iOS底层原理探索—多线程的读写安全](https://www.jianshu.com/p/aeae6e6d2ed5)
 * [iOS底层原理探索—内存管理(一)](https://www.jianshu.com/p/70cc9623caa9)
+* [iOS底层原理探索 — 内存管理(二)](https://www.jianshu.com/p/c38b5741919b)
 
 > #### 博主 
 
