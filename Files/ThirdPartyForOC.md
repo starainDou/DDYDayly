@@ -6,6 +6,7 @@
 * 腾讯开源内存映射KV组件[MMKV](https://github.com/Tencent/MMKV)
 * 腾讯开源内存泄露侦测工具[MLeaksFinder](https://github.com/Tencent/MLeaksFinder)
 * 腾讯开源提高UI开发效率方案[QMUI_iOS](https://github.com/Tencent/QMUI_iOS)
+* GPUImage美颜[BeautifyFaceAndDetection](https://github.com/YBYHunter/BeautifyFaceAndDetection)
 
 
 > #### 小众  
