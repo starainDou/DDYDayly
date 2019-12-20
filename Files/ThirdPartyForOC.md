@@ -15,6 +15,7 @@
 * 自定义Tabbar[PTCardTabBar](https://github.com/hussc/PTCardTabBar)
 * 身份证数字X键盘[APNumberPad](https://github.com/podkovyrin/APNumberPad)
 * 对象关系映射数据库[LKDBHelper](https://github.com/li6185377/LKDBHelper-SQLite-ORM)
+* 仿微信导航栏返回过渡样式[PBNavigationBar](https://github.com/JpacheGitHub/PBNavigationBar)
 
 
 
