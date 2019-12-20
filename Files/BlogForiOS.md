@@ -40,6 +40,13 @@
 * [iOS底层原理探索—weak实现原理](https://www.jianshu.com/p/0abad3b06600)
 * [iOS底层原理探索—AutoreleasePool实现原理](https://www.jianshu.com/p/dc5227e41f2d)
 * [iOS-Opencv-中值滤波(medianBlur)和 双边滤波(bilateralFilter)](https://blog.csdn.net/think_ma/article/details/78865659)
+* [iOS逆向之工具篇](https://www.jianshu.com/p/ec5cc80cdb45)
+* [GPUImage2（一）集成使用](https://www.jianshu.com/p/1bcf38960dbb)
+* [GPUImage2（二）图像生成](https://www.jianshu.com/p/9c34a81a474d)
+* [GPUImage2（三）色彩调校](https://www.jianshu.com/p/2d59f34a0751)
+* [GPUImage2（四）图像处理](https://www.jianshu.com/p/81c7f7f7b918)
+* [GPUImage2（五）混合模式](https://www.jianshu.com/p/b31973b112b7)
+* [GPUImage2（六）视觉特效](https://www.jianshu.com/p/f8ec00f1f69e)
 
 > #### 博主 
 
@@ -50,5 +57,7 @@
 * [OpenFlutter github](https://github.com/OpenFlutter)
 * [Apple_JinlongLu](https://www.jianshu.com/u/e14d5ce820c0)
 * [劳模007_Mars](https://www.jianshu.com/u/aa9cc36cc6b2)
+* [WinJayQ](https://www.jianshu.com/u/787ff401bb0a)
+* [Willie_](https://www.jianshu.com/u/785617fd05b4)
 
 > 
