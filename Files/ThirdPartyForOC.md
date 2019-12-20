@@ -18,7 +18,9 @@
 * 仿微信导航栏返回过渡样式[PBNavigationBar](https://github.com/JpacheGitHub/PBNavigationBar)
 * 可拖拽视图[WMDragView](https://github.com/zhengwenming/WMDragView)
 * 播放器[WMPlayer](https://github.com/zhengwenming/WMPlayer)
-
+* Video转Gif[VideoToGIF](https://github.com/doubleYang1020/VideoToGIF)
+* 分段录制/滤镜处理/音乐合成/贴纸选择[DYVideoCamera](https://github.com/doubleYang1020/DYVideoCamera)
+* 基于FFMPEG4.0的播放器[DLGPlayer](https://github.com/DeviLeo/DLGPlayer)
 
 
 
