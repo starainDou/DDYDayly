@@ -17,6 +17,7 @@
 * [SwiftUI 官方教程(译08)](https://www.jianshu.com/p/0339d002ec0e)
 * [SwiftUI 官方教程(译09)](https://www.jianshu.com/p/441930138de2)
 * [SwiftUI 官方教程(译10)](https://www.jianshu.com/p/17fc7929fcbb)
+* [使用Swift构建一个视频时间轴控件](https://www.jianshu.com/p/5fbc1079d63f)
 
 
 > #### 博主
