@@ -47,6 +47,7 @@
 * [GPUImage2（四）图像处理](https://www.jianshu.com/p/81c7f7f7b918)
 * [GPUImage2（五）混合模式](https://www.jianshu.com/p/b31973b112b7)
 * [GPUImage2（六）视觉特效](https://www.jianshu.com/p/f8ec00f1f69e)
+* [iOS 走进Facebook POP的世界](https://www.jianshu.com/p/0bc2127692e5)
 
 > #### 博主 
 
