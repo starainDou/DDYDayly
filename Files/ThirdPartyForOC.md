@@ -1,12 +1,27 @@
-> #### 大众
+> #### 大众(千星)
 
 * 播放器[ijkplayer](https://github.com/bilibili/ijkplayer)
 * 播放器[ZFPlayer](https://github.com/renzifeng/ZFPlayer)
 * 播放器[SJVideoPlayer](https://github.com/changsanjiang/SJVideoPlayer)
+* 播放器[WMPlayer](https://github.com/zhengwenming/WMPlayer)
 * 腾讯开源内存映射KV组件[MMKV](https://github.com/Tencent/MMKV)
 * 腾讯开源内存泄露侦测工具[MLeaksFinder](https://github.com/Tencent/MLeaksFinder)
 * 腾讯开源提高UI开发效率方案[QMUI_iOS](https://github.com/Tencent/QMUI_iOS)
 * GPUImage美颜[BeautifyFaceAndDetection](https://github.com/YBYHunter/BeautifyFaceAndDetection)
+* 导航过渡[KMNavigationBarTransition](https://github.com/MoZhouqi/KMNavigationBarTransition)
+* 导航栏[WRNavigationBar](https://github.com/wangrui460/WRNavigationBar)
+* 导航栏[TLYShyNavBar](https://github.com/telly/TLYShyNavBar)
+* 对象关系映射数据库[LKDBHelper](https://github.com/li6185377/LKDBHelper-SQLite-ORM)
+* 脸书开源更优雅的使用KVO[KVOController](https://github.com/facebook/KVOController)
+* 脸书开源发光文字[Shimmer](https://github.com/facebook/Shimmer)
+* 脸书开源增强工具[xctool](https://github.com/facebook/xctool)
+* 脸书开源动画效果[pop](https://github.com/facebook/pop)
+* 加载Gif[FLAnimatedImage](https://github.com/Flipboard/FLAnimatedImage)
+* 开发调试增强工具[FLEX](https://github.com/Flipboard/FLEX)
+* 抽屉效果[RESideMenu](https://github.com/romaonthego/RESideMenu)
+* 控制器毛玻璃[REFrostedViewController](https://github.com/romaonthego/REFrostedViewController)
+* 强大的数据驱动型tableView[RETableViewManager](https://github.com/romaonthego/RETableViewManager)
+* 
 
 
 > #### 小众  
@@ -14,11 +29,8 @@
 * 自定义AlertController[DWAlertController](https://github.com/podkovyrin/DWAlertController)
 * 自定义Tabbar[PTCardTabBar](https://github.com/hussc/PTCardTabBar)
 * 身份证数字X键盘[APNumberPad](https://github.com/podkovyrin/APNumberPad)
-* 对象关系映射数据库[LKDBHelper](https://github.com/li6185377/LKDBHelper-SQLite-ORM)
 * 仿微信导航栏返回过渡样式[PBNavigationBar](https://github.com/JpacheGitHub/PBNavigationBar)
-* 导航过渡(优)[KMNavigationBarTransition](https://github.com/MoZhouqi/KMNavigationBarTransition)
 * 可拖拽视图[WMDragView](https://github.com/zhengwenming/WMDragView)
-* 播放器[WMPlayer](https://github.com/zhengwenming/WMPlayer)
 * Video转Gif[VideoToGIF](https://github.com/doubleYang1020/VideoToGIF)
 * 分段录制/滤镜处理/音乐合成/贴纸选择[DYVideoCamera](https://github.com/doubleYang1020/DYVideoCamera)
 * 基于FFMPEG4.0的播放器[DLGPlayer](https://github.com/DeviLeo/DLGPlayer)
