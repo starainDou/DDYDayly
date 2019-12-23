@@ -21,7 +21,8 @@
 * 抽屉效果[RESideMenu](https://github.com/romaonthego/RESideMenu)
 * 控制器毛玻璃[REFrostedViewController](https://github.com/romaonthego/REFrostedViewController)
 * 强大的数据驱动型tableView[RETableViewManager](https://github.com/romaonthego/RETableViewManager)
-* 
+* 分页tab[VTMagic](https://github.com/tianzhuo112/VTMagic)
+* 图片选择[TZImagePickerController](https://github.com/banchichen/TZImagePickerController)
 
 
 > #### 小众  
@@ -34,6 +35,7 @@
 * Video转Gif[VideoToGIF](https://github.com/doubleYang1020/VideoToGIF)
 * 分段录制/滤镜处理/音乐合成/贴纸选择[DYVideoCamera](https://github.com/doubleYang1020/DYVideoCamera)
 * 基于FFMPEG4.0的播放器[DLGPlayer](https://github.com/DeviLeo/DLGPlayer)
+* 视频图片预览[TZImagePreviewController](https://github.com/banchichen/TZImagePreviewController)
 
 
 
@@ -43,3 +45,4 @@
 * [各类知识点总结](https://github.com/BigShow1949/BigShow1949)
 * [腾讯开源的微信登录分享demo](https://github.com/Tencent/WeDemo)
 * [音乐播放器(线控、锁屏、缓存)](https://github.com/ihoudf/DFPlayer)
+* [wifi是否需要认证登录的demo](https://github.com/banchichen/CaptivePortalCheck)
