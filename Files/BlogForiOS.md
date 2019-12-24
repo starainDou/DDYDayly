@@ -48,6 +48,12 @@
 * [GPUImage2（五）混合模式](https://www.jianshu.com/p/b31973b112b7)
 * [GPUImage2（六）视觉特效](https://www.jianshu.com/p/f8ec00f1f69e)
 * [iOS 走进Facebook POP的世界](https://www.jianshu.com/p/0bc2127692e5)
+* [解读AF之AFNetworkReachabilityManager](https://www.jianshu.com/p/45bb83a715d0)
+* [解读AF之AFHTTPSessionManager](https://www.jianshu.com/p/e8b21b3d690d)
+* [解读AF之AFURLSessionManager](https://www.jianshu.com/p/db8ed6dd9be4)
+* [UICollectionViewCell的扩张效果的实现(一)](https://www.jianshu.com/p/062803251b60)
+* [UICollectionViewCompositionalLayout简单示例(一)](https://www.jianshu.com/p/2ccd82e119ef)
+* [iOS 使用lottie动画自定义TabBarItem](https://www.jianshu.com/p/2a4f5488fb9a)
 
 > #### 博主 
 
