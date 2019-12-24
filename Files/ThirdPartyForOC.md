@@ -23,6 +23,14 @@
 * 强大的数据驱动型tableView[RETableViewManager](https://github.com/romaonthego/RETableViewManager)
 * 分页tab[VTMagic](https://github.com/tianzhuo112/VTMagic)
 * 图片选择[TZImagePickerController](https://github.com/banchichen/TZImagePickerController)
+* 英雄动画[Hero](https://github.com/HeroTransitions/Hero)
+* 浮动提示TextField[JVFloatLabeledTextField](https://github.com/jverdi/JVFloatLabeledTextField)
+* 手机作为服务端[CocoaHTTPServer](https://github.com/robbiehanson/CocoaHTTPServer)
+* Socket[CocoaAsyncSocket](https://github.com/robbiehanson/CocoaAsyncSocket)
+* 日志工具[CocoaLumberjack](https://github.com/CocoaLumberjack/CocoaLumberjack)
+* XMPP[XMPPFramework](https://github.com/robbiehanson/XMPPFramework)
+* 格式化某些语句[FormatterKit](https://github.com/FormatterKit/FormatterKit)
+* lottie动画[lottie-ios](https://github.com/airbnb/lottie-ios)
 
 
 > #### 小众  
@@ -46,3 +54,4 @@
 * [腾讯开源的微信登录分享demo](https://github.com/Tencent/WeDemo)
 * [音乐播放器(线控、锁屏、缓存)](https://github.com/ihoudf/DFPlayer)
 * [wifi是否需要认证登录的demo](https://github.com/banchichen/CaptivePortalCheck)
+* [仿微信朋友圈](https://github.com/zhengwenming/WeChat)
