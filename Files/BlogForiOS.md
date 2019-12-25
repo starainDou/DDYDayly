@@ -53,7 +53,11 @@
 * [解读AF之AFURLSessionManager](https://www.jianshu.com/p/db8ed6dd9be4)
 * [UICollectionViewCell的扩张效果的实现(一)](https://www.jianshu.com/p/062803251b60)
 * [UICollectionViewCompositionalLayout简单示例(一)](https://www.jianshu.com/p/2ccd82e119ef)
-* [iOS 使用lottie动画自定义TabBarItem](https://www.jianshu.com/p/2a4f5488fb9a)
+* [使用lottie动画自定义TabBarItem](https://www.jianshu.com/p/2a4f5488fb9a)
+* [卡片切换效果](https://www.jianshu.com/p/734962c9bbed)
+* [自定义验证码输入框](https://www.jianshu.com/p/e2ca5dcea0ba)
+* [如何优雅的写一个验证码输入框](https://www.jianshu.com/p/ecf003f942e1)
+* [使用Swift构建一个视频时间轴控件](https://www.jianshu.com/p/5fbc1079d63f)
 
 > #### 博主 
 
