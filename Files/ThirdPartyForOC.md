@@ -55,3 +55,10 @@
 * [音乐播放器(线控、锁屏、缓存)](https://github.com/ihoudf/DFPlayer)
 * [wifi是否需要认证登录的demo](https://github.com/banchichen/CaptivePortalCheck)
 * [仿微信朋友圈](https://github.com/zhengwenming/WeChat)
+
+
+> #### github
+
+* [airbnb](https://github.com/airbnb)
+* [LXManMan](https://github.com/LXManMan)
+* [summerxx27](https://github.com/summerxx27)
