@@ -59,6 +59,8 @@
 * [如何优雅的写一个验证码输入框](https://www.jianshu.com/p/ecf003f942e1)
 * [使用Swift构建一个视频时间轴控件](https://www.jianshu.com/p/5fbc1079d63f)
 * [Block由浅入深及其底层原理](https://www.jianshu.com/p/ab165defa1cf)
+* [状态栏增加 Vibrance 效果](https://www.jianshu.com/p/50b6ec391749)
+* [去model化和数据对象](https://casatwy.com/OOP_nomodel.html)
 
 > #### 博主 
 
@@ -71,5 +73,6 @@
 * [劳模007_Mars](https://www.jianshu.com/u/aa9cc36cc6b2)
 * [WinJayQ](https://www.jianshu.com/u/787ff401bb0a)
 * [Willie_](https://www.jianshu.com/u/785617fd05b4)
+* [Cyandev](https://www.jianshu.com/u/c49454e0ae54)
 
 > 
