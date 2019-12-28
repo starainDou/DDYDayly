@@ -7,6 +7,17 @@
 * [PromiseKit](https://www.jianshu.com/p/18e35e1154a8)
 * [PromiseKit 入门使用](https://blog.csdn.net/weixin_34262482/article/details/91370929)
 * [优雅的PromiseKit](https://www.jianshu.com/p/21ed6695d48a)
+* [SwiftUI 官方教程(译01)](https://www.jianshu.com/p/efc36dd785d6)
+* [SwiftUI 官方教程(译02)](https://www.jianshu.com/p/2297725a051e)
+* [SwiftUI 官方教程(译03)](https://www.jianshu.com/p/ecf30901031d)
+* [SwiftUI 官方教程(译04)](https://www.jianshu.com/p/5a9d1a539829)
+* [SwiftUI 官方教程(译05)](https://www.jianshu.com/p/6b5f8ea2619e)
+* [SwiftUI 官方教程(译06)](https://www.jianshu.com/p/769b52b051cc)
+* [SwiftUI 官方教程(译07)](https://www.jianshu.com/p/ad59cb9f2db8)
+* [SwiftUI 官方教程(译08)](https://www.jianshu.com/p/0339d002ec0e)
+* [SwiftUI 官方教程(译09)](https://www.jianshu.com/p/441930138de2)
+* [SwiftUI 官方教程(译10)](https://www.jianshu.com/p/17fc7929fcbb)
+* [使用Swift构建一个视频时间轴控件](https://www.jianshu.com/p/5fbc1079d63f)
 
 
 > #### 博主
@@ -15,10 +26,18 @@
 * [Fucking SwiftUI](https://fuckingswiftui.com/)
 * [小专栏](https://xiaozhuanlan.com/explore)
 * [xiAo__Ju](https://www.jianshu.com/u/a155c8505859)
+* [Willie_](https://www.jianshu.com/u/785617fd05b4)
 
 
 
+> #### Github
 
+* [SwiftUI-Cheat-Sheet](https://github.com/SimpleBoilerplates/SwiftUI-Cheat-Sheet)
+* [RxSwift MVVM](https://github.com/SimpleBoilerplates/iOS)
+* [SwiftUI-Tutorials](https://github.com/WillieWangWei/SwiftUI-Tutorials)
+* [About-SwiftUI](https://github.com/Juanpe/About-SwiftUI)
+* [SwiftUI](https://github.com/ivanvorobei/SwiftUI)
+* [SwiftUI](https://github.com/Jinxiansen/SwiftUI)
 
 
 

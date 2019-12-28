@@ -5,6 +5,7 @@
 * UICollectionView类似系统短信的反弹缩放动画[BouncyLayout](https://github.com/roberthein/BouncyLayout)
 * 自动布局库[TinyConstraints](https://github.com/roberthein/TinyConstraints)
 * 弹簧动画[Ease](https://github.com/roberthein/Ease)
+* 骨架占位[SkeletonView](https://github.com/Juanpe/SkeletonView)
 
 
 > #### 小众库
