@@ -6,6 +6,7 @@
 * 自动布局库[TinyConstraints](https://github.com/roberthein/TinyConstraints)
 * 弹簧动画[Ease](https://github.com/roberthein/Ease)
 * 骨架占位[SkeletonView](https://github.com/Juanpe/SkeletonView)
+* Timer扩展[SwiftyTimer](https://github.com/radex/SwiftyTimer)
 
 
 > #### 小众库
