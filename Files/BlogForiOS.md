@@ -67,6 +67,8 @@
 * [SEL、IMP、Method、isa](https://www.jianshu.com/p/25344f11aa3c)
 * [iOS Runtime详解之SEL,Class,id,IMP,_cmd,isa,method,Ivar](https://www.jianshu.com/p/0f3de49d244a)
 * [iOS底层-isa](https://www.jianshu.com/p/2d1fdb76ed57)
+* [状态栏增加 Vibrance 效果](https://www.jianshu.com/p/50b6ec391749)
+* [去model化和数据对象](https://casatwy.com/OOP_nomodel.html)
 
 > #### 博主 
 
@@ -79,5 +81,4 @@
 * [劳模007_Mars](https://www.jianshu.com/u/aa9cc36cc6b2)
 * [WinJayQ](https://www.jianshu.com/u/787ff401bb0a)
 * [Willie_](https://www.jianshu.com/u/785617fd05b4)
-
-> 
+* [Cyandev](https://www.jianshu.com/u/c49454e0ae54)
