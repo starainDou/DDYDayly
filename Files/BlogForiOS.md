@@ -59,6 +59,14 @@
 * [如何优雅的写一个验证码输入框](https://www.jianshu.com/p/ecf003f942e1)
 * [使用Swift构建一个视频时间轴控件](https://www.jianshu.com/p/5fbc1079d63f)
 * [Block由浅入深及其底层原理](https://www.jianshu.com/p/ab165defa1cf)
+* [isa 是什么鬼](https://blog.csdn.net/yst19910702/article/details/51443901)
+* [iOS中isa的深层理解](https://www.jianshu.com/p/20f1251916b9)
+* [[iOS中isa的深层理解](https://www.jianshu.com/p/20f1251916b9)](https://www.jianshu.com/p/cc3e340edfff)
+* [iOS中类、元类、isa详解](www.cocoachina.com/articles/21805)
+* [iOS 认识runtime 中的三个指针 isa , IMP , SEL](https://www.cnblogs.com/someonelikeyou/p/8560156.html)
+* [SEL、IMP、Method、isa](https://www.jianshu.com/p/25344f11aa3c)
+* [iOS Runtime详解之SEL,Class,id,IMP,_cmd,isa,method,Ivar](https://www.jianshu.com/p/0f3de49d244a)
+* [iOS底层-isa](https://www.jianshu.com/p/2d1fdb76ed57)
 
 > #### 博主 
 
