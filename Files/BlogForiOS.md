@@ -70,6 +70,7 @@
 * [状态栏增加 Vibrance 效果](https://www.jianshu.com/p/50b6ec391749)
 * [去model化和数据对象](https://casatwy.com/OOP_nomodel.html)
 * [机器学习:初识TensorFlow在iOS上的编译](https://www.jianshu.com/p/764357ea773a)
+* [从NSArray看类簇](blog.sunnyxx.com/2014/12/18/class-cluster/)
 
 > #### 博主 
 
@@ -83,3 +84,4 @@
 * [WinJayQ](https://www.jianshu.com/u/787ff401bb0a)
 * [Willie_](https://www.jianshu.com/u/785617fd05b4)
 * [Cyandev](https://www.jianshu.com/u/c49454e0ae54)
+* [tensorflow.google.cn](https://tensorflow.google.cn/lite/guide/build_ios)
