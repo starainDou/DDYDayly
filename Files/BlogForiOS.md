@@ -69,6 +69,7 @@
 * [iOS底层-isa](https://www.jianshu.com/p/2d1fdb76ed57)
 * [状态栏增加 Vibrance 效果](https://www.jianshu.com/p/50b6ec391749)
 * [去model化和数据对象](https://casatwy.com/OOP_nomodel.html)
+* [机器学习:初识TensorFlow在iOS上的编译](https://www.jianshu.com/p/764357ea773a)
 
 > #### 博主 
 
