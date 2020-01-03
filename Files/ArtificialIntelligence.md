@@ -1,0 +1,5 @@
+* [tensorflow镜像](https://gitee.com/mirrors/tensorflow?_from=gitee_search)
+* [tensorflow官网](https://tensorflow.google.cn/lite/guide)
+* [tensorflow实例](https://github.com/tensorflow/examples/blob/master/lite/examples/gesture_classification/ios/README.md)
+* [开源代码换脸](https://github.com/deepfakes/faceswap)
+* [开发者预览版 — 基于 Mobile GPU 的 TensorFlow Lite 处理性能大幅提升](https://mp.weixin.qq.com/s?__biz=MzU1OTMyNDcxMQ==&mid=2247485486&idx=1&sn=a400a27e63538eb377ae3f9a73b6e133&chksm=fc184366cb6fca70e684a61946a3c9a7712de7fd7e9394db77ef4babf701cbbf9538a7b1d0f3&token=727582466&lang=zh_CN#rd)
