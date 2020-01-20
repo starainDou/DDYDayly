@@ -55,6 +55,8 @@
 * [音乐播放器(线控、锁屏、缓存)](https://github.com/ihoudf/DFPlayer)
 * [wifi是否需要认证登录的demo](https://github.com/banchichen/CaptivePortalCheck)
 * [仿微信朋友圈](https://github.com/zhengwenming/WeChat)
+* [idfa保存到钥匙串](https://github.com/qixin1106/KeychainIDFA)
+* [VPN](https://github.com/qixin1106/iOS8-PersonalVPN-Demo)
 
 
 > #### github
