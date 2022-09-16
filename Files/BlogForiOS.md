@@ -72,6 +72,15 @@
 * [机器学习:初识TensorFlow在iOS上的编译](https://www.jianshu.com/p/764357ea773a)
 * [从NSArray看类簇](blog.sunnyxx.com/2014/12/18/class-cluster/)
 * [源码阅读CTMediator](https://www.jianshu.com/p/1121d768ca5d)
+* [Link Map](https://easeapi.com/blog/blog/66-link-map.html)
+* [iOS Background Task使用陷阱](https://easeapi.com/blog/blog/160-background-task.html)
+* [iOS SDK 动态引入第三方SDK](https://www.jianshu.com/p/cab17b849482)
+* [AudioUnit音频特效](https://www.jianshu.com/p/c4104453b1e1)
+* [AudioUnit混音解读](https://www.jianshu.com/p/9ef842d4be90)
+* [Audio Unit详解（一）实时变调音效处理](https://www.jianshu.com/p/0fe2142fb863)
+* [深入探索 iOS 包体积优化](https://juejin.cn/post/6844904169938092045)
+* [iOS音视频渲染](https://zhuanlan.zhihu.com/p/149800787)
+* [关于苹果家原生音视频框架的调研](https://blog.yuusann.com/posts/article/18003)
 
 > #### 博主 
 
@@ -87,3 +96,4 @@
 * [Cyandev](https://www.jianshu.com/u/c49454e0ae54)
 * [tensorflow.google.cn](https://tensorflow.google.cn/lite/guide/build_ios)
 * [www.raywenderlich.com](https://www.raywenderlich.com/ios)
+* [冯志浩](https://juejin.cn/user/3280598426209015/posts)
