@@ -81,6 +81,7 @@
 * [深入探索 iOS 包体积优化](https://juejin.cn/post/6844904169938092045)
 * [iOS音视频渲染](https://zhuanlan.zhihu.com/p/149800787)
 * [关于苹果家原生音视频框架的调研](https://blog.yuusann.com/posts/article/18003)
+* [Protocol Oriented: Swift 协议陷阱之 Associated Type](https://zhuanlan.zhihu.com/p/80672557)
 
 > #### 博主 
 
@@ -97,3 +98,4 @@
 * [tensorflow.google.cn](https://tensorflow.google.cn/lite/guide/build_ios)
 * [www.raywenderlich.com](https://www.raywenderlich.com/ios)
 * [冯志浩](https://juejin.cn/user/3280598426209015/posts)
+* [孙一萌](https://zhuanlan.zhihu.com/p/545649718)
