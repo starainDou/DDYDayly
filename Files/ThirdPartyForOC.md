@@ -31,6 +31,11 @@
 * XMPP[XMPPFramework](https://github.com/robbiehanson/XMPPFramework)
 * 格式化某些语句[FormatterKit](https://github.com/FormatterKit/FormatterKit)
 * lottie动画[lottie-ios](https://github.com/airbnb/lottie-ios)
+* 策划cell菜单[MGSwipeTableCell](https://github.com/MortimerGoro/MGSwipeTableCell)
+* 网格布局[IGListKit](https://github.com/Instagram/IGListKit)
+* 富文本[TYAttributedLabel](https://github.com/12207480/TYAttributedLabel)
+* 下拉菜单[DOPDropDownMenu](https://github.com/12207480/DOPDropDownMenu-Enhanced)
+* [TYAlertController](https://github.com/12207480/TYAlertController)
 
 
 > #### 小众  
