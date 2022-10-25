@@ -7,6 +7,15 @@
 * 弹簧动画[Ease](https://github.com/roberthein/Ease)
 * 骨架占位[SkeletonView](https://github.com/Juanpe/SkeletonView)
 * Timer扩展[SwiftyTimer](https://github.com/radex/SwiftyTimer)
+* 异步编程[PromiseKit](https://github.com/mxcl/PromiseKit)
+* 内购[SwiftyStoreKit](https://github.com/bizz84/SwiftyStoreKit)
+* 数据库[realm-swift](https://github.com/realm/realm-swift)
+* 网络请求中间抽象层[Moya](https://github.com/Moya/Moya)
+* 颜色库[UIColor-Hex-Swift](https://github.com/yeahdongcn/UIColor-Hex-Swift)
+* [AudioKit](https://github.com/AudioKit/AudioKit)
+* 音响合成器[AudioKitSynthOne](https://github.com/AudioKit/AudioKitSynthOne)
+* [SwiftyJSON](https://github.com/SwiftyJSON/SwiftyJSON)
+* swift 扩展[SwifterSwift](https://github.com/SwifterSwift/SwifterSwift)
 
 
 > #### 小众库
