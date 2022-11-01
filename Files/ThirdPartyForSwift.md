@@ -16,6 +16,8 @@
 * 音响合成器[AudioKitSynthOne](https://github.com/AudioKit/AudioKitSynthOne)
 * [SwiftyJSON](https://github.com/SwiftyJSON/SwiftyJSON)
 * swift 扩展[SwifterSwift](https://github.com/SwifterSwift/SwifterSwift)
+* swift 扩展[JKSwiftExtension](https://github.com/JoanKing/JKSwiftExtension)
+* 图片选择后编辑[ZLImageEditor](https://github.com/longitachi/ZLImageEditor)
 
 
 > #### 小众库
