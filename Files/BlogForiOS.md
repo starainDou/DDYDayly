@@ -83,6 +83,17 @@
 * [关于苹果家原生音视频框架的调研](https://blog.yuusann.com/posts/article/18003)
 * [Protocol Oriented: Swift 协议陷阱之 Associated Type](https://zhuanlan.zhihu.com/p/80672557)
 * [LLVM & Clang 入门](https://juejin.cn/post/6844903748435705864)
+* [基于 LibTooling 的自动埋点](https://juejin.cn/post/6892273620719468558)
+* [iOS 编译详解 LLVM Clang](https://juejin.cn/post/6844903843797401608)
+* [戴铭 深入剖析-iOS-编译-Clang---LLVM](github.com/ming1016/study/wiki/深入剖析-iOS-编译-Clang---LLVM)
+* [面对疾风吧 iOS编译过程的原理和应用](https://github.com/LeoMobileDeveloper/Blogs/blob/master/iOS/iOS编译过程的原理和应用.md)
+* 音视频[audio_video_streaming](https://github.com/0voice/audio_video_streaming)
+* 配置[使用 libclang 实现 iOS 代码中的明文加密](https://danleechina.github.io/use-libclang-in-xcode/)
+* [AFNetworking 底层原理分析](https://www.jianshu.com/p/d17c7c262ffb)
+* [ios logger_iOS 14的新Logger API与OSLog](https://blog.csdn.net/weixin_26638123/article/details/108171733)
+* [libwebp](https://chromium.googlesource.com/webm/libwebp)
+* [iOS实现字符串动画](https://juejin.cn/post/6844903828857290766)
+* [App 二进制文件重排已经被玩坏了](yulingtianxia.com/blog/2019/09/01/App-Order-Files/)
 
 > #### 博主 
 
