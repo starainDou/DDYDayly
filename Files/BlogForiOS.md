@@ -94,6 +94,9 @@
 * [libwebp](https://chromium.googlesource.com/webm/libwebp)
 * [iOS实现字符串动画](https://juejin.cn/post/6844903828857290766)
 * [App 二进制文件重排已经被玩坏了](yulingtianxia.com/blog/2019/09/01/App-Order-Files/)
+* 青玉伏案[iOS可视化动态绘制连通图](https://www.shuzhiduo.com/A/Rlk5aBNd1O/)
+* [iOS 15 的 UIButton 有什么新功能](https://www.openswiftui.com/?p=1872)
+* [iOS 第三方登录之苹果登录(sign in with Apple)](https://www.jianshu.com/p/e9e19e659720)
 
 > #### 博主 
 
@@ -112,3 +115,5 @@
 * [冯志浩](https://juejin.cn/user/3280598426209015/posts)
 * [孙一萌](https://zhuanlan.zhihu.com/p/545649718)
 * [苹果官方文档](https://developer.apple.com/documentation)
+* [玉令天下git](https://github.com/yulingtianxia/AppOrderFiles)
+* [玉令天下 博客](http://yulingtianxia.com/)
