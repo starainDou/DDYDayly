@@ -24,3 +24,7 @@
 * NSButton 样式[NSButton的使用](https://juejin.cn/post/6966231662187249700)
 * [macOS开发基础- UI体系](https://juejin.cn/post/7029246303376769060)
 * [macOS开发-NSButton](https://www.jianshu.com/p/fb0d158285e5)
+* [Xcode扩展开发 demo](https://github.com/yulingtianxia/DirtyWords-for-Xcode)
+* [Xcode扩展  quicktype-xcode](https://github.com/quicktype/quicktype-xcode)
+* [Xcode扩展，绑定快捷键 ThenGenerator](https://github.com/87kangsw/ThenGenerator)
+* [Mac小软件制作icon](https://github.com/raphaelhanneken/iconizer)
