@@ -18,6 +18,7 @@
 * swift 扩展[SwifterSwift](https://github.com/SwifterSwift/SwifterSwift)
 * swift 扩展[JKSwiftExtension](https://github.com/JoanKing/JKSwiftExtension)
 * 图片选择后编辑[ZLImageEditor](https://github.com/longitachi/ZLImageEditor)
+* GCD定时器[SwiftTimer](https://github.com/100mango/SwiftTimer)
 
 
 > #### 小众库
