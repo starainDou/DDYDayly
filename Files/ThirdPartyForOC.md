@@ -49,6 +49,7 @@
 * 分段录制/滤镜处理/音乐合成/贴纸选择[DYVideoCamera](https://github.com/doubleYang1020/DYVideoCamera)
 * 基于FFMPEG4.0的播放器[DLGPlayer](https://github.com/DeviLeo/DLGPlayer)
 * 视频图片预览[TZImagePreviewController](https://github.com/banchichen/TZImagePreviewController)
+* [跑马灯UUMarqueeView](https://github.com/iceyouyou/UUMarqueeView)
 
 
 
