@@ -16,4 +16,6 @@ struct DDScreen {
     static let width: CGFloat = UIScreen.main.bounds.size.width
     /// mainScreen的height
     static let height: CGFloat = UIScreen.main.bounds.size.height
+    /// 状态栏高度
+    static let statusBarHeight: CGFloat = UIApplication.shared.statusBarFrame.height
 }

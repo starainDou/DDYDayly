@@ -9,6 +9,21 @@ import UIKit
 import Then
 import SnapKit
 
+class DDQRRectView: UIView {
+    
+    private lazy var scanLineView: UIImageView = UIImageView(frame: self.bounds).then {
+        $0.image = UIImage(named: "DDYQRCode.bundle/ScanGrid")?.withRenderingMode(.alwaysTemplate)
+        $0.tintColor = UIColor(hex: "#168A8D")
+    }
+    // MARK:- 初始化
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        clipsToBounds = true
+        addSubview(scanLineView)
+    }
+    required init?(coder aDecoder: NSCoder) { fatalError("init(coder:) has not been implemented") }
+}
+
 class DDQRCodeView: UIView {
     
     public var bottomConstraint: Constraint? = nil
@@ -26,11 +41,6 @@ class DDQRCodeView: UIView {
         $0.text = "Position QR code in this frame"
         $0.textColor = UIColor(hex: "#FFFFFF")
         $0.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
-    }
-    
-    private lazy var scanLineView: UIImageView = UIImageView().then {
-        $0.image = UIImage(named: "DDYQRCode.bundle/ScanGrid")?.withRenderingMode(.alwaysTemplate)
-        $0.tintColor = UIColor(hex: "#168A8D")
     }
     
     private lazy var inputBackView: UIView = UIView().then {
@@ -54,11 +64,20 @@ class DDQRCodeView: UIView {
         $0.layer.cornerRadius = 12
         $0.layer.masksToBounds = true
     }
-    // #168A8D 14
-    // #1792AC #FFFFFF 14  44 38 74  Confirm
+    // MARK: 镂空layer懒加载
+    private lazy var shapeLayer: CAShapeLayer = {
+        let shapeLayer = CAShapeLayer()
+        shapeLayer.fillColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.6).cgColor
+        let pathOut = UIBezierPath(rect: UIScreen.main.bounds)
+        let pathIn = UIBezierPath(rect: CGRect(x: scanX(), y: scanY(), width: scanW(), height: scanW()))
+        pathOut.append(pathIn.reversing())
+        shapeLayer.path = pathOut.cgPath
+        return shapeLayer
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: UIScreen.main.bounds)
+        layer.addSublayer(shapeLayer)
         addSubviews(backButton, lightButton, tipLabel, scanLineView, inputBackView)
         inputBackView.addSubviews(inputTextField, confirmButton)
         setViewConstraints()
@@ -78,12 +97,12 @@ class DDQRCodeView: UIView {
         }
         tipLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.top.equalToSuperview().inset(120)
+            make.top.equalToSuperview().inset(scanY() - 30)
         }
         scanLineView.snp.makeConstraints { make in
             make.width.height.equalTo(240)
             make.centerX.equalToSuperview()
-            make.top.equalTo(tipLabel.snp.bottom).offset(20)
+            make.centerY.equalToSuperview().offset(-60)
         }
         inputBackView.snp.makeConstraints { make in
             bottomConstraint = make.bottom.equalToSuperview().inset(80).constraint
@@ -100,5 +119,37 @@ class DDQRCodeView: UIView {
             make.trailing.equalToSuperview().inset(4)
             make.centerY.equalToSuperview()
         }
+    }
+    
+    func startAnimation() {
+        sacnAnimation(-scanLineView.bounds.size.height/2.0, self.bounds.size.height+scanLineView.bounds.size.height/2.0)
+    }
+    
+    // MARK: 动画
+    private func sacnAnimation(_ startValue: CGFloat, _ endValue: CGFloat) {
+        let baseAnimation = CABasicAnimation(keyPath: "position.y")
+        baseAnimation.duration = 1.8
+        baseAnimation.fromValue = startValue;
+        baseAnimation.toValue = endValue
+        baseAnimation.repeatCount = MAXFLOAT
+        baseAnimation.isRemovedOnCompletion = false
+        baseAnimation.fillMode = CAMediaTimingFillMode.forwards
+        baseAnimation.timingFunction = CAMediaTimingFunction.init(name: CAMediaTimingFunctionName.easeIn)
+        scanLineView.layer.add(baseAnimation, forKey: "scanAnimation")
+    }
+    
+    // MARK: 扫描框宽度
+    private func scanW() -> CGFloat {
+        return 240.0
+    }
+
+    // MARK: 扫描框起始位置x
+    private func scanX() -> CGFloat {
+        return (UIScreen.main.bounds.size.width/2.0 - scanW()/2.0)
+    }
+    
+    // MARK: 扫描框起始位置y
+    private func scanY() -> CGFloat {
+        return (DDScreen.height - scanW()) / 2.0 - 60.0
     }
 }
