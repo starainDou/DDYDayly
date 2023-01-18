@@ -97,6 +97,9 @@
 * 青玉伏案[iOS可视化动态绘制连通图](https://www.shuzhiduo.com/A/Rlk5aBNd1O/)
 * [iOS 15 的 UIButton 有什么新功能](https://www.openswiftui.com/?p=1872)
 * [iOS 第三方登录之苹果登录(sign in with Apple)](https://www.jianshu.com/p/e9e19e659720)
+* [使用 Jenkins 从 Unity 工程自动化导出 iOS 包](https://sunsetroads.github.io/2019/11/11/untiy-export-ipa/)
+* 解析修改pbxproj文件[PBXProjectManager](https://github.com/JinhuiLu/PBXProjectManager)
+* [Xcode 工程文件解析](https://juejin.cn/post/7004440657343283213)
 
 > #### 博主 
 
