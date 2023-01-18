@@ -28,3 +28,6 @@
 * [Xcode扩展  quicktype-xcode](https://github.com/quicktype/quicktype-xcode)
 * [Xcode扩展，绑定快捷键 ThenGenerator](https://github.com/87kangsw/ThenGenerator)
 * [Mac小软件制作icon](https://github.com/raphaelhanneken/iconizer)
+* [Mac 苹果拖拽文件导入实现](https://blog.csdn.net/qq_34275083/article/details/109104156)
+* [MacOS 开发（十六） : 文件拖拽](https://www.jianshu.com/p/2604c5e5b237)
+* [使用 libclang 实现 iOS 代码中的明文加密](https://danleechina.github.io/use-libclang-in-xcode/)
