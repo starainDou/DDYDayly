@@ -74,7 +74,7 @@ class DDQRCodeView: UIView {
         lightButton.snp.makeConstraints { make in
             make.trailing.equalToSuperview().inset(20)
             make.top.equalToSuperview().inset(80)
-            make.size.equalTo(CGSize(width: 20, height: 20))
+            make.size.equalTo(CGSize(width: 40, height: 40))
         }
         tipLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
