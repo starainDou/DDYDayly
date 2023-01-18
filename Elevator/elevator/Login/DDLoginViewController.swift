@@ -40,7 +40,7 @@ class DDLoginViewController: UIViewController {
         $0.font = UIFont.systemFont(ofSize: 15, weight: .regular)
         $0.textColor = UIColor(hex: "#333333")
         $0.placeholder = "User Name"
-        $0.keyboardType = .namePhonePad
+        $0.keyboardType = .asciiCapable
         $0.textContentType = .username
         $0.returnKeyType = .done
         $0.autocorrectionType = .default
@@ -66,7 +66,7 @@ class DDLoginViewController: UIViewController {
         $0.font = UIFont.systemFont(ofSize: 15, weight: .regular)
         $0.textColor = UIColor(hex: "#333333")
         $0.placeholder = "Password"
-        $0.keyboardType = .namePhonePad
+        $0.keyboardType = .asciiCapable
         $0.textContentType = .password
         $0.returnKeyType = .done
         $0.autocorrectionType = .default
