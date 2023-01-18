@@ -1,0 +1,46 @@
+source 'https://cdn.cocoapods.org/'
+inhibit_all_warnings!
+install! 'cocoapods', :warn_for_unused_master_specs_repo => false
+
+def commonConfig
+  project 'elevator/elevator.xcodeproj'
+  platform :ios, '13.0'
+  use_frameworks! :linkage => :static
+  use_modular_headers!
+end
+
+def popularPodSpecs
+  pod 'Alamofire', '5.6.4'
+  pod 'Moya', '15.0.0'
+  pod 'Kingfisher', '7.4.1'
+  pod 'SwiftyJSON', '5.0.1'
+  pod 'SwiftyUserDefaults', '5.3.0'
+  pod 'SnapKit', '5.6.0'
+  pod 'IQKeyboardManagerSwift', '6.5.11'
+end
+
+def minorityPodSpecs
+  pod 'Then', '~> 3.0.0'
+  pod 'ProgressHUD', '13.6.2'
+  pod 'EmptyDataSet-Swift', '5.0.0'
+end
+
+def localPodSpecs
+  pod 'DDYQRCode', :path => 'elevator/LocalPodSpec/', :inhibit_warnings => false
+  pod 'DDYSwiftyExtension', :path => 'elevator/LocalPodSpec/'
+end
+
+target 'elevator' do
+  commonConfig
+  popularPodSpecs
+  minorityPodSpecs
+  localPodSpecs
+end
+
+post_install do |installer|
+  installer.pods_project.targets.each do |target|
+    target.build_configurations.each do |config|
+      config.build_settings['ENABLE_BITCODE'] = 'NO'
+    end
+  end
+end

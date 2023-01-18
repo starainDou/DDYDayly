@@ -1,0 +1,6 @@
+framework module DDYSwiftyExtension {
+  umbrella header "DDYSwiftyExtension-umbrella.h"
+
+  export *
+  module * { export * }
+}

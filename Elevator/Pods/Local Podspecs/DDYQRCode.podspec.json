@@ -1,0 +1,19 @@
+{
+  "name": "DDYQRCode",
+  "version": "1.0.0",
+  "summary": "二维码/条形码生成",
+  "homepage": "https://github.com/RainOpen/DDYQRCode",
+  "license": "MIT",
+  "authors": {
+    "Rain": "634778311@qq.com"
+  },
+  "platforms": {
+    "ios": "13.0"
+  },
+  "source": {
+    "git": "",
+    "tag": "1.0.0"
+  },
+  "source_files": "DDYQRCode/*.{swift,h,m}",
+  "resources": "DDYQRCode/DDYQRCode.bundle"
+}
