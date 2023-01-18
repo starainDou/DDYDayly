@@ -49,7 +49,8 @@ class DDHomeVC: UIViewController {
     }
     
     private func clickAction(_ item: DDHomeModel) {
-        
+        let vc = DDQRCodeVC()
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     public func loadData(user: DDUserModel) {
