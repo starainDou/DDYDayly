@@ -31,6 +31,7 @@
 * XMPP[XMPPFramework](https://github.com/robbiehanson/XMPPFramework)
 * 格式化某些语句[FormatterKit](https://github.com/FormatterKit/FormatterKit)
 * lottie动画[lottie-ios](https://github.com/airbnb/lottie-ios)
+* 空数据占位[DZNEmptyDataSet](https://github.com/dzenbot/DZNEmptyDataSet/)
 
 
 > #### 小众  

@@ -72,6 +72,7 @@
 * [机器学习:初识TensorFlow在iOS上的编译](https://www.jianshu.com/p/764357ea773a)
 * [从NSArray看类簇](blog.sunnyxx.com/2014/12/18/class-cluster/)
 * [源码阅读CTMediator](https://www.jianshu.com/p/1121d768ca5d)
+* [ipad画中画](https://blog.csdn.net/qq_18683985/article/details/96288804)
 
 > #### 博主 
 
@@ -87,3 +88,4 @@
 * [Cyandev](https://www.jianshu.com/u/c49454e0ae54)
 * [tensorflow.google.cn](https://tensorflow.google.cn/lite/guide/build_ios)
 * [www.raywenderlich.com](https://www.raywenderlich.com/ios)
+* [AppClips](https://developer.apple.com/documentation/app_clips/creating_an_app_clip)
