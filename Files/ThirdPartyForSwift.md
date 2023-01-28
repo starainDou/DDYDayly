@@ -10,6 +10,18 @@
 * 空数据占位[EmptyDataSet swift版](https://github.com/Xiaoye220/EmptyDataSet-Swift)
 * 空数据占位[EmptyStateKit](https://github.com/alberdev/EmptyStateKit)
 * alert各种弹窗[Presentr](https://github.com/IcaliaLabs/Presentr)
+* 异步编程[PromiseKit](https://github.com/mxcl/PromiseKit)
+* 内购[SwiftyStoreKit](https://github.com/bizz84/SwiftyStoreKit)
+* 数据库[realm-swift](https://github.com/realm/realm-swift)
+* 网络请求中间抽象层[Moya](https://github.com/Moya/Moya)
+* 颜色库[UIColor-Hex-Swift](https://github.com/yeahdongcn/UIColor-Hex-Swift)
+* [AudioKit](https://github.com/AudioKit/AudioKit)
+* 音响合成器[AudioKitSynthOne](https://github.com/AudioKit/AudioKitSynthOne)
+* [SwiftyJSON](https://github.com/SwiftyJSON/SwiftyJSON)
+* swift 扩展[SwifterSwift](https://github.com/SwifterSwift/SwifterSwift)
+* swift 扩展[JKSwiftExtension](https://github.com/JoanKing/JKSwiftExtension)
+* 图片选择后编辑[ZLImageEditor](https://github.com/longitachi/ZLImageEditor)
+* GCD定时器[SwiftTimer](https://github.com/100mango/SwiftTimer)
 
 
 > #### 小众库

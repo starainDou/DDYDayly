@@ -32,6 +32,11 @@
 * 格式化某些语句[FormatterKit](https://github.com/FormatterKit/FormatterKit)
 * lottie动画[lottie-ios](https://github.com/airbnb/lottie-ios)
 * 空数据占位[DZNEmptyDataSet](https://github.com/dzenbot/DZNEmptyDataSet/)
+* 策划cell菜单[MGSwipeTableCell](https://github.com/MortimerGoro/MGSwipeTableCell)
+* 网格布局[IGListKit](https://github.com/Instagram/IGListKit)
+* 富文本[TYAttributedLabel](https://github.com/12207480/TYAttributedLabel)
+* 下拉菜单[DOPDropDownMenu](https://github.com/12207480/DOPDropDownMenu-Enhanced)
+* [TYAlertController](https://github.com/12207480/TYAlertController)
 
 
 > #### 小众  
@@ -45,6 +50,7 @@
 * 分段录制/滤镜处理/音乐合成/贴纸选择[DYVideoCamera](https://github.com/doubleYang1020/DYVideoCamera)
 * 基于FFMPEG4.0的播放器[DLGPlayer](https://github.com/DeviLeo/DLGPlayer)
 * 视频图片预览[TZImagePreviewController](https://github.com/banchichen/TZImagePreviewController)
+* [跑马灯UUMarqueeView](https://github.com/iceyouyou/UUMarqueeView)
 
 
 

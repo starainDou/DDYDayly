@@ -19,6 +19,11 @@
 * [SwiftUI 官方教程(译10)](https://www.jianshu.com/p/17fc7929fcbb)
 * [使用Swift构建一个视频时间轴控件](https://www.jianshu.com/p/5fbc1079d63f)
 * [Swift5 Method Swizzling 方法交换](https://blog.csdn.net/youshaoduo/article/details/101482771)
+* [Swift Protocol 背后的故事](zxfcumtcs.github.io/2022/06/30/SwiftProtocol3/)
+* [Swift async / await 的内存管理](https://zhuanlan.zhihu.com/p/545649718)
+* [关于 Swift 的 Opaque Type，如 some View](https://zhuanlan.zhihu.com/p/140483376)
+* [Alamofire - 4.8.2&三次握手&四次挥手](https://www.jianshu.com/p/56360fa2cd98)
+* [dynamicMemberLookup和dynamicCallable](https://juejin.cn/post/6844903869571399694)
 
 
 > #### 博主
@@ -28,6 +33,8 @@
 * [小专栏](https://xiaozhuanlan.com/explore)
 * [xiAo__Ju](https://www.jianshu.com/u/a155c8505859)
 * [Willie_](https://www.jianshu.com/u/785617fd05b4)
+* swift新特性[www.hackingwithswift.com](https://www.hackingwithswift.com/swift)
+* [孙一萌 知乎](https://www.zhihu.com/people/imoenya/posts?page=3)
 
 
 

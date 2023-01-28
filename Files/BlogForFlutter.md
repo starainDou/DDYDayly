@@ -48,6 +48,7 @@
 * [PostBird](http://www.ptbird.cn/)
 * [叶志陈](https://www.jianshu.com/u/9df45b87cfdf)
 * [贾鹏辉](http://www.devio.org/2018/09/09/awesome-flutter/)
+* [bizz84 github](https://github.com/bizz84?tab=repositories)
 
 
 > #### 基础  
