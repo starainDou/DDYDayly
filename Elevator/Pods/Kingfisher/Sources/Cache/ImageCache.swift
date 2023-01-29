@@ -133,7 +133,7 @@ public enum ImageCacheResult {
 }
 
 /// Represents a hybrid caching system which is composed by a `MemoryStorage.Backend` and a `DiskStorage.Backend`.
-/// `ImageCache` is a high level abstract for storing an image as well as its data to memory and disk, and
+/// `ImageCache` is a high level abstract for storing an image as well as its data to disk memory and disk, and
 /// retrieving them back.
 ///
 /// While a default image cache object will be used if you prefer the extension methods of Kingfisher, you can create
@@ -609,10 +609,12 @@ open class ImageCache {
                     image = options.cacheSerializer.image(with: data, options: options)
                 }
                 callbackQueue.execute { completionHandler(.success(image)) }
-            } catch let error as KingfisherError {
-                callbackQueue.execute { completionHandler(.failure(error)) }
             } catch {
-                assertionFailure("The internal thrown error should be a `KingfisherError`.")
+                if let error = error as? KingfisherError {
+                    callbackQueue.execute { completionHandler(.failure(error)) }
+                } else {
+                    assertionFailure("The internal thrown error should be a `KingfisherError`.")
+                }
             }
         }
     }
@@ -808,28 +810,16 @@ open class ImageCache {
             do {
                 let size = try self.diskStorage.totalSize()
                 DispatchQueue.main.async { handler(.success(size)) }
-            } catch let error as KingfisherError {
-                DispatchQueue.main.async { handler(.failure(error)) }
             } catch {
-                assertionFailure("The internal thrown error should be a `KingfisherError`.")
-            }
-        }
-    }
-    
-    #if swift(>=5.5)
-    #if canImport(_Concurrency)
-    @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
-    open var diskStorageSize: UInt {
-        get async throws {
-            try await withCheckedThrowingContinuation { continuation in
-                calculateDiskStorageSize { result in
-                    continuation.resume(with: result)
+                if let error = error as? KingfisherError {
+                    DispatchQueue.main.async { handler(.failure(error)) }
+                } else {
+                    assertionFailure("The internal thrown error should be a `KingfisherError`.")
                 }
+                
             }
         }
     }
-    #endif
-    #endif
     
     /// Gets the cache path for the key.
     /// It is useful for projects with web view or anyone that needs access to the local file path.
@@ -853,6 +843,12 @@ open class ImageCache {
     {
         let computedKey = key.computedKey(with: identifier)
         return diskStorage.cacheFileURL(forKey: computedKey).path
+    }
+}
+
+extension Dictionary {
+    func keysSortedByValue(_ isOrderedBefore: (Value, Value) -> Bool) -> [Key] {
+        return Array(self).sorted{ isOrderedBefore($0.1, $1.1) }.map{ $0.0 }
     }
 }
 

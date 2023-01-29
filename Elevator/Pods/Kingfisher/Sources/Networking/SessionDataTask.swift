@@ -95,12 +95,6 @@ public class SessionDataTask {
         }
         return nil
     }
-    
-    func removeAllCallbacks() -> Void {
-        lock.lock()
-        defer { lock.unlock() }
-        callbacksStore.removeAll()
-    }
 
     func resume() {
         guard !started else { return }

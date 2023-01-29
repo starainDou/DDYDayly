@@ -3,7 +3,7 @@ import Photos
 import AVFoundation
 import AudioToolbox
 
-@objc protocol DDYQRCodeScannerDelegate: NSObjectProtocol {
+@objc public protocol DDYQRCodeScannerDelegate: NSObjectProtocol {
     /// 扫描结果代理方法 errorCode意义 0:成功 -1:相机扫描未发现二维码 -2:图片扫描未发现二维码 -3:未知错误
     @objc optional func ddyQRCodeScanResult(_ resultStr: String?,_ errorCode: Int,_ errorMessage: String)
     /// 光强检测代理方法
@@ -14,13 +14,13 @@ typealias DDYQRScanResultClosure = (_ resultStr: String?,_ errorCode: Int,_ erro
 /// 光强检测闭包起别名
 typealias DDYQRBrightnessClosure = (_ brightnessValue: Double) -> Void
 
-final class DDYQRCodeScanner: NSObject {
+final public class DDYQRCodeScanner: NSObject {
     // 扫描结果代理回掉(优先代理)
-    weak var qrCodeDelegate: DDYQRCodeScannerDelegate?
+    public weak var qrCodeDelegate: DDYQRCodeScannerDelegate?
     // 扫描结果闭包回掉(优先代理)
-    public var scanResultClosure: DDYQRScanResultClosure?
+    var scanResultClosure: DDYQRScanResultClosure?
     // 光强检测数据闭包回调
-    public var brightnessClosure: DDYQRBrightnessClosure?
+    var brightnessClosure: DDYQRBrightnessClosure?
     // 会话(输入输出中间桥梁)
     fileprivate lazy var captureSession: AVCaptureSession = AVCaptureSession()
 
@@ -108,17 +108,16 @@ final class DDYQRCodeScanner: NSObject {
 // MARK:- 相机代理
 extension DDYQRCodeScanner: AVCaptureMetadataOutputObjectsDelegate, AVCaptureVideoDataOutputSampleBufferDelegate {
     // MARK: 扫描结果元数据输出代理实现
-    func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
+    public func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
         if metadataObjects.count > 0 {
             let metadataObject = metadataObjects[0] as! AVMetadataMachineReadableCodeObject
             if let resultStr = metadataObject.stringValue {
-                ddyStopRunningSession()
                 handleScanResult(resultStr, 0, "相机扫描二维码成功")
             }
         }
     }
     // MARK: 光强检测代理实现
-    func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
+    public func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
         // 这里因为只添加了视频输出，没添加音频输出 所以可以不判断 captureOutput 类型
         let metadataDict = CMCopyDictionaryOfAttachments(allocator: nil, target: sampleBuffer, attachmentMode: kCMAttachmentMode_ShouldPropagate)
         guard let metadata = metadataDict as? [AnyHashable : Any] else { return }
@@ -177,12 +176,12 @@ extension DDYQRCodeScanner: UIImagePickerControllerDelegate, UINavigationControl
         }
     }
 
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+    public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         ddyQRCode(info[.originalImage] as! UIImage)
         picker.dismiss(animated: true, completion: nil)
     }
 
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+    public func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
     }
 }

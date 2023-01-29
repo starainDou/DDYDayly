@@ -113,4 +113,11 @@ extension Source {
         }
         return resource
     }
+
+    var asProvider: ImageDataProvider? {
+        guard case .provider(let provider) = self else {
+            return nil
+        }
+        return provider
+    }
 }

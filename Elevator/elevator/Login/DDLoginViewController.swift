@@ -98,6 +98,7 @@ class DDLoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .white
         view.addSubviews(topImageView, loginLabel, nameTipLabel, nameBackView, nameTextField)
         view.addSubviews(pswdTipLabel, pswdBackView, pswdTextField, pswdShowButton, loginButton)
         setViewConstraints()

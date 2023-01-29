@@ -92,7 +92,7 @@ public enum MemoryStorage {
                     keys.remove(key)
                     continue
                 }
-                if object.isExpired {
+                if object.estimatedExpiration.isPast {
                     storage.removeObject(forKey: nsKey)
                     keys.remove(key)
                 }
@@ -128,9 +128,9 @@ public enum MemoryStorage {
             
             let object: StorageObject<T>
             if config.keepWhenEnteringBackground {
-                object = BackgroundKeepingStorageObject(value, expiration: expiration)
+                object = BackgroundKeepingStorageObject(value, key: key, expiration: expiration)
             } else {
-                object = StorageObject(value, expiration: expiration)
+                object = StorageObject(value, key: key, expiration: expiration)
             }
             storage.setObject(object, forKey: key as NSString, cost: value.cacheCost)
             keys.insert(key)
@@ -146,7 +146,7 @@ public enum MemoryStorage {
             guard let object = storage.object(forKey: key as NSString) else {
                 return nil
             }
-            if object.isExpired {
+            if object.expired {
                 return nil
             }
             object.extendExpiration(extendingExpiration)
@@ -255,11 +255,13 @@ extension MemoryStorage {
     class StorageObject<T> {
         var value: T?
         let expiration: StorageExpiration
+        let key: String
         
         private(set) var estimatedExpiration: Date
         
-        init(_ value: T, expiration: StorageExpiration) {
+        init(_ value: T, key: String, expiration: StorageExpiration) {
             self.value = value
+            self.key = key
             self.expiration = expiration
             
             self.estimatedExpiration = expiration.estimatedExpirationSinceNow
@@ -276,7 +278,7 @@ extension MemoryStorage {
             }
         }
         
-        var isExpired: Bool {
+        var expired: Bool {
             return estimatedExpiration.isPast
         }
     }
