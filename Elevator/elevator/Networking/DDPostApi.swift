@@ -159,7 +159,7 @@ extension DDPostApi: TargetType {
     }
     
     public var task: Task {
-        return .requestParameters(parameters: handleResult.params, encoding: JSONEncoding.default)
+        return .requestParameters(parameters: handleResult.params, encoding: JSONEncoding.prettyPrinted)
     }
     
     public var headers: [String : String]? {

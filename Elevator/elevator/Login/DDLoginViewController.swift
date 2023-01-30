@@ -161,6 +161,12 @@ class DDLoginViewController: UIViewController {
     }
     
     @objc private func loginAction(_ button: UIButton) {
+//        DDPost(target: .doAppLogin(username: "test9527@STEE", password: "P@ssw0rd12qw"), success: { result, msg in
+//            print("正确 \(result) \(msg ?? "NoMsg")")
+//        }, failure: { code, msg in
+//            print("错误 \(code) \(msg ?? "NoMsg")")
+//        })
+
         let vc = DDHomeVC()
         vc.loadData(user: DDUserModel())
         navigationController?.pushViewController(vc, animated: true)

@@ -81,19 +81,12 @@ final public class DDYQRCodeScanner: NSObject {
         if captureSession.isRunning == false {
             captureSession.startRunning()
         }
-        NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(scanTimeout), object: nil)
-        self.perform(#selector(scanTimeout), with: nil, afterDelay: 12)
     }
 
     public func ddyStopRunningSession() {
         if captureSession.isRunning == true {
             captureSession.stopRunning()
         }
-        NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(scanTimeout), object: nil)
-    }
-
-    @objc fileprivate func scanTimeout() {
-        handleScanResult(nil, -1, "相机扫描未发现二维码")
     }
 
     fileprivate func handleScanResult(_ resultStr: String?,_ errorCode: Int,_ errorMessage: String) {
@@ -203,14 +196,10 @@ extension DDYQRCodeScanner {
             }
             break
         case .authorized:
-            DispatchQueue.main.async {
-                closure(true)
-            }
+            closure(true)
             break
         default: // case .restricted // case .denied
-            DispatchQueue.main.async {
-                closure(false)
-            }
+            closure(false)
             break
         }
     }
@@ -237,6 +226,19 @@ extension DDYQRCodeScanner {
             }
             break
         }
+    }
+    
+    public static func showAuthAlert(_ appName: String,_ authName: String,_ currentVC: UIViewController) {
+        let message = String(format: "Go to 'Setting' -> '%@' and enable '%@' access.", appName, authName)
+        let alert = UIAlertController(title: "Tip", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Open", style: .default, handler: { (action) in
+            guard let url = URL(string: UIApplication.openSettingsURLString) else { return }
+            if UIApplication.shared.canOpenURL(url){
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            }
+        }))
+        currentVC.present(alert, animated: true, completion: nil)
     }
 }
 

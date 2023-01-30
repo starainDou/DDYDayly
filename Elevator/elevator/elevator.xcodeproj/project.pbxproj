@@ -33,6 +33,7 @@
 		048328922977D022002BE7B2 /* DDUploadApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048328912977D022002BE7B2 /* DDUploadApi.swift */; };
 		04832898297802E7002BE7B2 /* DDQRCodeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04832897297802E7002BE7B2 /* DDQRCodeVC.swift */; };
 		0483289B297805EB002BE7B2 /* DDQRCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0483289A297805EB002BE7B2 /* DDQRCodeView.swift */; };
+		04CE09C92988005400795592 /* DDDetailItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CE09C82988005400795592 /* DDDetailItemView.swift */; };
 		04E008552975134B00EE0DBF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E008542975134B00EE0DBF /* AppDelegate.swift */; };
 		04E008592975134B00EE0DBF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E008582975134B00EE0DBF /* ViewController.swift */; };
 		04E0085C2975134B00EE0DBF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04E0085A2975134B00EE0DBF /* Main.storyboard */; };
@@ -42,6 +43,11 @@
 		04E0086F2975879D00EE0DBF /* LaunchScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 04E0086E2975879D00EE0DBF /* LaunchScreen.png */; };
 		04E0087329758D5C00EE0DBF /* DDLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E0087229758D5C00EE0DBF /* DDLoginViewController.swift */; };
 		04E008792976534F00EE0DBF /* ElevatorInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 04E008782976534F00EE0DBF /* ElevatorInfo.plist */; };
+		04F559FC29876B8600EF237D /* DDAppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F559FB29876B8600EF237D /* DDAppInfo.swift */; };
+		04F559FE2987969300EF237D /* DDVerifyDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F559FD2987969300EF237D /* DDVerifyDetailVC.swift */; };
+		04F55A0029879DB300EF237D /* DDVerifyDetailTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F559FF29879DB300EF237D /* DDVerifyDetailTopView.swift */; };
+		04F55A0229879DC400EF237D /* DDVerifyDetailMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F55A0129879DC400EF237D /* DDVerifyDetailMapView.swift */; };
+		04F55A0429879DDB00EF237D /* DDVerifyDetailInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F55A0329879DDB00EF237D /* DDVerifyDetailInfoView.swift */; };
 		68915B4DD7C56D56F64E98C1 /* Pods_elevator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5E7AF4AE47088D664D45E40 /* Pods_elevator.framework */; };
 /* End PBXBuildFile section */
 
@@ -72,6 +78,7 @@
 		048328912977D022002BE7B2 /* DDUploadApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDUploadApi.swift; sourceTree = "<group>"; };
 		04832897297802E7002BE7B2 /* DDQRCodeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDQRCodeVC.swift; sourceTree = "<group>"; };
 		0483289A297805EB002BE7B2 /* DDQRCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDQRCodeView.swift; sourceTree = "<group>"; };
+		04CE09C82988005400795592 /* DDDetailItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDDetailItemView.swift; sourceTree = "<group>"; };
 		04E008512975134B00EE0DBF /* elevator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = elevator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04E008542975134B00EE0DBF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04E008582975134B00EE0DBF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -82,6 +89,11 @@
 		04E0086E2975879D00EE0DBF /* LaunchScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LaunchScreen.png; sourceTree = "<group>"; };
 		04E0087229758D5C00EE0DBF /* DDLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDLoginViewController.swift; sourceTree = "<group>"; };
 		04E008782976534F00EE0DBF /* ElevatorInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ElevatorInfo.plist; sourceTree = "<group>"; };
+		04F559FB29876B8600EF237D /* DDAppInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDAppInfo.swift; sourceTree = "<group>"; };
+		04F559FD2987969300EF237D /* DDVerifyDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDVerifyDetailVC.swift; sourceTree = "<group>"; };
+		04F559FF29879DB300EF237D /* DDVerifyDetailTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDVerifyDetailTopView.swift; sourceTree = "<group>"; };
+		04F55A0129879DC400EF237D /* DDVerifyDetailMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDVerifyDetailMapView.swift; sourceTree = "<group>"; };
+		04F55A0329879DDB00EF237D /* DDVerifyDetailInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDVerifyDetailInfoView.swift; sourceTree = "<group>"; };
 		30F4BB0F1689EF15C3E67473 /* Pods-elevator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-elevator.release.xcconfig"; path = "Target Support Files/Pods-elevator/Pods-elevator.release.xcconfig"; sourceTree = "<group>"; };
 		821511ED0E6FFD40AACBB745 /* Pods-elevator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-elevator.debug.xcconfig"; path = "Target Support Files/Pods-elevator/Pods-elevator.debug.xcconfig"; sourceTree = "<group>"; };
 		F5E7AF4AE47088D664D45E40 /* Pods_elevator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_elevator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -115,6 +127,10 @@
 				034FB76C29850D6F003985AD /* DDVerifyCell.swift */,
 				034FB77629864563003985AD /* DDInstallationCell.swift */,
 				034FB778298653C9003985AD /* DDLabelCell.swift */,
+				04F559FF29879DB300EF237D /* DDVerifyDetailTopView.swift */,
+				04F55A0129879DC400EF237D /* DDVerifyDetailMapView.swift */,
+				04F55A0329879DDB00EF237D /* DDVerifyDetailInfoView.swift */,
+				04CE09C82988005400795592 /* DDDetailItemView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -134,6 +150,7 @@
 				034FB7722986448A003985AD /* DDInstallationVC.swift */,
 				034FB77A29866AE9003985AD /* DDLabelVC.swift */,
 				034FB77C29869301003985AD /* DDImageEditVC.swift */,
+				04F559FD2987969300EF237D /* DDVerifyDetailVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -199,6 +216,7 @@
 				0483287E2976D961002BE7B2 /* DDUserModel.swift */,
 				048328822976DF5E002BE7B2 /* DDScreen.swift */,
 				034FB774298644B5003985AD /* DDElevatorModel.swift */,
+				04F559FB29876B8600EF237D /* DDAppInfo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -426,6 +444,11 @@
 				048328852977956E002BE7B2 /* DDNavigationBar.swift in Sources */,
 				04E0087329758D5C00EE0DBF /* DDLoginViewController.swift in Sources */,
 				034FB76D29850D6F003985AD /* DDVerifyCell.swift in Sources */,
+				04F55A0229879DC400EF237D /* DDVerifyDetailMapView.swift in Sources */,
+				04F559FE2987969300EF237D /* DDVerifyDetailVC.swift in Sources */,
+				04F559FC29876B8600EF237D /* DDAppInfo.swift in Sources */,
+				04F55A0429879DDB00EF237D /* DDVerifyDetailInfoView.swift in Sources */,
+				04F55A0029879DB300EF237D /* DDVerifyDetailTopView.swift in Sources */,
 				034FB77B29866AE9003985AD /* DDLabelVC.swift in Sources */,
 				0483288929779FE0002BE7B2 /* DDNetwork.swift in Sources */,
 				04E008592975134B00EE0DBF /* ViewController.swift in Sources */,
@@ -440,6 +463,7 @@
 				048328772976D578002BE7B2 /* DDHomeVC.swift in Sources */,
 				048328902977D00F002BE7B2 /* DDGetApi.swift in Sources */,
 				034FB77129863F38003985AD /* DDVerifyModel.swift in Sources */,
+				04CE09C92988005400795592 /* DDDetailItemView.swift in Sources */,
 				048328922977D022002BE7B2 /* DDUploadApi.swift in Sources */,
 				0483288729779D6E002BE7B2 /* DDPostApi.swift in Sources */,
 				04E008552975134B00EE0DBF /* AppDelegate.swift in Sources */,

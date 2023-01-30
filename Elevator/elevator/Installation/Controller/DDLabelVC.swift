@@ -98,7 +98,8 @@ class DDLabelVC: UIViewController {
     }
     
     @objc private func okAction() {
-        
+        let vc = DDImageEditVC()
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     private func clickAction(_ item: DDVerifyModel) {

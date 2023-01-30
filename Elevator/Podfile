@@ -17,6 +17,7 @@ def popularPodSpecs
   pod 'SwiftyUserDefaults', '5.3.0'
   pod 'SnapKit', '5.6.0'
   pod 'IQKeyboardManagerSwift', '6.5.11'
+  pod 'RxSwift', '6.5.0'
 end
 
 def minorityPodSpecs

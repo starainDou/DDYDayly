@@ -46,13 +46,16 @@ class DDQRCodeVC: UIViewController {
         qrcodeView.confirmButton.addTarget(self, action: #selector(confirmAction), for: .touchUpInside)
         DDYQRCodeScanner.cameraAuth { [weak self] (granted: Bool) in
             if granted == true {
-                DispatchQueue.main.async {
-                    self?.qrcodeScanner.ddyQRCode(self!.view, CGRect(x: 0, y: 0, width: 1, height: 1))
-                }
+                self?.qrcodeScanner.ddyQRCode(self!.view, CGRect(x: 0, y: 0, width: 1, height: 1))
+                self?.qrcodeScanner.ddyStartRunningSession()
             } else {
-                
+                self?.showAuthAlert()
             }
         }
+    }
+    
+    private func showAuthAlert() {
+        DDYQRCodeScanner.showAuthAlert(DDAppInfo.displayName, "Camera", self)
     }
     
     @objc fileprivate func backAction() {
