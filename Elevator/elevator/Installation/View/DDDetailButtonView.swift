@@ -1,15 +1,13 @@
 //
-//  DDDetailItemView.swift
+//  DDDetailButtonView.swift
 //  elevator
 //
-//  Created by ddy on 2023/1/30.
+//  Created by ddy on 2023/1/31.
 //
 
 import UIKit
-import Then
 
-class DDDetailItemView: UIView {
-
+class DDDetailButtonView: UIView {
     private(set) lazy var titleLabel: UILabel = UILabel().then {
         $0.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         $0.textColor = UIColor(hex: "#666666")
@@ -22,11 +20,13 @@ class DDDetailItemView: UIView {
         $0.layer.masksToBounds = true
     }
     
-    private(set) lazy var textField: UITextField = UITextField().then {
+    private(set) lazy var textLabel: UILabel = UILabel().then {
         $0.textColor = UIColor(hex: "#333333")
         $0.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         $0.textAlignment = .right
     }
+    
+    private(set) lazy var rightButton: UIButton = UIButton(type: .custom)
     
     private(set) lazy var shapeLayer: CAShapeLayer = CAShapeLayer().then {
         $0.fillColor = UIColor.clear.cgColor
@@ -39,7 +39,7 @@ class DDDetailItemView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        addSubviews(titleLabel, backView, textField)
+        addSubviews(titleLabel, backView, textLabel, rightButton)
         layer.addSublayer(shapeLayer)
         setViewConstraints()
     }
@@ -64,14 +64,19 @@ class DDDetailItemView: UIView {
             make.trailing.lessThanOrEqualTo(backView.snp.leading).offset(-7)
         }
         backView.snp.makeConstraints { make in
-            make.trailing.equalToSuperview().inset(15)
+            make.trailing.equalTo(rightButton.snp.leading).offset(-5)
             make.centerY.equalToSuperview()
             make.height.equalTo(26)
             make.leading.equalTo(self.snp.centerX)
         }
-        textField.snp.makeConstraints { make in
+        textLabel.snp.makeConstraints { make in
             make.leading.trailing.equalTo(backView).inset(5)
             make.top.bottom.equalTo(backView)
+        }
+        rightButton.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.trailing.equalToSuperview().inset(15)
+            make.width.height.equalTo(26)
         }
     }
 }

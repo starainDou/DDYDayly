@@ -167,8 +167,13 @@ class DDLoginViewController: UIViewController {
 //            print("错误 \(code) \(msg ?? "NoMsg")")
 //        })
 
-        let vc = DDHomeVC()
-        vc.loadData(user: DDUserModel())
+//        let vc = DDHomeVC()
+//        vc.loadData(user: DDUserModel())
+//        navigationController?.pushViewController(vc, animated: true)
+        
+        //let vc = DDInstallImageVC()
+        
+        let vc = DDCommisionVC()
         navigationController?.pushViewController(vc, animated: true)
     }
 }

@@ -11,6 +11,7 @@ class DDVerifyDetailVC: UIViewController {
 
     private lazy var navigationBar: DDNavigationBar = DDNavigationBar().then {
         $0.titleLabel.text = "Verify Lift Details"
+        $0.backButton.addTarget(self, action: #selector(backAction), for: .touchUpInside)
     }
     
     private lazy var scrollView: UIScrollView = UIScrollView()
@@ -19,7 +20,9 @@ class DDVerifyDetailVC: UIViewController {
     
     private lazy var mapView: DDVerifyDetailMapView = DDVerifyDetailMapView()
     
-    private lazy var infoView: DDVerifyDetailInfoView = DDVerifyDetailInfoView()
+    private lazy var infoView: DDVerifyDetailInfoView = DDVerifyDetailInfoView().then {
+        $0.nextButton.addTarget(self, action: #selector(nextAction), for: .touchUpInside)
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -32,7 +35,6 @@ class DDVerifyDetailVC: UIViewController {
         view.addSubviews(navigationBar, scrollView)
         scrollView.addSubviews(topView, mapView, infoView)
         setViewConstraints()
-        setupClosure()
         topView.loadData(DDElevatorModel())
         mapView.loadData(DDElevatorModel())
     }
@@ -61,16 +63,15 @@ class DDVerifyDetailVC: UIViewController {
             make.leading.trailing.equalToSuperview().inset(15)
             make.top.equalTo(mapView.snp.bottom).offset(10)
             make.bottom.equalToSuperview().inset(35)
-            make.height.equalTo(200)
         }
-    }
-    
-    // MARK:- 回调响应
-    private func setupClosure() {
-        navigationBar.backButton.addTarget(self, action: #selector(backAction), for: .touchUpInside)
     }
     
     @objc private func backAction() {
         navigationController?.popViewController(animated: true)
+    }
+    
+    @objc private func nextAction() {
+        let vc = DDInstallImageVC()
+        navigationController?.pushViewController(vc, animated: true)
     }
 }

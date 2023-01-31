@@ -12,6 +12,7 @@ class DDVerifyVC: UIViewController {
     
     private lazy var navigationBar: DDNavigationBar = DDNavigationBar().then {
         $0.titleLabel.text = "Verify"
+        $0.backButton.addTarget(self, action: #selector(backAction), for: .touchUpInside)
     }
     
     private lazy var tableView: UITableView = UITableView().then {
@@ -38,7 +39,6 @@ class DDVerifyVC: UIViewController {
         view.backgroundColor = UIColor(hex: "#F1F5FF")
         view.addSubviews(navigationBar, tableView)
         setViewConstraints()
-        setupClosure()
         loadData()
     }
     
@@ -51,11 +51,6 @@ class DDVerifyVC: UIViewController {
             make.leading.bottom.trailing.equalToSuperview()
             make.top.equalTo(navigationBar.snp.bottom)
         }
-    }
-    
-    // MARK:- 回调响应
-    private func setupClosure() {
-        navigationBar.backButton.addTarget(self, action: #selector(backAction), for: .touchUpInside)
     }
     
     @objc private func backAction() {

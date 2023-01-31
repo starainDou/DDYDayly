@@ -12,6 +12,7 @@ import UIKit
 class DDLabelVC: UIViewController {
     private lazy var navigationBar: DDNavigationBar = DDNavigationBar().then {
         $0.titleLabel.text = "Label"
+        $0.backButton.addTarget(self, action: #selector(backAction), for: .touchUpInside)
     }
     
     private lazy var flootLabel: UILabel = UILabel().then {
@@ -59,7 +60,6 @@ class DDLabelVC: UIViewController {
         view.backgroundColor = UIColor(hex: "#F1F5FF")
         view.addSubviews(navigationBar, flootLabel, tagLabel, tableView, okButton)
         setViewConstraints()
-        setupClosure()
         loadData()
     }
     
@@ -86,11 +86,6 @@ class DDLabelVC: UIViewController {
             make.bottom.equalToSuperview().inset(80)
             make.height.equalTo(40)
         }
-    }
-    
-    // MARK:- 回调响应
-    private func setupClosure() {
-        navigationBar.backButton.addTarget(self, action: #selector(backAction), for: .touchUpInside)
     }
     
     @objc private func backAction() {

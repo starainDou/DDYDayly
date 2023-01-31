@@ -1,15 +1,14 @@
 //
-//  DDDetailItemView.swift
+//  DDDetailInputView.swift
 //  elevator
 //
-//  Created by ddy on 2023/1/30.
+//  Created by ddy on 2023/1/31.
 //
 
 import UIKit
-import Then
+import IQKeyboardManagerSwift
 
-class DDDetailItemView: UIView {
-
+class DDDetailInputView: UIView {
     private(set) lazy var titleLabel: UILabel = UILabel().then {
         $0.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         $0.textColor = UIColor(hex: "#666666")
@@ -22,10 +21,10 @@ class DDDetailItemView: UIView {
         $0.layer.masksToBounds = true
     }
     
-    private(set) lazy var textField: UITextField = UITextField().then {
+    private(set) lazy var textView: UITextView = UITextView().then {
         $0.textColor = UIColor(hex: "#333333")
         $0.font = UIFont.systemFont(ofSize: 14, weight: .regular)
-        $0.textAlignment = .right
+        $0.backgroundColor = .clear
     }
     
     private(set) lazy var shapeLayer: CAShapeLayer = CAShapeLayer().then {
@@ -39,7 +38,7 @@ class DDDetailItemView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        addSubviews(titleLabel, backView, textField)
+        addSubviews(titleLabel, backView, textView)
         layer.addSublayer(shapeLayer)
         setViewConstraints()
     }
@@ -60,18 +59,18 @@ class DDDetailItemView: UIView {
     private func setViewConstraints() {
         titleLabel.snp.makeConstraints { make in
             make.leading.equalToSuperview().inset(15)
-            make.centerY.equalToSuperview()
-            make.trailing.lessThanOrEqualTo(backView.snp.leading).offset(-7)
+            make.top.equalToSuperview().inset(12)
+            make.trailing.equalToSuperview().inset(5)
         }
         backView.snp.makeConstraints { make in
-            make.trailing.equalToSuperview().inset(15)
-            make.centerY.equalToSuperview()
-            make.height.equalTo(26)
-            make.leading.equalTo(self.snp.centerX)
+            make.leading.trailing.equalToSuperview().inset(15)
+            make.top.equalTo(titleLabel.snp.bottom).offset(7)
+            make.bottom.equalToSuperview().inset(12)
         }
-        textField.snp.makeConstraints { make in
-            make.leading.trailing.equalTo(backView).inset(5)
-            make.top.bottom.equalTo(backView)
+        textView.snp.makeConstraints { make in
+            make.leading.trailing.equalTo(backView).inset(8)
+            make.top.bottom.equalTo(backView).inset(5)
         }
     }
+    
 }

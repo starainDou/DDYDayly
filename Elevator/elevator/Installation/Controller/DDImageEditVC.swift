@@ -13,6 +13,7 @@ class DDImageEditVC: UIViewController {
 
     private lazy var navigationBar: DDNavigationBar = DDNavigationBar().then {
         $0.titleLabel.text = "Image Editing"
+        $0.backButton.addTarget(self, action: #selector(backAction), for: .touchUpInside)
     }
     
     private lazy var backView: UIScrollView = UIScrollView().then {
@@ -71,7 +72,6 @@ class DDImageEditVC: UIViewController {
         view.addSubviews(navigationBar, backView)
         backView.addSubviews(tipLabel, imageView, cameraView, rectView, textView, confirmButton)
         setViewConstraints()
-        setupClosure()
     }
 
     private func setViewConstraints() {
@@ -117,11 +117,6 @@ class DDImageEditVC: UIViewController {
     @objc private func confirmAction() {
         let vc = DDVerifyDetailVC()
         navigationController?.pushViewController(vc, animated: true)
-    }
-
-    // MARK:- 回调响应
-    private func setupClosure() {
-        navigationBar.backButton.addTarget(self, action: #selector(backAction), for: .touchUpInside)
     }
     
     @objc private func backAction() {

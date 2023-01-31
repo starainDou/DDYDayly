@@ -16,13 +16,19 @@ class DDVerifyDetailMapView: UIView {
         $0.mapType = .standard
         $0.isUserInteractionEnabled = false
     }
+    
+    private lazy var coordinateView: DDDetailItemView = DDDetailItemView().then {
+        $0.shapeLayer.removeFromSuperlayer()
+        $0.titleLabel.text = "Geospatial coordinate"
+        $0.textField.text = "29.21577/142.56"
+    }
 
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = UIColor(hex: "#FFFFFF")
         layer.masksToBounds = true
         layer.cornerRadius = 8
-        addSubviews(mapView)
+        addSubviews(mapView, coordinateView)
         setViewConstraints()
     }
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
@@ -32,6 +38,11 @@ class DDVerifyDetailMapView: UIView {
             make.trailing.leading.equalToSuperview().inset(15)
             make.top.equalToSuperview().inset(14)
             make.bottom.equalToSuperview().inset(65)
+        }
+        coordinateView.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview()
+            make.bottom.equalToSuperview().inset(12)
+            make.height.equalTo(40)
         }
     }
     
