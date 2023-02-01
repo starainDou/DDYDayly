@@ -1,14 +1,14 @@
 //
-//  DDCommisionHeader.swift
+//  DDMainteHeaderView.swift
 //  elevator
 //
-//  Created by ddy on 2023/1/31.
+//  Created by ddy on 2023/2/1.
 //
 
 import UIKit
 
-class DDCommisionHeader: UIView {
-    
+class DDMainteHeaderView: UIView {
+
     private lazy var iconView: UIImageView = UIImageView(image: UIImage(named: "Icon72"))
     
     private lazy var titleLabel: UILabel = UILabel().then {
@@ -16,19 +16,14 @@ class DDCommisionHeader: UIView {
         $0.textColor = UIColor(hex: "#333333")
     }
     
+    private lazy var wifiView: UIImageView = UIImageView(image: UIImage(named: "Wifi"))
+    
     private lazy var stateLabel: UILabel = UILabel().then {
         $0.font = UIFont.systemFont(ofSize: 13, weight: .regular)
         $0.textColor = UIColor(hex: "#1ECAA1")
     }
     
-    private lazy var brandView: UIImageView = UIImageView(image: UIImage(named: "Crown"))
-    
-    private lazy var brandLabel: UILabel = UILabel().then {
-        $0.font = UIFont.systemFont(ofSize: 14, weight: .regular)
-        $0.textColor = UIColor(hex: "#666666")
-    }
-    
-    private lazy var addressView: UIImageView = UIImageView(image: UIImage(named: "Location"))
+    private lazy var addressView: UIImageView = UIImageView(image: UIImage(named: "Time"))
     
     private lazy var addressLabel: UILabel = UILabel().then {
         $0.font = UIFont.systemFont(ofSize: 14, weight: .regular)
@@ -44,8 +39,7 @@ class DDCommisionHeader: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .white
-        addSubviews(iconView, titleLabel, stateLabel, brandView, brandLabel, addressView, addressLabel, timeView, timeLabel)
+        addSubviews(iconView, titleLabel, wifiView, stateLabel, addressView, addressLabel, timeView, timeLabel)
         setViewConstraints()
     }
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
@@ -54,28 +48,22 @@ class DDCommisionHeader: UIView {
         iconView.snp.makeConstraints { make in
             make.leading.equalToSuperview().inset(15)
             make.top.equalToSuperview().offset(20)
-            make.width.height.equalTo(20)
         }
         titleLabel.snp.makeConstraints { make in
             make.centerY.equalTo(iconView)
             make.leading.equalTo(iconView.snp.trailing).offset(5)
         }
+        wifiView.snp.makeConstraints { make in
+            make.trailing.equalToSuperview().inset(35)
+            make.top.equalToSuperview().inset(20)
+        }
         stateLabel.snp.makeConstraints { make in
-            make.centerY.equalTo(iconView)
-            make.trailing.equalToSuperview().inset(15)
-        }
-        brandView.snp.makeConstraints { make in
-            make.leading.equalToSuperview().inset(15)
-            make.top.equalTo(iconView.snp.bottom).offset(15)
-            make.width.height.equalTo(16)
-        }
-        brandLabel.snp.makeConstraints { make in
-            make.centerY.equalTo(brandView)
-            make.leading.equalTo(brandView.snp.trailing).offset(5)
+            make.centerX.equalTo(wifiView)
+            make.top.equalTo(wifiView.snp.bottom).inset(3)
         }
         addressView.snp.makeConstraints { make in
             make.leading.equalToSuperview().inset(15)
-            make.top.equalTo(brandView.snp.bottom).offset(15)
+            make.top.equalTo(iconView.snp.bottom).offset(17)
             make.width.height.equalTo(16)
         }
         addressLabel.snp.makeConstraints { make in
@@ -84,26 +72,13 @@ class DDCommisionHeader: UIView {
         }
         timeView.snp.makeConstraints { make in
             make.leading.equalToSuperview().inset(15)
-            make.top.equalTo(addressView.snp.bottom).offset(15)
+            make.top.equalTo(addressView.snp.bottom).offset(17)
             make.width.height.equalTo(16)
+            make.bottom.equalToSuperview().inset(20)
         }
         timeLabel.snp.makeConstraints { make in
             make.centerY.equalTo(timeView)
             make.leading.equalTo(timeView.snp.trailing).offset(5)
         }
     }
-    
-    public func loadData(item: DDVerifyModel) {
-        titleLabel.text = item.title
-        stateLabel.text = item.state
-        timeLabel.text = item.time
-    }
-    
-    public func test() {
-        titleLabel.text = "2#2#A001"
-        brandLabel.text = "SASU"
-        addressLabel.text = "Singapore 1224 street"
-        timeLabel.text = "09/11/2020 12:12"
-    }
-
 }

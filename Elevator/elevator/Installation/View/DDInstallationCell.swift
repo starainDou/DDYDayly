@@ -28,9 +28,9 @@ class DDInstallationCell: UITableViewCell {
         $0.textColor = UIColor(hex: "#1ECAA1")
     }
     
-    private lazy var companyView: UIImageView = UIImageView(image: UIImage(named: "Time"))
+    private lazy var brandView: UIImageView = UIImageView(image: UIImage(named: "Time"))
     
-    private lazy var companyLabel: UILabel = UILabel().then {
+    private lazy var brandLabel: UILabel = UILabel().then {
         $0.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         $0.textColor = UIColor(hex: "#666666")
     }
@@ -54,7 +54,7 @@ class DDInstallationCell: UITableViewCell {
         backgroundColor = .clear
         selectionStyle = .none
         contentView.addSubviews(backView, iconView, titleLabel, stateLabel)
-        contentView.addSubviews(companyView, companyLabel, addressView, addressLabel, timeView, timeLabel)
+        contentView.addSubviews(brandView, brandLabel, addressView, addressLabel, timeView, timeLabel)
         setViewConstraints()
     }
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
@@ -77,23 +77,23 @@ class DDInstallationCell: UITableViewCell {
             make.centerY.equalTo(iconView)
             make.trailing.equalTo(backView).inset(15)
         }
-        companyView.snp.makeConstraints { make in
+        brandView.snp.makeConstraints { make in
             make.leading.equalTo(backView).inset(15)
             make.top.equalTo(iconView.snp.bottom).offset(15)
             make.width.height.equalTo(16)
         }
-        companyLabel.snp.makeConstraints { make in
-            make.centerY.equalTo(companyView)
-            make.leading.equalTo(companyView.snp.trailing).offset(5)
+        brandLabel.snp.makeConstraints { make in
+            make.centerY.equalTo(brandView)
+            make.leading.equalTo(brandView.snp.trailing).offset(5)
         }
         addressView.snp.makeConstraints { make in
             make.leading.equalTo(backView).inset(15)
-            make.top.equalTo(companyView.snp.bottom).offset(15)
+            make.top.equalTo(brandView.snp.bottom).offset(15)
             make.width.height.equalTo(16)
         }
         addressLabel.snp.makeConstraints { make in
-            make.centerY.equalTo(timeView)
-            make.leading.equalTo(timeView.snp.trailing).offset(5)
+            make.centerY.equalTo(addressView)
+            make.leading.equalTo(addressView.snp.trailing).offset(5)
         }
         timeView.snp.makeConstraints { make in
             make.leading.equalTo(backView).inset(15)

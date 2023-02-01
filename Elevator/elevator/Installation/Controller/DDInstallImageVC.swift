@@ -14,7 +14,7 @@ class DDInstallImageVC: UIViewController {
         $0.backButton.addTarget(self, action: #selector(backAction), for: .touchUpInside)
     }
     
-    private lazy var collectionView: UICollectionView  = {
+    private lazy var collectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .vertical
         flowLayout.minimumInteritemSpacing = 0

@@ -24,10 +24,10 @@ class DDCommisionVC: UIViewController {
         $0.backgroundColor = UIColor(hex: "#FFFFFF")
         $0.layer.masksToBounds = true
         $0.layer.cornerRadius = 8
+        $0.selectButton.addTarget(self, action: #selector(selectAction(_:)), for: .touchUpInside)
     }
     
     private lazy var submitButton: UIButton = UIButton(type: .custom).then {
-        $0.backgroundColor = UIColor(hex: "#999999")
         $0.layer.cornerRadius = 8
         $0.layer.masksToBounds = true
         $0.setTitle("Submit", for: .normal)
@@ -41,6 +41,8 @@ class DDCommisionVC: UIViewController {
         view.backgroundColor = UIColor(hex: "#F1F5FF")
         view.addSubviews(navigationBar, headerView, footerView, submitButton)
         setViewConstraints()
+        changeSubmitButtonState(enable: false)
+        headerView.test()
     }
     
     private func setViewConstraints() {
@@ -70,7 +72,17 @@ class DDCommisionVC: UIViewController {
         navigationController?.popViewController(animated: true)
     }
     
+    @objc private func selectAction(_ button: UIButton) {
+        button.isSelected = !button.isSelected
+        changeSubmitButtonState(enable: button.isSelected)
+    }
+    
     @objc private func submitAction() {
         
+    }
+    
+    private func changeSubmitButtonState(enable: Bool) {
+        submitButton.isEnabled = enable
+        submitButton.backgroundColor = UIColor(hex: enable ? "#168991" : "#999999")
     }
 }

@@ -9,17 +9,18 @@ import UIKit
 
 class DDCommisionFooter: UIView {
 
-    private lazy var imageView: UIImageView = UIImageView(image: UIImage(named: ""))
+    private lazy var imageView: UIImageView = UIImageView(image: UIImage(named: "Icon218"))
     
-    private lazy var selectButton: UIButton = UIButton(type: .custom).then {
-        $0.setImage(UIImage(named: ""), for: .normal)
-        $0.setImage(UIImage(named: ""), for: .selected)
+    private(set) lazy var selectButton: UIButton = UIButton(type: .custom).then {
+        $0.setImage(UIImage(named: "nav_check"), for: .normal)
+        $0.setImage(UIImage(named: "nav_check_ed"), for: .selected)
         $0.contentEdgeInsets = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
     }
     
     private lazy var tipLabel: UILabel = UILabel().then {
         $0.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         $0.textColor = UIColor(hex: "#999999")
+        $0.text = "Confirm T&C Report Validation"
     }
     
     override init(frame: CGRect) {
