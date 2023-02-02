@@ -55,6 +55,9 @@
 		04CE0A47298A738100795592 /* DDMainteDetail0VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CE0A46298A738100795592 /* DDMainteDetail0VC.swift */; };
 		04CE0A49298A967500795592 /* DDMainteInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CE0A48298A967500795592 /* DDMainteInfoView.swift */; };
 		04CE0A4B298AA2ED00795592 /* DDMainteStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CE0A4A298AA2ED00795592 /* DDMainteStateView.swift */; };
+		04CE0A4D298B70CF00795592 /* DDMainteDetail1Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CE0A4C298B70CF00795592 /* DDMainteDetail1Cell.swift */; };
+		04CE0A4F298B849900795592 /* DDMainteDetail2Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CE0A4E298B849900795592 /* DDMainteDetail2Cell.swift */; };
+		04CE0A51298B961B00795592 /* DDMainteDetail2Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CE0A50298B961B00795592 /* DDMainteDetail2Header.swift */; };
 		04E008552975134B00EE0DBF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E008542975134B00EE0DBF /* AppDelegate.swift */; };
 		04E008592975134B00EE0DBF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E008582975134B00EE0DBF /* ViewController.swift */; };
 		04E0085C2975134B00EE0DBF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04E0085A2975134B00EE0DBF /* Main.storyboard */; };
@@ -121,6 +124,9 @@
 		04CE0A46298A738100795592 /* DDMainteDetail0VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDMainteDetail0VC.swift; sourceTree = "<group>"; };
 		04CE0A48298A967500795592 /* DDMainteInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDMainteInfoView.swift; sourceTree = "<group>"; };
 		04CE0A4A298AA2ED00795592 /* DDMainteStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDMainteStateView.swift; sourceTree = "<group>"; };
+		04CE0A4C298B70CF00795592 /* DDMainteDetail1Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDMainteDetail1Cell.swift; sourceTree = "<group>"; };
+		04CE0A4E298B849900795592 /* DDMainteDetail2Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDMainteDetail2Cell.swift; sourceTree = "<group>"; };
+		04CE0A50298B961B00795592 /* DDMainteDetail2Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDMainteDetail2Header.swift; sourceTree = "<group>"; };
 		04E008512975134B00EE0DBF /* elevator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = elevator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04E008542975134B00EE0DBF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04E008582975134B00EE0DBF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -248,6 +254,9 @@
 				04CE0A4A298AA2ED00795592 /* DDMainteStateView.swift */,
 				04CE0A48298A967500795592 /* DDMainteInfoView.swift */,
 				04CE0A30298A28B000795592 /* DDMainteMapView.swift */,
+				04CE0A4C298B70CF00795592 /* DDMainteDetail1Cell.swift */,
+				04CE0A4E298B849900795592 /* DDMainteDetail2Cell.swift */,
+				04CE0A50298B961B00795592 /* DDMainteDetail2Header.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -511,6 +520,7 @@
 				04CE0A2B298A1B9F00795592 /* DDMainteDetailVC.swift in Sources */,
 				04CE0A23298930E500795592 /* DDCommisionVC.swift in Sources */,
 				048328852977956E002BE7B2 /* DDNavigationBar.swift in Sources */,
+				04CE0A4D298B70CF00795592 /* DDMainteDetail1Cell.swift in Sources */,
 				04E0087329758D5C00EE0DBF /* DDLoginViewController.swift in Sources */,
 				04CE0A31298A28B000795592 /* DDMainteMapView.swift in Sources */,
 				034FB76D29850D6F003985AD /* DDVerifyCell.swift in Sources */,
@@ -535,7 +545,9 @@
 				034FB77D29869301003985AD /* DDImageEditVC.swift in Sources */,
 				034FB775298644B5003985AD /* DDElevatorModel.swift in Sources */,
 				048328762976D578002BE7B2 /* DDHomeCell.swift in Sources */,
+				04CE0A51298B961B00795592 /* DDMainteDetail2Header.swift in Sources */,
 				04CE0A2F298A1BC900795592 /* DDMainteItemInfoView.swift in Sources */,
+				04CE0A4F298B849900795592 /* DDMainteDetail2Cell.swift in Sources */,
 				048328752976D578002BE7B2 /* DDHomeModel.swift in Sources */,
 				04CE0A3F298A734D00795592 /* DDMainteDetail1VC.swift in Sources */,
 				0483288E2977C90D002BE7B2 /* DDNetPrint.swift in Sources */,

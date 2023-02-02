@@ -14,16 +14,35 @@ class DDMainteDetail0VC: UIViewController {
         $0.showsVerticalScrollIndicator  = false
     }
 
-    private lazy var headerView: DDMainteHeaderView = DDMainteHeaderView()
+    private lazy var headerView: DDMainteHeaderView = DDMainteHeaderView().then {
+        $0.layer.masksToBounds = true
+        $0.layer.cornerRadius = 8
+        $0.backgroundColor = UIColor(hex: "#FFFFFF")
+    }
     
-    private lazy var infoView: DDMainteInfoView = DDMainteInfoView()
+    private lazy var stateView: DDMainteStateView = DDMainteStateView().then {
+        $0.layer.masksToBounds = true
+        $0.layer.cornerRadius = 8
+        $0.backgroundColor = UIColor(hex: "#FFFFFF")
+    }
     
-    private lazy var mapView: DDMainteMapView = DDMainteMapView()
+    private lazy var infoView: DDMainteInfoView = DDMainteInfoView().then {
+        $0.layer.masksToBounds = true
+        $0.layer.cornerRadius = 8
+        $0.backgroundColor = UIColor(hex: "#FFFFFF")
+    }
+    
+    private lazy var mapView: DDMainteMapView = DDMainteMapView().then {
+        $0.layer.masksToBounds = true
+        $0.layer.cornerRadius = 8
+        $0.backgroundColor = UIColor(hex: "#FFFFFF")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = UIColor(hex: "#F1F5FF")
         view.addSubview(scrollView)
-        scrollView.addSubviews(headerView, infoView, mapView)
+        scrollView.addSubviews(headerView, stateView, infoView, mapView)
         setViewConstraints()
     }
     
@@ -37,14 +56,19 @@ class DDMainteDetail0VC: UIViewController {
             make.top.equalToSuperview().inset(10)
             make.height.equalTo(123)
         }
-        infoView.snp.makeConstraints { make in
+        stateView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(15)
             make.top.equalTo(headerView.snp.bottom).offset(10)
+        }
+        infoView.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(15)
+            make.top.equalTo(stateView.snp.bottom).offset(10)
         }
         mapView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(15)
             make.top.equalTo(infoView.snp.bottom).offset(10)
             make.bottom.equalToSuperview().inset(20)
+            make.height.equalTo(mapView.snp.width).dividedBy(2)
         }
     }
 }

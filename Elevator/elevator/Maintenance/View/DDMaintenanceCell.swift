@@ -32,10 +32,7 @@ class DDMaintenanceCell: UITableViewCell {
         contentView.addSubviews(backView, iconView, titleLabel, arrowView)
         setViewConstraints()
     }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
     
     private func setViewConstraints() {
         backView.snp.makeConstraints { make in

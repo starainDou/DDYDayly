@@ -1,5 +1,9 @@
 PODS:
   - Alamofire (5.6.4)
+  - Charts (4.0.3):
+    - Charts/Core (= 4.0.3)
+  - Charts/Core (4.0.3):
+    - SwiftAlgorithms (~> 1.0)
   - DDYQRCode (1.0.0)
   - DDYSwiftyExtension (1.0.0)
   - EmptyDataSet-Swift (5.0.0)
@@ -13,12 +17,14 @@ PODS:
   - ProgressHUD (13.6.2)
   - RxSwift (6.5.0)
   - SnapKit (5.6.0)
+  - SwiftAlgorithms (1.0.0)
   - SwiftyJSON (5.0.1)
   - SwiftyUserDefaults (5.3.0)
   - Then (3.0.0)
 
 DEPENDENCIES:
   - Alamofire (= 5.6.4)
+  - Charts (= 4.0.3)
   - DDYQRCode (from `elevator/LocalPodSpec/`)
   - DDYSwiftyExtension (from `elevator/LocalPodSpec/`)
   - EmptyDataSet-Swift (= 5.0.0)
@@ -36,6 +42,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Alamofire
+    - Charts
     - EmptyDataSet-Swift
     - IQKeyboardManagerSwift
     - JXSegmentedView
@@ -44,6 +51,7 @@ SPEC REPOS:
     - ProgressHUD
     - RxSwift
     - SnapKit
+    - SwiftAlgorithms
     - SwiftyJSON
     - SwiftyUserDefaults
     - Then
@@ -56,6 +64,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Alamofire: 4e95d97098eacb88856099c4fc79b526a299e48c
+  Charts: d959d6723c8eedfdd0735dfc28cb0a71762ac4d9
   DDYQRCode: 97116e1465383f80978cd604368bf24d564607ae
   DDYSwiftyExtension: 98682e6e5c0516d43ac4b34fd470ae82f9ac3de9
   EmptyDataSet-Swift: eb382c0c87a2d9c678077385a595cec52da38171
@@ -66,10 +75,11 @@ SPEC CHECKSUMS:
   ProgressHUD: 355915c8f033e626788fa9b0d99d06e8691595ab
   RxSwift: 5710a9e6b17f3c3d6e40d6e559b9fa1e813b2ef8
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
+  SwiftAlgorithms: 38dda4731d19027fdeee1125f973111bf3386b53
   SwiftyJSON: 2f33a42c6fbc52764d96f13368585094bfd8aa5e
   SwiftyUserDefaults: 63f80248cf5bfb3458825d9a78f2eb7e1293a040
   Then: 844265ae87834bbe1147d91d5d41a404da2ec27d
 
-PODFILE CHECKSUM: 60114f463879457a3997f73c3a0341979f470054
+PODFILE CHECKSUM: 120dfc0b12cdae6a3e49dd6769b5fe75b0b6ce9a
 
 COCOAPODS: 1.11.3

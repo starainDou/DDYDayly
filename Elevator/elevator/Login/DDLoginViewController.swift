@@ -173,7 +173,9 @@ class DDLoginViewController: UIViewController {
         
         //let vc = DDInstallImageVC()
         
-        let vc = DDCommisionVC()
+        //let vc = DDCommisionVC()
+        // let vc = DDMainteDetail0VC()
+        let vc = DDMainteDetail2VC()
         navigationController?.pushViewController(vc, animated: true)
     }
 }
