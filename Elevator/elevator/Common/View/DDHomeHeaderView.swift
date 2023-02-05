@@ -13,12 +13,12 @@ class DDHomeHeaderView: UIView {
     
     private lazy var avatarView: UIImageView = UIImageView(image: UIImage(named: "AvatarDefault"))
     
-    private lazy var nameLabel: UILabel = UILabel().then {
+    private(set) lazy var nameLabel: UILabel = UILabel().then {
         $0.textColor = UIColor(hex: "#FFFFFF")
         $0.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
     }
     
-    private lazy var roleLabel: UILabel = UILabel().then {
+    private(set) lazy var roleLabel: UILabel = UILabel().then {
         $0.textColor = UIColor(hex: "#FFFFFF")
         $0.font = UIFont.systemFont(ofSize: 14, weight: .regular)
     }
@@ -37,7 +37,7 @@ class DDHomeHeaderView: UIView {
         }
         avatarView.snp.makeConstraints { make in
             make.leading.equalToSuperview().inset(17)
-            make.top.equalTo(safeAreaLayoutGuide.snp.top).inset(50)
+            make.top.equalTo(safeAreaLayoutGuide.snp.top).inset(30)
             make.size.equalTo(CGSize(width: 50, height: 50))
         }
         nameLabel.snp.makeConstraints { make in

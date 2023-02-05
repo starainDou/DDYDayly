@@ -7,15 +7,20 @@
 
 import UIKit
 import IQKeyboardManagerSwift
+import ProgressHUD
+import RxSwift
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    
+    let disposeBag = DisposeBag()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         configSDK()
         configView()
+        binding()
         return true
     }
     
@@ -31,6 +36,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
         IQKeyboardManager.shared.enableAutoToolbar = false
         IQKeyboardManager.shared.keyboardDistanceFromTextField = 5
+    }
+    
+    private func binding() {
+        
+        DDShared.shared.event.login.subscribe(onNext: { [weak self] (_) in
+            self?.window?.rootViewController = UINavigationController(rootViewController: DDHomeVC())
+        }).disposed(by: disposeBag)
+        
+        DDShared.shared.event.logout.subscribe(onNext: { [weak self] (_) in
+            self?.window?.rootViewController = UINavigationController(rootViewController: DDLoginViewController())
+        }).disposed(by: disposeBag)
     }
 }
 

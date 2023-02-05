@@ -10,6 +10,8 @@ import Then
 import SnapKit
 import DDYSwiftyExtension
 import IQKeyboardManagerSwift
+import ProgressHUD
+import SwiftyJSON
 
 class DDLoginViewController: UIViewController {
 
@@ -161,22 +163,22 @@ class DDLoginViewController: UIViewController {
     }
     
     @objc private func loginAction(_ button: UIButton) {
-//        DDPost(target: .doAppLogin(username: "test9527@STEE", password: "P@ssw0rd12qw"), success: { result, msg in
-//            print("正确 \(result) \(msg ?? "NoMsg")")
-//        }, failure: { code, msg in
-//            print("错误 \(code) \(msg ?? "NoMsg")")
-//        })
-
-//        let vc = DDHomeVC()
-//        vc.loadData(user: DDUserModel())
-//        navigationController?.pushViewController(vc, animated: true)
-        
-        //let vc = DDInstallImageVC()
-        
-        //let vc = DDCommisionVC()
-        // let vc = DDMainteDetail0VC()
-        let vc = DDMainteDetail2VC()
-        navigationController?.pushViewController(vc, animated: true)
+        ProgressHUD.show()
+        DDPost(target: .doAppLogin(username: "test1234567@STEE", password: "P@ssw0rd12qw"), success: { [weak self] result, msg in
+            print("正确 \(result) \(msg ?? "NoMsg")")
+            ProgressHUD.dismiss()
+            self?.handleData(JSON(result))
+        }, failure: { code, msg in
+            print("错误 \(code) \(msg ?? "NoMsg")")
+            ProgressHUD.showFailed(msg ?? "Fail", interaction: false, delay: 3)
+        })
+    }
+    
+    private func handleData(_ json: JSON) {
+        guard json["code"].intValue == 200 else { return }
+        DDShared.shared.user = DDUserModel(json["data"]["user"])
+        DDShared.shared.token = json["data"]["token"].stringValue
+        DDShared.shared.event.login.onNext(1)
     }
 }
 

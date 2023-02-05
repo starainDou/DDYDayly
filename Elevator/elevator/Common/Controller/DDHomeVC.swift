@@ -53,10 +53,15 @@ class DDHomeVC: UIViewController {
         navigationController?.pushViewController(vc, animated: true)
     }
     
-    public func loadData(user: DDUserModel) {
-        dataArray = [DDHomeModel(icon: "Repair", title: "Installtion"),DDHomeModel(icon: "Repair", title: "Installtion")]
-        //dataArray = user.homeItems
+    public func loadData() {
+        headerView.nameLabel.text = "Welcome," + (DDShared.shared.user?.username ?? "-")
+        headerView.roleLabel.text = DDShared.shared.user?.rolename ?? "-"
+        dataArray = DDShared.shared.homeItems
         tableView.reloadData()
+    }
+    
+    private func logout() {
+        
     }
 }
 
