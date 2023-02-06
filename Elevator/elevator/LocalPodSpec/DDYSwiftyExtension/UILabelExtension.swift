@@ -6,7 +6,12 @@ import UIKit
 private var InnerKey: Void?
 
 public extension UILabel {
-
+    
+    static func ddySwizzleMethod() {
+        ddySwizzle(#selector(UILabel.textRect(forBounds:limitedToNumberOfLines:)), #selector(ddyTextRect(_:_:)), swizzleClass: self)
+        ddySwizzle(#selector(UILabel.drawText(in:)), #selector(ddyDrawText(in:)), swizzleClass: self)
+    }
+    
     var contentEdgeInsets: UIEdgeInsets {
         get {
             return objc_getAssociatedObject(self, &InnerKey) as? UIEdgeInsets ?? UIEdgeInsets.zero
@@ -32,11 +37,6 @@ private extension UILabel {
         } else {
             method_exchangeImplementations(m1, m2)
         }
-    }
-    
-    static func ddySwizzleMethod() {
-        ddySwizzle(#selector(UILabel.textRect(forBounds:limitedToNumberOfLines:)), #selector(ddyTextRect(_:_:)), swizzleClass: self)
-        ddySwizzle(#selector(UILabel.drawText(in:)), #selector(ddyDrawText(in:)), swizzleClass: self)
     }
 
     @objc func ddyTextRect(_ bounds: CGRect,_ numberOfLines: Int) -> CGRect {

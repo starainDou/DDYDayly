@@ -13,10 +13,11 @@ struct DDHomeModel {
     
     let title: String
     
-    var vc: UIViewController?
+    var vc: UIViewController
     
-    init(icon: String, title: String) {
+    init(icon: String, title: String, vc: UIViewController) {
         self.icon = icon
         self.title = title
+        self.vc = vc
     }
 }

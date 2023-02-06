@@ -9,6 +9,5 @@ import UIKit
 import RxSwift
 
 class DDEvent: NSObject {
-    public let login = Observable<Int>()
-    public let logout = Observable<Int>()
+    public let logInOrOut: PublishSubject<Bool> = PublishSubject()
 }

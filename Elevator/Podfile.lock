@@ -15,6 +15,11 @@ PODS:
   - Moya/Core (15.0.0):
     - Alamofire (~> 5.0)
   - ProgressHUD (13.6.2)
+  - RxCocoa (6.5.0):
+    - RxRelay (= 6.5.0)
+    - RxSwift (= 6.5.0)
+  - RxRelay (6.5.0):
+    - RxSwift (= 6.5.0)
   - RxSwift (6.5.0)
   - SnapKit (5.6.0)
   - SwiftAlgorithms (1.0.0)
@@ -33,6 +38,7 @@ DEPENDENCIES:
   - Kingfisher (= 7.2.0)
   - Moya (= 15.0.0)
   - ProgressHUD (= 13.6.2)
+  - RxCocoa (= 6.5.0)
   - RxSwift (= 6.5.0)
   - SnapKit (= 5.6.0)
   - SwiftyJSON (= 5.0.1)
@@ -49,6 +55,8 @@ SPEC REPOS:
     - Kingfisher
     - Moya
     - ProgressHUD
+    - RxCocoa
+    - RxRelay
     - RxSwift
     - SnapKit
     - SwiftAlgorithms
@@ -73,6 +81,8 @@ SPEC CHECKSUMS:
   Kingfisher: 3ac0b75b155cabc0e544877d1a4deea29feece92
   Moya: 138f0573e53411fb3dc17016add0b748dfbd78ee
   ProgressHUD: 355915c8f033e626788fa9b0d99d06e8691595ab
+  RxCocoa: 94f817b71c07517321eb4f9ad299112ca8af743b
+  RxRelay: 1de1523e604c72b6c68feadedd1af3b1b4d0ecbd
   RxSwift: 5710a9e6b17f3c3d6e40d6e559b9fa1e813b2ef8
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
   SwiftAlgorithms: 38dda4731d19027fdeee1125f973111bf3386b53
@@ -80,6 +90,6 @@ SPEC CHECKSUMS:
   SwiftyUserDefaults: 63f80248cf5bfb3458825d9a78f2eb7e1293a040
   Then: 844265ae87834bbe1147d91d5d41a404da2ec27d
 
-PODFILE CHECKSUM: 120dfc0b12cdae6a3e49dd6769b5fe75b0b6ce9a
+PODFILE CHECKSUM: c7c7da975951d971f1a8f03c88f2cebdeb8998af
 
 COCOAPODS: 1.11.3

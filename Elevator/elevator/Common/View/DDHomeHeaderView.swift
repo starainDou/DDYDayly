@@ -11,7 +11,7 @@ class DDHomeHeaderView: UIView {
 
     private lazy var backImageView: UIImageView = UIImageView(image: UIImage(named: "BeiJing"))
     
-    private lazy var avatarView: UIImageView = UIImageView(image: UIImage(named: "AvatarDefault"))
+    private(set) lazy var avatarView: UIImageView = UIImageView(image: UIImage(named: "AvatarDefault"))
     
     private(set) lazy var nameLabel: UILabel = UILabel().then {
         $0.textColor = UIColor(hex: "#FFFFFF")

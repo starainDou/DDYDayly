@@ -7,6 +7,7 @@
 
 import Foundation
 import Moya
+import ProgressHUD
 
 
 internal let DDBaseUrl: String = "https://dev.agiliot.io/cms/api"//https://smartlift.agiliot.io:8443"//"https://dev.agiliot.io:8443"
@@ -27,7 +28,7 @@ fileprivate let DDNetProvider = MoyaProvider<MultiTarget>(requestClosure: { (end
     guard var urlRequest = try? endpoint.urlRequest() else { return }
     urlRequest.cachePolicy = .reloadIgnoringLocalAndRemoteCacheData
     urlRequest.timeoutInterval = 30
-    urlRequest.allHTTPHeaderFields = ["Content-Type": "application/json"]
+    urlRequest.allHTTPHeaderFields = ["Content-Type": "text/html; charset=utf-8"]
     done(.success(urlRequest))
 })
 
@@ -56,6 +57,10 @@ fileprivate func handleResult(target:TargetType, moyaResult: Result<Moya.Respons
             // 网络有响应，但不正确[404:资源未找到，401:请求未授权等]
             failure("\(response.statusCode)", error.localizedDescription)
             DDNetPrint("\(target.info)\nerror:\(response.statusCode) \(error.localizedDescription)")
+            if response.statusCode == 200 {
+                DDShared.shared.event.logInOrOut.onNext(false)
+                ProgressHUD.showFailed("Session has timed out", interaction: false, delay: 3)
+            }
         }
     case .failure(let moyaError):
         // 无网络、超时、意外等无响应

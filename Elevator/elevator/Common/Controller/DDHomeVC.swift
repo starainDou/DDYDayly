@@ -7,10 +7,13 @@
 
 import UIKit
 import SwiftyJSON
+import DDYSwiftyExtension
 
 class DDHomeVC: UIViewController {
     
-    private lazy var headerView: DDHomeHeaderView = DDHomeHeaderView()
+    private lazy var headerView: DDHomeHeaderView = DDHomeHeaderView().then {
+        $0.avatarView.ddy_tap(self, action: #selector(logout))
+    }
     
     private lazy var tableView: UITableView = UITableView().then {
         $0.delegate = self
@@ -35,6 +38,7 @@ class DDHomeVC: UIViewController {
         super.viewDidLoad()
         view.addSubviews(headerView, tableView)
         setViewConstraints()
+        loadData()
     }
     
     private func setViewConstraints() {
@@ -48,11 +52,6 @@ class DDHomeVC: UIViewController {
         }
     }
     
-    private func clickAction(_ item: DDHomeModel) {
-        let vc = DDQRCodeVC()
-        navigationController?.pushViewController(vc, animated: true)
-    }
-    
     public func loadData() {
         headerView.nameLabel.text = "Welcome," + (DDShared.shared.user?.username ?? "-")
         headerView.roleLabel.text = DDShared.shared.user?.rolename ?? "-"
@@ -60,8 +59,15 @@ class DDHomeVC: UIViewController {
         tableView.reloadData()
     }
     
-    private func logout() {
-        
+    @objc private func logout() {
+        let alert = UIAlertController(title: "Tip", message: "Are you sure to quit?", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action) in
+            DDShared.shared.user = nil
+            DDShared.shared.token = ""
+            DDShared.shared.event.logInOrOut.onNext(false)
+        }))
+        self.present(alert, animated: true, completion: nil)
     }
 }
 
@@ -79,6 +85,6 @@ extension DDHomeVC: UITableViewDelegate, UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        clickAction(dataArray[indexPath.row])
+        navigationController?.pushViewController(dataArray[indexPath.row].vc, animated: true)
     }
 }

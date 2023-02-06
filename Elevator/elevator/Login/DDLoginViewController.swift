@@ -167,6 +167,7 @@ class DDLoginViewController: UIViewController {
         DDPost(target: .doAppLogin(username: "test1234567@STEE", password: "P@ssw0rd12qw"), success: { [weak self] result, msg in
             print("正确 \(result) \(msg ?? "NoMsg")")
             ProgressHUD.dismiss()
+            DDShared.shared.save(dict: result, for: "DDLoginData")
             self?.handleData(JSON(result))
         }, failure: { code, msg in
             print("错误 \(code) \(msg ?? "NoMsg")")
@@ -178,7 +179,14 @@ class DDLoginViewController: UIViewController {
         guard json["code"].intValue == 200 else { return }
         DDShared.shared.user = DDUserModel(json["data"]["user"])
         DDShared.shared.token = json["data"]["token"].stringValue
-        DDShared.shared.event.login.onNext(1)
+        DDShared.shared.cookie = "iPlanetDirectoryPro=" + json["data"]["sessionToken"].stringValue
+        DDShared.shared.event.logInOrOut.onNext(true)
+    }
+    
+    private func dict2String(_ dict: [String: Any]) -> String? {
+        let data = try? JSONSerialization.data(withJSONObject: dict, options: [])
+        let str = String(data: data!, encoding: String.Encoding.utf8)
+        return str
     }
 }
 

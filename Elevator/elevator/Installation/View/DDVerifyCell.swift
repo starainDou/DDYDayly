@@ -71,10 +71,10 @@ class DDVerifyCell: UITableViewCell {
         }
     }
     
-    public func loadData(item: DDVerifyModel) {
-        titleLabel.text = item.title
-        stateLabel.text = item.state
-        timeLabel.text = item.time
+    public func loadData(item: DDSensorModel) {
+        titleLabel.text = item.deviceId
+        stateLabel.text = item.readyState
+        timeLabel.text = item.lastUpdateTime
     }
 }
 

@@ -1,5 +1,5 @@
 //
-//  DDElevatorModel.swift
+//  DDLiftModel.swift
 //  elevator
 //
 //  Created by ddy on 2023/1/29.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-class DDElevatorModel: NSObject {
+class DDLiftModel: NSObject {
     /// 编号  581923121
     var number: String = ""
     /// 状态

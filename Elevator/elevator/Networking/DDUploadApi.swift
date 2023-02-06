@@ -52,6 +52,7 @@ extension DDUploadApi: TargetType {
     }
     
     public var headers: [String : String]? {
-        return ["Authorization": UserDefaults.standard.string(forKey: "DDToken") ?? ""]
+        guard let token = DDShared.shared.token, let cookie = DDShared.shared.cookie else { return nil }
+        return ["Authorization": token, "Cookie": cookie]
     }
 }

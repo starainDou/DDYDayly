@@ -85,7 +85,7 @@ class DDVerifyDetailTopView: UIView {
         }
     }
     
-    public func loadData(_ model: DDElevatorModel) {
+    public func loadData(_ model: DDLiftModel) {
         titleLabel.text = "66666"
         addressLabel.text = "777777"
         timeLabel.text = "88888"

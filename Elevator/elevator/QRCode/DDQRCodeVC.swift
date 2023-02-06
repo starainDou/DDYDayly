@@ -8,6 +8,7 @@
 import UIKit
 import IQKeyboardManagerSwift
 import DDYQRCode
+import ProgressHUD
 
 class DDQRCodeVC: UIViewController {
     
@@ -44,6 +45,7 @@ class DDQRCodeVC: UIViewController {
         qrcodeView.backButton.addTarget(self, action: #selector(backAction), for: .touchUpInside)
         qrcodeView.lightButton.addTarget(self, action: #selector(lightAction(_:)), for: .touchUpInside)
         qrcodeView.confirmButton.addTarget(self, action: #selector(confirmAction), for: .touchUpInside)
+        qrcodeView.inputTextField.addTarget(self, action: #selector(inputTextFieldDidChange(_:)), for: .editingChanged)
         DDYQRCodeScanner.cameraAuth { [weak self] (granted: Bool) in
             if granted == true {
                 self?.qrcodeScanner.ddyQRCode(self!.view, CGRect(x: 0, y: 0, width: 1, height: 1))
@@ -52,6 +54,15 @@ class DDQRCodeVC: UIViewController {
                 self?.showAuthAlert()
             }
         }
+    }
+    
+    @objc private func inputTextFieldDidChange(_ textField: UITextField) {
+        guard let str = textField.text, str.isEmpty == false else {
+            return
+        }
+        let charSet = NSCharacterSet(charactersIn: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789")
+        let newStr = str.trimmingCharacters(in: charSet.inverted)
+        textField.text = newStr.count > 20 ? String(newStr.prefix(20)) : newStr
     }
     
     private func showAuthAlert() {
@@ -70,8 +81,14 @@ class DDQRCodeVC: UIViewController {
     }
     
     @objc fileprivate func confirmAction() {
-        let vc = DDVerifyVC()
-        navigationController?.pushViewController(vc, animated: true)
+        view.endEditing(true)
+        if let text = qrcodeView.inputTextField.text, !text.isEmpty {
+            let vc = DDVerifyVC()
+            vc.sensorModel = DDSensorModel(text)
+            navigationController?.pushViewController(vc, animated: true)
+        } else {
+            ProgressHUD.showFailed("Please enter the number", interaction: false, delay: 3)
+        }
     }
     
     private func keyboardObserver() {

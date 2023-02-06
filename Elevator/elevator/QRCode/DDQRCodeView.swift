@@ -73,6 +73,7 @@ class DDQRCodeView: UIView {
         $0.attributedPlaceholder = NSAttributedString.init(string: "Please enter the number", attributes: attributes)
         $0.textColor = UIColor(hex: "#168A8D")
         $0.font = UIFont.systemFont(ofSize: 14, weight: .regular)
+        $0.keyboardType = .asciiCapable
     }
     
     private(set) lazy var confirmButton: UIButton = UIButton(type: .custom).then {

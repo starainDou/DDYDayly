@@ -67,7 +67,7 @@ class DDInstallationCell: UITableViewCell {
         iconView.snp.makeConstraints { make in
             make.leading.equalTo(backView).inset(15)
             make.top.equalTo(backView).offset(20)
-            make.width.height.equalTo(20)
+            make.width.height.height.equalTo(20)
         }
         titleLabel.snp.makeConstraints { make in
             make.centerY.equalTo(iconView)
@@ -108,9 +108,9 @@ class DDInstallationCell: UITableViewCell {
     }
     
     public func loadData(item: DDVerifyModel) {
-        titleLabel.text = item.title
-        stateLabel.text = item.state
-        timeLabel.text = item.time
+        titleLabel.text = "TEST"
+        stateLabel.text = "TEST"
+        timeLabel.text = "TEST"
     }
 }
 

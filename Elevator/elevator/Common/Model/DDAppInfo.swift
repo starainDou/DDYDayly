@@ -28,5 +28,9 @@ struct DDAppInfo {
     static let model = UIDevice.current.model
     /// 设备区域化型号
     static let localizedModel = UIDevice.current.localizedModel
+    
+    static func timeStamp() -> String {
+        return String(Int(Date().timeIntervalSince1970))
+    }
 
 }

@@ -35,8 +35,8 @@ class DDVerifyDetailVC: UIViewController {
         view.addSubviews(navigationBar, scrollView)
         scrollView.addSubviews(topView, mapView, infoView)
         setViewConstraints()
-        topView.loadData(DDElevatorModel())
-        mapView.loadData(DDElevatorModel())
+        topView.loadData(DDLiftModel())
+        mapView.loadData(DDLiftModel())
     }
     
     private func setViewConstraints() {

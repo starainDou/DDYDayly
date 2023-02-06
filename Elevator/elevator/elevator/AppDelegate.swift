@@ -9,6 +9,8 @@ import UIKit
 import IQKeyboardManagerSwift
 import ProgressHUD
 import RxSwift
+import DDYSwiftyExtension
+import SwiftyJSON
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -27,8 +29,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func configView() {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.backgroundColor = .white
-        window?.rootViewController = UINavigationController(rootViewController: DDLoginViewController())
         window?.makeKeyAndVisible()
+        checkLogin()
     }
     
     private func configSDK() {
@@ -36,17 +38,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
         IQKeyboardManager.shared.enableAutoToolbar = false
         IQKeyboardManager.shared.keyboardDistanceFromTextField = 5
+        
+        UILabel.ddySwizzleMethod()
     }
     
     private func binding() {
-        
-        DDShared.shared.event.login.subscribe(onNext: { [weak self] (_) in
-            self?.window?.rootViewController = UINavigationController(rootViewController: DDHomeVC())
+        DDShared.shared.event.logInOrOut.observe(on: ConcurrentMainScheduler.instance).subscribe(onNext: { [weak self] (value) in
+            let vc = value ? DDHomeVC() : DDLoginViewController()
+            self?.window?.rootViewController = UINavigationController(rootViewController: vc)
         }).disposed(by: disposeBag)
-        
-        DDShared.shared.event.logout.subscribe(onNext: { [weak self] (_) in
-            self?.window?.rootViewController = UINavigationController(rootViewController: DDLoginViewController())
-        }).disposed(by: disposeBag)
+    }
+    
+    private func checkLogin() {
+        let json = JSON(DDShared.shared.getDict(for: "DDLoginData") ?? [:])["data"]
+        if json["user"].dictionaryValue.isEmpty || json["token"].stringValue.isEmpty || json["sessionToken"].stringValue.isEmpty  {
+            window?.rootViewController = UINavigationController(rootViewController: DDLoginViewController())
+        } else {
+            DDShared.shared.user = DDUserModel(json["user"])
+            DDShared.shared.token = json["token"].stringValue
+            DDShared.shared.cookie = "iPlanetDirectoryPro=" + json["sessionToken"].stringValue
+            window?.rootViewController = UINavigationController(rootViewController: DDHomeVC())
+        }
     }
 }
 

@@ -7,8 +7,12 @@
 
 import UIKit
 import Then
+import ProgressHUD
+import SwiftyJSON
 
 class DDVerifyVC: UIViewController {
+    
+    var sensorModel: DDSensorModel?
     
     private lazy var navigationBar: DDNavigationBar = DDNavigationBar().then {
         $0.titleLabel.text = "Verify"
@@ -27,7 +31,7 @@ class DDVerifyVC: UIViewController {
         $0.ddy_register(cellClass: DDVerifyCell.self)
     }
     
-    private lazy var dataArray: [DDVerifyModel] = []
+    private lazy var dataArray: [DDSensorModel] = []
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -57,18 +61,28 @@ class DDVerifyVC: UIViewController {
         navigationController?.popViewController(animated: true)
     }
     
-    private func clickAction(_ item: DDVerifyModel) {
-        let vc = DDLabelVC()
+    private func clickAction(_ item: DDSensorModel) {
+        let vc = DDInstallationVC()
         navigationController?.pushViewController(vc, animated: true)
     }
     
     func loadData() {
-        let model = DDVerifyModel()
-        model.title = "HWW014600000274"
-        model.state = "Not Ready"
-        model.time = "09/11/2021 11:17:00"
-        dataArray = [model]
-        tableView.reloadData()
+        guard let sensor = sensorModel else { return } //  "HWW014600000274"
+        ProgressHUD.show()
+        DDGet(target: .getSensor(deviceId: sensor.deviceId), success: { [weak self] result, msg in
+            print("正确 \(result) \(msg ?? "NoMsg")")
+            ProgressHUD.dismiss()
+            self?.dataArray = JSON(result)["data"].arrayValue.map { DDSensorModel($0) }
+            if self?.dataArray.contains(where: { $0.deviceId == sensor.deviceId }) == false {
+                self?.dataArray = [sensor]
+            }
+            self?.tableView.reloadData()
+        }, failure: { [weak self] code, msg in
+            print("错误 \(code) \(msg ?? "NoMsg")")
+            self?.dataArray = []
+            self?.tableView.reloadData()
+            ProgressHUD.showFailed(msg ?? "Fail", interaction: false, delay: 3)
+        })
     }
 }
 
