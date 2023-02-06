@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 class DDLiftModel: NSObject {
     /// 编号  581923121
@@ -60,4 +61,17 @@ class DDLiftModel: NSObject {
     var dewingUnits: String = ""
     /// 任何其他升降机单元
     var leftUnits: String = ""
+    /// id
+    var id: String = ""
+    /// createTime
+    var createtime: String = ""
+    
+    
+    init(liftsBystatus json: JSON) {
+        address = json["address"].stringValue
+        createtime = json["createtime"].stringValue
+        number = json["liftnumber"].stringValue
+        brand = json["brand"].stringValue
+        id = json["id"].stringValue
+    }
 }

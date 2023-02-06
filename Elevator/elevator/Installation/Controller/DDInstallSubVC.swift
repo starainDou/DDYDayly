@@ -8,6 +8,9 @@
 import UIKit
 import DDYSwiftyExtension
 import JXSegmentedView
+import ProgressHUD
+import SwiftyJSON
+import MJRefresh
 
 class DDInstallSubVC: UIViewController {
 
@@ -23,30 +26,69 @@ class DDInstallSubVC: UIViewController {
         $0.keyboardDismissMode = .onDrag
     }
     
-    private lazy var dataArray: [DDVerifyModel] = []
+    private(set) lazy var dataArray: [DDLiftModel] = []
+    
+    var tagIndex: Int = 0;
+    
+    var page: Int = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(hex: "#F1F5FF")
         view.addSubviews(tableView)
+        setViewConstraints()
+        setupRefresh()
+        loadData()
+    }
+    
+    private func setViewConstraints() {
         tableView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
     }
     
-    var tagIndex: Int = 0;
+    private func loadData() {
+        DDGet(target: .getLiftsBystatus(status: "\(tagIndex)", page: "\(page)", limit: "20"), success: { [weak self] result, msg in
+            print("正确 \(result) \(msg ?? "NoMsg")")
+            ProgressHUD.dismiss()
+            guard let `self` = self else { return }
+            if (self.page == 1) {
+                self.dataArray = []
+            }
+            self.dataArray += JSON(result)["data"]["rows"].arrayValue.map { DDLiftModel(liftsBystatus: $0) }
+            self.tableView.reloadData()
+            if self.dataArray.count < JSON(result)["data"]["total"].intValue {
+                self.page += 1
+            }
+        }, failure: { code, msg in
+            print("错误 \(code) \(msg ?? "NoMsg")")
+            ProgressHUD.showFailed(msg ?? "Fail", interaction: false, delay: 3)
+        })
+    }
+    
+    private func setupRefresh() {
+        // 下拉刷新
+        tableView.mj_header = MJRefreshNormalHeader.init(refreshingBlock: { [weak self] in
+            self?.page = 1
+            self?.loadData()
+        })
+        // 上拉加载更多
+        tableView.mj_footer = MJRefreshBackNormalFooter.init(refreshingBlock: { [weak self] in
+            self?.loadData()
+        })
+    }
 }
 
 
 extension DDInstallSubVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10 //dataArray.count
+        return dataArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         return tableView.ddy_dequeueReusableCell(DDInstallationCell.self, for: indexPath).then {
-            $0.loadData(item: DDVerifyModel()) //dataArray[indexPath.row]
+            $0.loadData(item: dataArray[indexPath.row], tag: tagIndex)
         }
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

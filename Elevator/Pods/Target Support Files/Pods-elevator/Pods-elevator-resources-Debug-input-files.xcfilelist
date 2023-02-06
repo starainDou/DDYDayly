@@ -1,2 +1,3 @@
 ${PODS_ROOT}/Target Support Files/Pods-elevator/Pods-elevator-resources.sh
 ${PODS_ROOT}/../elevator/LocalPodSpec/DDYQRCode/DDYQRCode.bundle
+${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle

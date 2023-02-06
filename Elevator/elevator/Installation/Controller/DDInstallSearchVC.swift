@@ -26,7 +26,10 @@ class DDInstallSearchVC: UIViewController {
         $0.keyboardDismissMode = .onDrag
     }
     
-    private lazy var dataArray: [DDVerifyModel] = []
+    private lazy var dataArray: [DDLiftModel] = []
+    
+    private lazy var tagIndex: Int = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubviews(navigationBar, tableView)
@@ -47,17 +50,23 @@ class DDInstallSearchVC: UIViewController {
     @objc private func backAction() {
         navigationController?.popViewController(animated: true)
     }
+    
+    func loadData(_ array: [DDLiftModel], tag: Int) {
+        dataArray = array
+        tagIndex = tag
+        tableView.reloadData()
+    }
 }
 
 extension DDInstallSearchVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10 //dataArray.count
+        return dataArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         return tableView.ddy_dequeueReusableCell(DDInstallationCell.self, for: indexPath).then {
-            $0.loadData(item: DDVerifyModel()) //dataArray[indexPath.row]
+            $0.loadData(item: dataArray[indexPath.row], tag: tagIndex)
         }
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class DDVerifyDetailVC: UIViewController {
 
@@ -35,8 +36,8 @@ class DDVerifyDetailVC: UIViewController {
         view.addSubviews(navigationBar, scrollView)
         scrollView.addSubviews(topView, mapView, infoView)
         setViewConstraints()
-        topView.loadData(DDLiftModel())
-        mapView.loadData(DDLiftModel())
+        topView.loadData(DDLiftModel(liftsBystatus: JSON()))
+        mapView.loadData(DDLiftModel(liftsBystatus: JSON()))
     }
     
     private func setViewConstraints() {

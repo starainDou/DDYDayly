@@ -32,11 +32,11 @@ class DDInstallationVC: UIViewController {
     }
     
     private lazy var notComVC: DDInstallSubVC = DDInstallSubVC().then {
-        $0.tagIndex = 1
+        $0.tagIndex = 4
     }
     
     private lazy var comVC: DDInstallSubVC = DDInstallSubVC().then {
-        $0.tagIndex = 2
+        $0.tagIndex = 5
     }
 
     override func viewDidLoad() {

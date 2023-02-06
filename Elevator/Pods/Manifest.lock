@@ -10,6 +10,7 @@ PODS:
   - IQKeyboardManagerSwift (6.5.11)
   - JXSegmentedView (1.3.0)
   - Kingfisher (7.2.0)
+  - MJRefresh (3.7.5)
   - Moya (15.0.0):
     - Moya/Core (= 15.0.0)
   - Moya/Core (15.0.0):
@@ -36,6 +37,7 @@ DEPENDENCIES:
   - IQKeyboardManagerSwift (= 6.5.11)
   - JXSegmentedView (= 1.3.0)
   - Kingfisher (= 7.2.0)
+  - MJRefresh (= 3.7.5)
   - Moya (= 15.0.0)
   - ProgressHUD (= 13.6.2)
   - RxCocoa (= 6.5.0)
@@ -43,7 +45,7 @@ DEPENDENCIES:
   - SnapKit (= 5.6.0)
   - SwiftyJSON (= 5.0.1)
   - SwiftyUserDefaults (= 5.3.0)
-  - Then (~> 3.0.0)
+  - Then (= 3.0.0)
 
 SPEC REPOS:
   trunk:
@@ -53,6 +55,7 @@ SPEC REPOS:
     - IQKeyboardManagerSwift
     - JXSegmentedView
     - Kingfisher
+    - MJRefresh
     - Moya
     - ProgressHUD
     - RxCocoa
@@ -79,6 +82,7 @@ SPEC CHECKSUMS:
   IQKeyboardManagerSwift: c7955c0bdbf7b2eb29bb7daaa44e3d90f55a9a85
   JXSegmentedView: fec0d335355b6e019c494fe2e030bde8a36d2df6
   Kingfisher: 3ac0b75b155cabc0e544877d1a4deea29feece92
+  MJRefresh: fdf5e979eb406a0341468932d1dfc8b7f9fce961
   Moya: 138f0573e53411fb3dc17016add0b748dfbd78ee
   ProgressHUD: 355915c8f033e626788fa9b0d99d06e8691595ab
   RxCocoa: 94f817b71c07517321eb4f9ad299112ca8af743b
@@ -90,6 +94,6 @@ SPEC CHECKSUMS:
   SwiftyUserDefaults: 63f80248cf5bfb3458825d9a78f2eb7e1293a040
   Then: 844265ae87834bbe1147d91d5d41a404da2ec27d
 
-PODFILE CHECKSUM: c7c7da975951d971f1a8f03c88f2cebdeb8998af
+PODFILE CHECKSUM: efec20ca6fcc4eb615b76872011714b388502f89
 
 COCOAPODS: 1.11.3

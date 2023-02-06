@@ -107,10 +107,12 @@ class DDInstallationCell: UITableViewCell {
         }
     }
     
-    public func loadData(item: DDVerifyModel) {
-        titleLabel.text = "TEST"
-        stateLabel.text = "TEST"
-        timeLabel.text = "TEST"
+    public func loadData(item: DDLiftModel, tag: Int) {
+        titleLabel.text = item.number
+        stateLabel.text = tag == 1 ? "Not Installed" : (tag == 5 ? " Commissioned" : "Not Commissioned")
+        timeLabel.text = item.createtime
+        brandLabel.text = item.brand
+        addressLabel.text = item.address
     }
 }
 

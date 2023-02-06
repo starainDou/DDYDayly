@@ -77,5 +77,3 @@ class DDVerifyCell: UITableViewCell {
         timeLabel.text = item.lastUpdateTime
     }
 }
-
-
