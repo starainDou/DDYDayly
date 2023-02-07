@@ -58,6 +58,8 @@ fileprivate func handleResult(target:TargetType, moyaResult: Result<Moya.Respons
             failure("\(response.statusCode)", error.localizedDescription)
             DDNetPrint("\(target.info)\nerror:\(response.statusCode) \(error.localizedDescription)")
             if response.statusCode == 200 {
+                DDShared.shared.user = nil
+                DDShared.shared.token = ""
                 DDShared.shared.event.logInOrOut.onNext(false)
                 ProgressHUD.showFailed("Session has timed out", interaction: false, delay: 3)
             }

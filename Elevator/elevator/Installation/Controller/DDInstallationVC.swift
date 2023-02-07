@@ -78,10 +78,12 @@ class DDInstallationVC: UIViewController {
     }
     
     @objc private func backAction() {
+        view.endEditing(true)
         navigationController?.popViewController(animated: true)
     }
     
     @objc private func searchAction() {
+        view.endEditing(true)
         let vc = DDInstallSearchVC()
         navigationController?.pushViewController(vc, animated: true)
     }

@@ -51,18 +51,23 @@ class DDInstallSubVC: UIViewController {
         DDGet(target: .getLiftsBystatus(status: "\(tagIndex)", page: "\(page)", limit: "20"), success: { [weak self] result, msg in
             print("正确 \(result) \(msg ?? "NoMsg")")
             ProgressHUD.dismiss()
-            guard let `self` = self else { return }
-            if (self.page == 1) {
-                self.dataArray = []
+            if let `self` = self {
+                if (self.page == 1) {
+                    self.dataArray = []
+                }
+                self.dataArray += JSON(result)["data"]["rows"].arrayValue.map { DDLiftModel(liftsBystatus: $0) }
+                if self.dataArray.count < JSON(result)["data"]["total"].intValue {
+                    self.page += 1
+                }
             }
-            self.dataArray += JSON(result)["data"]["rows"].arrayValue.map { DDLiftModel(liftsBystatus: $0) }
-            self.tableView.reloadData()
-            if self.dataArray.count < JSON(result)["data"]["total"].intValue {
-                self.page += 1
-            }
-        }, failure: { code, msg in
+            self?.tableView.reloadData()
+            self?.tableView.mj_footer?.endRefreshing()
+            self?.tableView.mj_footer?.endRefreshing()
+        }, failure: { [weak self] code, msg in
             print("错误 \(code) \(msg ?? "NoMsg")")
             ProgressHUD.showFailed(msg ?? "Fail", interaction: false, delay: 3)
+            self?.tableView.mj_footer?.endRefreshing()
+            self?.tableView.mj_footer?.endRefreshing()
         })
     }
     

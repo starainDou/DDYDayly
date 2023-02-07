@@ -53,7 +53,7 @@ extension DDGetApi {
             return (DDBaseUrl + "/getSensor/" + deviceId, baseParams)
             
         case let .getLiftsBystatus(status, page, limit):
-            return (DDBaseUrl + "/getLiftsBystatus/\(status)/\(page)/\(limit)", baseParams)
+            return (DDBaseUrl + "/liftapp/getLiftsBystatus/\(status)/\(page)/\(limit)", baseParams)
             
         case let .getStatusOfLift(id):
             return (DDBaseUrl + "/liftapp/getStatusOfLift/\(id)", baseParams)
