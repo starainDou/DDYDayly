@@ -11,33 +11,33 @@ class DDCommisionHeader: UIView {
     
     private lazy var iconView: UIImageView = UIImageView(image: UIImage(named: "Icon72"))
     
-    private lazy var titleLabel: UILabel = UILabel().then {
+    private(set) lazy var titleLabel: UILabel = UILabel().then {
         $0.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
         $0.textColor = UIColor(hex: "#333333")
     }
     
-    private lazy var stateLabel: UILabel = UILabel().then {
+    private(set) lazy var stateLabel: UILabel = UILabel().then {
         $0.font = UIFont.systemFont(ofSize: 13, weight: .regular)
         $0.textColor = UIColor(hex: "#1ECAA1")
     }
     
     private lazy var brandView: UIImageView = UIImageView(image: UIImage(named: "Crown"))
     
-    private lazy var brandLabel: UILabel = UILabel().then {
+    private(set) lazy var brandLabel: UILabel = UILabel().then {
         $0.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         $0.textColor = UIColor(hex: "#666666")
     }
     
     private lazy var addressView: UIImageView = UIImageView(image: UIImage(named: "Location"))
     
-    private lazy var addressLabel: UILabel = UILabel().then {
+    private(set) lazy var addressLabel: UILabel = UILabel().then {
         $0.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         $0.textColor = UIColor(hex: "#666666")
     }
     
     private lazy var timeView: UIImageView = UIImageView(image: UIImage(named: "Time"))
     
-    private lazy var timeLabel: UILabel = UILabel().then {
+    private(set) lazy var timeLabel: UILabel = UILabel().then {
         $0.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         $0.textColor = UIColor(hex: "#666666")
     }

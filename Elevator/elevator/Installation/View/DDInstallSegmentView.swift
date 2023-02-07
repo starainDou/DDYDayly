@@ -17,7 +17,7 @@ class DDInstallSegmentView: UIView {
     
     private lazy var searchImgView: UIImageView = UIImageView(image: UIImage(named: "Search"))
     
-    private lazy var textField: UITextField = UITextField().then {
+    private(set) lazy var textField: UITextField = UITextField().then {
         $0.textAlignment = .left
         $0.font = UIFont.systemFont(ofSize: 12, weight: .regular)
         $0.textColor = UIColor(hex: "#333333")

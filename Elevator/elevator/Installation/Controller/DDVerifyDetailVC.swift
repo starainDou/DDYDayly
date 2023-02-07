@@ -25,6 +25,8 @@ class DDVerifyDetailVC: UIViewController {
         $0.nextButton.addTarget(self, action: #selector(nextAction), for: .touchUpInside)
     }
     
+    private var liftModel: DDLiftModel?
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
@@ -74,5 +76,9 @@ class DDVerifyDetailVC: UIViewController {
     @objc private func nextAction() {
         let vc = DDInstallImageVC()
         navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    private func loadData() {
+        
     }
 }

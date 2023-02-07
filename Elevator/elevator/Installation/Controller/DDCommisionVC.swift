@@ -36,6 +36,8 @@ class DDCommisionVC: UIViewController {
         $0.addTarget(self, action: #selector(submitAction), for: .touchUpInside)
     }
     
+    private var liftModel: DDLiftModel?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(hex: "#F1F5FF")
@@ -84,5 +86,14 @@ class DDCommisionVC: UIViewController {
     private func changeSubmitButtonState(enable: Bool) {
         submitButton.isEnabled = enable
         submitButton.backgroundColor = UIColor(hex: enable ? "#168991" : "#999999")
+    }
+    
+    func load(lift: DDLiftModel, tag: Int) {
+        liftModel = lift
+        headerView.titleLabel.text = lift.number
+        headerView.stateLabel.text = tag == 1 ? "Not Installed" : (tag == 5 ? " Commissioned" : "Not Commissioned")
+        headerView.timeLabel.text = lift.createtime
+        headerView.brandLabel.text = lift.brand
+        headerView.addressLabel.text = lift.address
     }
 }

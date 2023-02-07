@@ -38,6 +38,8 @@ class DDInstallationVC: UIViewController {
     private lazy var comVC: DDInstallSubVC = DDInstallSubVC().then {
         $0.tagIndex = 5
     }
+    
+    var currentVC: DDInstallSubVC?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,6 +47,7 @@ class DDInstallationVC: UIViewController {
         scrollView.addSubviews(notInsVC.view, notComVC.view, comVC.view)
         addChildren(notInsVC, notComVC, comVC)
         setViewConstraints()
+        currentVC = notInsVC
     }
     private func setViewConstraints() {
         navigationBar.snp.makeConstraints { make in
@@ -84,7 +87,10 @@ class DDInstallationVC: UIViewController {
     
     @objc private func searchAction() {
         view.endEditing(true)
+        guard let text = segmentView.textField.text else { return }
+        guard let tempVC = currentVC else { return }
         let vc = DDInstallSearchVC()
+        vc.loadData(tempVC.dataArray.filter { $0.number.contains(text)}, tag: tempVC.tagIndex)
         navigationController?.pushViewController(vc, animated: true)
     }
     @objc private func selectAction(_ button: UIButton) {
@@ -93,6 +99,7 @@ class DDInstallationVC: UIViewController {
             $0.isSelected = ($0.tag == button.tag)
             $0.backgroundColor = UIColor(hex: ($0.tag == button.tag) ? "#168991" : "#DEDEE0")
         }
+        currentVC = (button.tag == 0) ? notInsVC : (button.tag == 1 ? notComVC : comVC)
     }
 }
 
