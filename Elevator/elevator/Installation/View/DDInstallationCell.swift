@@ -94,6 +94,7 @@ class DDInstallationCell: UITableViewCell {
         addressLabel.snp.makeConstraints { make in
             make.centerY.equalTo(addressView)
             make.leading.equalTo(addressView.snp.trailing).offset(5)
+            make.trailing.lessThanOrEqualTo(backView).inset(10)
         }
         timeView.snp.makeConstraints { make in
             make.leading.equalTo(backView).inset(15)

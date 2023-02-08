@@ -7,6 +7,7 @@
 
 import UIKit
 import SwiftyJSON
+import ProgressHUD
 
 class DDVerifyDetailVC: UIViewController {
 
@@ -25,7 +26,7 @@ class DDVerifyDetailVC: UIViewController {
         $0.nextButton.addTarget(self, action: #selector(nextAction), for: .touchUpInside)
     }
     
-    private var liftModel: DDLiftModel?
+    public var liftModel: DDLiftModel?
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -38,8 +39,7 @@ class DDVerifyDetailVC: UIViewController {
         view.addSubviews(navigationBar, scrollView)
         scrollView.addSubviews(topView, mapView, infoView)
         setViewConstraints()
-        topView.loadData(DDLiftModel(liftsBystatus: JSON()))
-        mapView.loadData(DDLiftModel(liftsBystatus: JSON()))
+        loadData()
     }
     
     private func setViewConstraints() {
@@ -78,7 +78,23 @@ class DDVerifyDetailVC: UIViewController {
         navigationController?.pushViewController(vc, animated: true)
     }
     
+    private func refreshView() {
+        topView.loadData(liftModel)
+        mapView.loadData(liftModel)
+        infoView.loadData(liftModel)
+    }
+    
     private func loadData() {
-        
+        guard let leftId = liftModel?.id else { return }
+        DDPost(target: .getLiftDetail(liftId: leftId), success: { [weak self] result, msg in
+            print("正确 \(result) \(msg ?? "NoMsg")")
+            ProgressHUD.dismiss()
+            self?.liftModel = DDLiftModel(liftDetail: JSON(result)["data"])
+            self?.refreshView()
+        }, failure: { [weak self] code, msg in
+            print("错误 \(code) \(msg ?? "NoMsg")")
+            ProgressHUD.showFailed(msg ?? "Fail", interaction: false, delay: 3)
+            
+        })
     }
 }

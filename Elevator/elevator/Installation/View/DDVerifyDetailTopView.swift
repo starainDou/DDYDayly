@@ -65,6 +65,7 @@ class DDVerifyDetailTopView: UIView {
         addressLabel.snp.makeConstraints { make in
             make.leading.equalTo(addressView.snp.trailing).offset(6)
             make.centerY.equalTo(addressView)
+            make.trailing.lessThanOrEqualToSuperview().inset(10)
         }
         timeView.snp.makeConstraints { make in
             make.leading.equalToSuperview().inset(18)
@@ -85,10 +86,10 @@ class DDVerifyDetailTopView: UIView {
         }
     }
     
-    public func loadData(_ model: DDLiftModel) {
-        titleLabel.text = "66666"
-        addressLabel.text = "777777"
-        timeLabel.text = "88888"
-        wifiLabel.text = "99999"
+    public func loadData(_ model: DDLiftModel?) {
+        titleLabel.text = model?.serialnumber
+        addressLabel.text = model?.address
+        timeLabel.text = DDAppInfo.dateStr(model?.createtime)
+        wifiLabel.text = "on-line"
     }
 }

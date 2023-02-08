@@ -245,4 +245,8 @@ class DDVerifyDetailInfoView: UIView {
             make.bottom.equalToSuperview().inset(25)
         }
     }
+    
+    public func loadData(_ model: DDLiftModel?) {
+        
+    }
 }

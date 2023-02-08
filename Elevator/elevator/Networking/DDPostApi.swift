@@ -76,7 +76,7 @@ extension DDPostApi {
             return (DDBaseUrl + "/liftmetering/getSingleRide", baseParams)
             
         case let .getLiftDetail(liftId):
-            return (DDBaseUrl + "/getLiftDetail/\(liftId)", baseParams)
+            return (DDBaseUrl + "/liftapp/getLiftDetail/\(liftId)", baseParams)
             
         case let .updateDetailOfLift(liftId):
             return (DDBaseUrl + "/liftapp/updateDetailOfLift/\(liftId)", baseParams)

@@ -46,9 +46,9 @@ class DDVerifyDetailMapView: UIView {
         }
     }
     
-    public func loadData(_ model: DDLiftModel) {
+    public func loadData(_ model: DDLiftModel?) {
         let regionCenter = CLLocationCoordinate2DMake(CLLocationDegrees(32), CLLocationDegrees(118))
-        let regionSpan = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+        let regionSpan = MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5)
         let region = MKCoordinateRegion(center: regionCenter, span: regionSpan)
         mapView.setRegion(region, animated: true)
         
@@ -57,5 +57,17 @@ class DDVerifyDetailMapView: UIView {
         mapView.addAnnotation(annotion)
     }
 }
+/*
+ let lat: Double = Double(model?.lat ?? "0") ?? 0.0
+ let lng: Double = Double(model?.lng ?? "0") ?? 0.0
+ let regionCenter = CLLocationCoordinate2DMake(CLLocationDegrees(lat), CLLocationDegrees(lng))
+ let regionSpan = MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5)
+ let region = MKCoordinateRegion(center: regionCenter, span: regionSpan)
+ mapView.setRegion(region, animated: true)
+ 
+ let annotion = MKPointAnnotation()
+ annotion.coordinate = regionCenter
+ mapView.addAnnotation(annotion)
+ */
 
 // https://jiuaidu.com/jianzhan/979082/

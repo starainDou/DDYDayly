@@ -114,6 +114,7 @@ class DDLiftModel: NSObject {
     var liftState2: String = ""
     var floor: String = ""
     var statuslevel: String = ""
+    var serialnumber: String = ""
 //    var <#planid#>: String = ""
     
     
@@ -180,13 +181,117 @@ class DDLiftModel: NSObject {
         liftState2 = json["liftState2"].stringValue
         floor = json["floor"].stringValue
         statuslevel = json["statuslevel"].stringValue
+        serialnumber = json["serialnumber"].stringValue
     }
     
 }
 
 /*
  
- { "id": "4d299afdd5f442f2a93b23a802e11ff3", "liftnumber": "570203D", "brand": "EMS", "createtime": "2021-04-01T08:35:03.000+0000", "address": null,
- 
- "brandcolor": null, "batchno": null, "installtime": "2021-04-01T08:35:03.000+0000", "description": null, "locationid": "0c967b22d0e146718d503be721fbb748", "modelid": "a4c465e9096f4dc1992c32ec6a9999d6", "planid": null, "status": 1, "lastupdatetime": null, "nextmaintenancetime": null, "lastmaintenancetime": null, "regionid": null, "landings": 4, "contractterm": null, "sensors": null, "labelmapping": "[{\"label\":\"1\"},{\"label\":\"2\"},{\"label\":\"3\"},{\"label\":\"4\"}]", "regionidforsub": null, "dashboardLiftAlarm": null, "location": null, "tenant": null, "person_capacity": null, "no_of_ropes": null, "roping_system": null, "type_of_door_opening": null, "car_control": null, "use_code": null, "speed": null, "drive_type": null, "motor_room_location": null, "ropesensor": null, "fromDate": null, "toDate": null, "showcolor": null, "agecolor": null, "userid": null, "lat": 1.354722, "lng": 103.847213, "planname": null, "modelname": null, "deviceid": null, "deviceids": null, "regionname": null, "liftage": null, "minscheduletype": null, "liftstatus": null, "comstatus": null, "liftalarmstatus": null, "componenttype": null, "component": null, "plandescription": null, "breakdownprobability": null, "base64Img": null, "liftState": null, "liftState2": null, "floor": null, "statuslevel": null }
+ {
+     address = "BLK 678C PUNGGOL DRIVE S823678";
+     agecolor = "<null>";
+     "any_other_lift_serving_these_du" = "<null>";
+     "any_other_lifts_units" = "";
+     "aps_install_place" = "<null>";
+     "aps_location" = "<null>";
+     "aps_placement_location" = "<null>";
+     base64Img = "<null>";
+     batchno = "<null>";
+     block = "<null>";
+     brand = IFE;
+     brandcolor = "<null>";
+     breakdownprobability = "<null>";
+     capacity = "<null>";
+     "car_control" = "";
+     component = "<null>";
+     componenttype = "<null>";
+     comstatus = "<null>";
+     contractterm = "<null>";
+     createtime = 1617266107000;
+     "cross_beam_type" = "<null>";
+     dashboardLiftAlarm = "<null>";
+     description = "";
+     "device_status" = "<null>";
+     deviceid = "<null>";
+     deviceids = "<null>";
+     "door_current_sensor" = "<null>";
+     "door_opening" = "<null>";
+     doorcurrentsensorinstallationmethod = "<null>";
+     doormotortype = "<null>";
+     "drive_type" = "";
+     floor = "<null>";
+     fromDate = "<null>";
+     id = 731b221236024bd69c95af41441cb758;
+     installtime = 1640966400000;
+     labelmapping = "[{\"label\":\"B2\"},{\"label\":\"B1\"},{\"label\":\"1\"},{\"label\":\"2\"},{\"label\":\"3\"},{\"label\":\"4\"},{\"label\":\"5\"},{\"label\":\"6\"},{\"label\":\"7\"},{\"label\":\"8\"},{\"label\":\"9\"},{\"label\":\"10\"},{\"label\":\"11\"},{\"label\":\"12\"},{\"label\":\"13\"},{\"label\":\"14\"},{\"label\":\"15\"},{\"label\":\"16\"},{\"label\":\"17\"}]";
+     landings = 19;
+     "last_replaced_by" = "<null>";
+     "last_replaced_date" = "<null>";
+     lastmaintenancetime = "<null>";
+     lastupdatetime = 1647401083191;
+     lat = "1.405907";
+     liftName = "<null>";
+     liftState = "<null>";
+     liftState2 = "<null>";
+     "lift_code" = "<null>";
+     "lift_company" = "<null>";
+     "lift_installation_date" = "<null>";
+     "lift_model" = "<null>";
+     "lift_shaft_type" = "<null>";
+     "lift_type" = "<null>";
+     liftage = "<null>";
+     liftalarmstatus = "<null>";
+     liftnumber = 823678A;
+     liftstatus = "<null>";
+     lng = "103.909102";
+     location = "";
+     locationid = 2bb6a1e5b79d48a090c064a48ef8a572;
+     "lpms_commission_date" = "<null>";
+     "lpms_status" = "<null>";
+     "maintenance_status" = "<null>";
+     minscheduletype = "<null>";
+     modelid = 7217ebb7d3014649bfc2e77f71699062;
+     modelname = IFE;
+     "motor_room_location" = "";
+     "mpu_placement_method" = "<null>";
+     mpuplacementlocation = "<null>";
+     nextmaintenancetime = "<null>";
+     "no_of_ropes" = "<null>";
+     "number_of_dwelling_units" = "";
+     "number_of_dwelling_units_served" = "<null>";
+     "number_of_landings_served" = "<null>";
+     "person_capacity" = "<null>";
+     "peu_power_source" = "<null>";
+     plandescription = "<null>";
+     planid = "<null>";
+     planname = "<null>";
+     "postal_code" = "<null>";
+     "power_source_to_peu" = "<null>";
+     regionid = "<null>";
+     regionidforsub = "<null>";
+     regionname = "<null>";
+     "rope_sensor_type" = "<null>";
+     ropesensor = "<null>";
+     ropesensortype = "<null>";
+     "roping_system" = "";
+     sensors = "<null>";
+     serialnumber = "<null>";
+     showcolor = "<null>";
+     speed = "<null>";
+     status = 1;
+     statuslevel = "<null>";
+     storey = "<null>";
+     street = "<null>";
+     tenant = "";
+     toDate = "<null>";
+     "town_council" = "<null>";
+     "type_of_door_opening" = "";
+     "type_of_lift_shaft" = "";
+     "type_of_rope_sensor" = "<null>";
+     "use_code" = "";
+     userid = "<null>";
+     ward = "<null>";
+     "zoning_of_lift" = "";
+ }
  */

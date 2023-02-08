@@ -71,8 +71,8 @@ extension DDInstallSearchVC: UITableViewDelegate, UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let vc = DDCommisionVC()
-        vc.load(lift: dataArray[indexPath.row], tag: tagIndex)
+        let vc = DDVerifyDetailVC()
+        vc.liftModel = dataArray[indexPath.row]
         navigationController?.pushViewController(vc, animated: true)
     }
 }
