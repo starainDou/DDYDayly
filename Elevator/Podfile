@@ -1,6 +1,7 @@
 source 'https://cdn.cocoapods.org/'
 inhibit_all_warnings!
 install! 'cocoapods', :warn_for_unused_master_specs_repo => false
+#inherit! :search_paths
 
 def commonConfig
   project 'elevator/elevator.xcodeproj'
