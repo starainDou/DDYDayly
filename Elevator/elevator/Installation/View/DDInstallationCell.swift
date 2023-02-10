@@ -16,7 +16,7 @@ class DDInstallationCell: UITableViewCell {
         $0.layer.cornerRadius = 8
     }
     
-    private lazy var iconView: UIImageView = UIImageView(image: UIImage(named: "Icon72"))
+    private lazy var iconView: UIImageView = UIImageView(image: UIImage(named: "UpDown"))
     
     private lazy var titleLabel: UILabel = UILabel().then {
         $0.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
@@ -28,14 +28,14 @@ class DDInstallationCell: UITableViewCell {
         $0.textColor = UIColor(hex: "#1ECAA1")
     }
     
-    private lazy var brandView: UIImageView = UIImageView(image: UIImage(named: "Time"))
+    private lazy var brandView: UIImageView = UIImageView(image: UIImage(named: "Crown"))
     
     private lazy var brandLabel: UILabel = UILabel().then {
         $0.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         $0.textColor = UIColor(hex: "#666666")
     }
     
-    private lazy var addressView: UIImageView = UIImageView(image: UIImage(named: "Time"))
+    private lazy var addressView: UIImageView = UIImageView(image: UIImage(named: "Location"))
     
     private lazy var addressLabel: UILabel = UILabel().then {
         $0.font = UIFont.systemFont(ofSize: 14, weight: .regular)
@@ -67,7 +67,7 @@ class DDInstallationCell: UITableViewCell {
         iconView.snp.makeConstraints { make in
             make.leading.equalTo(backView).inset(15)
             make.top.equalTo(backView).offset(20)
-            make.width.height.height.equalTo(20)
+            make.width.height.equalTo(20)
         }
         titleLabel.snp.makeConstraints { make in
             make.centerY.equalTo(iconView)
@@ -111,9 +111,9 @@ class DDInstallationCell: UITableViewCell {
     public func loadData(item: DDLiftModel, tag: Int) {
         titleLabel.text = item.number
         stateLabel.text = tag == 1 ? "Not Installed" : (tag == 5 ? " Commissioned" : "Not Commissioned")
-        timeLabel.text = item.createtime
-        brandLabel.text = item.brand
-        addressLabel.text = item.address
+        timeLabel.text = DDAppInfo.dateStr(item.createtime)
+        brandLabel.text = item.brand.isEmpty ? "-" : item.brand
+        addressLabel.text = item.address.isEmpty ? "-" : item.address
     }
 }
 
