@@ -48,7 +48,7 @@ class DDVerifyDetailMapView: UIView {
     
     public func loadData(_ model: DDLiftModel?) {
         let regionCenter = CLLocationCoordinate2DMake(CLLocationDegrees(32), CLLocationDegrees(118))
-        let regionSpan = MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5)
+        let regionSpan = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
         let region = MKCoordinateRegion(center: regionCenter, span: regionSpan)
         mapView.setRegion(region, animated: true)
         
