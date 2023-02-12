@@ -18,7 +18,8 @@ class DDInstallSubVC: UIViewController {
         $0.delegate = self
         $0.dataSource = self
         $0.tableFooterView = UIView()
-        $0.rowHeight = 160
+        $0.rowHeight = UITableView.automaticDimension
+        $0.estimatedRowHeight = 170
         $0.separatorStyle = .none
         $0.backgroundColor = UIColor(hex: "#F1F5FF")
         $0.ddy_zeroPadding()

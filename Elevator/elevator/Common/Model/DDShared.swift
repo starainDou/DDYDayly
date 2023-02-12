@@ -23,9 +23,14 @@ class DDShared: NSObject {
             if user?.rolename == "Installer@STEE" {
                 return [DDHomeModel(icon: "Repair", title: "Installtion", vc: DDQRCodeVC())]
             } else if user?.rolename == "Engineer@STEE" {
+                return [DDHomeModel(icon: "Elevator", title: "Lift", vc: DDEngineerVC()),
+                        DDHomeModel(icon: "History", title: "History", vc: DDQRCodeVC()),
+                        DDHomeModel(icon: "FavouriteCyan", title: "Favourite", vc: DDQRCodeVC()),
+                        DDHomeModel(icon: "Summary", title: "Summary of Lift Performances", vc: DDQRCodeVC())]
+            } else if user?.rolename == "T&C@STEE" {
                 return [DDHomeModel(icon: "Commissioning", title: "Test&Commissioning", vc: DDQRCodeVC())]
             } else {
-                return [DDHomeModel(icon: "Elevator", title: "Lift", vc: DDQRCodeVC()),
+                return [DDHomeModel(icon: "Elevator", title: "Lift", vc: DDEngineerVC()),
                         DDHomeModel(icon: "History", title: "History", vc: DDQRCodeVC()),
                         DDHomeModel(icon: "FavouriteCyan", title: "Favourite", vc: DDQRCodeVC()),
                         DDHomeModel(icon: "Summary", title: "Summary of Lift Performances", vc: DDQRCodeVC())]
