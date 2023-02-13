@@ -63,6 +63,7 @@ class DDVerifyVC: UIViewController {
     
     private func clickAction(_ item: DDSensorModel) {
         let vc = DDInstallationVC()
+        vc.sensor = item
         navigationController?.pushViewController(vc, animated: true)
     }
     

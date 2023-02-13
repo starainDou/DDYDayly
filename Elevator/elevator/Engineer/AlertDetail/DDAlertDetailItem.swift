@@ -18,8 +18,6 @@ class DDAlertDetailItem: UIView {
     private lazy var nameLabel: UILabel = UILabel().then {
         $0.textColor = UIColor(hex: "#333333")
         $0.font = UIFont.systemFont(ofSize: 15, weight: .semibold)        
-        $0.layer.masksToBounds = true
-        $0.layer.cornerRadius = 22
     }
     
     private lazy var dateLabel: UILabel = UILabel().then {
@@ -61,19 +59,23 @@ class DDAlertDetailItem: UIView {
         $0.textColor = UIColor(hex: "#666666")
         $0.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         $0.isEditable = false
+        $0.backgroundColor = UIColor(hex: "#F3F3F3")
     }
+    
+    private lazy var dashView: DDDashLineView = DDDashLineView()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        addSubviews(avatarView, nameLabel, dateLabel, funcLabel, collectionView, grayView, textView)
+        addSubviews(avatarView, nameLabel, dateLabel, funcLabel, collectionView, grayView, textView, dashView)
+        setViewConstraints()
     }
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
     
     private func setViewConstraints() {
         avatarView.snp.makeConstraints { make in
-            make.leading.equalToSuperview().inset(15)
-            make.top.equalTo(16)
-            make.width.height.equalTo(22)
+            make.leading.equalToSuperview().inset(33)
+            make.top.equalToSuperview().inset(16)
+            make.width.height.equalTo(44)
         }
         nameLabel.snp.makeConstraints { make in
             make.bottom.equalTo(avatarView.snp.centerY).offset(-2)
@@ -89,18 +91,33 @@ class DDAlertDetailItem: UIView {
         }
         collectionView.snp.makeConstraints { make in
             make.top.equalTo(avatarView.snp.bottom).offset(15)
-            make.leading.equalToSuperview().inset(15)
-            make.right.equalToSuperview().inset(15)
+            make.leading.equalToSuperview().inset(33)
+            make.trailing.equalToSuperview().inset(15)
             make.height.equalTo(70)
         }
         grayView.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview().inset(15)
+            make.leading.trailing.equalToSuperview().inset(30)
             make.height.equalTo(82)
+            make.top.equalTo(collectionView.snp.bottom).offset(10)
             make.bottom.equalToSuperview().inset(15)
         }
         textView.snp.makeConstraints { make in
             make.edges.equalTo(grayView).inset(UIEdgeInsets(top: 10, left: 14, bottom: 10, right: 14))
         }
+        dashView.snp.makeConstraints { make in
+            make.leading.equalToSuperview().inset(85)
+            make.trailing.equalToSuperview().inset(15)
+            make.height.equalTo(1)
+            make.top.equalToSuperview()
+        }
+    }
+    
+    public func loadData() {
+        avatarView.backgroundColor = .lightGray
+        nameLabel.text = "Molly";
+        funcLabel.text = "Update"
+        dateLabel.text = "09/11 10:06:00"
+        textView.text = "Maintenance/1200 Brakes and Gear box/1201 Examine for abormal noise, contamination, damage,"
     }
 }
 

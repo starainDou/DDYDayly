@@ -67,6 +67,7 @@ class DDAlertDetailHeader: UIView {
     private lazy var textView: UITextView = UITextView().then {
         $0.textColor = UIColor(hex: "#666666")
         $0.font = UIFont.systemFont(ofSize: 14, weight: .regular)
+        $0.backgroundColor = UIColor(hex: "#F1F5FF")
     }
     
     private lazy var acknowlegeButton: UIButton = UIButton(type: .custom).then {
@@ -182,6 +183,7 @@ class DDAlertDetailHeader: UIView {
         updateButton.snp.makeConstraints { make in
             make.width.equalTo(100)
             make.height.equalTo(32)
+            make.centerX.equalToSuperview()
             make.bottom.equalTo(backView.snp.bottom).inset(14)
         }
         resolveButton.snp.makeConstraints { make in

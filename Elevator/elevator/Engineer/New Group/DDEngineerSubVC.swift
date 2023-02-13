@@ -104,5 +104,13 @@ extension DDEngineerSubVC: UITableViewDelegate, UITableViewDataSource {
 //        let vc = DDVerifyDetailVC()
 //        vc.liftModel = dataArray[indexPath.row]
 //        navigationController?.pushViewController(vc, animated: true)
+        
+        if let nv = navigationController {
+            print("navig y")
+        } else {
+            print("navig n")
+        }
+        let vc = DDAlertDetailVC()
+        navigationController?.pushViewController(vc, animated: true)
     }
 }

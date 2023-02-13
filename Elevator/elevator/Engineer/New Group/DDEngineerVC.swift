@@ -35,7 +35,7 @@ class DDEngineerVC: UIViewController {
         view.backgroundColor = UIColor(hex: "#F1F5FF")
         view.addSubviews(headerView, scrollVew)
         scrollVew.addSubviews(alertVC.view, alermVC.view, normalVC.view)
-        addChildren(alermVC, alermVC, normalVC)
+        addChildren(alertVC, alermVC, normalVC)
         setViewConstraints()
         setClosure()
         loadData()

@@ -10,20 +10,32 @@ import UIKit
 class DDAlertDetailVC: UIViewController {
     
     private lazy var navigationBar: DDNavigationBar = DDNavigationBar().then {
-        $0.titleLabel.text = "Verify"
+        $0.titleLabel.text = "Alert Details"
         $0.backButton.addTarget(self, action: #selector(backAction), for: .touchUpInside)
     }
     
-    private lazy var tableView: UITableView = UITableView().then {
-        $0.delegate = self
-        $0.dataSource = self
-        $0.tableFooterView = UIView()
-        $0.rowHeight = 98
-        $0.separatorStyle = .none
-        $0.backgroundColor = UIColor(hex: "#F1F5FF")
-        $0.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
-        $0.ddy_zeroPadding()
-        $0.ddy_register(cellClass: DDVerifyCell.self)
+    private lazy var saveButton: UIButton = UIButton(type: .custom).then {
+        $0.setImage(UIImage(named: "FavourateLight"), for: .normal)
+        $0.addTarget(self, action: #selector(saveAction), for: .touchUpInside)
+        $0.contentEdgeInsets = UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4)
+    }
+    
+    private lazy var scrollView: UIScrollView = UIScrollView()
+    
+    private lazy var headerView: DDAlertDetailHeader = DDAlertDetailHeader()
+    
+    private lazy var containerView: UIView = UIView().then {
+        $0.backgroundColor = UIColor(hex: "#FFFFFF")
+        $0.layer.cornerRadius = 8
+        $0.layer.masksToBounds = true
+    }
+    
+    private lazy var stackView: UIStackView = UIStackView().then {
+        $0.axis = .vertical
+    }
+    
+    private lazy var dashView: DDDashLineView = DDDashLineView().then {
+        $0.isHorizontal = false
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -34,9 +46,12 @@ class DDAlertDetailVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(hex: "#F1F5FF")
-        view.addSubviews(navigationBar, tableView)
+        view.addSubviews(navigationBar, scrollView)
+        navigationBar.addSubview(saveButton)
+        scrollView.addSubviews(headerView, containerView)
+        containerView.addSubviews(dashView, stackView)
         setViewConstraints()
-        //loadData()
+        loadData()
     }
     
     private func setViewConstraints() {
@@ -44,14 +59,55 @@ class DDAlertDetailVC: UIViewController {
             make.leading.trailing.top.equalToSuperview()
             make.height.equalTo(DDScreen.statusBarHeight + 44)
         }
-        tableView.snp.makeConstraints { make in
+        saveButton.snp.makeConstraints { make in
+            make.trailing.equalToSuperview().inset(20)
+            make.bottom.equalToSuperview().inset(6)
+            make.width.height.equalTo(26)
+        }
+        scrollView.snp.makeConstraints { make in
             make.leading.bottom.trailing.equalToSuperview()
             make.top.equalTo(navigationBar.snp.bottom)
+        }
+        headerView.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview()
+            make.width.equalTo(DDScreen.width)
+            make.top.equalToSuperview().inset(15)
+            make.height.equalTo(315)
+        }
+        containerView.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(15)
+            make.top.equalTo(headerView.snp.bottom).offset(15)
+            make.bottom.equalToSuperview()
+        }
+        stackView.snp.makeConstraints { make in
+            make.edges.equalToSuperview().inset(UIEdgeInsets(top: 0, left: 0, bottom: 5, right: 0))
+        }
+        dashView.snp.makeConstraints { make in
+            make.leading.equalToSuperview().inset(18)
+            make.top.equalToSuperview().inset(18)
+            make.width.equalTo(1)
+            make.bottom.equalToSuperview()
         }
     }
     
     @objc private func backAction() {
         navigationController?.popViewController(animated: true)
+    }
+    
+    @objc private func saveAction() {
+        
+    }
+    
+    private func loadData() {
+        for index in 1...3 {
+            let section = DDAlertDetailSection()
+            section.loadData()
+            stackView.addArrangedSubview(section)
+            section.snp.makeConstraints { make in
+                make.leading.trailing.equalToSuperview()
+                make.height.greaterThanOrEqualTo(50)
+            }
+        }
     }
 }
 

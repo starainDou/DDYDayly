@@ -40,6 +40,8 @@ class DDInstallationVC: UIViewController {
     }
     
     var currentVC: DDInstallSubVC?
+    
+    var sensor: DDSensorModel?
 
     override func viewDidLoad() {
         super.viewDidLoad()
