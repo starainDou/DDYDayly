@@ -40,4 +40,11 @@ struct DDAppInfo {
         let date = Date(timeIntervalSince1970: dateDouble)
         return DateFormatter().then { $0.dateFormat = "MM/dd/yyyy HH:mm:ss" }.string(from: date)
     }
+    
+    static func base64Img(_ imageStr:String) -> UIImage? {
+        
+        guard let data = Data(base64Encoded: imageStr, options: .ignoreUnknownCharacters) else { return nil }
+        return UIImage(data: data)
+    }
+
 }

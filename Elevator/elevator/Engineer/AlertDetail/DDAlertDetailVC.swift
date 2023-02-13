@@ -20,7 +20,9 @@ class DDAlertDetailVC: UIViewController {
         $0.contentEdgeInsets = UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4)
     }
     
-    private lazy var scrollView: UIScrollView = UIScrollView()
+    private lazy var scrollView: UIScrollView = UIScrollView().then {
+        $0.showsVerticalScrollIndicator = false
+    }
     
     private lazy var headerView: DDAlertDetailHeader = DDAlertDetailHeader()
     

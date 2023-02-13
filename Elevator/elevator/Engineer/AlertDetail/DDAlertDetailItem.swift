@@ -50,7 +50,7 @@ class DDAlertDetailItem: UIView {
     }()
 
     private lazy var grayView: UIView = UIView().then {
-        $0.backgroundColor = UIColor(hex: "#F1F5FF")
+        $0.backgroundColor = UIColor(hex: "#F3F3F3")
         $0.layer.cornerRadius = 4
         $0.layer.masksToBounds = true
     }
