@@ -97,7 +97,7 @@ class DDAlertDetailItem: UIView {
         }
         grayView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(30)
-            make.height.equalTo(82)
+            make.height.equalTo(90)
             make.top.equalTo(collectionView.snp.bottom).offset(10)
             make.bottom.equalToSuperview().inset(15)
         }

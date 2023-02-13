@@ -51,6 +51,7 @@ class DDAlertDetailVC: UIViewController {
         scrollView.addSubviews(headerView, containerView)
         containerView.addSubviews(dashView, stackView)
         setViewConstraints()
+        setClosre()
         loadData()
     }
     
@@ -90,11 +91,31 @@ class DDAlertDetailVC: UIViewController {
         }
     }
     
+    private func setClosre() {
+        headerView.acknowlegeButton.addTarget(self, action: #selector(ackAction), for: .touchUpInside)
+        headerView.updateButton.addTarget(self, action: #selector(updateAction), for: .touchUpInside)
+        headerView.resolveButton.addTarget(self, action: #selector(resolveAction), for: .touchUpInside)
+    }
+    
     @objc private func backAction() {
         navigationController?.popViewController(animated: true)
     }
     
     @objc private func saveAction() {
+        
+    }
+    
+    
+    @objc private func ackAction() {
+        
+    }
+    @objc private func updateAction() {
+        let vc = DDAlertUpdateVC()
+        
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc private func resolveAction() {
         
     }
     
@@ -108,25 +129,6 @@ class DDAlertDetailVC: UIViewController {
                 make.height.greaterThanOrEqualTo(50)
             }
         }
-    }
-}
-
-
-extension DDAlertDetailVC: UITableViewDelegate, UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10 //dataArray.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return tableView.ddy_dequeueReusableCell(DDVerifyCell.self, for: indexPath)
-            //.then {
-            // $0.loadData(item: dataArray[indexPath.row])
-        //}
-    }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        
     }
 }
 

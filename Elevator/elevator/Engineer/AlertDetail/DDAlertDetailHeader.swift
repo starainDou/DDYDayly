@@ -64,13 +64,13 @@ class DDAlertDetailHeader: UIView {
         $0.layer.masksToBounds = true
     }
     
-    private lazy var textView: UITextView = UITextView().then {
+    private(set) lazy var textView: UITextView = UITextView().then {
         $0.textColor = UIColor(hex: "#666666")
         $0.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         $0.backgroundColor = UIColor(hex: "#F1F5FF")
     }
     
-    private lazy var acknowlegeButton: UIButton = UIButton(type: .custom).then {
+    private(set) lazy var acknowlegeButton: UIButton = UIButton(type: .custom).then {
         $0.setTitle("Acknowledged", for: .normal)
         $0.setTitleColor(UIColor(hex:"#FFFFFF"), for: .normal)
         $0.titleLabel?.font = UIFont.systemFont(ofSize: 13, weight: .regular)
@@ -79,7 +79,7 @@ class DDAlertDetailHeader: UIView {
         $0.layer.cornerRadius = 16
     }
     
-    private lazy var updateButton: UIButton = UIButton(type: .custom).then {
+    private(set) lazy var updateButton: UIButton = UIButton(type: .custom).then {
         $0.setTitle("Update", for: .normal)
         $0.setTitleColor(UIColor(hex:"#FFFFFF"), for: .normal)
         $0.titleLabel?.font = UIFont.systemFont(ofSize: 13, weight: .regular)
@@ -88,7 +88,7 @@ class DDAlertDetailHeader: UIView {
         $0.layer.cornerRadius = 16
     }
     
-    private lazy var resolveButton: UIButton = UIButton(type: .custom).then {
+    private(set) lazy var resolveButton: UIButton = UIButton(type: .custom).then {
         $0.setTitle("Resolve", for: .normal)
         $0.setTitleColor(UIColor(hex:"#FFFFFF"), for: .normal)
         $0.titleLabel?.font = UIFont.systemFont(ofSize: 13, weight: .regular)

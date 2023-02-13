@@ -72,6 +72,9 @@
 		04CE0A4F298B849900795592 /* DDMainteDetail2Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CE0A4E298B849900795592 /* DDMainteDetail2Cell.swift */; };
 		04CE0A51298B961B00795592 /* DDMainteDetail2Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CE0A50298B961B00795592 /* DDMainteDetail2Header.swift */; };
 		04D80A852999FBA30047DA15 /* DDDashLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D80A842999FBA30047DA15 /* DDDashLineView.swift */; };
+		04D80A88299A15C60047DA15 /* DDAlertUpdateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D80A87299A15C60047DA15 /* DDAlertUpdateVC.swift */; };
+		04D80A8A299A16AF0047DA15 /* DDAlertSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D80A89299A16AF0047DA15 /* DDAlertSelectView.swift */; };
+		04D80A8C299A1F960047DA15 /* DDAlertImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D80A8B299A1F960047DA15 /* DDAlertImageView.swift */; };
 		04E008552975134B00EE0DBF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E008542975134B00EE0DBF /* AppDelegate.swift */; };
 		04E008592975134B00EE0DBF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E008582975134B00EE0DBF /* ViewController.swift */; };
 		04E0085C2975134B00EE0DBF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04E0085A2975134B00EE0DBF /* Main.storyboard */; };
@@ -160,6 +163,9 @@
 		04CE0A4E298B849900795592 /* DDMainteDetail2Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDMainteDetail2Cell.swift; sourceTree = "<group>"; };
 		04CE0A50298B961B00795592 /* DDMainteDetail2Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDMainteDetail2Header.swift; sourceTree = "<group>"; };
 		04D80A842999FBA30047DA15 /* DDDashLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDDashLineView.swift; sourceTree = "<group>"; };
+		04D80A87299A15C60047DA15 /* DDAlertUpdateVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDAlertUpdateVC.swift; sourceTree = "<group>"; };
+		04D80A89299A16AF0047DA15 /* DDAlertSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDAlertSelectView.swift; sourceTree = "<group>"; };
+		04D80A8B299A1F960047DA15 /* DDAlertImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDAlertImageView.swift; sourceTree = "<group>"; };
 		04E008512975134B00EE0DBF /* elevator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = elevator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04E008542975134B00EE0DBF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04E008582975134B00EE0DBF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -248,6 +254,8 @@
 		034FB78629978F46003985AD /* Engineer */ = {
 			isa = PBXGroup;
 			children = (
+				04D80A8E299A684A0047DA15 /* Favorite */,
+				04D80A86299A15B30047DA15 /* Update */,
 				034FB7942998CDC9003985AD /* AlertDetail */,
 				034FB78929978FB4003985AD /* LiftList */,
 			);
@@ -381,6 +389,23 @@
 				0483289A297805EB002BE7B2 /* DDQRCodeView.swift */,
 			);
 			path = QRCode;
+			sourceTree = "<group>";
+		};
+		04D80A86299A15B30047DA15 /* Update */ = {
+			isa = PBXGroup;
+			children = (
+				04D80A87299A15C60047DA15 /* DDAlertUpdateVC.swift */,
+				04D80A89299A16AF0047DA15 /* DDAlertSelectView.swift */,
+				04D80A8B299A1F960047DA15 /* DDAlertImageView.swift */,
+			);
+			path = Update;
+			sourceTree = "<group>";
+		};
+		04D80A8E299A684A0047DA15 /* Favorite */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Favorite;
 			sourceTree = "<group>";
 		};
 		04E008482975134B00EE0DBF = {
@@ -645,6 +670,7 @@
 				048328762976D578002BE7B2 /* DDHomeCell.swift in Sources */,
 				04CE0A51298B961B00795592 /* DDMainteDetail2Header.swift in Sources */,
 				04CE0A2F298A1BC900795592 /* DDMainteItemInfoView.swift in Sources */,
+				04D80A88299A15C60047DA15 /* DDAlertUpdateVC.swift in Sources */,
 				04CE0A4F298B849900795592 /* DDMainteDetail2Cell.swift in Sources */,
 				04E6FC122990D99200666FE6 /* DDSensorModel.swift in Sources */,
 				048328752976D578002BE7B2 /* DDHomeModel.swift in Sources */,
@@ -653,6 +679,7 @@
 				04CE0A43298A736900795592 /* DDMainteDetail3VC.swift in Sources */,
 				04CE0A35298A28F300795592 /* DDMainteHeaderView.swift in Sources */,
 				048328812976DD1F002BE7B2 /* DDHomeHeaderView.swift in Sources */,
+				04D80A8C299A1F960047DA15 /* DDAlertImageView.swift in Sources */,
 				048328772976D578002BE7B2 /* DDHomeVC.swift in Sources */,
 				048328902977D00F002BE7B2 /* DDGetApi.swift in Sources */,
 				04CE09C92988005400795592 /* DDDetailItemView.swift in Sources */,
@@ -663,6 +690,7 @@
 				04E008552975134B00EE0DBF /* AppDelegate.swift in Sources */,
 				034FB78529900781003985AD /* DDEvent.swift in Sources */,
 				04CE0A45298A737300795592 /* DDMainteDetail4VC.swift in Sources */,
+				04D80A8A299A16AF0047DA15 /* DDAlertSelectView.swift in Sources */,
 				034FB77729864563003985AD /* DDInstallationCell.swift in Sources */,
 				034FB78829978F93003985AD /* DDEngineerVC.swift in Sources */,
 			);
@@ -814,7 +842,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 1.2;
 				DEVELOPMENT_TEAM = 2A2HBA58GY;
 				ENABLE_BITCODE = NO;
 				GENERATE_INFOPLIST_FILE = NO;
@@ -831,7 +859,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.hbgy.inormal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = normal_developer;
@@ -849,7 +877,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 1.2;
 				DEVELOPMENT_TEAM = 2A2HBA58GY;
 				ENABLE_BITCODE = NO;
 				GENERATE_INFOPLIST_FILE = NO;
@@ -866,7 +894,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.hbgy.inormal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = normal_developer;
