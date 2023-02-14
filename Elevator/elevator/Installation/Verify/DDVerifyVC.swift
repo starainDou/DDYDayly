@@ -38,7 +38,7 @@ class DDVerifyVC: UIViewController {
         $0.isHidden = true
         $0.layer.cornerRadius = 8
         $0.layer.masksToBounds = true
-        $0.setTitle("Logout", for: .normal)
+        $0.setTitle("Next", for: .normal)
         $0.setTitleColor(UIColor(hex: "#FFFFFF"), for: .normal)
         $0.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
         $0.addTarget(self, action: #selector(nextAction), for: .touchUpInside)
@@ -54,7 +54,7 @@ class DDVerifyVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(hex: "#F1F5FF")
-        view.addSubviews(navigationBar, tableView)
+        view.addSubviews(navigationBar, tableView, nextButton)
         setViewConstraints()
         loadData()
     }
@@ -67,6 +67,11 @@ class DDVerifyVC: UIViewController {
         tableView.snp.makeConstraints { make in
             make.leading.bottom.trailing.equalToSuperview()
             make.top.equalTo(navigationBar.snp.bottom)
+        }
+        nextButton.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(30)
+            make.bottom.equalToSuperview().inset(25)
+            make.height.equalTo(40);
         }
     }
     
@@ -83,16 +88,23 @@ class DDVerifyVC: UIViewController {
             self?.dataArray = JSON(result)["data"].arrayValue
             self?.tableView.reloadData()
             self?.checkNext()
-        }, failure: { [weak self] code, msg in
+        }, failure: { code, msg in
             print("错误 \(code) \(msg ?? "NoMsg")")
             ProgressHUD.showFailed(msg ?? "Fail", interaction: false, delay: 3)
         })
     }
     private func checkNext() {
-        self?.nextButton.ishid $0.backgroundColor = UIColor(hex: "#168991") // #AAAAAA
+        nextButton.isHidden = dataArray.count == 0
+        nextButton.backgroundColor = UIColor(hex: "#AAAAAA")
+        nextButton.isEnabled = false
+        // guard dataArray.first?["status"].string == "1" else { return }
+        nextButton.backgroundColor = UIColor(hex: "#168991")
+        nextButton.isEnabled = true
     }
     @objc private func nextAction() {
-        
+        let vc = DDInstallationVC()
+        vc.sensorJson = dataArray.first
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 
@@ -111,9 +123,9 @@ extension DDVerifyVC: UITableViewDelegate, UITableViewDataSource {
         tableView.deselectRow(at: indexPath, animated: true)
         let json = dataArray[indexPath.row]
         //guard json["status"].stringValue == "1" else { return }
-        let vc = DDInstallationVC()
-        vc.sensorJson = dataArray[indexPath.row]
-        navigationController?.pushViewController(vc, animated: true)
+//        let vc = DDInstallationVC()
+//        vc.sensorJson = dataArray[indexPath.row]
+//        navigationController?.pushViewController(vc, animated: true)
     }
 }
 
