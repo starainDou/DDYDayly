@@ -28,13 +28,21 @@
 		034FB7982998FFE0003985AD /* DDAlertDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034FB7972998FFE0003985AD /* DDAlertDetailVC.swift */; };
 		034FB79E2999252F003985AD /* DDAlertDetailSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034FB79D2999252F003985AD /* DDAlertDetailSection.swift */; };
 		034FB7A029992563003985AD /* DDAlertDetailItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034FB79F29992563003985AD /* DDAlertDetailItem.swift */; };
+		041032D0299B3EE700542586 /* DDSummaryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041032CF299B3EE700542586 /* DDSummaryVC.swift */; };
+		041032D2299B4E9300542586 /* DDSammarySubVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041032D1299B4E9300542586 /* DDSammarySubVC.swift */; };
+		041032D4299B4EAE00542586 /* DDSammaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041032D3299B4EAE00542586 /* DDSammaryCell.swift */; };
+		041032D6299B506B00542586 /* DDSummaryHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041032D5299B506B00542586 /* DDSummaryHeader.swift */; };
+		041032D8299B51BE00542586 /* DDSummarySectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041032D7299B51BE00542586 /* DDSummarySectionHeader.swift */; };
+		041032DC299B54E800542586 /* DDSummarySectionFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041032DB299B54E800542586 /* DDSummarySectionFooter.swift */; };
+		041032DE299B61C400542586 /* Local.json in Resources */ = {isa = PBXBuildFile; fileRef = 041032DD299B61C400542586 /* Local.json */; };
+		041032E1299B70EB00542586 /* LiftDetail.json in Resources */ = {isa = PBXBuildFile; fileRef = 041032E0299B70EB00542586 /* LiftDetail.json */; };
+		041032E6299B751800542586 /* GetLiftsByStatus.json in Resources */ = {isa = PBXBuildFile; fileRef = 041032E5299B751800542586 /* GetLiftsByStatus.json */; };
 		0483282F297686B1002BE7B2 /* DDMaintenanceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0483282E297686B1002BE7B2 /* DDMaintenanceVC.swift */; };
 		0483283429768A78002BE7B2 /* DDMaintenanceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0483283329768A78002BE7B2 /* DDMaintenanceCell.swift */; };
 		048328382976B738002BE7B2 /* DDMaintenanceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048328372976B738002BE7B2 /* DDMaintenanceModel.swift */; };
 		048328752976D578002BE7B2 /* DDHomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048328702976D578002BE7B2 /* DDHomeModel.swift */; };
 		048328762976D578002BE7B2 /* DDHomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048328722976D578002BE7B2 /* DDHomeCell.swift */; };
 		048328772976D578002BE7B2 /* DDHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048328742976D578002BE7B2 /* DDHomeVC.swift */; };
-		0483287F2976D961002BE7B2 /* DDUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0483287E2976D961002BE7B2 /* DDUserModel.swift */; };
 		048328812976DD1F002BE7B2 /* DDHomeHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048328802976DD1F002BE7B2 /* DDHomeHeaderView.swift */; };
 		048328832976DF5E002BE7B2 /* DDScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048328822976DF5E002BE7B2 /* DDScreen.swift */; };
 		048328852977956E002BE7B2 /* DDNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048328842977956E002BE7B2 /* DDNavigationBar.swift */; };
@@ -86,7 +94,6 @@
 		04E008792976534F00EE0DBF /* ElevatorInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 04E008782976534F00EE0DBF /* ElevatorInfo.plist */; };
 		04E6FC0C2990C2F200666FE6 /* DDInstallSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E6FC0B2990C2F200666FE6 /* DDInstallSearchVC.swift */; };
 		04E6FC0E2990C38800666FE6 /* DDInstallSubVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E6FC0D2990C38800666FE6 /* DDInstallSubVC.swift */; };
-		04E6FC122990D99200666FE6 /* DDSensorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E6FC112990D99200666FE6 /* DDSensorModel.swift */; };
 		04E6FC152990E1A900666FE6 /* DDVerifyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E6FC142990E1A900666FE6 /* DDVerifyModel.swift */; };
 		04E6FC172990E33900666FE6 /* DDInstallSegmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E6FC162990E33900666FE6 /* DDInstallSegmentView.swift */; };
 		04F559FC29876B8600EF237D /* DDAppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F559FB29876B8600EF237D /* DDAppInfo.swift */; };
@@ -119,13 +126,21 @@
 		034FB7972998FFE0003985AD /* DDAlertDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDAlertDetailVC.swift; sourceTree = "<group>"; };
 		034FB79D2999252F003985AD /* DDAlertDetailSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDAlertDetailSection.swift; sourceTree = "<group>"; };
 		034FB79F29992563003985AD /* DDAlertDetailItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDAlertDetailItem.swift; sourceTree = "<group>"; };
+		041032CF299B3EE700542586 /* DDSummaryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDSummaryVC.swift; sourceTree = "<group>"; };
+		041032D1299B4E9300542586 /* DDSammarySubVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDSammarySubVC.swift; sourceTree = "<group>"; };
+		041032D3299B4EAE00542586 /* DDSammaryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDSammaryCell.swift; sourceTree = "<group>"; };
+		041032D5299B506B00542586 /* DDSummaryHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDSummaryHeader.swift; sourceTree = "<group>"; };
+		041032D7299B51BE00542586 /* DDSummarySectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDSummarySectionHeader.swift; sourceTree = "<group>"; };
+		041032DB299B54E800542586 /* DDSummarySectionFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDSummarySectionFooter.swift; sourceTree = "<group>"; };
+		041032DD299B61C400542586 /* Local.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Local.json; sourceTree = "<group>"; };
+		041032E0299B70EB00542586 /* LiftDetail.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = LiftDetail.json; sourceTree = "<group>"; };
+		041032E5299B751800542586 /* GetLiftsByStatus.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = GetLiftsByStatus.json; sourceTree = "<group>"; };
 		0483282E297686B1002BE7B2 /* DDMaintenanceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDMaintenanceVC.swift; sourceTree = "<group>"; };
 		0483283329768A78002BE7B2 /* DDMaintenanceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDMaintenanceCell.swift; sourceTree = "<group>"; };
 		048328372976B738002BE7B2 /* DDMaintenanceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDMaintenanceModel.swift; sourceTree = "<group>"; };
 		048328702976D578002BE7B2 /* DDHomeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DDHomeModel.swift; sourceTree = "<group>"; };
 		048328722976D578002BE7B2 /* DDHomeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DDHomeCell.swift; sourceTree = "<group>"; };
 		048328742976D578002BE7B2 /* DDHomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DDHomeVC.swift; sourceTree = "<group>"; };
-		0483287E2976D961002BE7B2 /* DDUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDUserModel.swift; sourceTree = "<group>"; };
 		048328802976DD1F002BE7B2 /* DDHomeHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDHomeHeaderView.swift; sourceTree = "<group>"; };
 		048328822976DF5E002BE7B2 /* DDScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDScreen.swift; sourceTree = "<group>"; };
 		048328842977956E002BE7B2 /* DDNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDNavigationBar.swift; sourceTree = "<group>"; };
@@ -178,7 +193,6 @@
 		04E008782976534F00EE0DBF /* ElevatorInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ElevatorInfo.plist; sourceTree = "<group>"; };
 		04E6FC0B2990C2F200666FE6 /* DDInstallSearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDInstallSearchVC.swift; sourceTree = "<group>"; };
 		04E6FC0D2990C38800666FE6 /* DDInstallSubVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDInstallSubVC.swift; sourceTree = "<group>"; };
-		04E6FC112990D99200666FE6 /* DDSensorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDSensorModel.swift; sourceTree = "<group>"; };
 		04E6FC142990E1A900666FE6 /* DDVerifyModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DDVerifyModel.swift; sourceTree = "<group>"; };
 		04E6FC162990E33900666FE6 /* DDInstallSegmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDInstallSegmentView.swift; sourceTree = "<group>"; };
 		04F559FB29876B8600EF237D /* DDAppInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDAppInfo.swift; sourceTree = "<group>"; };
@@ -206,6 +220,9 @@
 		034FB76829850BE0003985AD /* Installation */ = {
 			isa = PBXGroup;
 			children = (
+				041032E4299B749E00542586 /* LiftsBystatus */,
+				041032E3299B747000542586 /* VerifyDetail */,
+				041032E2299B745300542586 /* Verify */,
 				04E6FC132990E1A900666FE6 /* Model */,
 				034FB76B29850C4C003985AD /* Controller */,
 				034FB76929850C3E003985AD /* View */,
@@ -216,21 +233,13 @@
 		034FB76929850C3E003985AD /* View */ = {
 			isa = PBXGroup;
 			children = (
-				034FB76C29850D6F003985AD /* DDVerifyCell.swift */,
-				034FB77629864563003985AD /* DDInstallationCell.swift */,
 				034FB778298653C9003985AD /* DDLabelCell.swift */,
-				04F559FF29879DB300EF237D /* DDVerifyDetailTopView.swift */,
-				04F55A0129879DC400EF237D /* DDVerifyDetailMapView.swift */,
-				04F55A0329879DDB00EF237D /* DDVerifyDetailInfoView.swift */,
-				04CE09C82988005400795592 /* DDDetailItemView.swift */,
-				04CE0A142988D32900795592 /* DDDetailButtonView.swift */,
-				04CE0A162988D4D700795592 /* DDDetailMenuView.swift */,
-				04CE0A182988D97400795592 /* DDDetailInputView.swift */,
 				04CE0A1A2988E06A00795592 /* DDInstallImageCell.swift */,
 				04CE0A1E2988FEBE00795592 /* DDInstallImageSectionView.swift */,
 				04CE0A242989314000795592 /* DDCommisionHeader.swift */,
 				04CE0A28298931F700795592 /* DDCommisionFooter.swift */,
 				04E6FC162990E33900666FE6 /* DDInstallSegmentView.swift */,
+				041032E0299B70EB00542586 /* LiftDetail.json */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -238,15 +247,10 @@
 		034FB76B29850C4C003985AD /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				034FB76E29850D8F003985AD /* DDVerifyVC.swift */,
 				034FB77A29866AE9003985AD /* DDLabelVC.swift */,
 				034FB77C29869301003985AD /* DDImageEditVC.swift */,
-				04F559FD2987969300EF237D /* DDVerifyDetailVC.swift */,
 				04CE0A1C2988E08100795592 /* DDInstallImageVC.swift */,
 				04CE0A22298930E500795592 /* DDCommisionVC.swift */,
-				04CE0A26298931A800795592 /* DDInstallationVC.swift */,
-				04E6FC0B2990C2F200666FE6 /* DDInstallSearchVC.swift */,
-				04E6FC0D2990C38800666FE6 /* DDInstallSubVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -287,9 +291,60 @@
 			path = AlertDetail;
 			sourceTree = "<group>";
 		};
+		041032CB299B3B8200542586 /* Summary */ = {
+			isa = PBXGroup;
+			children = (
+				041032DD299B61C400542586 /* Local.json */,
+				041032CF299B3EE700542586 /* DDSummaryVC.swift */,
+				041032D1299B4E9300542586 /* DDSammarySubVC.swift */,
+				041032D3299B4EAE00542586 /* DDSammaryCell.swift */,
+				041032D5299B506B00542586 /* DDSummaryHeader.swift */,
+				041032D7299B51BE00542586 /* DDSummarySectionHeader.swift */,
+				041032DB299B54E800542586 /* DDSummarySectionFooter.swift */,
+			);
+			path = Summary;
+			sourceTree = "<group>";
+		};
+		041032E2299B745300542586 /* Verify */ = {
+			isa = PBXGroup;
+			children = (
+				034FB76E29850D8F003985AD /* DDVerifyVC.swift */,
+				034FB76C29850D6F003985AD /* DDVerifyCell.swift */,
+			);
+			path = Verify;
+			sourceTree = "<group>";
+		};
+		041032E3299B747000542586 /* VerifyDetail */ = {
+			isa = PBXGroup;
+			children = (
+				04F559FD2987969300EF237D /* DDVerifyDetailVC.swift */,
+				04F559FF29879DB300EF237D /* DDVerifyDetailTopView.swift */,
+				04F55A0129879DC400EF237D /* DDVerifyDetailMapView.swift */,
+				04F55A0329879DDB00EF237D /* DDVerifyDetailInfoView.swift */,
+				04CE09C82988005400795592 /* DDDetailItemView.swift */,
+				04CE0A142988D32900795592 /* DDDetailButtonView.swift */,
+				04CE0A162988D4D700795592 /* DDDetailMenuView.swift */,
+				04CE0A182988D97400795592 /* DDDetailInputView.swift */,
+			);
+			path = VerifyDetail;
+			sourceTree = "<group>";
+		};
+		041032E4299B749E00542586 /* LiftsBystatus */ = {
+			isa = PBXGroup;
+			children = (
+				04CE0A26298931A800795592 /* DDInstallationVC.swift */,
+				04E6FC0B2990C2F200666FE6 /* DDInstallSearchVC.swift */,
+				04E6FC0D2990C38800666FE6 /* DDInstallSubVC.swift */,
+				034FB77629864563003985AD /* DDInstallationCell.swift */,
+				041032E5299B751800542586 /* GetLiftsByStatus.json */,
+			);
+			path = LiftsBystatus;
+			sourceTree = "<group>";
+		};
 		0483282D2976864C002BE7B2 /* Maintenance */ = {
 			isa = PBXGroup;
 			children = (
+				041032CB299B3B8200542586 /* Summary */,
 				04832832297688EA002BE7B2 /* View */,
 				04832831297688E2002BE7B2 /* Model */,
 				04832830297688DC002BE7B2 /* Controller */,
@@ -363,13 +418,11 @@
 			isa = PBXGroup;
 			children = (
 				048328702976D578002BE7B2 /* DDHomeModel.swift */,
-				0483287E2976D961002BE7B2 /* DDUserModel.swift */,
 				048328822976DF5E002BE7B2 /* DDScreen.swift */,
 				034FB774298644B5003985AD /* DDLiftModel.swift */,
 				04F559FB29876B8600EF237D /* DDAppInfo.swift */,
 				034FB782298FEE11003985AD /* DDShared.swift */,
 				034FB78429900781003985AD /* DDEvent.swift */,
-				04E6FC112990D99200666FE6 /* DDSensorModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -411,8 +464,8 @@
 		04E008482975134B00EE0DBF = {
 			isa = PBXGroup;
 			children = (
-				034FB78629978F46003985AD /* Engineer */,
 				034FB76829850BE0003985AD /* Installation */,
+				034FB78629978F46003985AD /* Engineer */,
 				04832899297805B2002BE7B2 /* QRCode */,
 				048328782976D7A6002BE7B2 /* Common */,
 				0483282D2976864C002BE7B2 /* Maintenance */,
@@ -555,10 +608,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				04E008612975134C00EE0DBF /* LaunchScreen.storyboard in Resources */,
+				041032E1299B70EB00542586 /* LiftDetail.json in Resources */,
 				04E0086F2975879D00EE0DBF /* LaunchScreen.png in Resources */,
 				04E008792976534F00EE0DBF /* ElevatorInfo.plist in Resources */,
 				04E0086C2975846C00EE0DBF /* Resources.xcassets in Resources */,
+				041032E6299B751800542586 /* GetLiftsByStatus.json in Resources */,
 				04E0085E2975134C00EE0DBF /* Assets.xcassets in Resources */,
+				041032DE299B61C400542586 /* Local.json in Resources */,
 				04E0085C2975134B00EE0DBF /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -615,19 +671,21 @@
 				04E6FC0C2990C2F200666FE6 /* DDInstallSearchVC.swift in Sources */,
 				034FB77F298F8AEC003985AD /* DDMainteDetail3Cell.swift in Sources */,
 				034FB779298653C9003985AD /* DDLabelCell.swift in Sources */,
-				0483287F2976D961002BE7B2 /* DDUserModel.swift in Sources */,
 				034FB781298F8B06003985AD /* DDMainteDetail3ItemCell.swift in Sources */,
 				04E6FC172990E33900666FE6 /* DDInstallSegmentView.swift in Sources */,
 				04CE0A27298931A800795592 /* DDInstallationVC.swift in Sources */,
 				04CE0A192988D97400795592 /* DDDetailInputView.swift in Sources */,
 				048328832976DF5E002BE7B2 /* DDScreen.swift in Sources */,
 				0483289B297805EB002BE7B2 /* DDQRCodeView.swift in Sources */,
+				041032DC299B54E800542586 /* DDSummarySectionFooter.swift in Sources */,
 				034FB76F29850D8F003985AD /* DDVerifyVC.swift in Sources */,
 				034FB7912997A9E0003985AD /* DDEngineerSearchHeader.swift in Sources */,
+				041032D6299B506B00542586 /* DDSummaryHeader.swift in Sources */,
 				04E6FC0E2990C38800666FE6 /* DDInstallSubVC.swift in Sources */,
 				04CE0A29298931F700795592 /* DDCommisionFooter.swift in Sources */,
 				04CE0A1B2988E06A00795592 /* DDInstallImageCell.swift in Sources */,
 				04CE0A41298A735E00795592 /* DDMainteDetail2VC.swift in Sources */,
+				041032D2299B4E9300542586 /* DDSammarySubVC.swift in Sources */,
 				034FB78B29978FDB003985AD /* DDEngineerSubVC.swift in Sources */,
 				04832898297802E7002BE7B2 /* DDQRCodeVC.swift in Sources */,
 				034FB78F29979329003985AD /* DDEngineerHeader.swift in Sources */,
@@ -647,6 +705,7 @@
 				04D80A852999FBA30047DA15 /* DDDashLineView.swift in Sources */,
 				04CE0A4B298AA2ED00795592 /* DDMainteStateView.swift in Sources */,
 				04F559FE2987969300EF237D /* DDVerifyDetailVC.swift in Sources */,
+				041032D0299B3EE700542586 /* DDSummaryVC.swift in Sources */,
 				04CE0A152988D32900795592 /* DDDetailButtonView.swift in Sources */,
 				04F559FC29876B8600EF237D /* DDAppInfo.swift in Sources */,
 				034FB7982998FFE0003985AD /* DDAlertDetailVC.swift in Sources */,
@@ -667,12 +726,13 @@
 				0483282F297686B1002BE7B2 /* DDMaintenanceVC.swift in Sources */,
 				034FB77D29869301003985AD /* DDImageEditVC.swift in Sources */,
 				034FB775298644B5003985AD /* DDLiftModel.swift in Sources */,
+				041032D8299B51BE00542586 /* DDSummarySectionHeader.swift in Sources */,
 				048328762976D578002BE7B2 /* DDHomeCell.swift in Sources */,
 				04CE0A51298B961B00795592 /* DDMainteDetail2Header.swift in Sources */,
 				04CE0A2F298A1BC900795592 /* DDMainteItemInfoView.swift in Sources */,
 				04D80A88299A15C60047DA15 /* DDAlertUpdateVC.swift in Sources */,
+				041032D4299B4EAE00542586 /* DDSammaryCell.swift in Sources */,
 				04CE0A4F298B849900795592 /* DDMainteDetail2Cell.swift in Sources */,
-				04E6FC122990D99200666FE6 /* DDSensorModel.swift in Sources */,
 				048328752976D578002BE7B2 /* DDHomeModel.swift in Sources */,
 				04CE0A3F298A734D00795592 /* DDMainteDetail1VC.swift in Sources */,
 				0483288E2977C90D002BE7B2 /* DDNetPrint.swift in Sources */,

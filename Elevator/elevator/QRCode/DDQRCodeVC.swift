@@ -9,8 +9,11 @@ import UIKit
 import IQKeyboardManagerSwift
 import DDYQRCode
 import ProgressHUD
+import SwiftyJSON
 
 class DDQRCodeVC: UIViewController {
+    
+    public var scanBlock: ((JSON) -> Void)?
     
     private lazy var qrcodeView: DDQRCodeView = DDQRCodeView()
     
@@ -82,12 +85,19 @@ class DDQRCodeVC: UIViewController {
     
     @objc fileprivate func confirmAction() {
         view.endEditing(true)
-        if let text = qrcodeView.inputTextField.text, !text.isEmpty {
-            let vc = DDVerifyVC()
-            vc.sensorModel = DDSensorModel(text)
-            navigationController?.pushViewController(vc, animated: true)
-        } else {
+        guard let text = qrcodeView.inputTextField.text, !text.isEmpty else {
             ProgressHUD.showFailed("Please enter the number", interaction: false, delay: 3)
+            return;
+        }
+        let lastTime = DateFormatter().then { $0.dateFormat = "MM/dd/yyyy HH:mm:ss" }.string(from: Date())
+        let json = JSON(["deviceId": text, "timeStamp": DDAppInfo.timeStamp(), "status":"0", "lastUpdateTime": lastTime])
+        if (scanBlock != nil) {
+            scanBlock?(json)
+            backAction()
+        } else {
+            let vc = DDVerifyVC()
+            vc.sensorJson = json
+            navigationController?.pushViewController(vc, animated: true)
         }
     }
     

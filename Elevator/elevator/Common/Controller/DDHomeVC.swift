@@ -12,7 +12,9 @@ import DDYSwiftyExtension
 class DDHomeVC: UIViewController {
     
     private lazy var headerView: DDHomeHeaderView = DDHomeHeaderView().then {
-        $0.avatarView.ddy_tap(self, action: #selector(logout))
+        $0.avatarView.ddy_longPress(self, action: #selector(logoutAction), gestureBlock: { gesture in
+            gesture.minimumPressDuration = 3
+        })
     }
     
     private lazy var tableView: UITableView = UITableView().then {
@@ -27,6 +29,16 @@ class DDHomeVC: UIViewController {
         $0.ddy_register(cellClass: DDHomeCell.self)
     }
     
+    private lazy var logoutButton: UIButton = UIButton(type: .custom).then {
+        $0.backgroundColor = UIColor(hex: "#168991")
+        $0.layer.cornerRadius = 8
+        $0.layer.masksToBounds = true
+        $0.setTitle("Logout", for: .normal)
+        $0.setTitleColor(UIColor(hex: "#FFFFFF"), for: .normal)
+        $0.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .bold)
+        $0.addTarget(self, action: #selector(logoutAction), for: .touchUpInside)
+    }
+    
     private lazy var dataArray: [DDHomeModel] = []
 
     override func viewWillAppear(_ animated: Bool) {
@@ -36,7 +48,7 @@ class DDHomeVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.addSubviews(headerView, tableView)
+        view.addSubviews(headerView, tableView, logoutButton)
         setViewConstraints()
         loadData()
     }
@@ -48,26 +60,47 @@ class DDHomeVC: UIViewController {
         }
         tableView.snp.makeConstraints { make in
             make.top.equalTo(headerView.snp.bottom)
-            make.leading.trailing.bottom.equalToSuperview()
+            make.leading.trailing.equalToSuperview()
+            make.bottom.equalTo(logoutButton.snp.top).offset(-15)
+        }
+        logoutButton.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(40)
+            make.height.equalTo(44)
+            make.bottom.equalToSuperview().inset(20)
         }
     }
     
     public func loadData() {
-        headerView.nameLabel.text = "Welcome," + (DDShared.shared.user?.username ?? "-")
-        headerView.roleLabel.text = DDShared.shared.user?.rolename ?? "-"
+        headerView.nameLabel.text = "Welcome," + (DDShared.shared.json?["user"]["username"].string ?? "-")
+        headerView.roleLabel.text = DDShared.shared.json?["user"]["rolename"].string ?? "-"
         dataArray = DDShared.shared.homeItems
         tableView.reloadData()
     }
     
-    @objc private func logout() {
+    @objc private func logoutAction() {
         let alert = UIAlertController(title: "Tip", message: "Are you sure to quit?", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action) in
-            DDShared.shared.user = nil
-            DDShared.shared.token = ""
+            DDShared.shared.json = ""
             DDShared.shared.event.logInOrOut.onNext(false)
         }))
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    private func logOut() {
+        guard let id = DDShared.shared.json?["user"]["id"].stringValue else { return delayLogout() }
+        perform(#selector(delayLogout), with: nil, afterDelay: 0.6)
+        DDGet(target: .doApplogout(id: id), success: { [weak self] result, msg in
+            self?.delayLogout()
+        }, failure: { [weak self] code, msg in
+            self?.delayLogout()
+        })
+    }
+    
+    @objc private func delayLogout() {
+        NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(delayLogout), object: nil)
+        DDShared.shared.json = ""
+        DDShared.shared.event.logInOrOut.onNext(false)
     }
 }
 

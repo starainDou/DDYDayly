@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class DDVerifyDetailInfoView: UIView {
     
@@ -246,7 +247,31 @@ class DDVerifyDetailInfoView: UIView {
         }
     }
     
-    public func loadData(_ model: DDLiftModel?) {
-        
+    public func loadData(_ json: JSON?)  {
+        numberView.textField.text = json?["liftnumber"].stringValue
+        brandView.textField.text = json?["brand"].stringValue
+        dateView.textLabel.text = json?[""].stringValue
+        addressView.textLabel.text = json?[""].stringValue
+        modelView.textLabel.text = json?[""].stringValue
+        planView.textLabel.text = json?[""].stringValue
+        sensorView.textLabel.text = json?[""].stringValue
+        landingView.textLabel.text = json?[""].stringValue
+        termView.textField.text = json?[""].stringValue
+        profileView.textView.text = json?[""].stringValue
+        locationView.textField.text = json?[""].stringValue
+        tenantView.textField.text = json?[""].stringValue
+        capacityView.textField.text = json?[""].stringValue
+        ropesView.textField.text = json?[""].stringValue
+        ropingView.textLabel.text = json?[""].stringValue
+        doorView.textLabel.text = json?[""].stringValue
+        controlView.textLabel.text = json?[""].stringValue
+        codeView.textLabel.text = json?[""].stringValue
+        speedView.textField.text = json?[""].stringValue
+        driveView.textField.text = json?[""].stringValue
+        roomView.textField.text = json?[""].stringValue
+        shaftView.textLabel.text = json?[""].stringValue
+        zoneView.textLabel.text = json?[""].stringValue
+        dewingView.textView.text = json?[""].stringValue
+        unitView.textView.text = json?[""].stringValue
     }
 }

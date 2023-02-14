@@ -27,9 +27,9 @@ class DDInstallSubVC: UIViewController {
         $0.keyboardDismissMode = .onDrag
     }
     
-    private(set) lazy var dataArray: [DDLiftModel] = []
+    private(set) lazy var dataArray: [JSON] = []
     
-    var tagIndex: Int = 0;
+    var tagIndex: Int = 0
     
     var page: Int = 1
     
@@ -56,18 +56,19 @@ class DDInstallSubVC: UIViewController {
                 if (self.page == 1) {
                     self.dataArray = []
                 }
-                self.dataArray += JSON(result)["data"]["rows"].arrayValue.map { DDLiftModel(liftsBystatus: $0) }
-                if self.dataArray.count < JSON(result)["data"]["total"].intValue {
+                let data = JSON(result)["data"]
+                self.dataArray += data["rows"].arrayValue
+                if self.dataArray.count < data["total"].intValue || data["rows"].arrayValue.count < 20 {
                     self.page += 1
                 }
             }
             self?.tableView.reloadData()
-            self?.tableView.mj_footer?.endRefreshing()
+            self?.tableView.mj_header?.endRefreshing()
             self?.tableView.mj_footer?.endRefreshing()
         }, failure: { [weak self] code, msg in
             print("错误 \(code) \(msg ?? "NoMsg")")
             ProgressHUD.showFailed(msg ?? "Fail", interaction: false, delay: 3)
-            self?.tableView.mj_footer?.endRefreshing()
+            self?.tableView.mj_header?.endRefreshing()
             self?.tableView.mj_footer?.endRefreshing()
         })
     }
@@ -94,13 +95,13 @@ extension DDInstallSubVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         return tableView.ddy_dequeueReusableCell(DDInstallationCell.self, for: indexPath).then {
-            $0.loadData(item: dataArray[indexPath.row], tag: tagIndex)
+            $0.loadData(json: dataArray[indexPath.row], tag: tagIndex)
         }
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let vc = DDVerifyDetailVC()
-        vc.liftModel = dataArray[indexPath.row]
+        vc.liftJson = dataArray[indexPath.row]
         navigationController?.pushViewController(vc, animated: true)
     }
 }

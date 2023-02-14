@@ -9,8 +9,9 @@ import Foundation
 import Moya
 import ProgressHUD
 
-
-internal let DDBaseUrl: String = "https://dev.agiliot.io/cms/api"//https://smartlift.agiliot.io:8443"//"https://dev.agiliot.io:8443"
+// internal let DDBaseUrl: String = "https://dev.agiliot.io/cms/api"
+internal let DDBaseUrl: String = "https://smartlift.agiliot.io/cms/api"
+//https://smartlift.agiliot.io:8443"//"https://dev.agiliot.io:8443"
 
 fileprivate extension TargetType {
     var info: String {

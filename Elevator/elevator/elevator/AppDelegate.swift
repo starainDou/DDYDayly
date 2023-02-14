@@ -52,11 +52,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func checkLogin() {
         let json = JSON(DDShared.shared.getDict(for: "DDLoginData") ?? [:])["data"]
         if json["user"].dictionaryValue.isEmpty || json["token"].stringValue.isEmpty || json["sessionToken"].stringValue.isEmpty  {
-            window?.rootViewController = UINavigationController(rootViewController: DDHomeVC()) // DDLoginViewController()
+            window?.rootViewController = UINavigationController(rootViewController: DDLoginViewController()) // DDLoginViewController()
         } else {
-            DDShared.shared.user = DDUserModel(json["user"])
-            DDShared.shared.token = json["token"].stringValue
-            DDShared.shared.cookie = "iPlanetDirectoryPro=" + json["sessionToken"].stringValue
+            DDShared.shared.json = json
             window?.rootViewController = UINavigationController(rootViewController: DDHomeVC())
         }
     }

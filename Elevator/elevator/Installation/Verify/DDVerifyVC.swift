@@ -9,10 +9,11 @@ import UIKit
 import Then
 import ProgressHUD
 import SwiftyJSON
+import EmptyDataSet_Swift
 
 class DDVerifyVC: UIViewController {
     
-    var sensorModel: DDSensorModel?
+    var sensorJson: JSON?
     
     private lazy var navigationBar: DDNavigationBar = DDNavigationBar().then {
         $0.titleLabel.text = "Verify"
@@ -29,9 +30,21 @@ class DDVerifyVC: UIViewController {
         $0.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
         $0.ddy_zeroPadding()
         $0.ddy_register(cellClass: DDVerifyCell.self)
+        $0.emptyDataSetSource = self
+        $0.emptyDataSetDelegate = self
     }
     
-    private lazy var dataArray: [DDSensorModel] = []
+    private lazy var nextButton: UIButton = UIButton(type: .custom).then {
+        $0.isHidden = true
+        $0.layer.cornerRadius = 8
+        $0.layer.masksToBounds = true
+        $0.setTitle("Logout", for: .normal)
+        $0.setTitleColor(UIColor(hex: "#FFFFFF"), for: .normal)
+        $0.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
+        $0.addTarget(self, action: #selector(nextAction), for: .touchUpInside)
+    }
+    
+    private lazy var dataArray: [JSON] = []
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -61,29 +74,25 @@ class DDVerifyVC: UIViewController {
         navigationController?.popViewController(animated: true)
     }
     
-    private func clickAction(_ item: DDSensorModel) {
-        let vc = DDInstallationVC()
-        vc.sensor = item
-        navigationController?.pushViewController(vc, animated: true)
-    }
-    
     func loadData() {
-        guard let sensor = sensorModel else { return } //  "HWW014600000274"
+        guard let json = sensorJson, let deviceId = json["deviceId"].string else { return } //  "HWW014600000274"
         ProgressHUD.show()
-        DDGet(target: .getSensor(deviceId: sensor.deviceId), success: { [weak self] result, msg in
+        DDGet(target: .getSensor(deviceId: deviceId), success: { [weak self] result, msg in
             print("正确 \(result) \(msg ?? "NoMsg")")
             ProgressHUD.dismiss()
-            self?.dataArray = JSON(result)["data"].arrayValue.map { DDSensorModel($0) }
-            if self?.dataArray.contains(where: { $0.deviceId == sensor.deviceId }) == false {
-                self?.dataArray = [sensor]
-            }
+            self?.dataArray = JSON(result)["data"].arrayValue
             self?.tableView.reloadData()
+            self?.checkNext()
         }, failure: { [weak self] code, msg in
             print("错误 \(code) \(msg ?? "NoMsg")")
-            self?.dataArray = []
-            self?.tableView.reloadData()
             ProgressHUD.showFailed(msg ?? "Fail", interaction: false, delay: 3)
         })
+    }
+    private func checkNext() {
+        self?.nextButton.ishid $0.backgroundColor = UIColor(hex: "#168991") // #AAAAAA
+    }
+    @objc private func nextAction() {
+        
     }
 }
 
@@ -95,11 +104,24 @@ extension DDVerifyVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         return tableView.ddy_dequeueReusableCell(DDVerifyCell.self, for: indexPath).then {
-            $0.loadData(item: dataArray[indexPath.row])
+            $0.loadData(json: dataArray[indexPath.row])
         }
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        clickAction(dataArray[indexPath.row])
+        let json = dataArray[indexPath.row]
+        //guard json["status"].stringValue == "1" else { return }
+        let vc = DDInstallationVC()
+        vc.sensorJson = dataArray[indexPath.row]
+        navigationController?.pushViewController(vc, animated: true)
+    }
+}
+
+extension DDVerifyVC: EmptyDataSetSource, EmptyDataSetDelegate {
+    func image(forEmptyDataSet scrollView: UIScrollView) -> UIImage? {
+        return UIImage(named: "Icon218")
+    }
+    func emptyDataSet(_ scrollView: UIScrollView, didTapView view: UIView) {
+        loadData()
     }
 }

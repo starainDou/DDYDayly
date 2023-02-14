@@ -6,34 +6,57 @@
 //
 
 import UIKit
+@_exported import SwiftyJSON
 
 class DDShared: NSObject {
     static let shared = DDShared()
     private override init() { }
     
-    var user: DDUserModel?
+    var json: JSON?
+    
+    var cookie: String? {
+        get {
+            if let jsonInfo = json {
+                return "iPlanetDirectoryPro=" + jsonInfo["sessionToken"].stringValue
+            } else {
+                return nil
+            }
+        }
+    }
+    
+    var token: String? {
+        get {
+            if let jsonInfo = json {
+                return jsonInfo["token"].stringValue
+            } else {
+                return nil
+            }
+        }
+    }
+    
+    //var user: DDUserModel?
     var lift: DDLiftModel?
-    var cookie: String?
-    var token: String?
+//    var cookie: String?
+//    var token: String?
     
     private(set) lazy var event: DDEvent = DDEvent()
     
     var homeItems: [DDHomeModel] {
         get {
-            if user?.rolename == "Installer@STEE" {
+            if json?["user"]["rolename"].stringValue == "Installer@STEE" {
                 return [DDHomeModel(icon: "Repair", title: "Installtion", vc: DDQRCodeVC())]
-            } else if user?.rolename == "Engineer@STEE" {
+            } else if json?["user"]["rolename"].stringValue == "Engineer@STEE" {
                 return [DDHomeModel(icon: "Elevator", title: "Lift", vc: DDEngineerVC()),
                         DDHomeModel(icon: "History", title: "History", vc: DDQRCodeVC()),
                         DDHomeModel(icon: "FavouriteCyan", title: "Favourite", vc: DDQRCodeVC()),
                         DDHomeModel(icon: "Summary", title: "Summary of Lift Performances", vc: DDQRCodeVC())]
-            } else if user?.rolename == "T&C@STEE" {
+            } else if json?["user"]["rolename"].stringValue == "T&C@STEE" {
                 return [DDHomeModel(icon: "Commissioning", title: "Test&Commissioning", vc: DDQRCodeVC())]
             } else {
                 return [DDHomeModel(icon: "Elevator", title: "Lift", vc: DDEngineerVC()),
-                        DDHomeModel(icon: "History", title: "History", vc: DDQRCodeVC()),
+                        DDHomeModel(icon: "History", title: "History", vc: DDSummaryVC()),
                         DDHomeModel(icon: "FavouriteCyan", title: "Favourite", vc: DDQRCodeVC()),
-                        DDHomeModel(icon: "Summary", title: "Summary of Lift Performances", vc: DDQRCodeVC())]
+                        DDHomeModel(icon: "Summary", title: "Summary of Lift Performances", vc: DDSummaryVC())]
             }
         }
     }
@@ -49,17 +72,10 @@ class DDShared: NSObject {
         let dict = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
         return dict
     }
+    
+    private func dict2String(_ dict: [String: Any]) -> String? {
+        let data = try? JSONSerialization.data(withJSONObject: dict, options: [])
+        let str = String(data: data!, encoding: String.Encoding.utf8)
+        return str
+    }
 }
-/*
- enum Role: String, CaseIterable {
-     case tc = "T&C@STEE"
-     case installer = "Installer@STEE"
-     case engineer = "Engineer@STEE"
- }
- 
- var role: Role {
-     return DDUserModel.Role.init(rawValue: rolename) ?? DDUserModel.Role.tc
- }
- 
- var homeItems: [DDHomeModel] = []
- */

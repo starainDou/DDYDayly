@@ -31,7 +31,7 @@ class DDNavigationBar: UIView {
         backButton.snp.makeConstraints { make in
             make.leading.equalToSuperview().inset(10)
             make.bottom.equalToSuperview().inset(12)
-            make.size.equalTo(CGSize(width: 20, height: 20))
+            make.size.equalTo(CGSize(width: 24, height: 24))
         }
         titleLabel.snp.makeConstraints { make in
             make.leading.greaterThanOrEqualTo(backButton.snp.trailing)

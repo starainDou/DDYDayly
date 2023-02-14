@@ -17,4 +17,13 @@ public extension UIImageView {
         addGestureRecognizer(tap)
         return self
     }
+    
+    @discardableResult
+    func ddy_longPress(_ target: Any?, action: Selector, gestureBlock: ((UILongPressGestureRecognizer) -> Void)? = nil) -> UIImageView {
+        isUserInteractionEnabled = true
+        let longPress = UILongPressGestureRecognizer(target: target, action: action)
+        gestureBlock?(longPress)
+        addGestureRecognizer(longPress)
+        return self
+    }
 }

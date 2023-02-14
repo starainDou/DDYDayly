@@ -14,7 +14,9 @@ class DDAlertUpdateVC: UIViewController {
         $0.backButton.addTarget(self, action: #selector(backAction), for: .touchUpInside)
     }
     
-    private lazy var scrollView: UIScrollView = UIScrollView()
+    private lazy var scrollView: UIScrollView = UIScrollView().then {
+        $0.showsVerticalScrollIndicator = false
+    }
     
     private lazy var backView: UIView = UIView().then {
         $0.backgroundColor = UIColor(hex: "#FFFFFF")

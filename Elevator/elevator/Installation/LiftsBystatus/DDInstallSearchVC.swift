@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class DDInstallSearchVC: UIViewController {
     
@@ -27,7 +28,7 @@ class DDInstallSearchVC: UIViewController {
         $0.keyboardDismissMode = .onDrag
     }
     
-    private lazy var dataArray: [DDLiftModel] = []
+    private lazy var dataArray: [JSON] = []
     
     private lazy var tagIndex: Int = 0
     
@@ -52,7 +53,7 @@ class DDInstallSearchVC: UIViewController {
         navigationController?.popViewController(animated: true)
     }
     
-    func loadData(_ array: [DDLiftModel], tag: Int) {
+    func loadData(_ array: [JSON], tag: Int) {
         dataArray = array
         tagIndex = tag
         tableView.reloadData()
@@ -67,13 +68,13 @@ extension DDInstallSearchVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         return tableView.ddy_dequeueReusableCell(DDInstallationCell.self, for: indexPath).then {
-            $0.loadData(item: dataArray[indexPath.row], tag: tagIndex)
+            $0.loadData(json: dataArray[indexPath.row], tag: tagIndex)
         }
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let vc = DDVerifyDetailVC()
-        vc.liftModel = dataArray[indexPath.row]
+        vc.liftJson = dataArray[indexPath.row]
         navigationController?.pushViewController(vc, animated: true)
     }
 }

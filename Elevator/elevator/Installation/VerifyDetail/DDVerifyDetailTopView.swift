@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class DDVerifyDetailTopView: UIView {
     
@@ -86,10 +87,10 @@ class DDVerifyDetailTopView: UIView {
         }
     }
     
-    public func loadData(_ model: DDLiftModel?) {
-        titleLabel.text = model?.serialnumber
-        addressLabel.text = model?.address
-        timeLabel.text = DDAppInfo.dateStr(model?.createtime)
+    public func loadData(_ json: JSON?) {
+        titleLabel.text = json?["liftNumber"].stringValue
+        addressLabel.text = json?["address"].stringValue
+        timeLabel.text = DDAppInfo.dateStr(json?["createtime"].stringValue)
         wifiLabel.text = "on-line"
     }
 }

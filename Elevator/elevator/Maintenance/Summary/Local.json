@@ -1,0 +1,33 @@
+{
+  "msg" : "The request is successful",
+  "data" : {
+    "total" : 3,
+    "values" : [
+      {
+        "content" : "CHEVALIER",
+        "values" : [
+          {
+            "name" : "Anomalous movement of the car detected. Please check for vandalism in the car, otherwise check alignment of rails and guides, check for worn guides",
+            "value" : 1
+          },
+          {
+            "name" : "Rope tension difference. Please check the rope tensioning.",
+            "value" : 2
+          }
+        ],
+        "issueTotal" : 3
+      },
+      {
+        "content" : "CWSERVICES",
+        "values" : [
+          {
+            "name" : "Device started up",
+            "value" : 1
+          }
+        ],
+        "issueTotal" : 1
+      }
+    ]
+  },
+  "code" : "200"
+}

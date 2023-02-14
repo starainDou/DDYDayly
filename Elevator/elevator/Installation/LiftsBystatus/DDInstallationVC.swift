@@ -7,6 +7,7 @@
 
 import UIKit
 import JXSegmentedView
+import SwiftyJSON
 
 class DDInstallationVC: UIViewController {
     
@@ -18,7 +19,7 @@ class DDInstallationVC: UIViewController {
     private lazy var segmentView: DDInstallSegmentView = DDInstallSegmentView().then {
         $0.backgroundColor = UIColor(hex: "#FFFFFF")
         $0.searchButton.addTarget(self, action: #selector(searchAction), for: .touchUpInside)
-        $0.notInButton.addTarget(self, action: #selector(selectAction(_:)), for: .touchUpInside)
+        $0.notInsButton.addTarget(self, action: #selector(selectAction(_:)), for: .touchUpInside)
         $0.notComButton.addTarget(self, action: #selector(selectAction(_:)), for: .touchUpInside)
         $0.comButton.addTarget(self, action: #selector(selectAction(_:)), for: .touchUpInside)
     }
@@ -41,7 +42,7 @@ class DDInstallationVC: UIViewController {
     
     var currentVC: DDInstallSubVC?
     
-    var sensor: DDSensorModel?
+    var sensorJson: JSON?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,6 +51,7 @@ class DDInstallationVC: UIViewController {
         addChildren(notInsVC, notComVC, comVC)
         setViewConstraints()
         currentVC = notInsVC
+        selectAction(segmentView.notInsButton)
     }
     private func setViewConstraints() {
         navigationBar.snp.makeConstraints { make in
@@ -92,13 +94,17 @@ class DDInstallationVC: UIViewController {
         guard let text = segmentView.textField.text else { return }
         guard let tempVC = currentVC else { return }
         let vc = DDInstallSearchVC()
-        vc.loadData(tempVC.dataArray.filter { $0.number.contains(text)}, tag: tempVC.tagIndex)
+        vc.loadData(tempVC.dataArray.filter {
+            $0["liftnumber"].stringValue.contains(text) || $0["address"].stringValue.contains(text) || $0["brand"].stringValue.contains(text)
+        }, tag: tempVC.tagIndex)
         navigationController?.pushViewController(vc, animated: true)
     }
     @objc private func selectAction(_ button: UIButton) {
+        view.endEditing(true)
         scrollView.setContentOffset(CGPoint(x: DDScreen.width * CGFloat(button.tag), y: 0), animated: true)
-        [segmentView.notInButton, segmentView.notComButton, segmentView.comButton].forEach {
+        [segmentView.notInsButton, segmentView.notComButton, segmentView.comButton].forEach {
             $0.isSelected = ($0.tag == button.tag)
+            $0.backgroundColor = UIColor(hex: ($0.tag == button.tag) ? "#168991" : "#DEDEE0")
             $0.backgroundColor = UIColor(hex: ($0.tag == button.tag) ? "#168991" : "#DEDEE0")
         }
         currentVC = (button.tag == 0) ? notInsVC : (button.tag == 1 ? notComVC : comVC)

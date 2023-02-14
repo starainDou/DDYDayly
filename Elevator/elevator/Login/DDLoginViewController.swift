@@ -104,6 +104,8 @@ class DDLoginViewController: UIViewController {
         view.addSubviews(topImageView, loginLabel, nameTipLabel, nameBackView, nameTextField)
         view.addSubviews(pswdTipLabel, pswdBackView, pswdTextField, pswdShowButton, loginButton)
         setViewConstraints()
+        nameTextField.text = "test123456@STEE"
+        pswdTextField.text = "P@ssw0rd12qw"
     }
     
     private func setViewConstraints() {
@@ -163,8 +165,16 @@ class DDLoginViewController: UIViewController {
     }
     
     @objc private func loginAction(_ button: UIButton) {
+        guard let name = nameTextField.text else {
+            ProgressHUD.showFailed("Please input username", interaction: false, delay: 3)
+            return
+        }
+        guard let pswd = pswdTextField.text else {
+            ProgressHUD.showFailed("Please input password", interaction: false, delay: 3)
+            return
+        }
         ProgressHUD.show()
-        DDPost(target: .doAppLogin(username: "test1234567@STEE", password: "P@ssw0rd12qw"), success: { [weak self] result, msg in
+        DDPost(target: .doAppLogin(username: name, password: pswd), success: { [weak self] result, msg in
             print("正确 \(result) \(msg ?? "NoMsg")")
             ProgressHUD.dismiss()
             DDShared.shared.save(dict: result, for: "DDLoginData")
@@ -177,16 +187,8 @@ class DDLoginViewController: UIViewController {
     
     private func handleData(_ json: JSON) {
         guard json["code"].intValue == 200 else { return }
-        DDShared.shared.user = DDUserModel(json["data"]["user"])
-        DDShared.shared.token = json["data"]["token"].stringValue
-        DDShared.shared.cookie = "iPlanetDirectoryPro=" + json["data"]["sessionToken"].stringValue
+        DDShared.shared.json = json["data"]
         DDShared.shared.event.logInOrOut.onNext(true)
-    }
-    
-    private func dict2String(_ dict: [String: Any]) -> String? {
-        let data = try? JSONSerialization.data(withJSONObject: dict, options: [])
-        let str = String(data: data!, encoding: String.Encoding.utf8)
-        return str
     }
 }
 

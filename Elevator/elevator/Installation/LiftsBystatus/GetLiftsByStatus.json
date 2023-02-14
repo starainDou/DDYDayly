@@ -1,0 +1,48 @@
+{
+  "msg" : "The request is successful",
+  "data" : {
+    "page" : null,
+    "rows" : [
+      {
+        "id" : "fd80ba8cd6834dabb2c20a38782eff3e",
+        "brand" : "SIGMA",
+        "createtime" : null,
+        "liftnumber" : "440054D",
+        "address" : "BLK 54 MARINE TERRACE S440054"
+      },
+      {
+        "id" : "731b221236024bd69c95af41441cb758",
+        "brand" : "IFE",
+        "createtime" : null,
+        "liftnumber" : "823678A",
+        "address" : "BLK 678C PUNGGOL DRIVE S823678"
+      },
+      {
+        "id" : "d0e6df86b3ff4d9a840c0f0d6b480456",
+        "brand" : null,
+        "createtime" : null,
+        "liftnumber" : "123098X",
+        "address" : "BLK 35 MARINE CRESCENT S440035"
+      },
+      {
+        "id" : "03c0199eae434b76acc05938ffd04639",
+        "brand" : "IFE",
+        "createtime" : null,
+        "liftnumber" : "400414A",
+        "address" : "BLK 414 EUNOS ROAD 5 S400414"
+      },
+      {
+        "id" : "04dd4b0c4a9b46e59a3d76a3ab763a8e",
+        "brand" : "EMS",
+        "createtime" : null,
+        "liftnumber" : "565226A",
+        "address" : "BLK 226E ANG MO KIO AVENUE 1 S565226"
+      }
+    ],
+    "listQuery" : null,
+    "columns" : null,
+    "total" : 10433,
+    "jsonData" : null
+  },
+  "code" : "200"
+}

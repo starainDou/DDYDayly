@@ -7,6 +7,7 @@
 
 import UIKit
 import Then
+import SwiftyJSON
 
 class DDVerifyCell: UITableViewCell {
     
@@ -71,9 +72,18 @@ class DDVerifyCell: UITableViewCell {
         }
     }
     
-    public func loadData(item: DDSensorModel) {
-        titleLabel.text = item.deviceId
-        stateLabel.text = item.readyState
-        timeLabel.text = item.lastUpdateTime
+    public func loadData(json: JSON) {
+        titleLabel.text = json["deviceId"].stringValue
+        stateLabel.text = getState(json["status"].stringValue)
+        timeLabel.text = json["lastUpdateTime"].stringValue
+    }
+    private func getState(_ status: String) -> String {
+        if status == "1" {
+            return "Ready"
+        } else if status == "2" {
+            return "Binded Lift"
+        } else {
+            return "Not Ready"
+        }
     }
 }

@@ -7,6 +7,7 @@
 
 import Foundation
 import Then
+import SwiftyJSON
 
 class DDInstallationCell: UITableViewCell {
     
@@ -108,14 +109,12 @@ class DDInstallationCell: UITableViewCell {
         }
     }
     
-    public func loadData(item: DDLiftModel, tag: Int) {
-        titleLabel.text = item.number
-        stateLabel.text = tag == 1 ? "Not Installed" : (tag == 5 ? " Commissioned" : "Not Commissioned")
-        timeLabel.text = DDAppInfo.dateStr(item.createtime)
-        brandLabel.text = item.brand.isEmpty ? "-" : item.brand
-        addressLabel.text = item.address.isEmpty ? "-" : item.address
+    public func loadData(json: JSON, tag: Int) {
+        print("666 \(tag)")
+        titleLabel.text = json["liftnumber"].stringValue
+        stateLabel.text = tag == 0 ? "Not Installed" : (tag == 5 ? " Commissioned" : "Not Commissioned")
+        timeLabel.text = DDAppInfo.dateStr(json["createtime"].stringValue)
+        brandLabel.text = json["brand"].stringValue.isEmpty ? "-" : json["brand"].stringValue
+        addressLabel.text = json["address"].stringValue.isEmpty ? "-" : json["address"].stringValue
     }
 }
-
-
-

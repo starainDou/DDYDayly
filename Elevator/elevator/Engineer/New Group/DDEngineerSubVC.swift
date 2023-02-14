@@ -63,12 +63,12 @@ class DDEngineerSubVC: UIViewController {
 //                }
 //            }
 //            self?.tableView.reloadData()
-//            self?.tableView.mj_footer?.endRefreshing()
+//            self?.tableView.mj_header?.endRefreshing()
 //            self?.tableView.mj_footer?.endRefreshing()
 //        }, failure: { [weak self] code, msg in
 //            print("错误 \(code) \(msg ?? "NoMsg")")
 //            ProgressHUD.showFailed(msg ?? "Fail", interaction: false, delay: 3)
-//            self?.tableView.mj_footer?.endRefreshing()
+//            self?.tableView.mj_header?.endRefreshing()
 //            self?.tableView.mj_footer?.endRefreshing()
 //        })
     }

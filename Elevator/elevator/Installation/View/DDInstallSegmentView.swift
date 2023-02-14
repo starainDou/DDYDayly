@@ -36,7 +36,7 @@ class DDInstallSegmentView: UIView {
         $0.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .regular)
     }
     
-    private(set) lazy var notInButton: UIButton = UIButton(type: .custom).then {
+    private(set) lazy var notInsButton: UIButton = UIButton(type: .custom).then {
         $0.backgroundColor = UIColor(hex: "#168991")
         $0.layer.cornerRadius = 6
         $0.layer.masksToBounds = true
@@ -70,7 +70,7 @@ class DDInstallSegmentView: UIView {
     }
     override init(frame: CGRect) {
         super.init(frame: frame)
-        addSubviews(searchBackView, searchImgView, textField, searchButton, notInButton, notComButton, comButton)
+        addSubviews(searchBackView, searchImgView, textField, searchButton, notInsButton, notComButton, comButton)
         setViewConstraints()
     }
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
@@ -98,7 +98,7 @@ class DDInstallSegmentView: UIView {
             make.width.equalTo(72)
             make.centerY.equalTo(searchBackView)
         }
-        notInButton.snp.makeConstraints { make in
+        notInsButton.snp.makeConstraints { make in
             make.size.equalTo(CGSize(width: 80, height: 28))
             make.top.equalTo(searchBackView.snp.bottom).offset(14)
             make.leading.equalToSuperview().inset(16)
@@ -106,7 +106,7 @@ class DDInstallSegmentView: UIView {
         notComButton.snp.makeConstraints { make in
             make.size.equalTo(CGSize(width: 80, height: 28))
             make.top.equalTo(searchBackView.snp.bottom).offset(14)
-            make.leading.equalTo(notInButton.snp.trailing).offset(8)
+            make.leading.equalTo(notInsButton.snp.trailing).offset(8)
         }
         comButton.snp.makeConstraints { make in
             make.size.equalTo(CGSize(width: 80, height: 28))
