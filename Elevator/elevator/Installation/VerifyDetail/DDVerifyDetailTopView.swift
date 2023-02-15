@@ -66,7 +66,7 @@ class DDVerifyDetailTopView: UIView {
         addressLabel.snp.makeConstraints { make in
             make.leading.equalTo(addressView.snp.trailing).offset(6)
             make.centerY.equalTo(addressView)
-            make.trailing.lessThanOrEqualToSuperview().inset(10)
+            make.trailing.lessThanOrEqualTo(wifiView.snp.leading).offset(-10)
         }
         timeView.snp.makeConstraints { make in
             make.leading.equalToSuperview().inset(18)
@@ -88,7 +88,7 @@ class DDVerifyDetailTopView: UIView {
     }
     
     public func loadData(_ json: JSON?) {
-        titleLabel.text = json?["liftNumber"].stringValue
+        titleLabel.text = json?["liftnumber"].stringValue
         addressLabel.text = json?["address"].stringValue
         timeLabel.text = DDAppInfo.dateStr(json?["createtime"].stringValue)
         wifiLabel.text = "on-line"

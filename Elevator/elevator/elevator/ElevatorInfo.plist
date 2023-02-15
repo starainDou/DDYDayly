@@ -30,11 +30,13 @@
 		<true/>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string>App需要您的同意，才能使用相机，是否同意？</string>
+	<string>App will access your camera,so that you can scan qr code to show your page</string>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>App需要您的同意，才能使用麦克风，是否同意？</string>
+	<string>App wants to use your microphone, do you agree?</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>App需要您的同意，才能访问相册，是否同意？</string>
+	<string>App needs access your photo Album, so that you can save or select image</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>App will access your location, so that you can get current location where you are</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIPrerenderedIcon</key>

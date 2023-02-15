@@ -8,6 +8,10 @@
 import UIKit
 import SwiftyJSON
 import ProgressHUD
+import CoreLocation
+import MapKit
+import CoreAudioTypes
+import DDYSwiftyExtension
 
 class DDVerifyDetailVC: UIViewController {
 
@@ -26,7 +30,18 @@ class DDVerifyDetailVC: UIViewController {
         $0.nextButton.addTarget(self, action: #selector(nextAction), for: .touchUpInside)
     }
     
+    public var sensorJson: JSON?
+    public var liftBaseJson: JSON?
     public var liftJson: JSON?
+    
+    public var liftModelList: [JSON]?
+    public var planList: [JSON]?
+    
+    private lazy var locationManager = CLLocationManager().then {
+        $0.delegate = self
+        $0.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        $0.distanceFilter = 50
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -39,6 +54,7 @@ class DDVerifyDetailVC: UIViewController {
         view.addSubviews(navigationBar, scrollView)
         scrollView.addSubviews(topView, mapView, infoView)
         setViewConstraints()
+        setClosure()
         loadData()
     }
     
@@ -85,16 +101,156 @@ class DDVerifyDetailVC: UIViewController {
     }
     
     private func loadData() {
-        guard let leftId = liftJson?["id"].stringValue else { return }
+        guard let leftId = liftBaseJson?["id"].stringValue else { return }
         DDPost(target: .getLiftDetail(liftId: leftId), success: { [weak self] result, msg in
             print("正确 \(result) \(msg ?? "NoMsg")")
             ProgressHUD.dismiss()
             self?.liftJson = JSON(result)["data"]
+            self?.liftJson[""]
             self?.refreshView()
+            self?.loadLiftModels()
         }, failure: { code, msg in
             print("错误 \(code) \(msg ?? "NoMsg")")
             ProgressHUD.showFailed(msg ?? "Fail", interaction: false, delay: 3)
         })
+    }
+    
+    private func loadLiftModels(_ completion: ((Bool) -> Void)? = nil) {
+        guard let modelId = liftJson?["modelid"].string else {
+            completion?(false)
+            return
+        }
+        DDPost(target: .getLiftModelList(page: "1", limit: "20", modelId: modelId), success: { [weak self] result, msg in
+            print("正确 \(result) \(msg ?? "NoMsg")")
+            self?.liftModelList = JSON(result)["data"]["rows"].arrayValue
+            completion?(true)
+        }, failure: { code, msg in
+            print("错误 \(code) \(msg ?? "NoMsg")")
+            completion?(false)
+        })
+    }
+    private func loadPlans(_ completion: ((Bool) -> Void)? = nil) {
+        guard let planId = liftJson?["planid"].string else {
+            completion?(false)
+            return
+        }
+        DDPost(target: .getPlanList(page: "1", limit: "20", planId: planId), success: { [weak self] result, msg in
+            print("正确 \(result) \(msg ?? "NoMsg")")
+            self?.planList = JSON(result)["data"]["rows"].arrayValue
+            completion?(true)
+        }, failure: { code, msg in
+            print("错误 \(code) \(msg ?? "NoMsg")")
+            completion?(false)
+        })
+    }
+    /*
+     addSubviews(numberView, brandView, dateView, addressView, modelView, planView, sensorView, landingView, termView)
+     addSubviews(profileView, locationView, tenantView, capacityView, ropesView, ropingView, doorView, controlView)
+     addSubviews(codeView, speedView, driveView, roomView, shaftView, zoneView, dewingView, unitView, nextButton)
+     */
+    private func setClosure() {
+        mapView.locationButton.addTarget(self, action: #selector(locationAction), for: .touchUpInside)
+        infoView.dateView.rightButton.addTarget(self, action: #selector(showDatePicker), for: .touchUpInside)
+        infoView.modelView.rightButton.addTarget(self, action: #selector(showLiftModelList), for: .touchUpInside)
+        infoView.planView.rightButton.addTarget(self, action: #selector(showPlanList), for: .touchUpInside)
+        infoView.sensorView.rightButton.addTarget(self, action: #selector(scanQRCode), for: .touchUpInside)
+    }
+}
+
+extension DDVerifyDetailVC: CLLocationManagerDelegate {
+    @objc private func locationAction() {
+        let authState: CLAuthorizationStatus
+        if #available(iOS 14.0, *) {
+            authState = locationManager.authorizationStatus
+        } else {
+            authState = CLLocationManager.authorizationStatus()
+        }
+        switch authState {
+        case .notDetermined:
+            locationManager.requestWhenInUseAuthorization()
+        case .restricted, .denied:
+            ProgressHUD.showFailed("Please open the location authorization in system setting", interaction: false, delay: 3)
+        case .authorizedAlways, .authorizedWhenInUse, .authorized:
+            locationManager.startUpdatingLocation()
+        @unknown default:
+            ProgressHUD.showFailed("Location failed", interaction: false, delay: 3)
+        }
+        locationManager.requestWhenInUseAuthorization()
+    }
+    
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        locationAction()
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        manager.stopUpdatingLocation()
+        guard let coordinate = locations.first?.coordinate else { return }
+        liftJson?["lat"].double = coordinate.latitude.ddy_round(6)
+        liftJson?["lng"].double = coordinate.longitude.ddy_round(6)
+        refreshView()
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        ProgressHUD.showFailed("Location failed", interaction: false, delay: 3)
+    }
+}
+
+extension DDVerifyDetailVC {
+    @objc fileprivate func showDatePicker() {
+        DDDatePicker.show(in: view, sure: { [weak self] time in
+            self?.liftJson?["installtime"].string = time
+            self?.refreshView()
+        })
+    }
+    @objc fileprivate func showLiftModelList() {
+        func showView(_ list: [JSON]) {
+            let array = list.compactMap { $0["modelname"].stringValue }
+            DDListView.show(in: view, array: array) { [weak self] selectStr, index in
+                self?.liftJson?["modelname"].string = selectStr
+                self?.refreshView()
+            }
+        }
+        if let list = liftModelList, !list.isEmpty {
+            showView(list)
+        } else {
+            loadLiftModels { [weak self] result in
+                if result, let list = self?.liftModelList, !list.isEmpty {
+                    showView(list)
+                } else {
+                    ProgressHUD.showFailed("Request lift model list failed", interaction: false, delay: 3)
+                }
+            }
+        }
+    }
+    
+    @objc fileprivate func showPlanList() {
+        func showView(_ list: [JSON]) {
+            let array = list.compactMap { $0["planname"].stringValue }
+            DDListView.show(in: view, array: array) { [weak self] selectStr, index in
+                self?.liftJson?["planname"].string = selectStr
+                self?.refreshView()
+            }
+        }
+        if let list = planList, !list.isEmpty {
+            showView(list)
+        } else {
+            loadPlans { [weak self] result in
+                if result, let list = self?.planList, !list.isEmpty {
+                    showView(list)
+                } else {
+                    ProgressHUD.showFailed("Request plan list failed", interaction: false, delay: 3)
+                }
+            }
+        }
+    }
+    
+    @objc fileprivate func scanQRCode() {
+        let vc = DDQRCodeVC()
+        vc.scanBlock = { [weak self] (json) in
+            self?.liftJson?["deviceid"].string = json["deviceid"].stringValue
+            self?.refreshView()
+        }
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 

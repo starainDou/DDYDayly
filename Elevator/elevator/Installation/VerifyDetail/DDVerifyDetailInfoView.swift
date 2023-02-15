@@ -10,84 +10,85 @@ import SwiftyJSON
 
 class DDVerifyDetailInfoView: UIView {
     
-    private lazy var numberView: DDDetailItemView = DDDetailItemView().then {
+    private(set) lazy var numberView: DDDetailItemView = DDDetailItemView().then {
         $0.titleLabel.text = "Lift Number"
+        $0.textField.isEnabled = false
     }
     
-    private lazy var brandView: DDDetailItemView = DDDetailItemView().then {
+    private(set) lazy var brandView: DDDetailItemView = DDDetailItemView().then {
         $0.titleLabel.text = "Brand"
     }
     
-    private lazy var dateView: DDDetailButtonView = DDDetailButtonView().then {
+    private(set) lazy var dateView: DDDetailButtonView = DDDetailButtonView().then {
         $0.titleLabel.text = "Lift Installation Date"
         $0.rightButton.setImage(UIImage(named: "Calendar"), for: .normal)
     }
     
-    private lazy var addressView: DDDetailMenuView = DDDetailMenuView().then {
+    private(set) lazy var addressView: DDDetailItemView = DDDetailItemView().then {
         $0.titleLabel.text = "Address"
     }
-    private lazy var modelView: DDDetailMenuView = DDDetailMenuView().then {
+    private(set) lazy var modelView: DDDetailMenuView = DDDetailMenuView().then {
         $0.titleLabel.text = "Lift Model"
     }
-    private lazy var planView: DDDetailMenuView = DDDetailMenuView().then {
+    private(set) lazy var planView: DDDetailMenuView = DDDetailMenuView().then {
         $0.titleLabel.text = "Maintenance Plan"
     }
-    private lazy var sensorView: DDDetailButtonView = DDDetailButtonView().then {
+    private(set) lazy var sensorView: DDDetailButtonView = DDDetailButtonView().then {
         $0.titleLabel.text = "Sensor"
         $0.rightButton.setImage(UIImage(named: "QRScan"), for: .normal)
     }
-    private lazy var landingView: DDDetailMenuView = DDDetailMenuView().then {
+    private(set) lazy var landingView: DDDetailMenuView = DDDetailMenuView().then {
         $0.titleLabel.text = "landings"
     }
-    private lazy var termView: DDDetailItemView = DDDetailItemView().then {
+    private(set) lazy var termView: DDDetailItemView = DDDetailItemView().then {
         $0.titleLabel.text = "Contract Term"
     }
-    private lazy var profileView: DDDetailInputView = DDDetailInputView().then {
+    private(set) lazy var profileView: DDDetailInputView = DDDetailInputView().then {
         $0.titleLabel.text = "Description"
     }
-    private lazy var locationView: DDDetailItemView = DDDetailItemView().then {
+    private(set) lazy var locationView: DDDetailItemView = DDDetailItemView().then {
         $0.titleLabel.text = "Location"
     }
-    private lazy var tenantView: DDDetailItemView = DDDetailItemView().then {
+    private(set) lazy var tenantView: DDDetailItemView = DDDetailItemView().then {
         $0.titleLabel.text = "Tenant"
     }
-    private lazy var capacityView: DDDetailItemView = DDDetailItemView().then {
+    private(set) lazy var capacityView: DDDetailItemView = DDDetailItemView().then {
         $0.titleLabel.text = "Person Capacity"
     }
-    private lazy var ropesView: DDDetailItemView = DDDetailItemView().then {
+    private(set) lazy var ropesView: DDDetailItemView = DDDetailItemView().then {
         $0.titleLabel.text = "No of Ropes"
     }
-    private lazy var ropingView: DDDetailMenuView = DDDetailMenuView().then {
+    private(set) lazy var ropingView: DDDetailMenuView = DDDetailMenuView().then {
         $0.titleLabel.text = "Roping System"
     }
-    private lazy var doorView: DDDetailMenuView = DDDetailMenuView().then {
+    private(set) lazy var doorView: DDDetailMenuView = DDDetailMenuView().then {
         $0.titleLabel.text = "Door opening"
     }
-    private lazy var controlView: DDDetailMenuView = DDDetailMenuView().then {
+    private(set) lazy var controlView: DDDetailMenuView = DDDetailMenuView().then {
         $0.titleLabel.text = "Car Control"
     }
-    private lazy var codeView: DDDetailMenuView = DDDetailMenuView().then {
+    private(set) lazy var codeView: DDDetailMenuView = DDDetailMenuView().then {
         $0.titleLabel.text = "Use Code"
     }
-    private lazy var speedView: DDDetailItemView = DDDetailItemView().then {
+    private(set) lazy var speedView: DDDetailItemView = DDDetailItemView().then {
         $0.titleLabel.text = "Speed"
     }
-    private lazy var driveView: DDDetailItemView = DDDetailItemView().then {
+    private(set) lazy var driveView: DDDetailItemView = DDDetailItemView().then {
         $0.titleLabel.text = "Drive Type"
     }
-    private lazy var roomView: DDDetailItemView = DDDetailItemView().then {
+    private(set) lazy var roomView: DDDetailItemView = DDDetailItemView().then {
         $0.titleLabel.text = "Motor Room Location"
     }
-    private lazy var shaftView: DDDetailMenuView = DDDetailMenuView().then {
+    private(set) lazy var shaftView: DDDetailMenuView = DDDetailMenuView().then {
         $0.titleLabel.text = "Type of shaft"
     }
-    private lazy var zoneView: DDDetailMenuView = DDDetailMenuView().then {
+    private(set) lazy var zoneView: DDDetailMenuView = DDDetailMenuView().then {
         $0.titleLabel.text = "Zoning of lift"
     }
-    private lazy var dewingView: DDDetailInputView = DDDetailInputView().then {
+    private(set) lazy var dewingView: DDDetailInputView = DDDetailInputView().then {
         $0.titleLabel.text = "Number of dewing units(DU)"
     }
-    private lazy var unitView: DDDetailInputView = DDDetailInputView().then {
+    private(set) lazy var unitView: DDDetailInputView = DDDetailInputView().then {
         $0.titleLabel.text = "Any other lifts units(DU)"
     }
     
@@ -250,11 +251,11 @@ class DDVerifyDetailInfoView: UIView {
     public func loadData(_ json: JSON?)  {
         numberView.textField.text = json?["liftnumber"].stringValue
         brandView.textField.text = json?["brand"].stringValue
-        dateView.textLabel.text = json?[""].stringValue
-        addressView.textLabel.text = json?[""].stringValue
-        modelView.textLabel.text = json?[""].stringValue
-        planView.textLabel.text = json?[""].stringValue
-        sensorView.textLabel.text = json?[""].stringValue
+        dateView.textLabel.text = DDAppInfo.dateStr(json?["installtime"].stringValue, dateFormat: "MM/dd/yyyy")
+        addressView.textField.text = json?["address"].stringValue
+        modelView.textLabel.text = json?["modelname"].stringValue
+        planView.textLabel.text = json?["planname"].stringValue
+        sensorView.textLabel.text = json?["deviceid"].stringValue
         landingView.textLabel.text = json?[""].stringValue
         termView.textField.text = json?[""].stringValue
         profileView.textView.text = json?[""].stringValue

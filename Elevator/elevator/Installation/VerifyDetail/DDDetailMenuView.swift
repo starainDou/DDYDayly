@@ -70,7 +70,7 @@ class DDDetailMenuView: UIView {
             make.trailing.equalToSuperview().inset(15)
             make.centerY.equalToSuperview()
             make.height.equalTo(26)
-            make.leading.equalTo(self.snp.centerX)
+            make.leading.equalTo(self.snp.centerX).offset(-20)
         }
         textLabel.snp.makeConstraints { make in
             make.leading.equalTo(backView).inset(5)

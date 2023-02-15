@@ -39,6 +39,10 @@ public enum DDPostApi {
     case updateStatusOfAlarm(userid: String, id: String, status: String, desc: String, natureOfTask: String, component: String, task: String, images: String)
     /// 保存图片信息
     case saveMessageOfImage(id: String, type: String, subType: String, liftNumber: String, fileName: String, description: String, before: String)
+    /// 获取 liftModel 列表
+    case getLiftModelList(page: String, limit: String, modelId: String)
+    /// 获取计划列表
+    case getPlanList(page: String, limit: String, planId: String)
 }
 
 extension DDPostApi {
@@ -137,6 +141,14 @@ extension DDPostApi {
             baseParams["description"] = description
             baseParams["before"] = before
             return (DDBaseUrl + "/fileApp/saveMessageOfImage", baseParams)
+        case let .getLiftModelList(page, limit, modelId):
+            baseParams["listQuery"] = ["page": page, "limit": limit]
+            baseParams["ety"] = ["modelid": modelId]
+            return (DDBaseUrl + "/liftmodel/getLiftModelList", baseParams)
+        case let .getPlanList(page, limit, planId):
+            baseParams["listQuery"] = ["page": page, "limit": limit]
+            baseParams["ety"] = ["planid": planId]
+            return (DDBaseUrl + "/plan/getPlanList", baseParams)
         }
     }
 }

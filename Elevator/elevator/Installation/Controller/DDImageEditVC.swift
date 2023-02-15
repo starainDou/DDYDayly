@@ -115,8 +115,7 @@ class DDImageEditVC: UIViewController {
     }
     
     @objc private func confirmAction() {
-        let vc = DDVerifyDetailVC()
-        navigationController?.pushViewController(vc, animated: true)
+        
     }
     
     @objc private func backAction() {

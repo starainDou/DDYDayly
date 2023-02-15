@@ -18,18 +18,25 @@ class DDVerifyDetailMapView: UIView {
         $0.isUserInteractionEnabled = false
     }
     
+    private(set) lazy var locationButton: UIButton = UIButton(type: .custom).then {
+        $0.setImage(UIImage(named: "LocationTarget"), for: .normal)
+        $0.contentEdgeInsets = UIEdgeInsets(top: 3, left: 3, bottom: 3, right: 3)
+    }
+    
     private lazy var coordinateView: DDDetailItemView = DDDetailItemView().then {
         $0.shapeLayer.removeFromSuperlayer()
         $0.titleLabel.text = "Geospatial coordinate"
-        $0.textField.text = "29.21577/142.56"
+        $0.textField.isEnabled = false
     }
+    
+    private lazy var iconView: UIImageView = UIImageView(image: UIImage(named: "UpDown"))
 
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = UIColor(hex: "#FFFFFF")
         layer.masksToBounds = true
         layer.cornerRadius = 8
-        addSubviews(mapView, coordinateView)
+        addSubviews(mapView, coordinateView, iconView, locationButton)
         setViewConstraints()
     }
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
@@ -45,6 +52,16 @@ class DDVerifyDetailMapView: UIView {
             make.bottom.equalToSuperview().inset(12)
             make.height.equalTo(40)
         }
+        iconView.snp.makeConstraints { make in
+            make.center.equalTo(mapView)
+            make.width.height.equalTo(20)
+        }
+        
+        locationButton.snp.makeConstraints { make in
+            make.width.height.equalTo(24)
+            make.bottom.equalTo(mapView.snp.bottom).inset(15)
+            make.trailing.equalTo(mapView.snp.trailing).inset(5)
+        }
     }
     
     public func loadData(_ json: JSON?) {
@@ -54,12 +71,14 @@ class DDVerifyDetailMapView: UIView {
         let regionSpan = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
         let region = MKCoordinateRegion(center: regionCenter, span: regionSpan)
         mapView.setRegion(region, animated: true)
+        coordinateView.textField.text = "\(lat)/\(lng)"
         
-        let annotion = MKPointAnnotation()
-        annotion.coordinate = regionCenter
-        mapView.addAnnotation(annotion)
+//        let annotion = MKPointAnnotation()
+//        annotion.coordinate = regionCenter
+//        mapView.addAnnotation(annotion)
     }
 }
+
 /*
  let lat: Double = Double(model?.lat ?? "0") ?? 0.0
  let lng: Double = Double(model?.lng ?? "0") ?? 0.0

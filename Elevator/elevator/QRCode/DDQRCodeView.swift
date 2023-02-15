@@ -101,7 +101,7 @@ class DDQRCodeView: UIView {
         addSubviews(backButton, lightButton, tipLabel, rectView, inputBackView)
         inputBackView.addSubviews(inputTextField, confirmButton)
         setViewConstraints()
-        inputTextField.text = "HWW111400000503"
+        inputTextField.text = "HWW014600000447"
     }
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
     

@@ -67,7 +67,7 @@ class DDDetailItemView: UIView {
             make.trailing.equalToSuperview().inset(15)
             make.centerY.equalToSuperview()
             make.height.equalTo(26)
-            make.leading.equalTo(self.snp.centerX)
+            make.leading.equalTo(self.snp.centerX).offset(-20)
         }
         textField.snp.makeConstraints { make in
             make.leading.trailing.equalTo(backView).inset(5)

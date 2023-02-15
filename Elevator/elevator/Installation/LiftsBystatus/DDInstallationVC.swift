@@ -30,14 +30,17 @@ class DDInstallationVC: UIViewController {
     
     private lazy var notInsVC: DDInstallSubVC = DDInstallSubVC().then {
         $0.tagIndex = 0
+        $0.sensorJson = sensorJson
     }
     
     private lazy var notComVC: DDInstallSubVC = DDInstallSubVC().then {
         $0.tagIndex = 4
+        $0.sensorJson = sensorJson
     }
     
     private lazy var comVC: DDInstallSubVC = DDInstallSubVC().then {
         $0.tagIndex = 5
+        $0.sensorJson = sensorJson
     }
     
     var currentVC: DDInstallSubVC?
@@ -96,7 +99,7 @@ class DDInstallationVC: UIViewController {
         let vc = DDInstallSearchVC()
         vc.loadData(tempVC.dataArray.filter {
             $0["liftnumber"].stringValue.contains(text) || $0["address"].stringValue.contains(text) || $0["brand"].stringValue.contains(text)
-        }, tag: tempVC.tagIndex)
+        }, tag: tempVC.tagIndex, sensor: sensorJson)
         navigationController?.pushViewController(vc, animated: true)
     }
     @objc private func selectAction(_ button: UIButton) {

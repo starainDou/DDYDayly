@@ -32,6 +32,8 @@ class DDInstallSearchVC: UIViewController {
     
     private lazy var tagIndex: Int = 0
     
+    private var sensorJson: JSON?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubviews(navigationBar, tableView)
@@ -53,9 +55,10 @@ class DDInstallSearchVC: UIViewController {
         navigationController?.popViewController(animated: true)
     }
     
-    func loadData(_ array: [JSON], tag: Int) {
+    func loadData(_ array: [JSON], tag: Int, sensor: JSON?) {
         dataArray = array
         tagIndex = tag
+        sensorJson = sensor
         tableView.reloadData()
     }
 }
@@ -74,7 +77,8 @@ extension DDInstallSearchVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let vc = DDVerifyDetailVC()
-        vc.liftJson = dataArray[indexPath.row]
+        vc.sensorJson = 
+        vc.liftBaseJson = dataArray[indexPath.row]
         navigationController?.pushViewController(vc, animated: true)
     }
 }

@@ -29,6 +29,8 @@ class DDInstallSubVC: UIViewController {
     
     private(set) lazy var dataArray: [JSON] = []
     
+    var sensorJson: JSON?
+    
     var tagIndex: Int = 0
     
     var page: Int = 1
@@ -101,7 +103,8 @@ extension DDInstallSubVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let vc = DDVerifyDetailVC()
-        vc.liftJson = dataArray[indexPath.row]
+        vc.sensorJson = sensorJson
+        vc.liftBaseJson = dataArray[indexPath.row]
         navigationController?.pushViewController(vc, animated: true)
     }
 }

@@ -37,6 +37,9 @@
 		041032DE299B61C400542586 /* Local.json in Resources */ = {isa = PBXBuildFile; fileRef = 041032DD299B61C400542586 /* Local.json */; };
 		041032E1299B70EB00542586 /* LiftDetail.json in Resources */ = {isa = PBXBuildFile; fileRef = 041032E0299B70EB00542586 /* LiftDetail.json */; };
 		041032E6299B751800542586 /* GetLiftsByStatus.json in Resources */ = {isa = PBXBuildFile; fileRef = 041032E5299B751800542586 /* GetLiftsByStatus.json */; };
+		041032ED299CA30100542586 /* DDVerifyDetailMapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041032EC299CA30100542586 /* DDVerifyDetailMapVC.swift */; };
+		0410335A299CD11F00542586 /* DDDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04103359299CD11F00542586 /* DDDatePicker.swift */; };
+		04103373299D085100542586 /* DDListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04103372299D085100542586 /* DDListView.swift */; };
 		0483282F297686B1002BE7B2 /* DDMaintenanceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0483282E297686B1002BE7B2 /* DDMaintenanceVC.swift */; };
 		0483283429768A78002BE7B2 /* DDMaintenanceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0483283329768A78002BE7B2 /* DDMaintenanceCell.swift */; };
 		048328382976B738002BE7B2 /* DDMaintenanceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048328372976B738002BE7B2 /* DDMaintenanceModel.swift */; };
@@ -135,6 +138,9 @@
 		041032DD299B61C400542586 /* Local.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Local.json; sourceTree = "<group>"; };
 		041032E0299B70EB00542586 /* LiftDetail.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = LiftDetail.json; sourceTree = "<group>"; };
 		041032E5299B751800542586 /* GetLiftsByStatus.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = GetLiftsByStatus.json; sourceTree = "<group>"; };
+		041032EC299CA30100542586 /* DDVerifyDetailMapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDVerifyDetailMapVC.swift; sourceTree = "<group>"; };
+		04103359299CD11F00542586 /* DDDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDDatePicker.swift; sourceTree = "<group>"; };
+		04103372299D085100542586 /* DDListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDListView.swift; sourceTree = "<group>"; };
 		0483282E297686B1002BE7B2 /* DDMaintenanceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDMaintenanceVC.swift; sourceTree = "<group>"; };
 		0483283329768A78002BE7B2 /* DDMaintenanceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDMaintenanceCell.swift; sourceTree = "<group>"; };
 		048328372976B738002BE7B2 /* DDMaintenanceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDMaintenanceModel.swift; sourceTree = "<group>"; };
@@ -325,6 +331,9 @@
 				04CE0A142988D32900795592 /* DDDetailButtonView.swift */,
 				04CE0A162988D4D700795592 /* DDDetailMenuView.swift */,
 				04CE0A182988D97400795592 /* DDDetailInputView.swift */,
+				04103359299CD11F00542586 /* DDDatePicker.swift */,
+				04103372299D085100542586 /* DDListView.swift */,
+				041032EC299CA30100542586 /* DDVerifyDetailMapVC.swift */,
 			);
 			path = VerifyDetail;
 			sourceTree = "<group>";
@@ -686,12 +695,15 @@
 				04CE0A1B2988E06A00795592 /* DDInstallImageCell.swift in Sources */,
 				04CE0A41298A735E00795592 /* DDMainteDetail2VC.swift in Sources */,
 				041032D2299B4E9300542586 /* DDSammarySubVC.swift in Sources */,
+				0410335A299CD11F00542586 /* DDDatePicker.swift in Sources */,
 				034FB78B29978FDB003985AD /* DDEngineerSubVC.swift in Sources */,
+				041032ED299CA30100542586 /* DDVerifyDetailMapVC.swift in Sources */,
 				04832898297802E7002BE7B2 /* DDQRCodeVC.swift in Sources */,
 				034FB78F29979329003985AD /* DDEngineerHeader.swift in Sources */,
 				034FB7932998C597003985AD /* DDEngineerSearchVC.swift in Sources */,
 				0483283429768A78002BE7B2 /* DDMaintenanceCell.swift in Sources */,
 				04CE0A2B298A1B9F00795592 /* DDMainteDetailVC.swift in Sources */,
+				04103373299D085100542586 /* DDListView.swift in Sources */,
 				034FB7962998CF25003985AD /* DDAlertDetailHeader.swift in Sources */,
 				04CE0A23298930E500795592 /* DDCommisionVC.swift in Sources */,
 				048328852977956E002BE7B2 /* DDNavigationBar.swift in Sources */,

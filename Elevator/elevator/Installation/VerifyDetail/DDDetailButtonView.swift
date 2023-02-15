@@ -67,7 +67,7 @@ class DDDetailButtonView: UIView {
             make.trailing.equalTo(rightButton.snp.leading).offset(-5)
             make.centerY.equalToSuperview()
             make.height.equalTo(26)
-            make.leading.equalTo(self.snp.centerX)
+            make.leading.equalTo(self.snp.centerX).offset(-20)
         }
         textLabel.snp.makeConstraints { make in
             make.leading.trailing.equalTo(backView).inset(5)
