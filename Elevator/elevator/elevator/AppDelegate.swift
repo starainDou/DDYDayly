@@ -50,7 +50,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     private func checkLogin() {
-        let json = JSON(DDShared.shared.getDict(for: "DDLoginData") ?? [:])["data"]
+        let json = JSON(DDShared.shared.getDict(for: DDShared.LogDataKey) ?? [:])["data"]
         if json["user"].dictionaryValue.isEmpty || json["token"].stringValue.isEmpty || json["sessionToken"].stringValue.isEmpty  {
             window?.rootViewController = UINavigationController(rootViewController: DDLoginViewController()) // DDLoginViewController()
         } else {

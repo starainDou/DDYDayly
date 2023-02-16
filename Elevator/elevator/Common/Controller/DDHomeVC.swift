@@ -8,6 +8,7 @@
 import UIKit
 import SwiftyJSON
 import DDYSwiftyExtension
+import ProgressHUD
 
 class DDHomeVC: UIViewController {
     
@@ -80,16 +81,16 @@ class DDHomeVC: UIViewController {
     @objc private func logoutAction() {
         let alert = UIAlertController(title: "Tip", message: "Are you sure to quit?", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
-        alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action) in
-            DDShared.shared.json = ""
-            DDShared.shared.event.logInOrOut.onNext(false)
+        alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { [weak self] (action) in
+            self?.logOut()
         }))
         self.present(alert, animated: true, completion: nil)
     }
     
     private func logOut() {
+        ProgressHUD.show()
         guard let id = DDShared.shared.json?["user"]["id"].stringValue else { return delayLogout() }
-        perform(#selector(delayLogout), with: nil, afterDelay: 0.6)
+        perform(#selector(delayLogout), with: nil, afterDelay: 1)
         DDGet(target: .doApplogout(id: id), success: { [weak self] result, msg in
             self?.delayLogout()
         }, failure: { [weak self] code, msg in
@@ -98,8 +99,10 @@ class DDHomeVC: UIViewController {
     }
     
     @objc private func delayLogout() {
+        ProgressHUD.dismiss()
         NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(delayLogout), object: nil)
-        DDShared.shared.json = ""
+        DDShared.shared.json = nil
+        DDShared.shared.remove(for: DDShared.LogDataKey)
         DDShared.shared.event.logInOrOut.onNext(false)
     }
 }

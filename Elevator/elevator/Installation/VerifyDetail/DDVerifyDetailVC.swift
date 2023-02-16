@@ -89,15 +89,10 @@ class DDVerifyDetailVC: UIViewController {
         navigationController?.popViewController(animated: true)
     }
     
-    @objc private func nextAction() {
-        let vc = DDInstallImageVC()
-        navigationController?.pushViewController(vc, animated: true)
-    }
-    
     private func refreshView() {
         topView.loadData(liftJson)
         mapView.loadData(liftJson)
-        infoView.loadData(liftJson)
+        infoView.json = liftJson
     }
     
     private func loadData() {
@@ -106,7 +101,9 @@ class DDVerifyDetailVC: UIViewController {
             print("正确 \(result) \(msg ?? "NoMsg")")
             ProgressHUD.dismiss()
             self?.liftJson = JSON(result)["data"]
-            self?.liftJson[""]
+            if self?.liftJson?["deviceid"].string == nil, let deviceid = self?.sensorJson?["deviceId"].string {
+                self?.liftJson?["deviceid"].string = deviceid
+            }
             self?.refreshView()
             self?.loadLiftModels()
         }, failure: { code, msg in
@@ -250,6 +247,17 @@ extension DDVerifyDetailVC {
             self?.liftJson?["deviceid"].string = json["deviceid"].stringValue
             self?.refreshView()
         }
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    
+    
+    @objc fileprivate func nextAction() {
+        guard let deviceId = liftJson?["deviceid"].string else {
+            ProgressHUD.showFailed("Please input sensor", interaction: false , delay: 3)
+            return
+        }
+        let vc = DDInstallImageVC()
         navigationController?.pushViewController(vc, animated: true)
     }
 }

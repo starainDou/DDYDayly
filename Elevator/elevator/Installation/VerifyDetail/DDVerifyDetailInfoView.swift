@@ -17,6 +17,7 @@ class DDVerifyDetailInfoView: UIView {
     
     private(set) lazy var brandView: DDDetailItemView = DDDetailItemView().then {
         $0.titleLabel.text = "Brand"
+        $0.textField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
     }
     
     private(set) lazy var dateView: DDDetailButtonView = DDDetailButtonView().then {
@@ -26,6 +27,7 @@ class DDVerifyDetailInfoView: UIView {
     
     private(set) lazy var addressView: DDDetailItemView = DDDetailItemView().then {
         $0.titleLabel.text = "Address"
+        $0.textField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
     }
     private(set) lazy var modelView: DDDetailMenuView = DDDetailMenuView().then {
         $0.titleLabel.text = "Lift Model"
@@ -42,21 +44,27 @@ class DDVerifyDetailInfoView: UIView {
     }
     private(set) lazy var termView: DDDetailItemView = DDDetailItemView().then {
         $0.titleLabel.text = "Contract Term"
+        $0.textField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
     }
     private(set) lazy var profileView: DDDetailInputView = DDDetailInputView().then {
         $0.titleLabel.text = "Description"
+        $0.textView.delegate = self
     }
     private(set) lazy var locationView: DDDetailItemView = DDDetailItemView().then {
         $0.titleLabel.text = "Location"
+        $0.textField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
     }
     private(set) lazy var tenantView: DDDetailItemView = DDDetailItemView().then {
         $0.titleLabel.text = "Tenant"
+        $0.textField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
     }
     private(set) lazy var capacityView: DDDetailItemView = DDDetailItemView().then {
         $0.titleLabel.text = "Person Capacity"
+        $0.textField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
     }
     private(set) lazy var ropesView: DDDetailItemView = DDDetailItemView().then {
         $0.titleLabel.text = "No of Ropes"
+        $0.textField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
     }
     private(set) lazy var ropingView: DDDetailMenuView = DDDetailMenuView().then {
         $0.titleLabel.text = "Roping System"
@@ -72,12 +80,15 @@ class DDVerifyDetailInfoView: UIView {
     }
     private(set) lazy var speedView: DDDetailItemView = DDDetailItemView().then {
         $0.titleLabel.text = "Speed"
+        $0.textField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
     }
     private(set) lazy var driveView: DDDetailItemView = DDDetailItemView().then {
         $0.titleLabel.text = "Drive Type"
+        $0.textField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
     }
     private(set) lazy var roomView: DDDetailItemView = DDDetailItemView().then {
         $0.titleLabel.text = "Motor Room Location"
+        $0.textField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
     }
     private(set) lazy var shaftView: DDDetailMenuView = DDDetailMenuView().then {
         $0.titleLabel.text = "Type of shaft"
@@ -87,9 +98,11 @@ class DDVerifyDetailInfoView: UIView {
     }
     private(set) lazy var dewingView: DDDetailInputView = DDDetailInputView().then {
         $0.titleLabel.text = "Number of dewing units(DU)"
+        $0.textView.delegate = self
     }
     private(set) lazy var unitView: DDDetailInputView = DDDetailInputView().then {
         $0.titleLabel.text = "Any other lifts units(DU)"
+        $0.textView.delegate = self
     }
     
     private(set) lazy var nextButton: UIButton = UIButton(type: .custom).then {
@@ -100,6 +113,37 @@ class DDVerifyDetailInfoView: UIView {
         $0.setTitleColor(UIColor(hex: "#FFFFFF"), for: .normal)
         $0.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
     }
+    
+    var json: JSON? {
+        didSet {
+            numberView.textField.text = json?["liftnumber"].stringValue
+            brandView.textField.text = json?["brand"].stringValue
+            dateView.textLabel.text = DDAppInfo.dateStr(json?["installtime"].stringValue, dateFormat: "MM/dd/yyyy")
+            addressView.textField.text = json?["address"].stringValue
+            modelView.textLabel.text = json?["modelname"].stringValue
+            planView.textLabel.text = json?["planname"].stringValue
+            sensorView.textLabel.text = json?["deviceid"].stringValue
+            landingView.textLabel.text = json?["landings"].stringValue
+            termView.textField.text = json?["contractterm"].stringValue
+            profileView.textView.text = json?["description"].stringValue
+            locationView.textField.text = json?["location"].stringValue
+            tenantView.textField.text = json?["tenant"].stringValue
+            capacityView.textField.text = json?["person_capacity"].stringValue
+            ropesView.textField.text = json?["no_of_ropes"].stringValue
+            ropingView.textLabel.text = json?["roping_system"].stringValue
+            doorView.textLabel.text = json?["type_of_door_opening"].stringValue
+            controlView.textLabel.text = json?["car_control"].stringValue
+            codeView.textLabel.text = json?["use_code"].stringValue
+            speedView.textField.text = json?["speed"].stringValue
+            driveView.textField.text = json?["drive_type"].stringValue
+            roomView.textField.text = json?["motor_room_location"].stringValue
+            shaftView.textLabel.text = json?["type_of_lift_shaft"].stringValue
+            zoneView.textLabel.text = json?["zoning_of_lift"].stringValue
+            dewingView.textView.text = json?["number_of_dwelling_units"].stringValue
+            unitView.textView.text = json?["any_other_lift_serving_these_du"].stringValue
+        }
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = UIColor(hex: "#FFFFFF")
@@ -148,8 +192,6 @@ class DDVerifyDetailInfoView: UIView {
             make.top.equalTo(planView.snp.bottom)
             make.height.equalTo(45)
         }
-        
-        
         landingView.snp.makeConstraints { make in
             make.trailing.leading.equalToSuperview()
             make.top.equalTo(sensorView.snp.bottom)
@@ -247,32 +289,43 @@ class DDVerifyDetailInfoView: UIView {
             make.bottom.equalToSuperview().inset(25)
         }
     }
+}
+
+extension DDVerifyDetailInfoView: UITextViewDelegate {
     
-    public func loadData(_ json: JSON?)  {
-        numberView.textField.text = json?["liftnumber"].stringValue
-        brandView.textField.text = json?["brand"].stringValue
-        dateView.textLabel.text = DDAppInfo.dateStr(json?["installtime"].stringValue, dateFormat: "MM/dd/yyyy")
-        addressView.textField.text = json?["address"].stringValue
-        modelView.textLabel.text = json?["modelname"].stringValue
-        planView.textLabel.text = json?["planname"].stringValue
-        sensorView.textLabel.text = json?["deviceid"].stringValue
-        landingView.textLabel.text = json?[""].stringValue
-        termView.textField.text = json?[""].stringValue
-        profileView.textView.text = json?[""].stringValue
-        locationView.textField.text = json?[""].stringValue
-        tenantView.textField.text = json?[""].stringValue
-        capacityView.textField.text = json?[""].stringValue
-        ropesView.textField.text = json?[""].stringValue
-        ropingView.textLabel.text = json?[""].stringValue
-        doorView.textLabel.text = json?[""].stringValue
-        controlView.textLabel.text = json?[""].stringValue
-        codeView.textLabel.text = json?[""].stringValue
-        speedView.textField.text = json?[""].stringValue
-        driveView.textField.text = json?[""].stringValue
-        roomView.textField.text = json?[""].stringValue
-        shaftView.textLabel.text = json?[""].stringValue
-        zoneView.textLabel.text = json?[""].stringValue
-        dewingView.textView.text = json?[""].stringValue
-        unitView.textView.text = json?[""].stringValue
+    func textViewDidChange(_ textView: UITextView) {
+        if textView == profileView.textView {
+            json?["description"].string = textView.text ?? ""
+        } else if textView == dewingView.textView {
+            json?["number_of_dwelling_units"].string = textView.text ?? ""
+        } else if textView == unitView.textView {
+            json?["number_of_dwelling_units"].string = textView.text ?? ""
+        }
+    }
+    
+    @objc fileprivate func textFieldDidChange(_ textField: UITextField) {
+        if textField == numberView.textField {
+            json?["liftnumber"].string = textField.text ?? ""
+        } else if textField == brandView.textField {
+            json?["brand"].string = textField.text ?? ""
+        } else if textField == addressView.textField {
+            json?["address"].string = textField.text ?? ""
+        } else if textField == termView.textField {
+            json?["contractterm"].string = textField.text ?? ""
+        } else if textField == locationView.textField {
+            json?["location"].string = textField.text ?? ""
+        } else if textField == tenantView.textField {
+            json?["tenant"].string = textField.text ?? ""
+        } else if textField == capacityView.textField {
+            json?["person_capacity"].string = textField.text ?? ""
+        } else if textField == ropesView.textField {
+            json?["no_of_ropes"].string = textField.text ?? ""
+        } else if textField == speedView.textField {
+            json?["speed"].string = textField.text ?? ""
+        } else if textField == driveView.textField {
+            json?["drive_type"].string = textField.text ?? ""
+        } else if textField == roomView.textField {
+            json?["motor_room_location"].string = textField.text ?? ""
+        }
     }
 }

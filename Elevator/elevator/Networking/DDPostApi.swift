@@ -43,6 +43,12 @@ public enum DDPostApi {
     case getLiftModelList(page: String, limit: String, modelId: String)
     /// 获取计划列表
     case getPlanList(page: String, limit: String, planId: String)
+    /// 修改lift相关信息
+    case updateLiftStatus(liftId: String, status: String)
+    /// 获取 lift KPI
+    case getKpisByLiftId(liftId: String)
+    /// 下载 T&C 报告
+    case getTcReport(liftId: String)
 }
 
 extension DDPostApi {
@@ -149,6 +155,14 @@ extension DDPostApi {
             baseParams["listQuery"] = ["page": page, "limit": limit]
             baseParams["ety"] = ["planid": planId]
             return (DDBaseUrl + "/plan/getPlanList", baseParams)
+        case let .updateLiftStatus(liftId, status):
+            return (DDBaseUrl + "/liftapp/updateLiftStatus/\(liftId)/\(status)", baseParams)
+        case let .getKpisByLiftId(liftId):
+            baseParams["liftnumber"] = liftId
+            return (DDBaseUrl + "/liftmetering/getKpisByLiftId", baseParams)
+        case let .getTcReport(liftId):
+            baseParams["liftnumber"] = liftId
+            return (DDBaseUrl + "/tcreport/getTcReport", baseParams)
         }
     }
 }

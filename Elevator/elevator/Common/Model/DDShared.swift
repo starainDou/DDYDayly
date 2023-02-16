@@ -9,6 +9,8 @@ import UIKit
 @_exported import SwiftyJSON
 
 class DDShared: NSObject {
+    static let LogDataKey: String = "DDLoginData"
+    
     static let shared = DDShared()
     private override init() { }
     
@@ -65,12 +67,18 @@ class DDShared: NSObject {
         let data = try? JSONSerialization.data(withJSONObject: dict, options: [])
         let str = String(data: data!, encoding: String.Encoding.utf8)
         UserDefaults.standard.set(str, forKey: key)
+        UserDefaults.standard.synchronize()
     }
     
     func getDict(for key: String) -> [String: Any]? {
         guard let data = UserDefaults.standard.string(forKey: key)?.data(using: .utf8) else { return nil }
         let dict = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
         return dict
+    }
+    
+    func remove(for key:String) {
+        UserDefaults.standard.removeObject(forKey: key)
+        UserDefaults.standard.synchronize()
     }
     
     private func dict2String(_ dict: [String: Any]) -> String? {

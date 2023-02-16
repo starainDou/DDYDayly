@@ -95,9 +95,14 @@ class DDQRCodeVC: UIViewController {
             scanBlock?(json)
             backAction()
         } else {
-            let vc = DDVerifyVC()
-            vc.sensorJson = json
-            navigationController?.pushViewController(vc, animated: true)
+            let vc = DDVerifyVC().then { $0.sensorJson = json }
+            if var vcs = navigationController?.viewControllers, let index = vcs.firstIndex(of: self) {
+                vcs.remove(at: index)
+                vcs.append(vc)
+                navigationController?.setViewControllers(vcs, animated: true)
+            } else {
+                navigationController?.pushViewController(vc, animated: true)
+            }
         }
     }
     

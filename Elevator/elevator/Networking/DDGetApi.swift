@@ -35,6 +35,10 @@ public enum DDGetApi {
     case getLocationOfAlarms(userId: String, severity: String)
     /// 获取图片
     case getImageOfLift(fileName: String)
+    /// 获取头像
+    case getImages(fileName: String)
+    /// 查询电梯设备的信息
+    case getMessageOfLiftDevice(liftId: String)
 }
 
 extension DDGetApi {
@@ -81,6 +85,10 @@ extension DDGetApi {
             
         case let .getImageOfLift(fileName):
             return (DDBaseUrl + "/fileApp/getImageOfLift/\(fileName)", baseParams)
+        case let .getImages(fileName):
+            return (DDBaseUrl + "/file/getImages/\(fileName)", baseParams)
+        case let.getMessageOfLiftDevice(liftId):
+            return (DDBaseUrl + "/alarmapp/getMessageOfLiftDevice/\(liftId)", baseParams)
         }
     }
 }
