@@ -102,7 +102,7 @@ class DDHomeVC: UIViewController {
         ProgressHUD.dismiss()
         NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(delayLogout), object: nil)
         DDShared.shared.json = nil
-        DDShared.shared.remove(for: DDShared.LogDataKey)
+        DDShared.shared.removeLoginDict()
         DDShared.shared.event.logInOrOut.onNext(false)
     }
 }

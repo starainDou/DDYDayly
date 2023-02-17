@@ -39,8 +39,9 @@ class DDVerifyDetailInfoView: UIView {
         $0.titleLabel.text = "Sensor"
         $0.rightButton.setImage(UIImage(named: "QRScan"), for: .normal)
     }
-    private(set) lazy var landingView: DDDetailMenuView = DDDetailMenuView().then {
+    private(set) lazy var landingView: DDDetailButtonView = DDDetailButtonView().then {
         $0.titleLabel.text = "landings"
+        $0.rightButton.setImage(UIImage(named: "Label"), for: .normal)
     }
     private(set) lazy var termView: DDDetailItemView = DDDetailItemView().then {
         $0.titleLabel.text = "Contract Term"
@@ -131,7 +132,7 @@ class DDVerifyDetailInfoView: UIView {
             capacityView.textField.text = json?["person_capacity"].stringValue
             ropesView.textField.text = json?["no_of_ropes"].stringValue
             ropingView.textLabel.text = json?["roping_system"].stringValue
-            doorView.textLabel.text = json?["type_of_door_opening"].stringValue
+            doorView.textLabel.text = json?["door_opening"].stringValue
             controlView.textLabel.text = json?["car_control"].stringValue
             codeView.textLabel.text = json?["use_code"].stringValue
             speedView.textField.text = json?["speed"].stringValue

@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import CommonCrypto
+import CryptoKit
 
 struct DDAppInfo {
     
@@ -41,10 +43,35 @@ struct DDAppInfo {
         return DateFormatter().then { $0.dateFormat = dateFormat }.string(from: date)
     }
     
-    static func base64Img(_ imageStr:String) -> UIImage? {
-        
+    static func base64ToImage(_ imageStr:String) -> UIImage? {
         guard let data = Data(base64Encoded: imageStr, options: .ignoreUnknownCharacters) else { return nil }
         return UIImage(data: data)
     }
-
+    
+    static func imageToBase64(image: UIImage) -> String? {
+        guard let data = image.jpegData(compressionQuality: 1.0) else { return nil }
+        return data.base64EncodedString(options: .lineLength64Characters)
+    }
+    
+    public static func md5(_ string: String, lower: Bool = true) -> String? {
+        if #available(iOS 13.0, *) {
+            guard let data = string.data(using: .utf8) else { return nil }
+            let digest = Insecure.MD5.hash(data: data)
+            return digest.map { String(format: (lower ? "%02hhx" : "%02hhX"), $0) }.joined()
+        } else {
+            guard let cStr = string.cString(using: .utf8) else { return nil }
+            let buffer = UnsafeMutablePointer<UInt8>.allocate(capacity: Int(CC_MD5_DIGEST_LENGTH))
+            CC_MD5(cStr,(CC_LONG)(strlen(cStr)), buffer)
+            let md5String = NSMutableString();
+            for i in 0 ..< 16 {
+                md5String.appendFormat((lower ? "%02x" : "%02X"), buffer[i])
+            }
+            free(buffer)
+            return md5String as String
+        }
+    }
+    
+    public static var ducumentPath: String {
+        return NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first ?? ""
+    }
 }

@@ -177,7 +177,7 @@ class DDLoginViewController: UIViewController {
         DDPost(target: .doAppLogin(username: name, password: pswd), success: { [weak self] result, msg in
             print("正确 \(result) \(msg ?? "NoMsg")")
             ProgressHUD.dismiss()
-            DDShared.shared.save(dict: result, for: DDShared.LogDataKey)
+            DDShared.shared.saveLoginData(result)
             self?.handleData(JSON(result))
         }, failure: { code, msg in
             print("错误 \(code) \(msg ?? "NoMsg")")

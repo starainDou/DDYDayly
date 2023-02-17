@@ -96,9 +96,9 @@ public func DDPost(target: DDPostApi, success: @escaping DDNetSuccess, failure:@
 }
 
 @discardableResult
-public func DDUpload(target: DDUploadApi, progress: @escaping DDNetProgress, success: @escaping DDNetSuccess, failure:@escaping DDNetFailure) -> Cancellable {
+public func DDUpload(target: DDUploadApi, progress: DDNetProgress? = nil, success: @escaping DDNetSuccess, failure:@escaping DDNetFailure) -> Cancellable {
     DDNetProvider.request(MultiTarget(target), progress: { (responseProgress) in
-        progress(responseProgress.progress)
+        progress?(responseProgress.progress)
     }, completion: { (moyaResult) in
         handleResult(target: target, moyaResult: moyaResult, success: success, failure: failure)
     })

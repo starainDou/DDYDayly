@@ -151,6 +151,13 @@ class DDVerifyDetailVC: UIViewController {
         infoView.modelView.rightButton.addTarget(self, action: #selector(showLiftModelList), for: .touchUpInside)
         infoView.planView.rightButton.addTarget(self, action: #selector(showPlanList), for: .touchUpInside)
         infoView.sensorView.rightButton.addTarget(self, action: #selector(scanQRCode), for: .touchUpInside)
+        infoView.landingView.rightButton.addTarget(self, action: #selector(labelAction), for: .touchUpInside)
+        infoView.ropingView.rightButton.addTarget(self, action: #selector(ropingSystem), for: .touchUpInside)
+        infoView.doorView.rightButton.addTarget(self, action: #selector(doorOpening), for: .touchUpInside)
+        infoView.controlView.rightButton.addTarget(self, action: #selector(carControl), for: .touchUpInside)
+        infoView.codeView.rightButton.addTarget(self, action: #selector(useCode), for: .touchUpInside)
+        infoView.shaftView.rightButton.addTarget(self, action: #selector(typeOfShaft), for: .touchUpInside)
+        infoView.zoneView.rightButton.addTarget(self, action: #selector(zoningOfLift), for: .touchUpInside)
     }
 }
 
@@ -250,14 +257,82 @@ extension DDVerifyDetailVC {
         navigationController?.pushViewController(vc, animated: true)
     }
     
+    @objc fileprivate func labelAction() {
+        guard let labelmapping = liftJson?["labelmapping"].stringValue else { return }
+        let labels = JSON(parseJSON: labelmapping).arrayValue.compactMap { $0["label"].stringValue }
+        var selectIndex = 0
+        if let landing = liftJson?["landings"].stringValue, let index = labels.firstIndex(of: landing) {
+            selectIndex = index
+        }
+        let vc = DDLabelVC()
+        vc.loadData(labels, index: selectIndex)
+        vc.selectBlock = { [weak self] (landings) in
+            self?.liftJson?["landings"].string = landings
+            self?.refreshView()
+        }
+        navigationController?.pushViewController(vc, animated: true)
+    }
     
+    @objc fileprivate func ropingSystem() {
+        let array = ["1:1", "2:1", "4:1"]
+        DDListView.show(in: view, array: array) { [weak self] selectStr, index in
+            self?.liftJson?["roping_system"].string = selectStr
+            self?.refreshView()
+        }
+    }
+    
+    @objc fileprivate func doorOpening() {
+        let array = ["Front Only - Side Opening",
+                     "Front Only - Center Opening",
+                     "2 doors - Side Opening",
+                     "2 doors - Center Opening",
+                     "3 doors - Side Opening",
+                     "3 doors - Center Opening"]
+        DDListView.show(in: view, array: array) { [weak self] selectStr, index in
+            self?.liftJson?["door_opening"].string = selectStr
+            self?.refreshView()
+        }
+    }
+    
+    @objc fileprivate func carControl() {
+        let array = ["Simplex", "Duplex", "Multiple"]
+        DDListView.show(in: view, array: array) { [weak self] selectStr, index in
+            self?.liftJson?["car_control"].string = selectStr
+            self?.refreshView()
+        }
+    }
+    
+    @objc fileprivate func useCode() {
+        let array = ["Passenger", "Cargo", "Fireman", "Others"]
+        DDListView.show(in: view, array: array) { [weak self] selectStr, index in
+            self?.liftJson?["use_code"].string = selectStr
+            self?.refreshView()
+        }
+    }
+    
+    @objc fileprivate func typeOfShaft() {
+        let array = ["Reinforced Concrete", "Steel", "Shaftless", "Internal"]
+        DDListView.show(in: view, array: array) { [weak self] selectStr, index in
+            self?.liftJson?["type_of_lift_shaft"].string = selectStr
+            self?.refreshView()
+        }
+    }
+    
+    @objc fileprivate func zoningOfLift() {
+        let array = ["High zone", "Low zone", "One zone"]
+        DDListView.show(in: view, array: array) { [weak self] selectStr, index in
+            self?.liftJson?["zoning_of_lift"].string = selectStr
+            self?.refreshView()
+        }
+    }
     
     @objc fileprivate func nextAction() {
-        guard let deviceId = liftJson?["deviceid"].string else {
+        guard (liftJson?["deviceid"].string) != nil else {
             ProgressHUD.showFailed("Please input sensor", interaction: false , delay: 3)
             return
         }
-        let vc = DDInstallImageVC()
+        let vc = DDBeforeInstallVC()
+        vc.liftJson = liftJson
         navigationController?.pushViewController(vc, animated: true)
     }
 }

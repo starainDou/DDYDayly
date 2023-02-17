@@ -9,20 +9,24 @@ import Foundation
 import Moya
 
 public enum DDUploadApi {
-    case uploadImageOfLift(Data)
-    case uploadAllImagesOfLift([Data])
+    case uploadImageOfLift(Data, String)
+    case uploadAllImagesOfLift([Data], [String])
 }
 
 extension DDUploadApi {
     internal var handleResult: (url: String, params: [MultipartFormData]) {
         var baseParams = Array<MultipartFormData>()
         switch self {
-        case let .uploadImageOfLift(data):
-            baseParams.append(MultipartFormData(provider: .data(data), name: "file", fileName: "image.jpg", mimeType: "image/jpeg"))
+        case let .uploadImageOfLift(data, fileName):
+            baseParams.append(MultipartFormData(provider: .data(data), name: "file", fileName: "\(fileName).jpg", mimeType: "image/jpeg"))
             return (DDBaseUrl + "/fileApp/uploadImageOfLift", baseParams)
-        case let .uploadAllImagesOfLift(datas):
-            for data in datas {
-                baseParams.append(MultipartFormData(provider: .data(data), name: "file", fileName: "image.jpg", mimeType: "image/jpeg"))
+        case let .uploadAllImagesOfLift(datas, names):
+            for (index, data) in datas.enumerated() {
+                if index < names.count {
+                    baseParams.append(MultipartFormData(provider: .data(data), name: "file", fileName: "\(names[index]).jpg", mimeType: "image/jpeg"))
+                } else  {
+                    fatalError("图片数大于名字数")
+                }
             }
             return (DDBaseUrl + "/fileApp/uploadImageOfLift", baseParams)
         }

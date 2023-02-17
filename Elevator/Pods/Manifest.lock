@@ -27,6 +27,9 @@ PODS:
   - SwiftyJSON (5.0.1)
   - SwiftyUserDefaults (5.3.0)
   - Then (3.0.0)
+  - ZLPhotoBrowser (4.3.8):
+    - ZLPhotoBrowser/Core (= 4.3.8)
+  - ZLPhotoBrowser/Core (4.3.8)
 
 DEPENDENCIES:
   - Alamofire (= 5.6.4)
@@ -46,6 +49,7 @@ DEPENDENCIES:
   - SwiftyJSON (= 5.0.1)
   - SwiftyUserDefaults (= 5.3.0)
   - Then (= 3.0.0)
+  - ZLPhotoBrowser (= 4.3.8)
 
 SPEC REPOS:
   trunk:
@@ -66,6 +70,7 @@ SPEC REPOS:
     - SwiftyJSON
     - SwiftyUserDefaults
     - Then
+    - ZLPhotoBrowser
 
 EXTERNAL SOURCES:
   DDYQRCode:
@@ -93,7 +98,8 @@ SPEC CHECKSUMS:
   SwiftyJSON: 2f33a42c6fbc52764d96f13368585094bfd8aa5e
   SwiftyUserDefaults: 63f80248cf5bfb3458825d9a78f2eb7e1293a040
   Then: 844265ae87834bbe1147d91d5d41a404da2ec27d
+  ZLPhotoBrowser: a36e618898b781c225672115938ed861a11b2121
 
-PODFILE CHECKSUM: 413219a1d6dc407364403a6e3c5e930c33bb7829
+PODFILE CHECKSUM: 36d4d62f1daa390463944ab437e549bc9341a22b
 
 COCOAPODS: 1.11.3

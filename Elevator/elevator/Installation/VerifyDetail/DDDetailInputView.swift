@@ -21,10 +21,12 @@ class DDDetailInputView: UIView {
         $0.layer.masksToBounds = true
     }
     
-    private(set) lazy var textView: UITextView = UITextView().then {
+    private(set) lazy var textView: IQTextView = IQTextView().then {
         $0.textColor = UIColor(hex: "#333333")
         $0.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         $0.backgroundColor = .clear
+        $0.placeholder = "Please inout content"
+        $0.placeholderTextColor = UIColor(hex: "#999999")
     }
     
     private(set) lazy var shapeLayer: CAShapeLayer = CAShapeLayer().then {
