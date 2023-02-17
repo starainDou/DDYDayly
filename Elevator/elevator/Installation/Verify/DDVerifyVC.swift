@@ -120,7 +120,6 @@ class DDVerifyVC: UIViewController {
         } else {
             
         }
-        
     }
     
     private func unbindAction() {
@@ -152,7 +151,7 @@ extension DDVerifyVC: UITableViewDelegate, UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let json = dataArray[indexPath.row]
+        //let json = dataArray[indexPath.row]
         //guard json["status"].stringValue == "1" else { return }
 //        let vc = DDInstallationVC()
 //        vc.sensorJson = dataArray[indexPath.row]

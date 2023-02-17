@@ -74,7 +74,8 @@ class DDBeforeInstallVC: UIViewController {
             ProgressHUD.showFailed("Some items need add image", interaction: false, delay: 3)
             return
         }
-        pushAfterVC()
+        updateDetail()
+        // pushAfterVC()
         // uploadGroup()
     }
     
@@ -89,6 +90,19 @@ class DDBeforeInstallVC: UIViewController {
             }
         }
         return isOK
+    }
+    
+    private func updateDetail() {
+        guard let json = liftJson else { return }
+        let liftId = json["id"].string ?? json["liftId"].stringValue
+        let dict = json.dictionaryObject ?? [:]
+        DDPost(target: .updateDetailOfLift(liftId: liftId, dict: dict), success: { [weak self] result, msg in
+            print("正确 \(result) \(msg ?? "NoMsg")")
+            self?.pushAfterVC()
+        }, failure: { code, msg in
+            print("错误 \(code) \(msg ?? "NoMsg")")
+            ProgressHUD.showFailed(msg ?? "Fail", interaction: false, delay: 3)
+        })
     }
     
     private func uploadGroup() {

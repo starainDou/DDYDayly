@@ -24,7 +24,7 @@ public enum DDPostApi {
     /// 获取电梯详情
     case getLiftDetail(liftId: String)
     /// 修改电梯详情
-    case updateDetailOfLift(liftId: String)
+    case updateDetailOfLift(liftId: String, dict: [String: Any])
     /// 下载KPI report
     case kpiNew(fileName: String, liftNumber: String, dateVal: String, flag: String)
     /// 解除绑定
@@ -88,7 +88,8 @@ extension DDPostApi {
         case let .getLiftDetail(liftId):
             return (DDBaseUrl + "/liftapp/getLiftDetail/\(liftId)", baseParams)
             
-        case let .updateDetailOfLift(liftId):
+        case let .updateDetailOfLift(liftId, dict):
+            baseParams.merge(dict) { (first, _) in first }
             return (DDBaseUrl + "/liftapp/updateDetailOfLift/\(liftId)", baseParams)
             
         case let .kpiNew(fileName, liftNumber, dateVal, flag):
