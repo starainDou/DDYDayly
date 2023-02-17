@@ -80,7 +80,7 @@ class DDVerifyVC: UIViewController {
     }
     
     func loadData() {
-        guard let json = sensorJson, let deviceId = json["deviceId"].string else { return } //  "HWW014600000274"
+        guard let deviceId = sensorJson?["deviceId"].string else { return } //  "HWW014600000274"
         ProgressHUD.show()
         DDGet(target: .getSensor(deviceId: deviceId), success: { [weak self] result, msg in
             print("正确 \(result) \(msg ?? "NoMsg")")
@@ -95,16 +95,47 @@ class DDVerifyVC: UIViewController {
     }
     private func checkNext() {
         nextButton.isHidden = dataArray.count == 0
-        nextButton.backgroundColor = UIColor(hex: "#AAAAAA")
-        nextButton.isEnabled = false
-        // guard dataArray.first?["status"].string == "1" else { return }
-        nextButton.backgroundColor = UIColor(hex: "#168991")
-        nextButton.isEnabled = true
+        if dataArray.first?["status"].string == "1" {
+            nextButton.backgroundColor = UIColor(hex: "#168991")
+            nextButton.isEnabled = true
+            nextButton.setTitle("Next", for: .normal)
+        } else if dataArray.first?["status"].string == "2" {
+            nextButton.backgroundColor = UIColor(hex: "#168991")
+            nextButton.isEnabled = true
+            nextButton.setTitle("Unbind", for: .normal)
+        } else {
+            nextButton.backgroundColor = UIColor(hex: "#AAAAAA")
+            nextButton.isEnabled = false
+            nextButton.setTitle("Next", for: .normal)
+        }
+        
     }
     @objc private func nextAction() {
-        let vc = DDInstallationVC()
-        vc.sensorJson = dataArray.first
-        navigationController?.pushViewController(vc, animated: true)
+        if dataArray.first?["status"].string == "1" {
+            let vc = DDInstallationVC()
+            vc.sensorJson = dataArray.first
+            navigationController?.pushViewController(vc, animated: true)
+        } else if dataArray.first?["status"].string == "2" {
+            unbindAction()
+        } else {
+            
+        }
+        
+    }
+    
+    private func unbindAction() {
+        guard let deviceId = sensorJson?["deviceId"].string else { return }
+        guard let liftNumber = dataArray.first?["liftNumber"].string else { return }
+        ProgressHUD.show()
+        DDPost(target: .removeBinding(liftNumber: liftNumber, deviceId: deviceId), success: { [weak self] result, msg in
+            print("正确 \(result) \(msg ?? "NoMsg")")
+            ProgressHUD.dismiss()
+            self?.nextButton.isEnabled = false
+            self?.loadData()
+        }, failure: { code, msg in
+            print("错误 \(code) \(msg ?? "NoMsg")")
+            ProgressHUD.showFailed(msg ?? "Fail", interaction: false, delay: 3)
+        })
     }
 }
 

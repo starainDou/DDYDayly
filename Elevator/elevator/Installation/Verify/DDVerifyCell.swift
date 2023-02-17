@@ -81,7 +81,7 @@ class DDVerifyCell: UITableViewCell {
         if status == "1" {
             return "Ready"
         } else if status == "2" {
-            return "Binded Lift"
+            return "Bound"
         } else {
             return "Not Ready"
         }
