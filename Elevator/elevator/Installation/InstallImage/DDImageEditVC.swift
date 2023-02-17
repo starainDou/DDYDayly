@@ -131,7 +131,7 @@ class DDImageEditVC: UIViewController {
             ProgressHUD.showFailed("Please add one image", interaction: false, delay: 3)
             return
         }
-        guard let profile = textView.text else {
+        guard let profile = textView.text, !profile.isEmpty else {
             ProgressHUD.showFailed("Please input descroption", interaction: false, delay: 3)
             return
         }
