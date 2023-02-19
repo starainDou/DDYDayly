@@ -57,7 +57,7 @@ class DDShared: NSObject {
                         DDHomeModel(icon: "FavouriteCyan", title: "Favourite", vc: DDQRCodeVC()),
                         DDHomeModel(icon: "Summary", title: "Summary of Lift Performances", vc: DDQRCodeVC())]
             } else if json?["user"]["rolename"].stringValue == "T&C@STEE" {
-                return [DDHomeModel(icon: "Commissioning", title: "Test&Commissioning", vc: DDQRCodeVC())]
+                return [DDHomeModel(icon: "Commissioning", title: "Test&Commissioning", vc: DDTestVC())]
             } else {
                 return [DDHomeModel(icon: "Elevator", title: "Lift", vc: DDEngineerVC()),
                         DDHomeModel(icon: "History", title: "History", vc: DDSummaryVC()),

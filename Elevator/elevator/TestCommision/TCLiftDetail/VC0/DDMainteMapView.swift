@@ -7,6 +7,7 @@
 
 import UIKit
 import MapKit
+import SwiftyJSON
 
 class DDMainteMapView: UIView {
 
@@ -44,5 +45,7 @@ class DDMainteMapView: UIView {
         annotion.coordinate = regionCenter
         mapView.addAnnotation(annotion)
     }
-
+    public func loadData(_ json: JSON) {
+        
+    }
 }

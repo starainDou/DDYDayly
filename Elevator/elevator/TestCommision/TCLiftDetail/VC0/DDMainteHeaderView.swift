@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class DDMainteHeaderView: UIView {
 
@@ -23,7 +24,7 @@ class DDMainteHeaderView: UIView {
         $0.textColor = UIColor(hex: "#1ECAA1")
     }
     
-    private lazy var addressView: UIImageView = UIImageView(image: UIImage(named: "Time"))
+    private lazy var addressView: UIImageView = UIImageView(image: UIImage(named: "Location"))
     
     private lazy var addressLabel: UILabel = UILabel().then {
         $0.font = UIFont.systemFont(ofSize: 14, weight: .regular)
@@ -69,6 +70,7 @@ class DDMainteHeaderView: UIView {
         addressLabel.snp.makeConstraints { make in
             make.centerY.equalTo(addressView)
             make.leading.equalTo(addressView.snp.trailing).offset(5)
+            make.trailing.lessThanOrEqualTo(stateLabel.snp.leading).offset(-5)
         }
         timeView.snp.makeConstraints { make in
             make.leading.equalToSuperview().inset(15)
@@ -80,5 +82,12 @@ class DDMainteHeaderView: UIView {
             make.centerY.equalTo(timeView)
             make.leading.equalTo(timeView.snp.trailing).offset(5)
         }
+    }
+    
+    public func loadData(_ json: JSON) {
+        titleLabel.text = json["liftnumber"].stringValue
+        stateLabel.text = tag == 0 ? "Not Installed" : (tag == 5 ? " Commissioned" : "Not Commissioned")
+        timeLabel.text = DDAppInfo.dateStr(json["createtime"].stringValue)
+        addressLabel.text = json["address"].stringValue.isEmpty ? "-" : json["address"].stringValue
     }
 }

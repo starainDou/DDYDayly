@@ -95,11 +95,11 @@ class DDVerifyVC: UIViewController {
     }
     private func checkNext() {
         nextButton.isHidden = dataArray.count == 0
-        if dataArray.first?["status"].string == "1" {
+        if dataArray.first?["status"].stringValue == "1" {
             nextButton.backgroundColor = UIColor(hex: "#168991")
             nextButton.isEnabled = true
             nextButton.setTitle("Next", for: .normal)
-        } else if dataArray.first?["status"].string == "2" {
+        } else if dataArray.first?["status"].stringValue == "2" {
             nextButton.backgroundColor = UIColor(hex: "#168991")
             nextButton.isEnabled = true
             nextButton.setTitle("Unbind", for: .normal)
@@ -111,11 +111,11 @@ class DDVerifyVC: UIViewController {
         
     }
     @objc private func nextAction() {
-        if dataArray.first?["status"].string == "1" {
+        if dataArray.first?["status"].stringValue == "1" {
             let vc = DDInstallationVC()
             vc.sensorJson = dataArray.first
             navigationController?.pushViewController(vc, animated: true)
-        } else if dataArray.first?["status"].string == "2" {
+        } else if dataArray.first?["status"].stringValue == "2" {
             unbindAction()
         } else {
             

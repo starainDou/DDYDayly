@@ -7,6 +7,7 @@
 
 import UIKit
 import JXSegmentedView
+import SwiftyJSON
 
 class DDMainteDetail2VC: UIViewController {
     
@@ -31,6 +32,8 @@ class DDMainteDetail2VC: UIViewController {
         collectionView.contentInset = UIEdgeInsets(top: 5, left: 0, bottom: 5, right: 0)
         return collectionView
     }()
+    
+    var liftBaseJson: JSON = JSON()
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class DDMainteItemInfoView: UIView {
 
@@ -61,5 +62,8 @@ class DDMainteItemInfoView: UIView {
             make.bottom.equalToSuperview().inset(14)
             make.leading.greaterThanOrEqualTo(self.snp.centerX)
         }
+    }
+    public func loadData(_ json: JSON) {
+        
     }
 }

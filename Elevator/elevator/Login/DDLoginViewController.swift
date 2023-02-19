@@ -104,7 +104,7 @@ class DDLoginViewController: UIViewController {
         view.addSubviews(topImageView, loginLabel, nameTipLabel, nameBackView, nameTextField)
         view.addSubviews(pswdTipLabel, pswdBackView, pswdTextField, pswdShowButton, loginButton)
         setViewConstraints()
-        nameTextField.text = "test123456@STEE"
+        nameTextField.text = "test007@STEE"//"test123456@STEE"
         pswdTextField.text = "P@ssw0rd12qw"
     }
     

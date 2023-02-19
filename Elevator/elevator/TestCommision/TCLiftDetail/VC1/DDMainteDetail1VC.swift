@@ -7,6 +7,7 @@
 
 import UIKit
 import JXSegmentedView
+import SwiftyJSON
 
 class DDMainteDetail1VC: UIViewController {
     
@@ -23,6 +24,8 @@ class DDMainteDetail1VC: UIViewController {
     }
     
     private lazy var dataArray: [DDVerifyModel] = []
+    
+    var liftBaseJson: JSON = JSON()
     
     override func viewDidLoad() {
         super.viewDidLoad()

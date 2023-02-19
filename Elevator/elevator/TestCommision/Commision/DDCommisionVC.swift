@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import SwiftyJSON
+import ProgressHUD
 
 class DDCommisionVC: UIViewController {
 
@@ -36,7 +38,7 @@ class DDCommisionVC: UIViewController {
         $0.addTarget(self, action: #selector(submitAction), for: .touchUpInside)
     }
     
-    private var liftModel: DDLiftModel?
+    private var liftBaseJson: JSON = JSON()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,7 +46,7 @@ class DDCommisionVC: UIViewController {
         view.addSubviews(navigationBar, headerView, footerView, submitButton)
         setViewConstraints()
         changeSubmitButtonState(enable: false)
-        headerView.test()
+        headerView.loadData(liftBaseJson)
     }
     
     private func setViewConstraints() {
@@ -88,12 +90,12 @@ class DDCommisionVC: UIViewController {
         submitButton.backgroundColor = UIColor(hex: enable ? "#168991" : "#999999")
     }
     
-    func load(lift: DDLiftModel, tag: Int) {
-        liftModel = lift
-        headerView.titleLabel.text = lift.number
+    func load(json: JSON, tag: Int) {
+        liftBaseJson = json
+        headerView.titleLabel.text = json["liftnumber"].stringValue
         headerView.stateLabel.text = tag == 1 ? "Not Installed" : (tag == 5 ? " Commissioned" : "Not Commissioned")
-        headerView.timeLabel.text = lift.createtime
-        headerView.brandLabel.text = lift.brand
-        headerView.addressLabel.text = lift.address
+        headerView.timeLabel.text = DDAppInfo.dateStr(json["createtime"].stringValue)
+        headerView.brandLabel.text = json["brand"].stringValue.isEmpty ? "-" : json["brand"].stringValue
+        headerView.addressLabel.text = json["address"].stringValue.isEmpty ? "-" : json["address"].stringValue
     }
 }

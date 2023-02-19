@@ -7,6 +7,7 @@
 
 import UIKit
 import JXSegmentedView
+import SwiftyJSON
 
 class DDMainteDetail0VC: UIViewController {
     
@@ -37,6 +38,8 @@ class DDMainteDetail0VC: UIViewController {
         $0.layer.cornerRadius = 8
         $0.backgroundColor = UIColor(hex: "#FFFFFF")
     }
+    
+    var liftBaseJson: JSON = JSON()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,6 +73,9 @@ class DDMainteDetail0VC: UIViewController {
             make.bottom.equalToSuperview().inset(20)
             make.height.equalTo(mapView.snp.width).dividedBy(2)
         }
+    }
+    private func loadData() {
+        //getStatusOfLift
     }
 }
 

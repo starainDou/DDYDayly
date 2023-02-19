@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class DDMainteStateView: UIView {
 
@@ -103,5 +104,7 @@ class DDMainteStateView: UIView {
             make.bottom.equalToSuperview().inset(15)
         }
     }
-
+    public func loadData(_ json: JSON) {
+        
+    }
 }

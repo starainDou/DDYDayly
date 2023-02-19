@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class DDMainteInfoView: UIView {
 
@@ -177,5 +178,8 @@ class DDMainteInfoView: UIView {
             make.top.equalTo(driveView.snp.bottom)
             make.bottom.equalToSuperview().inset(15)
         }
+    }
+    public func loadData(_ json: JSON) {
+        
     }
 }
