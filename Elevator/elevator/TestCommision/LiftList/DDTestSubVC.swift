@@ -117,4 +117,29 @@ extension DDTestSubVC: UITableViewDelegate, UITableViewDataSource {
             navigationController?.pushViewController(vc, animated: true)
         }
     }
+    
+    private func loadPdf(_ json: JSON) {
+        DDPost(target: .getAppTcReport(fileName: "aa.pdf", liftNumber: "570254C", mapImgBase64: "", dateVal: ""), success: { [weak self] result, msg in
+            print("正确 \(result) \(msg ?? "NoMsg")")
+            ProgressHUD.dismiss()
+            if let `self` = self {
+                if (self.page == 1) {
+                    self.dataArray = []
+                }
+                let data = JSON(result)["data"]
+                self.dataArray += data["rows"].arrayValue
+                if self.dataArray.count < data["total"].intValue || data["rows"].arrayValue.count < 20 {
+                    self.page += 1
+                }
+            }
+            self?.tableView.reloadData()
+            self?.tableView.mj_header?.endRefreshing()
+            self?.tableView.mj_footer?.endRefreshing()
+        }, failure: { [weak self] code, msg in
+            print("错误 \(code) \(msg ?? "NoMsg")")
+            ProgressHUD.showFailed(msg ?? "Fail", interaction: false, delay: 3)
+            self?.tableView.mj_header?.endRefreshing()
+            self?.tableView.mj_footer?.endRefreshing()
+        })
+    }
 }

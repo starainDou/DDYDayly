@@ -60,6 +60,7 @@ class DDTestCell: UITableViewCell {
         $0.setImage(UIImage(named: "DownloadCyan"), for: .normal)
         $0.addTarget(self, action: #selector(downloadAction), for: .touchUpInside)
         $0.contentEdgeInsets = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
+        $0.isHidden = true
     }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -143,6 +144,7 @@ class DDTestCell: UITableViewCell {
             }
             detailButton.addTarget(self, action: #selector(detailAction), for: .touchUpInside)
         }
+        downButton.isHidden = (tag != 5)
     }
     
     @objc private func detailAction() {

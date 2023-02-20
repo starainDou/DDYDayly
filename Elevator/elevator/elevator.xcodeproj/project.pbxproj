@@ -103,6 +103,7 @@
 		04E6FC0E2990C38800666FE6 /* DDInstallSubVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E6FC0D2990C38800666FE6 /* DDInstallSubVC.swift */; };
 		04E6FC152990E1A900666FE6 /* DDVerifyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E6FC142990E1A900666FE6 /* DDVerifyModel.swift */; };
 		04E6FC172990E33900666FE6 /* DDInstallSegmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E6FC162990E33900666FE6 /* DDInstallSegmentView.swift */; };
+		04EBCB1A29A3AF79006B796B /* DDPdfVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EBCB1929A3AF79006B796B /* DDPdfVC.swift */; };
 		04F559FC29876B8600EF237D /* DDAppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F559FB29876B8600EF237D /* DDAppInfo.swift */; };
 		04F559FE2987969300EF237D /* DDVerifyDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F559FD2987969300EF237D /* DDVerifyDetailVC.swift */; };
 		04F55A0029879DB300EF237D /* DDVerifyDetailTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F559FF29879DB300EF237D /* DDVerifyDetailTopView.swift */; };
@@ -209,6 +210,7 @@
 		04E6FC0D2990C38800666FE6 /* DDInstallSubVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDInstallSubVC.swift; sourceTree = "<group>"; };
 		04E6FC142990E1A900666FE6 /* DDVerifyModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DDVerifyModel.swift; sourceTree = "<group>"; };
 		04E6FC162990E33900666FE6 /* DDInstallSegmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDInstallSegmentView.swift; sourceTree = "<group>"; };
+		04EBCB1929A3AF79006B796B /* DDPdfVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDPdfVC.swift; sourceTree = "<group>"; };
 		04F559FB29876B8600EF237D /* DDAppInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDAppInfo.swift; sourceTree = "<group>"; };
 		04F559FD2987969300EF237D /* DDVerifyDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDVerifyDetailVC.swift; sourceTree = "<group>"; };
 		04F559FF29879DB300EF237D /* DDVerifyDetailTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDVerifyDetailTopView.swift; sourceTree = "<group>"; };
@@ -298,6 +300,7 @@
 				034FB7A529A22335003985AD /* DDTestSearchVC.swift */,
 				034FB7A429A22335003985AD /* DDTestSubVC.swift */,
 				034FB7AB29A22440003985AD /* DDTestSegmentView.swift */,
+				04EBCB1929A3AF79006B796B /* DDPdfVC.swift */,
 			);
 			path = LiftList;
 			sourceTree = "<group>";
@@ -772,6 +775,7 @@
 				034FB779298653C9003985AD /* DDLabelCell.swift in Sources */,
 				034FB781298F8B06003985AD /* DDMainteDetail3ItemCell.swift in Sources */,
 				04E6FC172990E33900666FE6 /* DDInstallSegmentView.swift in Sources */,
+				04EBCB1A29A3AF79006B796B /* DDPdfVC.swift in Sources */,
 				04CE0A27298931A800795592 /* DDInstallationVC.swift in Sources */,
 				04CE0A192988D97400795592 /* DDDetailInputView.swift in Sources */,
 				034FB7AA29A22335003985AD /* DDTestVC.swift in Sources */,
