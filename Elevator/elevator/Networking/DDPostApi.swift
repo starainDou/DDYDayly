@@ -29,8 +29,6 @@ public enum DDPostApi {
     case kpiNew(fileName: String, liftNumber: String, dateVal: String, flag: String)
     /// 解除绑定
     case removeBinding(liftNumber: String, deviceId: String)
-    /// 下载T&C report
-    case getAppTcReport(fileName: String, liftNumber: String, mapImgBase64: String, dateVal: String)
     /// 查找指定用户下的警报
     case getAlarmsOfLift(userid: String, page: String, limit: String, alarmType: String, severityType: String, value: String, sortType: String, dateRange: [String])
     /// 收藏警报
@@ -103,13 +101,6 @@ extension DDPostApi {
             baseParams["liftNumber"] = liftNumber
             baseParams["deviceId"] = deviceId
             return (DDBaseUrl + "/removeBinding", baseParams)
-            
-        case let .getAppTcReport(fileName, liftNumber, mapImgBase64, dateVal):
-            baseParams["fileName"] = fileName
-            baseParams["liftNumber"] = liftNumber
-            baseParams["mapImgBase64"] = mapImgBase64
-            baseParams["dateVal"] = dateVal
-            return (DDBaseUrl + "/tcreport/getAppTcReport", baseParams)
             
         case let .getAlarmsOfLift(userid, page, limit, alarmType, severityType, value, sortType, dateRange):
             baseParams["userid"] = userid

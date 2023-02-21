@@ -66,6 +66,7 @@
 		048328922977D022002BE7B2 /* DDUploadApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048328912977D022002BE7B2 /* DDUploadApi.swift */; };
 		04832898297802E7002BE7B2 /* DDQRCodeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04832897297802E7002BE7B2 /* DDQRCodeVC.swift */; };
 		0483289B297805EB002BE7B2 /* DDQRCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0483289A297805EB002BE7B2 /* DDQRCodeView.swift */; };
+		04BB927129A4FBCB00B98764 /* DDDownloadApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BB927029A4FBCB00B98764 /* DDDownloadApi.swift */; };
 		04CE09C92988005400795592 /* DDDetailItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CE09C82988005400795592 /* DDDetailItemView.swift */; };
 		04CE0A152988D32900795592 /* DDDetailButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CE0A142988D32900795592 /* DDDetailButtonView.swift */; };
 		04CE0A172988D4D700795592 /* DDDetailMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CE0A162988D4D700795592 /* DDDetailMenuView.swift */; };
@@ -172,6 +173,7 @@
 		048328912977D022002BE7B2 /* DDUploadApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDUploadApi.swift; sourceTree = "<group>"; };
 		04832897297802E7002BE7B2 /* DDQRCodeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDQRCodeVC.swift; sourceTree = "<group>"; };
 		0483289A297805EB002BE7B2 /* DDQRCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDQRCodeView.swift; sourceTree = "<group>"; };
+		04BB927029A4FBCB00B98764 /* DDDownloadApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDDownloadApi.swift; sourceTree = "<group>"; };
 		04CE09C82988005400795592 /* DDDetailItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDDetailItemView.swift; sourceTree = "<group>"; };
 		04CE0A142988D32900795592 /* DDDetailButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDDetailButtonView.swift; sourceTree = "<group>"; };
 		04CE0A162988D4D700795592 /* DDDetailMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDDetailMenuView.swift; sourceTree = "<group>"; };
@@ -621,6 +623,7 @@
 				0483288829779FE0002BE7B2 /* DDNetwork.swift */,
 				0483288629779D6D002BE7B2 /* DDPostApi.swift */,
 				048328912977D022002BE7B2 /* DDUploadApi.swift */,
+				04BB927029A4FBCB00B98764 /* DDDownloadApi.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -810,6 +813,7 @@
 				04E0087329758D5C00EE0DBF /* DDLoginViewController.swift in Sources */,
 				04CE0A31298A28B000795592 /* DDMainteMapView.swift in Sources */,
 				034FB78D2997901A003985AD /* DDEngineerCell.swift in Sources */,
+				04BB927129A4FBCB00B98764 /* DDDownloadApi.swift in Sources */,
 				034FB76D29850D6F003985AD /* DDVerifyCell.swift in Sources */,
 				04F55A0229879DC400EF237D /* DDVerifyDetailMapView.swift in Sources */,
 				04CE0A2D298A1BBA00795592 /* DDMainteItemStateView.swift in Sources */,
