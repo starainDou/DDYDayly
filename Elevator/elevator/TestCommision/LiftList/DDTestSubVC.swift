@@ -97,13 +97,14 @@ extension DDTestSubVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.ddy_dequeueReusableCell(DDTestCell.self, for: indexPath)
-        cell.loadData(json: dataArray[indexPath.row], tag: tagIndex)
+        let json = dataArray[indexPath.row]
+        cell.loadData(json: json, tag: tagIndex)
         cell.detailBlock = { [weak self] in
             let vc = DDMainteDetailVC()
             self?.navigationController?.pushViewController(vc, animated: true)
         }
         cell.downloadBlock = { [weak self] in
-            
+            self?.loadPdf(json)
         }
         return cell
     }
@@ -119,7 +120,9 @@ extension DDTestSubVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     private func loadPdf(_ json: JSON) {
-        DDPost(target: .getAppTcReport(fileName: "aa.pdf", liftNumber: "570254C", mapImgBase64: "", dateVal: ""), success: { [weak self] result, msg in
+        let liftNum = "570254C" //json["liftnumber"].stringValue
+        let file = liftNum + ".pdf"
+        DDDownload(target: .getAppTcReport(fileName: file, liftNumber: liftNum, mapImgBase64: "", dateVal: ""), success: { [weak self] result, msg in
             print("正确 \(result) \(msg ?? "NoMsg")")
             ProgressHUD.dismiss()
             if let `self` = self {

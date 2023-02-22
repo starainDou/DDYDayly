@@ -9,8 +9,8 @@ import Foundation
 import Moya
 import ProgressHUD
 
-// internal let DDBaseUrl: String = "https://dev.agiliot.io/cms/api"
-internal let DDBaseUrl: String = "https://smartlift.agiliot.io/cms/api"
+internal let DDBaseUrl: String = "https://dev.agiliot.io/cms/api"
+//internal let DDBaseUrl: String = "https://smartlift.agiliot.io/cms/api"
 //https://smartlift.agiliot.io:8443"//"https://dev.agiliot.io:8443"
 
 fileprivate extension TargetType {
@@ -97,6 +97,15 @@ public func DDPost(target: DDPostApi, success: @escaping DDNetSuccess, failure:@
 
 @discardableResult
 public func DDUpload(target: DDUploadApi, progress: DDNetProgress? = nil, success: @escaping DDNetSuccess, failure:@escaping DDNetFailure) -> Cancellable {
+    DDNetProvider.request(MultiTarget(target), progress: { (responseProgress) in
+        progress?(responseProgress.progress)
+    }, completion: { (moyaResult) in
+        handleResult(target: target, moyaResult: moyaResult, success: success, failure: failure)
+    })
+}
+
+@discardableResult
+public func DDDownload(target: DDDownloadApi, progress: DDNetProgress? = nil, success: @escaping DDNetSuccess, failure:@escaping DDNetFailure) -> Cancellable {
     DDNetProvider.request(MultiTarget(target), progress: { (responseProgress) in
         progress?(responseProgress.progress)
     }, completion: { (moyaResult) in

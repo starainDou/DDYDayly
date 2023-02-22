@@ -11,11 +11,12 @@ import Moya
 public enum DDDownloadApi {
     /// 下载T&C report
     case getAppTcReport(fileName: String, liftNumber: String, mapImgBase64: String, dateVal: String)
-    case uploadAllImagesOfLift([Data], [String])
+    /// 下载KPI report
+    case kpiNew(fileName: String, liftNumber: String, dateVal: String, flag: String)
 }
 
 extension DDDownloadApi {
-    internal var handleResult: (url: String, params: [String: Any]) {
+    internal var handleResult: (url: String, params: [String: Any], destination: DownloadDestination) {
         var baseParams = Dictionary<String, Any>()
         switch self {
         case let .getAppTcReport(fileName, liftNumber, mapImgBase64, dateVal):
@@ -23,20 +24,24 @@ extension DDDownloadApi {
             baseParams["liftNumber"] = liftNumber
             baseParams["mapImgBase64"] = mapImgBase64
             baseParams["dateVal"] = dateVal
-            return (DDBaseUrl + "/tcreport/getAppTcReport", baseParams)
+            let destination =  destination(path: "/getAppTcReport/", name: fileName)
+            return (DDBaseUrl + "/tcreport/getAppTcReport", baseParams, destination)
             
-        case let .uploadAllImagesOfLift(datas, names):
-            
-            return (DDBaseUrl + "/fileApp/uploadImageOfLift", baseParams)
+        case let .kpiNew(fileName, liftNumber, dateVal, flag):
+            baseParams["fileName"] = fileName
+            baseParams["liftNumber"] = liftNumber
+            baseParams["dateVal"] = dateVal
+            baseParams["flag"] = flag
+            let destination =  destination(path: "/kpiNew/", name: fileName)
+            return (DDBaseUrl + "/report/kpiNew", baseParams, destination)
         }
     }
     
-    private func destination(url: String, name: String) -> DownloadDestination {
-        
-    }
-    var destination: DownloadDestination {
+    private func destination(path: String, name: String) -> DownloadDestination {
+        DDShared.shared.createImagePath(path)
+        let localPath = DDAppInfo.ducumentPath + path + name
         return { temporaryURL, response in
-            return (self.localLocation, [.removePreviousFile, .createIntermediateDirectories])
+            return (URL(fileURLWithPath: localPath), [.removePreviousFile, .createIntermediateDirectories])
         }
     }
 }
@@ -60,7 +65,7 @@ extension DDDownloadApi: TargetType {
     }
     
     public var task: Task {
-        return .downloadParameters(parameters: handleResult.params, encoding: JSONEncoding.prettyPrinted, destination: <#T##DownloadDestination##DownloadDestination##(_ temporaryURL: URL, _ response: HTTPURLResponse) -> (destinationURL: URL, options: DownloadRequest.Options)#>)
+        return .downloadParameters(parameters: handleResult.params, encoding: JSONEncoding.prettyPrinted, destination: handleResult.destination)
     }
     
     public var headers: [String : String]? {

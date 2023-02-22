@@ -94,7 +94,7 @@ class DDShared: NSObject {
     public func saveLift(image: UIImage?, key: String?) {
         guard let cacheKey = key else { return }
         liftImageCache[cacheKey] = image
-        createImagePath()
+        createImagePath("/LiftImages")
         let path = DDAppInfo.ducumentPath + "/LiftImages/" + "\(cacheKey).jpg"
         if let data = image?.jpegData(compressionQuality: 0.7) {
             try? data.write(to: URL(fileURLWithPath: path), options: .atomic)
@@ -153,8 +153,8 @@ class DDShared: NSObject {
         try? FileManager.default.removeItem(atPath: dir)
     }
     
-    public func createImagePath() {
-        let dir = DDAppInfo.ducumentPath + "/LiftImages"
+    public func createImagePath(_ path: String) {
+        let dir = DDAppInfo.ducumentPath + path
         if !dirExist(dir) {
             let attributes = [FileAttributeKey.posixPermissions : 0o777]
             try? FileManager.default.createDirectory(atPath: dir, withIntermediateDirectories: true, attributes: attributes)
