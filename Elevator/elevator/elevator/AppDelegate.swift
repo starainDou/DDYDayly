@@ -40,6 +40,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.shared.keyboardDistanceFromTextField = 5
         
         UILabel.ddySwizzleMethod()
+        ProgressHUD.colorBackground = .clear
+        ProgressHUD.colorHUD = .black
+        ProgressHUD.colorAnimation = .white
+        ProgressHUD.colorStatus = .white
     }
     
     private func binding() {

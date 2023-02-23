@@ -10,7 +10,7 @@ import Moya
 
 public enum DDDownloadApi {
     /// 下载T&C report
-    case getAppTcReport(fileName: String, liftNumber: String, mapImgBase64: String, dateVal: String)
+    case getTcReport(fileName: String, liftNumber: String, mapImgBase64: String, dateVal: String)
     /// 下载KPI report
     case kpiNew(fileName: String, liftNumber: String, dateVal: String, flag: String)
 }
@@ -19,13 +19,13 @@ extension DDDownloadApi {
     internal var handleResult: (url: String, params: [String: Any], destination: DownloadDestination) {
         var baseParams = Dictionary<String, Any>()
         switch self {
-        case let .getAppTcReport(fileName, liftNumber, mapImgBase64, dateVal):
+        case let .getTcReport(fileName, liftNumber, mapImgBase64, dateVal):
             baseParams["fileName"] = fileName
             baseParams["liftNumber"] = liftNumber
             baseParams["mapImgBase64"] = mapImgBase64
             baseParams["dateVal"] = dateVal
             let destination =  destination(path: "/getAppTcReport/", name: fileName)
-            return (DDBaseUrl + "/tcreport/getAppTcReport", baseParams, destination)
+            return (DDBaseUrl + "/tcreport/getTcReport", baseParams, destination)
             
         case let .kpiNew(fileName, liftNumber, dateVal, flag):
             baseParams["fileName"] = fileName

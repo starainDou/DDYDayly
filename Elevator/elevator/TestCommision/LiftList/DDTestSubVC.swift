@@ -120,9 +120,11 @@ extension DDTestSubVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     private func loadPdf(_ json: JSON) {
-        let liftNum = "570254C" //json["liftnumber"].stringValue
-        let file = liftNum + ".pdf"
-        DDDownload(target: .getAppTcReport(fileName: file, liftNumber: liftNum, mapImgBase64: "", dateVal: ""), success: { [weak self] result, msg in
+        let liftNum = json["liftnumber"].stringValue
+        let file = "Report-" + liftNum + ".pdf"
+        let dateVal = DDAppInfo.dateStr(DDAppInfo.timeStamp(), dateFormat: "yyyy-MM") ?? ""
+        ProgressHUD.show("Downloading")
+        DDDownload(target: .getTcReport(fileName: file, liftNumber: liftNum, mapImgBase64: "", dateVal: ""), success: { [weak self] result, msg in
             print("正确 \(result) \(msg ?? "NoMsg")")
             ProgressHUD.dismiss()
             if let `self` = self {
