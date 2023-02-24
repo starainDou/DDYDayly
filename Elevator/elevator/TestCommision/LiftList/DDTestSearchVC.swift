@@ -72,13 +72,14 @@ extension DDTestSearchVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.ddy_dequeueReusableCell(DDTestCell.self, for: indexPath)
-        cell.loadData(json: dataArray[indexPath.row], tag: tagIndex)
+        let json = dataArray[indexPath.row]
+        cell.loadData(json: json, tag: tagIndex)
         cell.detailBlock = { [weak self] in
             let vc = DDMainteDetailVC()
             self?.navigationController?.pushViewController(vc, animated: true)
         }
         cell.downloadBlock = { [weak self] in
-            
+            self?.loadPdf(json)
         }
         return cell
     }
