@@ -38,7 +38,7 @@ extension DDDownloadApi {
     }
     
     private func destination(path: String, name: String) -> DownloadDestination {
-        DDShared.shared.createImagePath(path)
+        DDShared.shared.createPath(path)
         let localPath = DDAppInfo.ducumentPath + path + name
         return { temporaryURL, response in
             return (URL(fileURLWithPath: localPath), [.removePreviousFile, .createIntermediateDirectories])

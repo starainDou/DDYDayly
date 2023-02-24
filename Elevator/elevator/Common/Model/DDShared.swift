@@ -94,7 +94,7 @@ class DDShared: NSObject {
     public func saveLift(image: UIImage?, key: String?) {
         guard let cacheKey = key else { return }
         liftImageCache[cacheKey] = image
-        createImagePath("/LiftImages")
+        createPath("/LiftImages")
         let path = DDAppInfo.ducumentPath + "/LiftImages/" + "\(cacheKey).jpg"
         if let data = image?.jpegData(compressionQuality: 0.7) {
             try? data.write(to: URL(fileURLWithPath: path), options: .atomic)
@@ -148,12 +148,12 @@ class DDShared: NSObject {
         }
     }
     
-    public func removeImagePath() {
-        let dir = DDAppInfo.ducumentPath + "/LiftImages"
+    public func removePath(_ path: String) {
+        let dir = DDAppInfo.ducumentPath + path
         try? FileManager.default.removeItem(atPath: dir)
     }
     
-    public func createImagePath(_ path: String) {
+    public func createPath(_ path: String) {
         let dir = DDAppInfo.ducumentPath + path
         if !dirExist(dir) {
             let attributes = [FileAttributeKey.posixPermissions : 0o777]
@@ -182,7 +182,7 @@ class DDShared: NSObject {
         if (id + "_" + role) != getUserTag() {
             UserDefaults.standard.removeObject(forKey: DDShared.DDOldUserKey)
             UserDefaults.standard.removeObject(forKey: DDShared.DDDescriptKey)
-            removeImagePath()
+            removePath("/LiftImages")
             saveUserTag()
         }
     }

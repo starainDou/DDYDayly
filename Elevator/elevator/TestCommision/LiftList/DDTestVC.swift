@@ -54,7 +54,7 @@ class DDTestVC: UIViewController {
         addChildren(notInsVC, notComVC, comVC)
         setViewConstraints()
         currentVC = notInsVC
-        selectAction(segmentView.notInsButton)
+        selectAction(segmentView.notComButton)
     }
     private func setViewConstraints() {
         navigationBar.snp.makeConstraints { make in

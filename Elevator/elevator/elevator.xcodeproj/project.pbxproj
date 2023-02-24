@@ -67,6 +67,7 @@
 		04832898297802E7002BE7B2 /* DDQRCodeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04832897297802E7002BE7B2 /* DDQRCodeVC.swift */; };
 		0483289B297805EB002BE7B2 /* DDQRCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0483289A297805EB002BE7B2 /* DDQRCodeView.swift */; };
 		04BB927129A4FBCB00B98764 /* DDDownloadApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BB927029A4FBCB00B98764 /* DDDownloadApi.swift */; };
+		04BB92D429A8795B00B98764 /* DDDocumentPreviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BB92D329A8795B00B98764 /* DDDocumentPreviewVC.swift */; };
 		04CE09C92988005400795592 /* DDDetailItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CE09C82988005400795592 /* DDDetailItemView.swift */; };
 		04CE0A152988D32900795592 /* DDDetailButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CE0A142988D32900795592 /* DDDetailButtonView.swift */; };
 		04CE0A172988D4D700795592 /* DDDetailMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CE0A162988D4D700795592 /* DDDetailMenuView.swift */; };
@@ -174,6 +175,7 @@
 		04832897297802E7002BE7B2 /* DDQRCodeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDQRCodeVC.swift; sourceTree = "<group>"; };
 		0483289A297805EB002BE7B2 /* DDQRCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDQRCodeView.swift; sourceTree = "<group>"; };
 		04BB927029A4FBCB00B98764 /* DDDownloadApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDDownloadApi.swift; sourceTree = "<group>"; };
+		04BB92D329A8795B00B98764 /* DDDocumentPreviewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDDocumentPreviewVC.swift; sourceTree = "<group>"; };
 		04CE09C82988005400795592 /* DDDetailItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDDetailItemView.swift; sourceTree = "<group>"; };
 		04CE0A142988D32900795592 /* DDDetailButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDDetailButtonView.swift; sourceTree = "<group>"; };
 		04CE0A162988D4D700795592 /* DDDetailMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDDetailMenuView.swift; sourceTree = "<group>"; };
@@ -536,6 +538,7 @@
 			isa = PBXGroup;
 			children = (
 				048328742976D578002BE7B2 /* DDHomeVC.swift */,
+				04BB92D329A8795B00B98764 /* DDDocumentPreviewVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -803,6 +806,7 @@
 				034FB78F29979329003985AD /* DDEngineerHeader.swift in Sources */,
 				034FB7932998C597003985AD /* DDEngineerSearchVC.swift in Sources */,
 				034FB7A929A22335003985AD /* DDTestSearchVC.swift in Sources */,
+				04BB92D429A8795B00B98764 /* DDDocumentPreviewVC.swift in Sources */,
 				0483283429768A78002BE7B2 /* DDMaintenanceCell.swift in Sources */,
 				034FB7B929A23F45003985AD /* DDMainteDetail4VC.swift in Sources */,
 				04103373299D085100542586 /* DDListView.swift in Sources */,

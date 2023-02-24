@@ -93,3 +93,38 @@ extension DDTestSearchVC: UITableViewDelegate, UITableViewDataSource {
         }
     }
 }
+
+
+extension DDTestSearchVC {
+    fileprivate func loadPdf(_ json: JSON) {
+        let liftNum = json["liftnumber"].stringValue
+        let fileName = "Report-" + liftNum + ".pdf"
+        let dateVal = "" //DDAppInfo.dateStr(DDAppInfo.timeStamp(), dateFormat: "yyyy-MM") ?? ""
+        let path = DDAppInfo.ducumentPath + "/getAppTcReport/" + fileName
+        guard !FileManager.default.fileExists(atPath: path) else { return previewPdf(path, fileName) }
+        ProgressHUD.show("Downloading")
+        DDDownload(target: .getTcReport(fileName: fileName, liftNumber: liftNum, mapImgBase64: "", dateVal: dateVal), success: { [weak self] result, msg in
+            print("正确 \(result) \(msg ?? "NoMsg")")
+            if FileManager.default.fileExists(atPath: path) {
+                ProgressHUD.dismiss()
+                self?.previewPdf(path, fileName)
+            } else {
+                ProgressHUD.showFailed("Fail", interaction: false, delay: 3)
+            }
+        }, failure: { [weak self] code, msg in
+            print("错误 \(code) \(msg ?? "NoMsg")")
+            if FileManager.default.fileExists(atPath: path) {
+                ProgressHUD.dismiss()
+                self?.previewPdf(path, fileName)
+            } else {
+                ProgressHUD.showFailed(msg ?? "Fail", interaction: false, delay: 3)
+            }
+        })
+    }
+    
+    fileprivate func previewPdf(_ path: String,_ fileName: String) {
+        let vc = DDDocumentPreviewVC()
+        vc.loadData(path, fileName)
+        navigationController?.pushViewController(vc, animated: true)
+    }
+}
