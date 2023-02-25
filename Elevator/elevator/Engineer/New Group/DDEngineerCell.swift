@@ -116,7 +116,7 @@ class DDEngineerCell: UITableViewCell {
     
     public func loadData(item: DDLiftModel, tag: Int) {
         titleLabel.text = "2#2#A001" // item.number
-        stateLabel.text = tag == 1 ? "Alert" : (tag == 5 ? " Normal" : "Alerm")
+        stateLabel.text = tag == 1 ? "Alert" : (tag == 5 ? " Normal" : "Alarm")
         timeLabel.text = "09/11/2020 12:12" // DDAppInfo.dateStr(item.createtime)
         brandLabel.text = "SASU"//item.brand.isEmpty ? "-" : item.brand
         addressLabel.text = "Singapore 1224 street" // item.address.isEmpty ? "-" : item.address

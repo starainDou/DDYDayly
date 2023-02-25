@@ -22,7 +22,7 @@ class DDEngineerVC: UIViewController {
         $0.tagIndex = 1
     }
     
-    private lazy var alermVC: DDEngineerSubVC = DDEngineerSubVC().then {
+    private lazy var alarmVC: DDEngineerSubVC = DDEngineerSubVC().then {
         $0.tagIndex = 3
     }
     
@@ -34,8 +34,8 @@ class DDEngineerVC: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = UIColor(hex: "#F1F5FF")
         view.addSubviews(headerView, scrollVew)
-        scrollVew.addSubviews(alertVC.view, alermVC.view, normalVC.view)
-        addChildren(alertVC, alermVC, normalVC)
+        scrollVew.addSubviews(alertVC.view, alarmVC.view, normalVC.view)
+        addChildren(alertVC, alarmVC, normalVC)
         setViewConstraints()
         setClosure()
         loadData()
@@ -56,7 +56,7 @@ class DDEngineerVC: UIViewController {
             make.bottom.equalTo(view.snp.bottom)
             make.width.equalTo(DDScreen.width)
         }
-        alermVC.view.snp.makeConstraints { make in
+        alarmVC.view.snp.makeConstraints { make in
             make.width.equalTo(DDScreen.width)
             make.height.centerY.equalTo(alertVC.view)
             make.leading.equalTo(alertVC.view.snp.trailing)
@@ -64,14 +64,14 @@ class DDEngineerVC: UIViewController {
         normalVC.view.snp.makeConstraints { make in
             make.width.equalTo(DDScreen.width)
             make.height.centerY.equalTo(alertVC.view)
-            make.leading.equalTo(alermVC.view.snp.trailing)
+            make.leading.equalTo(alarmVC.view.snp.trailing)
             make.trailing.equalTo(scrollVew)
         }
     }
     
     private func setClosure() {
         headerView.alertButton.addTarget(self, action: #selector(selectAction(_:)), for: .touchUpInside)
-        headerView.alermButton.addTarget(self, action: #selector(selectAction(_:)), for: .touchUpInside)
+        headerView.alarmButton.addTarget(self, action: #selector(selectAction(_:)), for: .touchUpInside)
         headerView.normalButton.addTarget(self, action: #selector(selectAction(_:)), for: .touchUpInside)
         headerView.backButton.addTarget(self, action: #selector(backAction), for: .touchUpInside)
         headerView.searchButton.addTarget(self, action: #selector(searchAction), for: .touchUpInside)

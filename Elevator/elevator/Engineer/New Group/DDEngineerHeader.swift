@@ -61,8 +61,8 @@ class DDEngineerHeader: UIView {
         $0.tag = 0
     }
     
-    private(set) lazy var alermButton: UIButton = UIButton(type: .custom).then {
-        $0.setTitle("Alerm", for: .normal)
+    private(set) lazy var alarmButton: UIButton = UIButton(type: .custom).then {
+        $0.setTitle("Alarm", for: .normal)
         $0.tag = 1
     }
     
@@ -74,7 +74,7 @@ class DDEngineerHeader: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubviews(mapView, backView, backButton, lineView, searchButton, bookButton, locationButton, segmentView)
-        segmentView.addSubviews(alertButton, alermButton, normalButton)
+        segmentView.addSubviews(alertButton, alarmButton, normalButton)
         setViewConstraints()
         selectIndex(0)
     }
@@ -124,19 +124,19 @@ class DDEngineerHeader: UIView {
             make.top.bottom.equalToSuperview()
             make.width.equalTo(64)
         }
-        alermButton.snp.makeConstraints { make in
+        alarmButton.snp.makeConstraints { make in
             make.leading.equalTo(alertButton.snp.trailing)
             make.top.bottom.equalToSuperview()
             make.width.equalTo(64)
         }
         normalButton.snp.makeConstraints { make in
-            make.leading.equalTo(alermButton.snp.trailing)
+            make.leading.equalTo(alarmButton.snp.trailing)
             make.top.bottom.equalToSuperview()
             make.width.equalTo(64)
         }
     }
     public func selectIndex(_ index: Int) {
-        [alertButton, alermButton, normalButton].forEach { button in
+        [alertButton, alarmButton, normalButton].forEach { button in
             button.setTitleColor(UIColor(hex: button.tag == index ? "#168991" : "#666666"), for: .normal)
             button.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: button.tag == index ? .semibold : .regular)
         }

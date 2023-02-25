@@ -5,12 +5,12 @@
       "scale" : "1x"
     },
     {
-      "filename" : "LoadAlerm@2x.png",
+      "filename" : "TripsSwitchAlarm@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "LoadAlerm@3x.png",
+      "filename" : "TripsSwitchAlarm@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
