@@ -7,6 +7,7 @@
 
 import UIKit
 import SwiftyJSON
+import DDYSwiftyExtension
 
 class DDMainteDetail2Cell: UICollectionViewCell {
     
@@ -49,7 +50,6 @@ class DDMainteDetail2Cell: UICollectionViewCell {
         numberLabel.snp.makeConstraints { make in
             make.trailing.equalTo(rectView).inset(8)
             make.centerY.equalTo(iconView).inset(11)
-            make.width.height.equalTo(22)
         }
         containerView.snp.makeConstraints { make in
             make.leading.trailing.bottom.equalTo(rectView)
@@ -63,9 +63,63 @@ class DDMainteDetail2Cell: UICollectionViewCell {
             make.bottom.lessThanOrEqualTo(containerView)
         }
     }
-    public func loadData(_ value: String, title:String, key: String) {
-        iconView.image = UIImage(named: "kpi_" + key)
-        numberLabel.text = value
-        profileLabel.text = title
+    public func loadData(_ kpiJson: JSON, titles: [String], keys: [String], index: Int) {
+        iconView.image = UIImage(named: "kpi_" + keys[index])
+        profileLabel.text = titles[index]
+        if index == 0 {
+            numberLabel.text = value(json: kpiJson[keys[index]], round:2, unit: "")
+        } else if index == 1 {
+            numberLabel.text = value(json: kpiJson[keys[index]], round:2, unit: "")
+        } else if index == 2 {
+            numberLabel.text = value(json: kpiJson[keys[index]], round:3, unit: "")
+        } else if index == 3 {
+            numberLabel.text = value(json: kpiJson[keys[index]], round:2, unit: "km")
+        } else if index == 4 {
+            numberLabel.text = value(json: kpiJson[keys[index]], round:3, unit: "%")
+        } else if index == 5 {
+            numberLabel.text = value(json: kpiJson[keys[index]], round:2, unit: "kg")
+        } else if index == 6 {
+            numberLabel.text = value(json: kpiJson[keys[index]], round:2, unit: "")
+        } else if index == 7 {
+            numberLabel.text = value(json: kpiJson[keys[index]], round:2, unit: "%")
+        } else if index == 8 {
+            numberLabel.text = value(json: kpiJson[keys[index]], round:2, unit: "%")
+        } else if index == 9 {
+            numberLabel.text = value(json: kpiJson[keys[index]], round:2, unit: "%")
+        } else if index == 10 {
+            numberLabel.text = value(json: kpiJson[keys[index]], round:2, unit: "")
+        } else if index == 11 {
+            numberLabel.text = value(json: kpiJson[keys[index]], round:2, unit: "s")
+        } else if index == 12 {
+            numberLabel.text = value(json: kpiJson[keys[index]], round:2, unit: "")
+        } else if index == 13 {
+            numberLabel.text = value(json: kpiJson[keys[index]], round:2, unit: "")
+        } else if index == 14 {
+            numberLabel.text = value(json: kpiJson[keys[index]], round:2, unit: "kg")
+        } else if index == 15 {
+            numberLabel.text = value(json: kpiJson[keys[index]], round:2, unit: "%")
+        } else if index == 16 {
+            numberLabel.text = value(json: kpiJson[keys[index]], round:2, unit: "kg")
+        } else if index == 17 {
+            numberLabel.text = value(json: kpiJson[keys[index]], round:2, unit: "%")
+        } else if index == 18 {
+            numberLabel.text = value(json: kpiJson[keys[index]], round:2, unit: "km")
+        } else if index == 19 {
+            numberLabel.text = value(json: kpiJson[keys[index]], round:2, unit: "")
+        }
+    }
+    
+    private func value(json: JSON, round: Int, unit: String) -> String {
+        if let value = json.float {
+            return "\(value.ddy_round(round))".ddy_zero + unit
+        } else if let value = json.double {
+            return "\(value.ddy_round(round))".ddy_zero + unit
+        } else if let value = json.int {
+            return "\(value)".ddy_zero + unit
+        } else if let value = json.string {
+            return value.ddy_zero + unit
+        } else {
+            return "-"
+        }
     }
 }

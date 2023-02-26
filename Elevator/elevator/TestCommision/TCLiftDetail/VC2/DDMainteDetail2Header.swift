@@ -7,6 +7,7 @@
 
 import UIKit
 import SwiftyJSON
+import DDYSwiftyExtension
 
 class DDMainteDetail2Header: UICollectionViewCell {
     
@@ -19,13 +20,12 @@ class DDMainteDetail2Header: UICollectionViewCell {
     private lazy var numberLabel: UILabel = UILabel().then {
         $0.font = UIFont.systemFont(ofSize: 38, weight: .semibold)
         $0.textColor = UIColor(hex: "#333333")
-        $0.text = "60%"
     }
     
     private lazy var quelityLabel: UILabel = UILabel().then {
         $0.font = UIFont.systemFont(ofSize: 13, weight: .regular)
         $0.textColor = UIColor(hex: "#1ECAA1")
-        $0.text = "60%"
+        $0.text = "Ride quality"
     }
     
     private lazy var downButton: UIButton = UIButton(type: .custom).then {
@@ -59,13 +59,13 @@ class DDMainteDetail2Header: UICollectionViewCell {
             make.centerY.equalTo(pieView)
         }
         quelityLabel.snp.makeConstraints { make in
-            make.leading.equalTo(numberLabel)
+            make.trailing.equalTo(numberLabel)
             make.top.equalTo(numberLabel.snp.bottom).offset(4)
         }
         
         downButton.snp.makeConstraints { make in
             make.trailing.equalToSuperview().inset(15)
-            make.top.equalToSuperview().inset(17)
+            make.top.equalToSuperview().inset(12)
             make.width.height.equalTo(30)
         }
     }
@@ -74,6 +74,7 @@ class DDMainteDetail2Header: UICollectionViewCell {
         layoutIfNeeded()
         actionBlock = action
         let progress = json["rideQuality"].floatValue
+        numberLabel.text = "\(progress.ddy_round(2))".ddy_zero + "%"
         var transform = CGAffineTransform.identity
         let pinSize = pinView.bounds.size
         transform = transform.translatedBy(x: pinSize.width / 2 - 7, y: 0)

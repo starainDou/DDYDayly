@@ -83,7 +83,7 @@ class DDCommisionVC: UIViewController {
     
     @objc private func submitAction() {
         ProgressHUD.show()
-        DDPost(target: .updateLiftStatus(liftId: liftBaseJson["liftId"].stringValue, status: "4"), success: { [weak self] result, msg in
+        DDPost(target: .updateLiftStatus(liftId: liftBaseJson["id"].stringValue, status: "4"), success: { [weak self] result, msg in
             print("正确 \(result) \(msg ?? "NoMsg")")
             ProgressHUD.dismiss()
             self?.backAction()

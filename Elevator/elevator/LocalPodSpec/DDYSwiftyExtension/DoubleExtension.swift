@@ -15,3 +15,11 @@ public extension Double {
     }
 
 }
+
+public extension Float {
+    /// 要保留的小数个数
+       func ddy_round(_ places:Int) -> Float {
+           let divisor = pow(10.0, Float(places))
+           return (self * divisor).rounded() / divisor
+       }
+}

@@ -105,15 +105,42 @@ class DDMainteStateView: UIView {
         }
     }
     public func loadData(_ json: JSON) {
-        carDoorView.textLabel.text = json[""].stringValue
-        landingView.textLabel.text = json[""].stringValue
-        driveView.textLabel.text = json[""].stringValue
-        motorView.textLabel.text = json[""].stringValue
-        gearboxView.textLabel.text = json[""].stringValue
-        guidesView.textLabel.text = json[""].stringValue
-        carView.textLabel.text = json[""].stringValue
-        meansView.textLabel.text = json[""].stringValue
-        deviceView.textLabel.text = json[""].stringValue
-        breakView.textLabel.text = json[""].stringValue
+        // 11好像是灰色，2是红色，1是黑色，3是橙色，5是蓝色
+        updateImg(json["liftstatus"]["cardoor"].stringValue, imgView: carDoorView.stateView)
+        updateImg(json["liftstatus"]["landingdoor"].stringValue, imgView: landingView.stateView)
+        updateImg(json["liftstatus"]["drivingunit"].stringValue, imgView: driveView.stateView)
+        updateImg(json["liftstatus"]["motor"].stringValue, imgView: motorView.stateView)
+        updateImg(json["liftstatus"]["gearbox"].stringValue, imgView: gearboxView.stateView)
+        updateImg(json["liftstatus"]["guides"].stringValue, imgView: guidesView.stateView)
+        updateImg(json["liftstatus"]["car"].stringValue, imgView: carView.stateView)
+        updateImg(json["liftstatus"]["wearwatcherdeviceitself"].stringValue, imgView: meansView.stateView)
+        updateImg(json["liftstatus"]["cardoor"].stringValue, imgView: deviceView.stateView)
+        if let str = json["liftstatus"]["breakdownProbability"].string {
+            breakView.textLabel.text = str + "%"
+        } else {
+            breakView.textLabel.text = "-"
+        }
+    }
+    
+    public func updateImg(_ tag: String, imgView: UIImageView) {
+        if tag == "1" {
+            imgView.image = UIImage(named: "alert_critical")
+        } else if tag == "2" {
+            imgView.image = UIImage(named: "alert_major")
+        } else if tag == "3" {
+            imgView.image = UIImage(named: "alert_minor")
+        } else if tag == "4" {
+            imgView.image = UIImage(named: "alert_info")
+        } else if tag == "5" {
+            imgView.image = UIImage(named: "alert_debug")
+        } else if tag == "6" {
+            imgView.image = UIImage(named: "alert_clear")
+        } else if tag == "11" {
+            imgView.image = UIImage(named: "alert_unkonwn")
+        } else if tag == "12" {
+            imgView.image = UIImage(named: "alert_ok")
+        } else {
+            imgView.image = UIImage(named: "Tick")
+        }
     }
 }

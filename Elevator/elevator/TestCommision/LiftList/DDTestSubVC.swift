@@ -11,6 +11,7 @@ import JXSegmentedView
 import ProgressHUD
 import SwiftyJSON
 import MJRefresh
+import EmptyDataSet_Swift
 
 class DDTestSubVC: UIViewController {
 
@@ -25,6 +26,8 @@ class DDTestSubVC: UIViewController {
         $0.ddy_zeroPadding()
         $0.ddy_register(cellClass: DDTestCell.self)
         $0.keyboardDismissMode = .onDrag
+        $0.emptyDataSetSource = self
+        $0.emptyDataSetDelegate = self
     }
     
     private(set) lazy var dataArray: [JSON] = []
@@ -35,13 +38,22 @@ class DDTestSubVC: UIViewController {
     
     var page: Int = 1
     
+    var searchWord: String? {
+        didSet {
+            guard oldValue != searchWord else { return }
+            page = 1
+            loadData()
+        }
+    }
+    
+    var isNeedLoad: Bool = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(hex: "#F1F5FF")
         view.addSubviews(tableView)
         setViewConstraints()
         setupRefresh()
-        loadData()
     }
     
     private func setViewConstraints() {
@@ -50,8 +62,16 @@ class DDTestSubVC: UIViewController {
         }
     }
     
+    public func loadDataIfNeed() {
+        if isNeedLoad {
+            loadData()
+            isNeedLoad = false
+        }
+    }
+    
     private func loadData() {
-        DDGet(target: .getLiftsBystatus(status: "\(tagIndex)", page: "\(page)", limit: "20"), success: { [weak self] result, msg in
+        ProgressHUD.show()
+        DDGet(target: .getLiftsBystatus(status: "\(tagIndex)", page: "\(page)", limit: "20", liftnumber: searchWord), success: { [weak self] result, msg in
             print("正确 \(result) \(msg ?? "NoMsg")")
             ProgressHUD.dismiss()
             if let `self` = self {
@@ -152,5 +172,15 @@ extension DDTestSubVC {
         let vc = DDDocumentPreviewVC()
         vc.loadData(path, fileName)
         navigationController?.pushViewController(vc, animated: true)
+    }
+}
+
+
+extension DDTestSubVC: EmptyDataSetSource, EmptyDataSetDelegate {
+    func image(forEmptyDataSet scrollView: UIScrollView) -> UIImage? {
+        return UIImage(named: "Icon218")
+    }
+    func emptyDataSet(_ scrollView: UIScrollView, didTapView view: UIView) {
+        loadData()
     }
 }

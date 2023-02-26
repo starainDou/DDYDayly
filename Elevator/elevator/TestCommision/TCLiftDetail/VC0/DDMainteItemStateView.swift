@@ -46,5 +46,4 @@ class DDMainteItemStateView: UIView {
             make.centerY.equalToSuperview()
         }
     }
-
 }

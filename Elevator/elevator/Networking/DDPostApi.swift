@@ -21,6 +21,7 @@ public enum DDPostApi {
     case getLiftKpi(liftnumber: String) // 重复错误
     /// getSingleRide
     case getSingleRide(liftnumber: String, daterange: [String])
+    case getSingleRide2(liftnumber: String, starttime: String, endtime: String, userid: String, page: String, limit: String)
     /// 获取电梯详情
     case getLiftDetail(liftId: String)
     /// 修改电梯详情
@@ -78,6 +79,16 @@ extension DDPostApi {
             baseParams["liftnumber"] = liftnumber
             baseParams["daterange"] = daterange
             return (DDBaseUrl + "/liftmetering/getSingleRide", baseParams)
+            
+        case let .getSingleRide2(liftnumber, starttime, endtime, userid, page, limit):
+            baseParams["liftnumber"] = liftnumber
+            baseParams["starttime"] = starttime
+            baseParams["endtime"] = endtime
+            baseParams["userid"] = userid
+            baseParams["page"] = page
+            baseParams["limit"] = limit
+            baseParams["daterange"] = [starttime, endtime]
+            return (DDBaseUrl + "/liftapp/getSingleRide", baseParams)
             
         case let .getLiftDetail(liftId):
             return (DDBaseUrl + "/liftapp/getLiftDetail/\(liftId)", baseParams)

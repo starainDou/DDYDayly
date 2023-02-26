@@ -93,14 +93,7 @@ class DDInstallationVC: UIViewController {
     }
     
     @objc private func searchAction() {
-        view.endEditing(true)
-        guard let text = segmentView.textField.text else { return }
-        guard let tempVC = currentVC else { return }
-        let vc = DDInstallSearchVC()
-        vc.loadData(tempVC.dataArray.filter {
-            $0["liftnumber"].stringValue.contains(text) || $0["address"].stringValue.contains(text) || $0["brand"].stringValue.contains(text)
-        }, tag: tempVC.tagIndex, sensor: sensorJson)
-        navigationController?.pushViewController(vc, animated: true)
+        currentVC?.searchWord = segmentView.textField.text
     }
     @objc private func selectAction(_ button: UIButton) {
         view.endEditing(true)
@@ -111,6 +104,7 @@ class DDInstallationVC: UIViewController {
             $0.backgroundColor = UIColor(hex: ($0.tag == button.tag) ? "#168991" : "#DEDEE0")
         }
         currentVC = (button.tag == 0) ? notInsVC : (button.tag == 1 ? notComVC : comVC)
+        currentVC?.loadDataIfNeed()
     }
 }
 

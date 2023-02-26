@@ -161,9 +161,7 @@ extension DDMainteDetail2VC: UICollectionViewDataSource, UICollectionViewDelegat
             return cell
         } else {
             let cell = collectionView.ddy_dequeueReusableCell(DDMainteDetail2Cell.self, for: indexPath)
-            let key = keyArray[indexPath.item]
-            let title = titleArray[indexPath.item]
-            cell.loadData(kpiJson[key].stringValue, title: title, key: key)
+            cell.loadData(kpiJson, titles: titleArray, keys: keyArray, index: indexPath.item)
             return cell
         }
     }

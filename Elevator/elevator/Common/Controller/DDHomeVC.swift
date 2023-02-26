@@ -121,6 +121,18 @@ extension DDHomeVC: UITableViewDelegate, UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        navigationController?.pushViewController(dataArray[indexPath.row].vc, animated: true)
+        if dataArray[indexPath.row].vc == "DDQRCodeVC" {
+            navigationController?.pushViewController(DDQRCodeVC(), animated: true)
+        } else if dataArray[indexPath.row].vc == "DDTestVC" {
+            navigationController?.pushViewController(DDTestVC(), animated: true)
+        } else if dataArray[indexPath.row].vc == "DDEngineerVC1" {
+            navigationController?.pushViewController(DDEngineerVC(1), animated: true)
+        } else if dataArray[indexPath.row].vc == "DDEngineerVC2" {
+            navigationController?.pushViewController(DDEngineerVC(2), animated: true)
+        } else if dataArray[indexPath.row].vc == "DDEngineerVC3" {
+            navigationController?.pushViewController(DDEngineerVC(3), animated: true)
+        } else if dataArray[indexPath.row].vc == "DDSummaryVC" {
+            navigationController?.pushViewController(DDSummaryVC(), animated: true)
+        }        
     }
 }

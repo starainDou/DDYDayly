@@ -162,9 +162,10 @@ class DDMainteDetail1Cell: UITableViewCell {
     }
     
     public func loadData(_ json: JSON) {
-        stateView.image = UIImage(named: "Icon31")
+        // DEBUG 蓝色   CRITICAL 黑色  MINOR 棕色   INFO黄色  MAJOR
+        stateView.image = UIImage(named: "alert_\(json["severity"].stringValue.lowercased())") ?? UIImage(named: "alert_unkonwn")
         titleLabel.text = json["liftnumber"].stringValue
-        iconView.image = UIImage(named: "Label")
+        iconView.image = UIImage(named: "Label") // severity  MINOR 棕色 Icon30  DEBUG蓝色
         reasonLabel.text = nil // "Car not leveled in floor 10"
         numberLabel.text = "\(json["eventTimes"].stringValue) Times"
         date1Label.text = DDAppInfo.dateStr(json["firstEventTime"].stringValue, dateFormat: "yyyy-MM-dd HH:mm:ss")
@@ -172,7 +173,19 @@ class DDMainteDetail1Cell: UITableViewCell {
         issueLabel.text = json["issue"].stringValue
         alertLabel.text = json["description"].stringValue
         timeLabel.text = DDAppInfo.dateStr(json["createtime"].stringValue, dateFormat: "yyyy-MM-dd HH:mm:ss")
-        resultLabel.text = json["status"].stringValue // 0 未处理 1 已知晓 2 已处理 3已修改
+        if json["status"].stringValue == "1" {
+            resultLabel.text = "Ackonwledged"
+            resultLabel.textColor = UIColor(hex:"#EFC41A")
+        } else if json["status"].stringValue == "2" {
+            resultLabel.text = "Resolved"
+            resultLabel.textColor = UIColor(hex:"#EFC41A")
+        } else if json["status"].stringValue == "3" {
+            resultLabel.text = "Update"
+            resultLabel.textColor = UIColor(hex:"#1ECAA1")
+        } else {
+            resultLabel.text = "Unackonwledged"
+            resultLabel.textColor = UIColor(hex:"#FE5151")
+        }// 0 未处理 1 已知晓 2 已处理 3已修改
     }
 
 //    func test() {

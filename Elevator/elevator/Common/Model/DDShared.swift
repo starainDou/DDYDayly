@@ -49,20 +49,20 @@ class DDShared: NSObject {
     
     var homeItems: [DDHomeModel] {
         get {
-            if json?["user"]["rolename"].stringValue == "Installer@STEE" {
-                return [DDHomeModel(icon: "Repair", title: "Installtion", vc: DDQRCodeVC())]
-            } else if json?["user"]["rolename"].stringValue == "Engineer@STEE" {
-                return [DDHomeModel(icon: "Elevator", title: "Lift", vc: DDEngineerVC(1)),
-                        DDHomeModel(icon: "History", title: "History", vc: DDEngineerVC(2)),
-                        DDHomeModel(icon: "FavouriteCyan", title: "Favourite", vc: DDEngineerVC(3)),
-                        DDHomeModel(icon: "Summary", title: "Summary of Lift Performances", vc: DDSummaryVC())]
-            } else if json?["user"]["rolename"].stringValue == "T&C@STEE" {
-                return [DDHomeModel(icon: "Commissioning", title: "Test&Commissioning", vc: DDTestVC())]
+            if json?["user"]["rolename"].string == "Installer@STEE" || json?["user"]["roleid"].int == 5 {
+                return [DDHomeModel(icon: "Repair", title: "Installtion", vc: "DDQRCodeVC")]
+            } else if json?["user"]["rolename"].string == "T&C@STEE" || json?["user"]["roleid"].int == 6 {
+                return [DDHomeModel(icon: "Commissioning", title: "Test&Commissioning", vc: "DDTestVC")]
+            } else if json?["user"]["rolename"].string == "Engineer@STEE" || json?["user"]["roleid"].int == 7 {
+                return [DDHomeModel(icon: "Elevator", title: "Lift", vc: "DDEngineerVC1"),
+                        DDHomeModel(icon: "History", title: "History", vc: "DDEngineerVC2"),
+                        DDHomeModel(icon: "FavouriteCyan", title: "Favourite", vc: "DDEngineerVC3"),
+                        DDHomeModel(icon: "Summary", title: "Summary of Lift Performances", vc: "DDSummaryVC")]
             } else {
-                return [DDHomeModel(icon: "Elevator", title: "Lift", vc: DDEngineerVC(1)),
-                        DDHomeModel(icon: "History", title: "History", vc: DDEngineerVC(2)),
-                        DDHomeModel(icon: "FavouriteCyan", title: "Favourite", vc: DDEngineerVC(3)),
-                        DDHomeModel(icon: "Summary", title: "Summary of Lift Performances", vc: DDSummaryVC())]
+                return [DDHomeModel(icon: "Elevator", title: "Lift", vc: "DDEngineerVC1"),
+                        DDHomeModel(icon: "History", title: "History", vc: "DDEngineerVC2"),
+                        DDHomeModel(icon: "FavouriteCyan", title: "Favourite", vc: "DDEngineerVC3"),
+                        DDHomeModel(icon: "Summary", title: "Summary of Lift Performances", vc: "DDSummaryVC")]
             }
         }
     }

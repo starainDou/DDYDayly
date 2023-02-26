@@ -11,6 +11,7 @@ import JXSegmentedView
 import ProgressHUD
 import SwiftyJSON
 import MJRefresh
+import EmptyDataSet_Swift
 
 class DDInstallSubVC: UIViewController {
 
@@ -35,13 +36,22 @@ class DDInstallSubVC: UIViewController {
     
     var page: Int = 1
     
+    var searchWord: String? {
+        didSet {
+            guard oldValue != searchWord else { return }
+            page = 1
+            loadData()
+        }
+    }
+    
+    var isNeedLoad: Bool = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(hex: "#F1F5FF")
         view.addSubviews(tableView)
         setViewConstraints()
         setupRefresh()
-        loadData()
     }
     
     private func setViewConstraints() {
@@ -50,8 +60,16 @@ class DDInstallSubVC: UIViewController {
         }
     }
     
+    public func loadDataIfNeed() {
+        if isNeedLoad {
+            loadData()
+            isNeedLoad = false
+        }
+    }
+    
     private func loadData() {
-        DDGet(target: .getLiftsBystatus(status: "\(tagIndex)", page: "\(page)", limit: "20"), success: { [weak self] result, msg in
+        ProgressHUD.show()
+        DDGet(target: .getLiftsBystatus(status: "\(tagIndex)", page: "\(page)", limit: "20", liftnumber: searchWord), success: { [weak self] result, msg in
             print("正确 \(result) \(msg ?? "NoMsg")")
             ProgressHUD.dismiss()
             if let `self` = self {
@@ -106,5 +124,14 @@ extension DDInstallSubVC: UITableViewDelegate, UITableViewDataSource {
         vc.sensorJson = sensorJson
         vc.liftBaseJson = dataArray[indexPath.row]
         navigationController?.pushViewController(vc, animated: true)
+    }
+}
+
+extension DDInstallSubVC: EmptyDataSetSource, EmptyDataSetDelegate {
+    func image(forEmptyDataSet scrollView: UIScrollView) -> UIImage? {
+        return UIImage(named: "Icon218")
+    }
+    func emptyDataSet(_ scrollView: UIScrollView, didTapView view: UIView) {
+        loadData()
     }
 }

@@ -16,7 +16,7 @@ public enum DDGetApi {
     /// sensor验证
     case getSensor(deviceId: String)
     /// 根据状态查询电梯
-    case getLiftsBystatus(status: String, page: String, limit: String)
+    case getLiftsBystatus(status: String, page: String, limit: String, liftnumber: String?)
     /// 查询lift的状态信息
     case getStatusOfLift(id: String)
     /// 查询警报详情
@@ -56,7 +56,8 @@ extension DDGetApi {
         case let .getSensor(deviceId):
             return (DDBaseUrl + "/getSensor/" + deviceId, baseParams)
             
-        case let .getLiftsBystatus(status, page, limit):
+        case let .getLiftsBystatus(status, page, limit, liftnumber):
+            baseParams["liftNumber"] = liftnumber
             return (DDBaseUrl + "/liftapp/getLiftsBystatus/\(status)/\(page)/\(limit)", baseParams)
             
         case let .getStatusOfLift(id):
