@@ -93,12 +93,7 @@ class DDCommisionHeader: UIView {
             make.leading.equalTo(timeView.snp.trailing).offset(5)
         }
     }
-    
-    public func loadData(item: DDVerifyModel) {
-        titleLabel.text = item.title
-        stateLabel.text = item.state
-        timeLabel.text = item.time
-    }
+
     
     public func test() {
         titleLabel.text = "2#2#A001"

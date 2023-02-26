@@ -8,6 +8,7 @@
 import UIKit
 import MapKit
 import Then
+import SwiftyJSON
 
 class DDEngineerHeader: UIView {
     
@@ -71,10 +72,15 @@ class DDEngineerHeader: UIView {
         $0.tag = 2
     }
     
+    private(set) lazy var sortButton: UIButton = UIButton(type: .custom).then {
+        $0.setTitle("MapDown", for: .normal)
+        $0.tag = 2
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubviews(mapView, backView, backButton, lineView, searchButton, bookButton, locationButton, segmentView)
-        segmentView.addSubviews(alertButton, alarmButton, normalButton)
+        segmentView.addSubviews(alertButton, alarmButton, normalButton, sortButton)
         setViewConstraints()
         selectIndex(0)
     }
@@ -134,6 +140,11 @@ class DDEngineerHeader: UIView {
             make.top.bottom.equalToSuperview()
             make.width.equalTo(64)
         }
+        sortButton.snp.makeConstraints { make in
+            make.centerY.equalTo(normalButton)
+            make.trailing.equalToSuperview().inset(12)
+            make.width.height.equalTo(18)
+        }
     }
     public func selectIndex(_ index: Int) {
         [alertButton, alarmButton, normalButton].forEach { button in
@@ -141,15 +152,17 @@ class DDEngineerHeader: UIView {
             button.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: button.tag == index ? .semibold : .regular)
         }
     }
-    public func loadData(_ model: DDLiftModel) {
-        let regionCenter = CLLocationCoordinate2DMake(CLLocationDegrees(32), CLLocationDegrees(118))
+    public func loadData(_ json: JSON?) {
+        let lat: Double = json?["lat"].doubleValue ?? 0
+        let lng: Double = json?["lng"].doubleValue ?? 0
+        let regionCenter = CLLocationCoordinate2DMake(CLLocationDegrees(lat), CLLocationDegrees(lng)) // 32 118
         let regionSpan = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
         let region = MKCoordinateRegion(center: regionCenter, span: regionSpan)
         mapView.setRegion(region, animated: true)
         
-        let annotion = MKPointAnnotation()
-        annotion.coordinate = regionCenter
-        mapView.addAnnotation(annotion)
+//        let annotion = MKPointAnnotation()
+//        annotion.coordinate = regionCenter
+//        mapView.addAnnotation(annotion)
     }
 
 }

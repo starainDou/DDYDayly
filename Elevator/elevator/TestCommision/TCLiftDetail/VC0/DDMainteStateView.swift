@@ -105,6 +105,15 @@ class DDMainteStateView: UIView {
         }
     }
     public func loadData(_ json: JSON) {
-        
+        carDoorView.textLabel.text = json[""].stringValue
+        landingView.textLabel.text = json[""].stringValue
+        driveView.textLabel.text = json[""].stringValue
+        motorView.textLabel.text = json[""].stringValue
+        gearboxView.textLabel.text = json[""].stringValue
+        guidesView.textLabel.text = json[""].stringValue
+        carView.textLabel.text = json[""].stringValue
+        meansView.textLabel.text = json[""].stringValue
+        deviceView.textLabel.text = json[""].stringValue
+        breakView.textLabel.text = json[""].stringValue
     }
 }

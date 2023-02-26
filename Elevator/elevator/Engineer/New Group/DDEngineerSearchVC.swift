@@ -29,6 +29,23 @@ class DDEngineerSearchVC: UIViewController {
         $0.tagIndex = 5
     }
     
+    var alarmType: Int = 0 {
+        didSet {
+            alertVC.alarmType = alarmType
+            alarmVC.alarmType = alarmType
+            normalVC.alarmType = alarmType
+        }
+    }
+    
+    init(_ type: Int) {
+        super.init(nibName: nil, bundle: nil)
+        alarmType = type
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(hex: "#F1F5FF")
@@ -37,7 +54,6 @@ class DDEngineerSearchVC: UIViewController {
         addChildren(alarmVC, alarmVC, normalVC)
         setViewConstraints()
         setClosure()
-        loadData()
     }
     
     private func setViewConstraints() {
@@ -72,6 +88,7 @@ class DDEngineerSearchVC: UIViewController {
         headerView.alertButton.addTarget(self, action: #selector(selectAction(_:)), for: .touchUpInside)
         headerView.alarmButton.addTarget(self, action: #selector(selectAction(_:)), for: .touchUpInside)
         headerView.normalButton.addTarget(self, action: #selector(selectAction(_:)), for: .touchUpInside)
+        headerView.sortButton.addTarget(self, action: #selector(sortAction), for: .touchUpInside)
         headerView.backButton.addTarget(self, action: #selector(backAction), for: .touchUpInside)
         headerView.searchButton.addTarget(self, action: #selector(searchAction), for: .touchUpInside)
     }
@@ -91,9 +108,9 @@ class DDEngineerSearchVC: UIViewController {
             ProgressHUD.showFailed("Please input content", interaction: false, delay: 3)
             return
         }
-        
     }
-    public func loadData() {
+    
+    @objc private func sortAction() {
         
     }
 }

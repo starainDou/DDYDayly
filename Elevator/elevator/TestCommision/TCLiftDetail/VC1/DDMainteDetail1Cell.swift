@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class DDMainteDetail1Cell: UITableViewCell {
 
@@ -78,6 +79,7 @@ class DDMainteDetail1Cell: UITableViewCell {
     private lazy var resultLabel: UILabel = UILabel().then  {
         $0.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         $0.textColor = UIColor(hex: "#999999")
+        $0.setContentCompressionResistancePriority(.required, for: .horizontal)
         $0.numberOfLines = 0
     }
     
@@ -120,7 +122,7 @@ class DDMainteDetail1Cell: UITableViewCell {
         }
         timeLabel.snp.makeConstraints { make in
             make.leading.equalToSuperview().inset(51)
-            make.trailing.lessThanOrEqualTo(contentView.snp.centerX)
+            make.trailing.lessThanOrEqualTo(resultLabel.snp.leading)
             make.top.equalTo(stackView.snp.bottom).offset(15)
             make.height.equalTo(20)
             make.bottom.equalToSuperview().inset(14)
@@ -158,18 +160,32 @@ class DDMainteDetail1Cell: UITableViewCell {
             make.bottom.equalToSuperview()
         }
     }
-
-    func test() {
+    
+    public func loadData(_ json: JSON) {
         stateView.image = UIImage(named: "Icon31")
-        titleLabel.text = "Lift A002"
+        titleLabel.text = json["liftnumber"].stringValue
         iconView.image = UIImage(named: "Label")
-        reasonLabel.text = "Car not leveled in floor 10"
-        numberLabel.text = "10 Times"
-        date1Label.text = "25/09/2020 06:48:45"
-        date2Label.text = "01/10/2020 03:28:49"
-        issueLabel.text = "Speed tolerance exceeded. Check controller set up and frequncy-inverter issues."
-        alertLabel.text = "Alert is raised, if the deviation between the rope tensions reached a given threshold."
-        timeLabel.text = "09/11 11:07:00"
-        resultLabel.text = "09/11 11:07:00"
+        reasonLabel.text = nil // "Car not leveled in floor 10"
+        numberLabel.text = "\(json["eventTimes"].stringValue) Times"
+        date1Label.text = DDAppInfo.dateStr(json["firstEventTime"].stringValue, dateFormat: "yyyy-MM-dd HH:mm:ss")
+        date2Label.text = DDAppInfo.dateStr(json["lastEventTime"].stringValue, dateFormat: "yyyy-MM-dd HH:mm:ss")
+        issueLabel.text = json["issue"].stringValue
+        alertLabel.text = json["description"].stringValue
+        timeLabel.text = DDAppInfo.dateStr(json["createtime"].stringValue, dateFormat: "yyyy-MM-dd HH:mm:ss")
+        resultLabel.text = json["status"].stringValue // 0 未处理 1 已知晓 2 已处理 3已修改
     }
+
+//    func test() {
+//        stateView.image = UIImage(named: "Icon31")
+//        titleLabel.text = jso
+//        iconView.image = UIImage(named: "Label")
+//        reasonLabel.text = "Car not leveled in floor 10"
+//        numberLabel.text = "10 Times"
+//        date1Label.text = "25/09/2020 06:48:45"
+//        date2Label.text = "01/10/2020 03:28:49"
+//        issueLabel.text = "Speed tolerance exceeded. Check controller set up and frequncy-inverter issues."
+//        alertLabel.text = "Alert is raised, if the deviation between the rope tensions reached a given threshold."
+//        timeLabel.text = "09/11 11:07:00"
+//        resultLabel.text = "09/11 11:07:00"
+//    }
 }

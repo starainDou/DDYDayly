@@ -103,6 +103,7 @@ class DDTestVC: UIViewController {
         navigationController?.pushViewController(vc, animated: true)
     }
     @objc private func selectAction(_ button: UIButton) {
+        view.layoutIfNeeded()
         view.endEditing(true)
         scrollView.setContentOffset(CGPoint(x: DDScreen.width * CGFloat(button.tag), y: 0), animated: true)
         [segmentView.notInsButton, segmentView.notComButton, segmentView.comButton].forEach {

@@ -52,16 +52,16 @@ class DDShared: NSObject {
             if json?["user"]["rolename"].stringValue == "Installer@STEE" {
                 return [DDHomeModel(icon: "Repair", title: "Installtion", vc: DDQRCodeVC())]
             } else if json?["user"]["rolename"].stringValue == "Engineer@STEE" {
-                return [DDHomeModel(icon: "Elevator", title: "Lift", vc: DDEngineerVC()),
-                        DDHomeModel(icon: "History", title: "History", vc: DDQRCodeVC()),
-                        DDHomeModel(icon: "FavouriteCyan", title: "Favourite", vc: DDQRCodeVC()),
-                        DDHomeModel(icon: "Summary", title: "Summary of Lift Performances", vc: DDQRCodeVC())]
+                return [DDHomeModel(icon: "Elevator", title: "Lift", vc: DDEngineerVC(1)),
+                        DDHomeModel(icon: "History", title: "History", vc: DDEngineerVC(2)),
+                        DDHomeModel(icon: "FavouriteCyan", title: "Favourite", vc: DDEngineerVC(3)),
+                        DDHomeModel(icon: "Summary", title: "Summary of Lift Performances", vc: DDSummaryVC())]
             } else if json?["user"]["rolename"].stringValue == "T&C@STEE" {
                 return [DDHomeModel(icon: "Commissioning", title: "Test&Commissioning", vc: DDTestVC())]
             } else {
-                return [DDHomeModel(icon: "Elevator", title: "Lift", vc: DDEngineerVC()),
-                        DDHomeModel(icon: "History", title: "History", vc: DDSummaryVC()),
-                        DDHomeModel(icon: "FavouriteCyan", title: "Favourite", vc: DDQRCodeVC()),
+                return [DDHomeModel(icon: "Elevator", title: "Lift", vc: DDEngineerVC(1)),
+                        DDHomeModel(icon: "History", title: "History", vc: DDEngineerVC(2)),
+                        DDHomeModel(icon: "FavouriteCyan", title: "Favourite", vc: DDEngineerVC(3)),
                         DDHomeModel(icon: "Summary", title: "Summary of Lift Performances", vc: DDSummaryVC())]
             }
         }

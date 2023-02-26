@@ -76,6 +76,7 @@ extension DDTestSearchVC: UITableViewDelegate, UITableViewDataSource {
         cell.loadData(json: json, tag: tagIndex)
         cell.detailBlock = { [weak self] in
             let vc = DDMainteDetailVC()
+            vc.liftBaseJson = json
             self?.navigationController?.pushViewController(vc, animated: true)
         }
         cell.downloadBlock = { [weak self] in

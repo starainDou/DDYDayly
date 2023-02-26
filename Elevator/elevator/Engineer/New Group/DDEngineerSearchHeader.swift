@@ -58,11 +58,16 @@ class DDEngineerSearchHeader: UIView {
         $0.tag = 2
     }
     
+    private(set) lazy var sortButton: UIButton = UIButton(type: .custom).then {
+        $0.setTitle("MapDown", for: .normal)
+        $0.tag = 2
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = UIColor(hex: "#1792AC")
         addSubviews(backButton, backView, searchView, textField, searchButton, segmentView)
-        segmentView.addSubviews(alertButton, alarmButton, normalButton)
+        segmentView.addSubviews(alertButton, alarmButton, normalButton, sortButton)
         setViewConstraints()
         selectIndex(0)
     }
@@ -116,6 +121,11 @@ class DDEngineerSearchHeader: UIView {
             make.leading.equalTo(alarmButton.snp.trailing)
             make.top.bottom.equalToSuperview()
             make.width.equalTo(64)
+        }
+        sortButton.snp.makeConstraints { make in
+            make.centerY.equalTo(normalButton)
+            make.trailing.equalToSuperview().inset(12)
+            make.width.height.equalTo(18)
         }
     }
     

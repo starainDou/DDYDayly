@@ -84,10 +84,10 @@ class DDMainteHeaderView: UIView {
         }
     }
     
-    public func loadData(_ json: JSON) {
-        titleLabel.text = json["liftnumber"].stringValue
-        stateLabel.text = tag == 0 ? "Not Installed" : (tag == 5 ? " Commissioned" : "Not Commissioned")
-        timeLabel.text = DDAppInfo.dateStr(json["createtime"].stringValue)
-        addressLabel.text = json["address"].stringValue.isEmpty ? "-" : json["address"].stringValue
+    public func loadData(_ json: JSON, baseJson: JSON) {
+        titleLabel.text = baseJson["liftnumber"].stringValue
+        stateLabel.text = json["liftlastdata"]["status"].stringValue
+        timeLabel.text = DDAppInfo.dateStr(baseJson["createtime"].stringValue)
+        addressLabel.text = baseJson["address"].stringValue
     }
 }

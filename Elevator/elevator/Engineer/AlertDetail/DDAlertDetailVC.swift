@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import SwiftyJSON
+import ProgressHUD
 
 class DDAlertDetailVC: UIViewController {
     
@@ -44,6 +46,8 @@ class DDAlertDetailVC: UIViewController {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
     }
+    
+    var alarmJson: JSON = JSON()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -122,6 +126,16 @@ class DDAlertDetailVC: UIViewController {
     }
     
     private func loadData() {
+        let id = alarmJson["_id"].stringValue
+        guard let userId = DDShared.shared.json?["user"]["id"].stringValue else { return }
+        DDGet(target: .getDetailOfAlarm(id: id, userId: userId), success: { [weak self] result, msg in
+            print("正确 \(result) \(msg ?? "NoMsg")")
+            ProgressHUD.dismiss()
+        }, failure: { [weak self] code, msg in
+            print("错误 \(code) \(msg ?? "NoMsg")")
+            ProgressHUD.showFailed(msg ?? "Fail", interaction: false, delay: 3)
+        })
+        
         for index in 1...3 {
             let section = DDAlertDetailSection()
             section.loadData()

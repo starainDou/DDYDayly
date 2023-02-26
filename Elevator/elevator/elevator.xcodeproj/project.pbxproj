@@ -39,6 +39,7 @@
 		034FB7B929A23F45003985AD /* DDMainteDetail4VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034FB7B429A23F45003985AD /* DDMainteDetail4VC.swift */; };
 		034FB7BA29A23F45003985AD /* DDMainteDetail1VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034FB7B529A23F45003985AD /* DDMainteDetail1VC.swift */; };
 		034FB7BB29A23F45003985AD /* DDMainteDetail2VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034FB7B629A23F45003985AD /* DDMainteDetail2VC.swift */; };
+		03FCDC9229AA2DA9008B3500 /* kpiimage.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03FCDC9129AA2DA9008B3500 /* kpiimage.xcassets */; };
 		041032D0299B3EE700542586 /* DDSummaryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041032CF299B3EE700542586 /* DDSummaryVC.swift */; };
 		041032D2299B4E9300542586 /* DDSammarySubVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041032D1299B4E9300542586 /* DDSammarySubVC.swift */; };
 		041032D4299B4EAE00542586 /* DDSammaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041032D3299B4EAE00542586 /* DDSammaryCell.swift */; };
@@ -103,7 +104,6 @@
 		04E008792976534F00EE0DBF /* ElevatorInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 04E008782976534F00EE0DBF /* ElevatorInfo.plist */; };
 		04E6FC0C2990C2F200666FE6 /* DDInstallSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E6FC0B2990C2F200666FE6 /* DDInstallSearchVC.swift */; };
 		04E6FC0E2990C38800666FE6 /* DDInstallSubVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E6FC0D2990C38800666FE6 /* DDInstallSubVC.swift */; };
-		04E6FC152990E1A900666FE6 /* DDVerifyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E6FC142990E1A900666FE6 /* DDVerifyModel.swift */; };
 		04E6FC172990E33900666FE6 /* DDInstallSegmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E6FC162990E33900666FE6 /* DDInstallSegmentView.swift */; };
 		04EBCB1A29A3AF79006B796B /* DDPdfVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EBCB1929A3AF79006B796B /* DDPdfVC.swift */; };
 		04F559FC29876B8600EF237D /* DDAppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F559FB29876B8600EF237D /* DDAppInfo.swift */; };
@@ -147,6 +147,7 @@
 		034FB7B429A23F45003985AD /* DDMainteDetail4VC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DDMainteDetail4VC.swift; sourceTree = "<group>"; };
 		034FB7B529A23F45003985AD /* DDMainteDetail1VC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DDMainteDetail1VC.swift; sourceTree = "<group>"; };
 		034FB7B629A23F45003985AD /* DDMainteDetail2VC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DDMainteDetail2VC.swift; sourceTree = "<group>"; };
+		03FCDC9129AA2DA9008B3500 /* kpiimage.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = kpiimage.xcassets; sourceTree = "<group>"; };
 		041032CF299B3EE700542586 /* DDSummaryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDSummaryVC.swift; sourceTree = "<group>"; };
 		041032D1299B4E9300542586 /* DDSammarySubVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDSammarySubVC.swift; sourceTree = "<group>"; };
 		041032D3299B4EAE00542586 /* DDSammaryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDSammaryCell.swift; sourceTree = "<group>"; };
@@ -212,7 +213,6 @@
 		04E008782976534F00EE0DBF /* ElevatorInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ElevatorInfo.plist; sourceTree = "<group>"; };
 		04E6FC0B2990C2F200666FE6 /* DDInstallSearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDInstallSearchVC.swift; sourceTree = "<group>"; };
 		04E6FC0D2990C38800666FE6 /* DDInstallSubVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDInstallSubVC.swift; sourceTree = "<group>"; };
-		04E6FC142990E1A900666FE6 /* DDVerifyModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DDVerifyModel.swift; sourceTree = "<group>"; };
 		04E6FC162990E33900666FE6 /* DDInstallSegmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDInstallSegmentView.swift; sourceTree = "<group>"; };
 		04EBCB1929A3AF79006B796B /* DDPdfVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDPdfVC.swift; sourceTree = "<group>"; };
 		04F559FB29876B8600EF237D /* DDAppInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDAppInfo.swift; sourceTree = "<group>"; };
@@ -245,7 +245,6 @@
 				041032E4299B749E00542586 /* LiftsBystatus */,
 				041032E3299B747000542586 /* VerifyDetail */,
 				041032E2299B745300542586 /* Verify */,
-				04E6FC132990E1A900666FE6 /* Model */,
 			);
 			path = Installation;
 			sourceTree = "<group>";
@@ -253,6 +252,7 @@
 		034FB78629978F46003985AD /* Engineer */ = {
 			isa = PBXGroup;
 			children = (
+				041032CB299B3B8200542586 /* Summary */,
 				04D80A8E299A684A0047DA15 /* Favorite */,
 				04D80A86299A15B30047DA15 /* Update */,
 				034FB7942998CDC9003985AD /* AlertDetail */,
@@ -358,6 +358,7 @@
 			isa = PBXGroup;
 			children = (
 				034FB7B529A23F45003985AD /* DDMainteDetail1VC.swift */,
+				04CE0A4C298B70CF00795592 /* DDMainteDetail1Cell.swift */,
 			);
 			path = VC1;
 			sourceTree = "<group>";
@@ -366,6 +367,8 @@
 			isa = PBXGroup;
 			children = (
 				034FB7B629A23F45003985AD /* DDMainteDetail2VC.swift */,
+				04CE0A4E298B849900795592 /* DDMainteDetail2Cell.swift */,
+				04CE0A50298B961B00795592 /* DDMainteDetail2Header.swift */,
 			);
 			path = VC2;
 			sourceTree = "<group>";
@@ -374,6 +377,8 @@
 			isa = PBXGroup;
 			children = (
 				034FB7B329A23F44003985AD /* DDMainteDetail3VC.swift */,
+				034FB77E298F8AEB003985AD /* DDMainteDetail3Cell.swift */,
+				034FB780298F8B06003985AD /* DDMainteDetail3ItemCell.swift */,
 			);
 			path = VC3;
 			sourceTree = "<group>";
@@ -463,7 +468,6 @@
 		0483282D2976864C002BE7B2 /* Maintenance */ = {
 			isa = PBXGroup;
 			children = (
-				041032CB299B3B8200542586 /* Summary */,
 				04832832297688EA002BE7B2 /* View */,
 				04832831297688E2002BE7B2 /* Model */,
 				04832830297688DC002BE7B2 /* Controller */,
@@ -491,11 +495,6 @@
 			isa = PBXGroup;
 			children = (
 				0483283329768A78002BE7B2 /* DDMaintenanceCell.swift */,
-				04CE0A4C298B70CF00795592 /* DDMainteDetail1Cell.swift */,
-				04CE0A4E298B849900795592 /* DDMainteDetail2Cell.swift */,
-				04CE0A50298B961B00795592 /* DDMainteDetail2Header.swift */,
-				034FB77E298F8AEB003985AD /* DDMainteDetail3Cell.swift */,
-				034FB780298F8B06003985AD /* DDMainteDetail3ItemCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -603,6 +602,7 @@
 				04E008582975134B00EE0DBF /* ViewController.swift */,
 				04E0085A2975134B00EE0DBF /* Main.storyboard */,
 				04E0086E2975879D00EE0DBF /* LaunchScreen.png */,
+				03FCDC9129AA2DA9008B3500 /* kpiimage.xcassets */,
 				04E0086B2975846C00EE0DBF /* Resources.xcassets */,
 				04E0085D2975134C00EE0DBF /* Assets.xcassets */,
 				04E0085F2975134C00EE0DBF /* LaunchScreen.storyboard */,
@@ -629,14 +629,6 @@
 				04BB927029A4FBCB00B98764 /* DDDownloadApi.swift */,
 			);
 			path = Networking;
-			sourceTree = "<group>";
-		};
-		04E6FC132990E1A900666FE6 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				04E6FC142990E1A900666FE6 /* DDVerifyModel.swift */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		184B248616FF28E6AB5CF7ED /* Frameworks */ = {
@@ -721,6 +713,7 @@
 				04E0086F2975879D00EE0DBF /* LaunchScreen.png in Resources */,
 				04E008792976534F00EE0DBF /* ElevatorInfo.plist in Resources */,
 				04E0086C2975846C00EE0DBF /* Resources.xcassets in Resources */,
+				03FCDC9229AA2DA9008B3500 /* kpiimage.xcassets in Resources */,
 				04E0085E2975134C00EE0DBF /* Assets.xcassets in Resources */,
 				041032DE299B61C400542586 /* Local.json in Resources */,
 				04E0085C2975134B00EE0DBF /* Main.storyboard in Resources */,
@@ -832,7 +825,6 @@
 				04F55A0429879DDB00EF237D /* DDVerifyDetailInfoView.swift in Sources */,
 				034FB7A029992563003985AD /* DDAlertDetailItem.swift in Sources */,
 				04F55A0029879DB300EF237D /* DDVerifyDetailTopView.swift in Sources */,
-				04E6FC152990E1A900666FE6 /* DDVerifyModel.swift in Sources */,
 				034FB77B29866AE9003985AD /* DDLabelVC.swift in Sources */,
 				0483288929779FE0002BE7B2 /* DDNetwork.swift in Sources */,
 				034FB7A829A22335003985AD /* DDTestSubVC.swift in Sources */,

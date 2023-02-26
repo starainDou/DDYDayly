@@ -28,11 +28,27 @@ class DDEngineerSubVC: UIViewController {
         $0.keyboardDismissMode = .onDrag
     }
     
-    private(set) lazy var dataArray: [DDLiftModel] = []
+    private(set) lazy var dataArray: [JSON] = []
     
     var tagIndex: Int = 0;
     
     var page: Int = 1
+    
+    var alarmType: Int = 0
+    
+    var searchWord: String = "" {
+        didSet {
+            page = 1
+            loadData()
+        }
+    }
+    
+    var sortType: Int = 0 {
+        didSet {
+            page = 1
+            loadData()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,27 +66,28 @@ class DDEngineerSubVC: UIViewController {
     }
     
     private func loadData() {
-//        DDGet(target: .getLiftsBystatus(status: "\(tagIndex)", page: "\(page)", limit: "20"), success: { [weak self] result, msg in
-//            print("正确 \(result) \(msg ?? "NoMsg")")
-//            ProgressHUD.dismiss()
-//            if let `self` = self {
-//                if (self.page == 1) {
-//                    self.dataArray = []
-//                }
-//                self.dataArray += JSON(result)["data"]["rows"].arrayValue.map { DDLiftModel(liftsBystatus: $0) }
-//                if self.dataArray.count < JSON(result)["data"]["total"].intValue {
-//                    self.page += 1
-//                }
-//            }
-//            self?.tableView.reloadData()
-//            self?.tableView.mj_header?.endRefreshing()
-//            self?.tableView.mj_footer?.endRefreshing()
-//        }, failure: { [weak self] code, msg in
-//            print("错误 \(code) \(msg ?? "NoMsg")")
-//            ProgressHUD.showFailed(msg ?? "Fail", interaction: false, delay: 3)
-//            self?.tableView.mj_header?.endRefreshing()
-//            self?.tableView.mj_footer?.endRefreshing()
-//        })
+        guard let userId = DDShared.shared.json?["user"]["id"].stringValue else { return }
+        DDPost(target: .getAlarmsOfLift(userid: userId, page: "\(page)", limit: "20", alarmType: "\(alarmType)", severityType: "\(tagIndex)", value: searchWord, sortType: "\(sortType)", dateRange: ["",""]), success: { [weak self] result, msg in
+            print("正确 \(result) \(msg ?? "NoMsg")")
+            ProgressHUD.dismiss()
+            if let `self` = self {
+                if (self.page == 1) {
+                    self.dataArray = []
+                }
+                self.dataArray += JSON(result)["data"]["rows"].arrayValue
+                if self.dataArray.count < JSON(result)["data"]["total"].intValue {
+                    self.page += 1
+                }
+            }
+            self?.tableView.reloadData()
+            self?.tableView.mj_header?.endRefreshing()
+            self?.tableView.mj_footer?.endRefreshing()
+        }, failure: { [weak self] code, msg in
+            print("错误 \(code) \(msg ?? "NoMsg")")
+            ProgressHUD.showFailed(msg ?? "Fail", interaction: false, delay: 3)
+            self?.tableView.mj_header?.endRefreshing()
+            self?.tableView.mj_footer?.endRefreshing()
+        })
     }
     
     private func setupRefresh() {
@@ -90,26 +107,16 @@ class DDEngineerSubVC: UIViewController {
 extension DDEngineerSubVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10 // dataArray.count
+        return dataArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         return tableView.ddy_dequeueReusableCell(DDEngineerCell.self, for: indexPath).then {
-            //$0.loadData(item: dataArray[indexPath.row], tag: tagIndex)
-            $0.loadData(item: DDLiftModel(liftsBystatus: JSON()), tag: 0)
+            $0.loadData(dataArray[indexPath.row], tag: tagIndex)
         }
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-//        let vc = DDVerifyDetailVC()
-//        vc.liftModel = dataArray[indexPath.row]
-//        navigationController?.pushViewController(vc, animated: true)
-        
-        if let nv = navigationController {
-            print("navig y")
-        } else {
-            print("navig n")
-        }
         let vc = DDAlertDetailVC()
         navigationController?.pushViewController(vc, animated: true)
     }

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class DDMainteDetail2Cell: UICollectionViewCell {
     
@@ -55,11 +56,16 @@ class DDMainteDetail2Cell: UICollectionViewCell {
             make.top.equalTo(iconView.snp.bottom)
         }
         profileLabel.snp.makeConstraints { make in
-            make.leading.trailing.equalTo(containerView).inset(8)
+            make.trailing.equalTo(containerView).inset(8)
+            make.leading.greaterThanOrEqualTo(containerView).inset(8)
             make.centerY.equalTo(containerView)
             make.top.greaterThanOrEqualTo(containerView)
             make.bottom.lessThanOrEqualTo(containerView)
         }
     }
-    
+    public func loadData(_ value: String, title:String, key: String) {
+        iconView.image = UIImage(named: "kpi_" + key)
+        numberLabel.text = value
+        profileLabel.text = title
+    }
 }

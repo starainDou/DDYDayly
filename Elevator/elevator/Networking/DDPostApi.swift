@@ -16,7 +16,7 @@ public enum DDPostApi {
     /// 获取lift status
     case getLiftStatus(liftnumber: String, userid: String)
     /// 获取电梯警报列表
-    case getLiftAlarmList(page: String, limit: String, sensors: String, userid: String)
+    case getLiftAlarmList(liftnumber: String)
     /// 获取电lift KPI
     case getLiftKpi(liftnumber: String) // 重复错误
     /// getSingleRide
@@ -66,10 +66,8 @@ extension DDPostApi {
             baseParams["userid"] = userid
             return (DDBaseUrl + "/liftmetering/getLiftStatus", baseParams)
             
-        case let .getLiftAlarmList(page, limit, sensors, userid):
-            baseParams["listQuery"] = ["page": page, "limit": limit]
-            baseParams["sensors"] = sensors
-            baseParams["userid"] = userid
+        case let .getLiftAlarmList(liftnumber):
+            baseParams["liftnumber"] = liftnumber
             return (DDBaseUrl + "/alarm/getLiftAlarmList", baseParams)
             
         case let .getLiftKpi(liftnumber):
