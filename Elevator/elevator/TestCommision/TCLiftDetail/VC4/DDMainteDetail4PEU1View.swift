@@ -1,5 +1,5 @@
 //
-//  DDMainteDetail4MPUView.swift
+//  DDMainteDetail4PEU0View.swift
 //  elevator
 //
 //  Created by ddy on 2023/2/26.
@@ -7,10 +7,10 @@
 
 import UIKit
 
-class DDMainteDetail4MPUView: UIView {
+class DDMainteDetail4PEU0View: UIView {
 
     private lazy var titleLabel: UILabel = UILabel().then {
-        $0.text = "MPU Components"
+        $0.text = "PEU0 Components"
         $0.textColor = UIColor(hex: "#333333")
         $0.font = UIFont.systemFont(ofSize: 15, weight: .bold)
     }
@@ -53,7 +53,7 @@ class DDMainteDetail4MPUView: UIView {
     }
 }
 
-extension DDMainteDetail4MPUView: UITableViewDelegate, UITableViewDataSource {
+extension DDMainteDetail4PEU0View: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataArray.count

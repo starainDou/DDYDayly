@@ -25,33 +25,47 @@ class DDMainteDetail4VC: UIViewController {
     
     private lazy var mpuView: DDMainteDetail4MPUView = DDMainteDetail4MPUView()
     
-    private lazy var peuView: DDMainteDetail4PEUView = DDMainteDetail4PEUView()
+    private lazy var peu0View: DDMainteDetail4PEU0View = DDMainteDetail4PEU0View()
+    
+    private lazy var peu1View: DDMainteDetail4PEU1View = DDMainteDetail4PEU1View()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(scrollView)
-        scrollView.addSubviews(topView, mapView, infoView, mpuView, peuView)
+        scrollView.addSubviews(topView, mapView, infoView, mpuView, peu0View, peu1View)
         setViewConstraints()
     }
 
     private func setViewConstraints() {
         scrollView.snp.makeConstraints { make in
-            
+            make.leading.trailing.equalToSuperview().inset(15)
+            make.top.bottom.equalToSuperview().inset(10)
         }
         topView.snp.makeConstraints { make in
-            
+            make.leading.trailing.equalToSuperview()
+            make.width.equalTo(DDScreen.width - 30)
+            make.top.equalToSuperview()
         }
         mapView.snp.makeConstraints { make in
-            
+            make.leading.trailing.equalToSuperview()
+            make.top.equalTo(topView.snp.bottom).offset(15)
         }
         infoView.snp.makeConstraints { make in
-            
+            make.leading.trailing.equalToSuperview()
+            make.top.equalTo(mapView.snp.bottom).offset(15)
         }
         mpuView.snp.makeConstraints { make in
-            
+            make.leading.trailing.equalToSuperview()
+            make.top.equalTo(infoView.snp.bottom).offset(15)
         }
-        peuView.snp.makeConstraints { make in
-            
+        peu0View.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview()
+            make.top.equalTo(mpuView.snp.bottom).offset(15)
+        }
+        peu1View.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview()
+            make.top.equalTo(peu0View.snp.bottom).offset(15)
+            make.bottom.equalToSuperview().inset(10)
         }
     }
 }

@@ -32,6 +32,7 @@ class DDMainteDetail4MapView: UIView {
     private func setViewConstraints() {
         mapView.snp.makeConstraints { make in
             make.trailing.leading.top.bottom.equalToSuperview().inset(15)
+            make.height.equalTo(200)
         }
     }
     

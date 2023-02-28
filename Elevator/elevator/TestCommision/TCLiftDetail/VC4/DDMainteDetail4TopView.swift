@@ -21,6 +21,7 @@ class DDMainteDetail4TopView: UIView {
         $0.layer.masksToBounds = true
         $0.setTitle("Soft Reboot", for: .normal)
         $0.setTitleColor(UIColor(hex:"#FFFFFF"), for: .normal)
+        $0.titleLabel?.font = UIFont.systemFont(ofSize: 13, weight: .regular)
     }
     
     private lazy var hardButton: UIButton = UIButton(type: .custom).then {
@@ -29,6 +30,7 @@ class DDMainteDetail4TopView: UIView {
         $0.layer.masksToBounds = true
         $0.setTitle("Hard Reboot", for: .normal)
         $0.setTitleColor(UIColor(hex:"#FFFFFF"), for: .normal)
+        $0.titleLabel?.font = UIFont.systemFont(ofSize: 13, weight: .regular)
     }
 
     private lazy var wifiLabel: UILabel = UILabel().then {

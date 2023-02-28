@@ -95,7 +95,7 @@ class DDMainteDetail3VC: UIViewController {
 //        NSLog(@"%@===%@===KK",timeZreoString,timeTenString);
 //    }
     
-    func loadData() {
+    func loadData2() {
         let liftNumber = liftBaseJson["liftnumber"].stringValue
         DDPost(target: .getSingleRide(liftnumber: liftNumber, daterange: [startTime, endTime]), success: { [weak self] result, msg in
             print("正确 \(result) \(msg ?? "NoMsg")")
@@ -108,7 +108,7 @@ class DDMainteDetail3VC: UIViewController {
         })
     }
     
-    func loadData2() {
+    func loadData() {
         guard let userId = DDShared.shared.json?["user"]["id"].stringValue else { return }
         let liftNumber = liftBaseJson["liftnumber"].stringValue
         DDPost(target: .getSingleRide2(liftnumber: liftNumber, starttime: startTime, endtime: endTime, userid: userId, page: "\(page)", limit: "10"), success: { [weak self] result, msg in
