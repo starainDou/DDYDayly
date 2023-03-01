@@ -376,7 +376,6 @@
 			children = (
 				034FB7B529A23F45003985AD /* DDMainteDetail1VC.swift */,
 				04CE0A4C298B70CF00795592 /* DDMainteDetail1Cell.swift */,
-				03594A7029AB50380015D3C5 /* DDDoubleDatePicker.swift */,
 			);
 			path = VC1;
 			sourceTree = "<group>";
@@ -399,6 +398,7 @@
 				034FB780298F8B06003985AD /* DDMainteDetail3Item.swift */,
 				03594A7229AB60AD0015D3C5 /* DDMainteDetail3Section.swift */,
 				04EE67A829AE3BDA00286819 /* DDMainteDetail3Header.swift */,
+				03594A7029AB50380015D3C5 /* DDDoubleDatePicker.swift */,
 			);
 			path = VC3;
 			sourceTree = "<group>";

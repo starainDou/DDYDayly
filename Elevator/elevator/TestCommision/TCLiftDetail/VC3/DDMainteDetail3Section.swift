@@ -16,6 +16,7 @@ class DDMainteDetail3Section: UIView {
     
     private(set) lazy var arrowButton: UIButton = UIButton(type: .custom).then {
         $0.setImage(UIImage(named: "ArrowTop"), for: .normal)
+        $0.contentEdgeInsets = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
     }
 
     override init(frame: CGRect) {
@@ -32,8 +33,8 @@ class DDMainteDetail3Section: UIView {
         }
         arrowButton.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
-            make.trailing.equalToSuperview()
-            make.width.height.equalTo(16)
+            make.trailing.equalToSuperview().inset(18)
+            make.width.height.equalTo(26)
         }
     }
 }

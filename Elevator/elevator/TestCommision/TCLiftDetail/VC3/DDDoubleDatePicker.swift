@@ -45,6 +45,7 @@ class DDDoubleDatePicker: UIView {
         $0.locale = Locale.current
         $0.datePickerMode = .date
         $0.setDate(Date(), animated: true)
+        $0.addTarget(self, action: #selector(pickerAction(_:)), for: .valueChanged)
         if #available(iOS 13.4, *) {
             $0.preferredDatePickerStyle = .wheels
         }
@@ -54,6 +55,7 @@ class DDDoubleDatePicker: UIView {
         $0.locale = Locale.current
         $0.datePickerMode = .date
         $0.setDate(Date(), animated: true)
+        $0.addTarget(self, action: #selector(pickerAction(_:)), for: .valueChanged)
         if #available(iOS 13.4, *) {
             $0.preferredDatePickerStyle = .wheels
         }
@@ -62,7 +64,8 @@ class DDDoubleDatePicker: UIView {
     override init(frame: CGRect) {
         super.init(frame: DDScreen.bounds)
         backgroundColor = UIColor(hex: "#66666666")
-        addSubviews(backView, cancelButton, sureButton, fromPicker, endPicker, fromLabel, endLabel)
+        addSubview(backView)
+        backView.addSubviews(cancelButton, sureButton, fromPicker, endPicker, fromLabel, endLabel)
         setViewConstraints()
     }
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
@@ -70,7 +73,7 @@ class DDDoubleDatePicker: UIView {
     private func setViewConstraints() {
         backView.snp.makeConstraints { make in
             make.leading.trailing.bottom.equalToSuperview()
-            make.height.equalTo(256)
+            make.height.equalTo(645)
         }
         cancelButton.snp.makeConstraints { make in
             make.leading.equalToSuperview().inset(10)
@@ -84,30 +87,44 @@ class DDDoubleDatePicker: UIView {
             make.width.equalTo(60)
             make.height.equalTo(20)
         }
-        fromPicker.snp.makeConstraints { make in
-            make.leading.bottom.equalToSuperview()
-            make.trailing.equalTo(backView.snp.centerX)
-            make.height.equalTo(216)
-        }
-        endPicker.snp.makeConstraints { make in
-            make.leading.equalTo(backView.snp.centerX)
-            make.trailing.bottom.equalToSuperview()
-            make.height.equalTo(216)
-        }
         fromLabel.snp.makeConstraints { make in
             make.centerX.equalTo(fromPicker)
-            make.bottom.equalTo(fromPicker.snp.top).offset(-5)
+            make.top.equalTo(cancelButton.snp.bottom).offset(8)
+        }
+        fromPicker.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview()
+            make.top.equalTo(fromLabel.snp.bottom).offset(-2)
+            make.height.equalTo(216)
         }
         endLabel.snp.makeConstraints { make in
             make.centerX.equalTo(endPicker)
-            make.bottom.equalTo(endPicker.snp.top).offset(-5)
+            make.top.equalTo(fromPicker.snp.bottom).offset(8)
+        }
+        endPicker.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview()
+            make.top.equalTo(endLabel.snp.bottom).offset(-2)
+            make.height.equalTo(216)
         }
     }
     
-    public static func show(in inView: UIView, sure: @escaping ((String, String) -> Void)) {
+    public static func show(in inView: UIView, date:(start: String, end: String), sure: @escaping ((String, String) -> Void)) {
         let view = DDDoubleDatePicker()
         view.sureBlock = sure
         inView.addSubview(view)
+        guard let start = DDAppInfo.dateStr(date.start, dateFormat: "yyyy-MM-dd") else { return }
+        guard let dateStart = DateFormatter().then({ $0.dateFormat = "yyyy-MM-dd" }).date(from: start) else { return }
+        guard let end = DDAppInfo.dateStr(date.end, dateFormat: "yyyy-MM-dd") else { return }
+        guard let dateEnd = DateFormatter().then({ $0.dateFormat = "yyyy-MM-dd" }).date(from: end) else { return }
+        view.fromPicker.setDate(dateStart, animated: true)
+        view.endPicker.setDate(dateEnd, animated: true)
+    }
+    
+    @objc private func pickerAction(_ picker: UIDatePicker) {
+        if picker == fromPicker {
+            
+        } else if picker == endPicker {
+            
+        }
     }
     
     @objc private func cancelAction() {

@@ -6,7 +6,7 @@
 //
 
 import Moya
-import Moya
+import SwiftyJSON
 
 public enum DDPostApi {
     /// 通用请求方式

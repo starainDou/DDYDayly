@@ -27,7 +27,9 @@ class DDMainteDetail3Cell: UITableViewCell {
         $0.axis = .vertical
     }
     
-    private lazy var sectionView: DDMainteDetail3Section = DDMainteDetail3Section()
+    private lazy var sectionView: DDMainteDetail3Section = DDMainteDetail3Section().then {
+        $0.arrowButton.addTarget(self, action: #selector(expandAction), for: .touchUpInside)
+    }
     
     private lazy var item1View: DDMainteDetail3Item = DDMainteDetail3Item().then {
         $0.iconView.image = UIImage(named: "StartFloor")
@@ -62,12 +64,18 @@ class DDMainteDetail3Cell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         selectionStyle = .none
-        contentView.addSubviews(dotView, stackView, dashLineView)
+        contentView.addSubviews(dashLineView, dotView, stackView)
         setViewConstraints()
     }
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
     
     private func setViewConstraints() {
+        dashLineView.snp.makeConstraints { make in
+            make.centerX.equalTo(dotView)
+            make.top.equalTo(dotView.snp.centerY)
+            make.bottom.equalToSuperview().offset(10)
+            make.width.equalTo(1)
+        }
         dotView.snp.makeConstraints { make in
             make.leading.equalToSuperview().inset(50)
             make.centerY.equalTo(sectionView)
@@ -75,15 +83,9 @@ class DDMainteDetail3Cell: UITableViewCell {
         }
         stackView.snp.makeConstraints { make in
             make.leading.equalTo(dotView.snp.trailing).offset(9)
-            make.trailing.equalToSuperview().inset(23)
+            make.trailing.equalToSuperview()
             make.top.equalToSuperview()
-            make.bottom.equalToSuperview().inset(25)
-        }
-        dashLineView.snp.makeConstraints { make in
-            make.centerX.equalTo(dotView)
-            make.top.equalTo(dotView.snp.centerY)
-            make.bottom.equalToSuperview().offset(5)
-            make.width.equalTo(1)
+            make.bottom.equalToSuperview().inset(15)
         }
         sectionView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()

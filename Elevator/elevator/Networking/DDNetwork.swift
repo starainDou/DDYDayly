@@ -29,7 +29,8 @@ fileprivate let DDNetProvider = MoyaProvider<MultiTarget>(requestClosure: { (end
     guard var urlRequest = try? endpoint.urlRequest() else { return }
     urlRequest.cachePolicy = .reloadIgnoringLocalAndRemoteCacheData
     urlRequest.timeoutInterval = 30
-    urlRequest.allHTTPHeaderFields = ["Content-Type": "text/html; charset=utf-8"]
+    //urlRequest.allHTTPHeaderFields = ["Content-Type": "text/html; charset=utf-8"]
+    urlRequest.allHTTPHeaderFields = ["Content-Type": "application/json; charset=utf-8"]
     done(.success(urlRequest))
 })
 

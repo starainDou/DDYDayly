@@ -42,11 +42,11 @@ class DDMainteDetail3Item: UIView {
         }
         textLabel.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
-            make.trailing.equalToSuperview()
+            make.trailing.equalToSuperview().inset(23)
         }
         dashLineView.snp.makeConstraints { make in
             make.leading.equalTo(titleLabel)
-            make.trailing.equalTo(textLabel)
+            make.trailing.equalTo(textLabel).inset(23)
             make.bottom.equalToSuperview()
             make.height.equalTo(1)
         }
