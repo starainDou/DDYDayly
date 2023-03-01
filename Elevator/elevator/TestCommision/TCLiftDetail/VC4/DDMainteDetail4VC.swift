@@ -34,6 +34,7 @@ class DDMainteDetail4VC: UIViewController {
         view.addSubview(scrollView)
         scrollView.addSubviews(topView, mapView, infoView, mpuView, peu0View, peu1View)
         setViewConstraints()
+        mapView.loadData(liftBaseJson)
     }
 
     private func setViewConstraints() {

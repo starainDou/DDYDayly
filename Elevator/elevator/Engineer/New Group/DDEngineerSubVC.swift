@@ -121,3 +121,9 @@ extension DDEngineerSubVC: UITableViewDelegate, UITableViewDataSource {
         navigationController?.pushViewController(vc, animated: true)
     }
 }
+
+extension DDEngineerSubVC: JXSegmentedListContainerViewListDelegate {
+    func listView() -> UIView {
+        return view
+    }
+}

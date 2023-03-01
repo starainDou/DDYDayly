@@ -9,15 +9,46 @@ import UIKit
 import MapKit
 import DDYSwiftyExtension
 import SwiftyJSON
+import JXSegmentedView
+import Then
 
 class DDEngineerVC: UIViewController {
     
     private lazy var headerView: DDEngineerHeader = DDEngineerHeader()
     
-    private lazy var scrollVew: UIScrollView = UIScrollView().then {
-        $0.isScrollEnabled = false
+    private lazy var segBackView: UIView = UIView().then {
+        $0.backgroundColor = UIColor(hex: "#FFFFFF")
+        $0.layer.cornerRadius = 4
+        $0.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        $0.layer.masksToBounds = true
     }
     
+    private lazy var sortButton: UIButton = UIButton(type: .custom).then {
+        $0.setImage(UIImage(named: "MapDown"), for: .normal)
+        $0.addTarget(self, action: #selector(sortAction), for: .touchUpInside)
+        $0.contentEdgeInsets = UIEdgeInsets(top: 3, left: 3, bottom: 3, right: 3)
+    }
+    
+    private lazy var segmentView: JXSegmentedView = JXSegmentedView().then {
+        $0.delegate = self
+        $0.dataSource = segmentDataSource
+        $0.listContainer = containerView
+        $0.backgroundColor = UIColor(hex: "#FFFFFF")
+        $0.indicators = [JXSegmentedIndicatorLineView().then { indicator in
+            indicator.indicatorWidth = JXSegmentedViewAutomaticDimension
+        }]
+    }
+    private lazy var segmentDataSource = JXSegmentedTitleDataSource().then {
+        $0.titles = ["Alert", "Alarm", "Normal"]
+        $0.isItemSpacingAverageEnabled = true
+        $0.titleNormalFont = UIFont.systemFont(ofSize: 14, weight: .regular)
+        $0.titleNormalColor = UIColor(hex: "#666666")
+        $0.titleSelectedFont = UIFont.systemFont(ofSize: 15, weight: .semibold)
+        $0.titleSelectedColor = UIColor(hex: "#168991")
+    }
+    
+    private lazy var containerView: JXSegmentedListContainerView = JXSegmentedListContainerView(dataSource: self)
+
     private lazy var alertVC: DDEngineerSubVC = DDEngineerSubVC().then {
         $0.tagIndex = 1
     }
@@ -30,6 +61,8 @@ class DDEngineerVC: UIViewController {
         $0.tagIndex = 5
     }
     
+    private var currentVC: DDEngineerSubVC?
+    
     var alarmType: Int = 0 {
         didSet {
             alertVC.alarmType = alarmType
@@ -37,8 +70,6 @@ class DDEngineerVC: UIViewController {
             normalVC.alarmType = alarmType
         }
     }
-    
-    private lazy var sortType: Int = 1
     
     init(_ type: Int) {
         super.init(nibName: nil, bundle: nil)
@@ -52,9 +83,8 @@ class DDEngineerVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(hex: "#F1F5FF")
-        view.addSubviews(headerView, scrollVew)
-        scrollVew.addSubviews(alertVC.view, alarmVC.view, normalVC.view)
-        addChildren(alertVC, alarmVC, normalVC)
+        view.addSubviews(headerView, segBackView, containerView)
+        segBackView.addSubviews(segmentView, sortButton)
         setViewConstraints()
         setClosure()
         loadData()
@@ -63,28 +93,25 @@ class DDEngineerVC: UIViewController {
     private func setViewConstraints() {
         headerView.snp.makeConstraints { make in
             make.leading.trailing.top.equalToSuperview()
-            make.height.equalTo(310 + DDScreen.statusBarHeight)
+            make.height.equalTo(250 + DDScreen.statusBarHeight)
         }
-        scrollVew.snp.makeConstraints { make in
-            make.leading.trailing.bottom.equalToSuperview()
-            make.top.equalTo(headerView.snp.bottom)
+        segBackView.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview()
+            make.height.equalTo(44)
+            make.top.equalTo(headerView.snp.bottom).offset(-10)
         }
-        alertVC.view.snp.makeConstraints { make in
-            make.leading.top.bottom.equalTo(scrollVew)
-            make.top.equalTo(headerView.snp.bottom)
-            make.bottom.equalTo(view.snp.bottom)
-            make.width.equalTo(DDScreen.width)
+        containerView.snp.makeConstraints { make in
+            make.leading.bottom.trailing.equalToSuperview()
+            make.top.equalTo(segBackView.snp.bottom)
         }
-        alarmVC.view.snp.makeConstraints { make in
-            make.width.equalTo(DDScreen.width)
-            make.height.centerY.equalTo(alertVC.view)
-            make.leading.equalTo(alertVC.view.snp.trailing)
+        segmentView.snp.makeConstraints { make in
+            make.leading.top.bottom.equalToSuperview()
+            make.trailing.equalTo(segBackView.snp.centerX).offset(20)
         }
-        normalVC.view.snp.makeConstraints { make in
-            make.width.equalTo(DDScreen.width)
-            make.height.centerY.equalTo(alertVC.view)
-            make.leading.equalTo(alarmVC.view.snp.trailing)
-            make.trailing.equalTo(scrollVew)
+        sortButton.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.trailing.equalToSuperview().inset(20)
+            make.width.height.equalTo(24)
         }
     }
     
@@ -117,6 +144,35 @@ class DDEngineerVC: UIViewController {
     }
     
     @objc private func sortAction() {
-        
+        guard let vc = currentVC else { return }
+        currentVC?.sortType = !vc.sortType
+    }
+}
+
+extension DDEngineerVC: JXSegmentedViewDelegate {
+    func segmentedView(_ segmentedView: JXSegmentedView, didSelectedItemAt index: Int) {
+        if index == 0 {
+            currentVC = alertVC
+        } else if index == 1 {
+            currentVC = alarmVC
+        } else if index == 2 {
+            currentVC = normalVC
+        }
+    }
+}
+
+extension DDEngineerVC: JXSegmentedListContainerViewDataSource {
+    func numberOfLists(in listContainerView: JXSegmentedListContainerView) -> Int {
+        return segmentDataSource.dataSource.count
+    }
+
+    func listContainerView(_ listContainerView: JXSegmentedListContainerView, initListAt index: Int) -> JXSegmentedListContainerViewListDelegate {
+        if index == 0 {
+            return alertVC
+        } else if index == 1 {
+            return alarmVC
+        } else if index == 2 {
+            return normalVC
+        }
     }
 }
