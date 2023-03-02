@@ -7,6 +7,7 @@
 
 import UIKit
 import SwiftyJSON
+import Kingfisher
 
 class DDAlertDetailSection: UIView {
     
@@ -124,14 +125,16 @@ class DDAlertDetailSection: UIView {
     public func loadData(_ json: JSON) {
         colorView.image = UIImage(named: "alert_\(json["severity"].stringValue.lowercased())") ?? UIImage(named: "alert_unkonwn")
         deviceIdLabel.text = json["deviceId"].stringValue
-        avatarView.backgroundColor = .lightGray
+        DDWebImage.setAvatar(json["acknowledgedUserPortrait"].stringValue, imageView: avatarView)
+        avatarView.backgroundColor = .lightGray // acknowledgedUserPortrait resolveUserPortrait
         nameLabel.text = json["acknowledgedBy"].stringValue // "Bob";
         funcLabel.text = json["acknowledgeDesc"].stringValue // "Acknowledged"
         dateLabel.text = DDAppInfo.dateStr(json["acknowledgeTime"].stringValue, dateFormat: "yyyy/MM/dd HH:mm:ss") // "09/11 10:06:00"
         textView.text = json["message"].stringValue // "Lifts with rope tension issue"
-        for index in 1...3 {
+        
+        for updateDetail in json["updateDetails"].arrayValue {
             let item = DDAlertDetailItem()
-            item.loadData()
+            item.loadData(updateDetail)
             stackView.addArrangedSubview(item)
             item.snp.makeConstraints { make in
                 make.leading.trailing.equalToSuperview()

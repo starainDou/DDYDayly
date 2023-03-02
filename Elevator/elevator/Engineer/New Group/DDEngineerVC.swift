@@ -61,34 +61,20 @@ class DDEngineerVC: UIViewController {
 
     private lazy var alertVC: DDEngineerSubVC = DDEngineerSubVC().then {
         $0.tagIndex = 0
+        $0.alarmType = 1
     }
     
     private lazy var alarmVC: DDEngineerSubVC = DDEngineerSubVC().then {
         $0.tagIndex = 1
+        $0.alarmType = 1
     }
     
     private lazy var normalVC: DDEngineerSubVC = DDEngineerSubVC().then {
         $0.tagIndex = 2
+        $0.alarmType = 1
     }
     
     private var currentVC: DDEngineerSubVC?
-    
-    var alarmType: Int = 0 {
-        didSet {
-            alertVC.alarmType = alarmType
-            alarmVC.alarmType = alarmType
-            normalVC.alarmType = alarmType
-        }
-    }
-    
-    init(_ type: Int) {
-        super.init(nibName: nil, bundle: nil)
-        alarmType = type
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -176,7 +176,7 @@ class DDAlertDetailHeader: UIView {
             make.edges.equalTo(grayView).inset(UIEdgeInsets(top: 3, left: 10, bottom: 3, right: 10))
         }
         acknowlegeButton.snp.makeConstraints { make in
-            make.width.equalTo(100)
+            make.width.equalTo(120)
             make.height.equalTo(32)
             make.bottom.equalTo(backView.snp.bottom).inset(14)
             make.trailing.equalTo(updateButton.snp.leading).offset(-8)

@@ -110,7 +110,18 @@ class DDAlertDetailVC: UIViewController {
     }
     
     @objc private func saveAction() {
-        
+        guard let userId = DDShared.shared.json?["user"]["id"].stringValue else { return }
+        let id = baseJson["_id"].stringValue
+        let save = saveButton.isSelected ? "0" : "1"
+        ProgressHUD.show()
+        DDPost(target: .favoriteAlarm(deviceId: id, userId: userId, isFavourite: save), success: { [weak self] result, msg in
+            print("正确 \(result) \(msg ?? "NoMsg")")
+            ProgressHUD.dismiss()
+            self?.saveButton.isSelected = (save == "1")
+        }, failure: { [weak self] code, msg in
+            print("错误 \(code) \(msg ?? "NoMsg")")
+            ProgressHUD.showFailed(msg ?? "Fail", interaction: false, delay: 3)
+        })
     }
     
     
@@ -136,11 +147,12 @@ class DDAlertDetailVC: UIViewController {
             ProgressHUD.dismiss()
             guard let `self` = self else { return }
             let json = JSON(result)["data"]
+            self.saveButton.isSelected = json["isFavourite"].boolValue
             self.headerView.loadData(json, tagIndex: self.tagIndex)
             for operateRecord in json["operateRecords"].arrayValue {
                 let section = DDAlertDetailSection()
-                section.loadData(_ operateRecord)
-                stackView.addArrangedSubview(section)
+                section.loadData(operateRecord)
+                self.stackView.addArrangedSubview(section)
                 section.snp.makeConstraints { make in
                     make.leading.trailing.equalToSuperview()
                     make.height.greaterThanOrEqualTo(50)
@@ -150,38 +162,6 @@ class DDAlertDetailVC: UIViewController {
             print("错误 \(code) \(msg ?? "NoMsg")")
             ProgressHUD.showFailed(msg ?? "Fail", interaction: false, delay: 3)
         })
-        
-        for index in 1...3 {
-            let section = DDAlertDetailSection()
-            //section.loadData()
-            stackView.addArrangedSubview(section)
-            section.snp.makeConstraints { make in
-                make.leading.trailing.equalToSuperview()
-                make.height.greaterThanOrEqualTo(50)
-            }
-        }
-    }
-    
-    public func updateImg(_ tag: String, imgView: UIImageView) {
-        if tag == "1" {
-            imgView.image = UIImage(named: "alert_critical")
-        } else if tag == "2" {
-            imgView.image = UIImage(named: "alert_major")
-        } else if tag == "3" {
-            imgView.image = UIImage(named: "alert_minor")
-        } else if tag == "4" {
-            imgView.image = UIImage(named: "alert_info")
-        } else if tag == "5" {
-            imgView.image = UIImage(named: "alert_debug")
-        } else if tag == "6" {
-            imgView.image = UIImage(named: "alert_clear")
-        } else if tag == "11" {
-            imgView.image = UIImage(named: "alert_unkonwn")
-        } else if tag == "12" {
-            imgView.image = UIImage(named: "alert_ok")
-        } else {
-            imgView.image = UIImage(named: "Tick")
-        }
     }
 }
 

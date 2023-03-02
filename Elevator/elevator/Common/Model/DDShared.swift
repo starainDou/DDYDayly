@@ -49,19 +49,19 @@ class DDShared: NSObject {
     
     var homeItems: [DDHomeModel] {
         get {
-            if json?["user"]["rolename"].string == "Installer@STEE" || json?["user"]["roleid"].int == 5 {
+            if json?["user"]["rolename"].string == "Installer@STEE" {
                 return [DDHomeModel(icon: "Repair", title: "Installtion", vc: "DDQRCodeVC")]
-            } else if json?["user"]["rolename"].string == "T&C@STEE" || json?["user"]["roleid"].int == 6 {
+            } else if json?["user"]["rolename"].string == "T&C@STEE" { //  || json?["user"]["roleid"].int == 6
                 return [DDHomeModel(icon: "Commissioning", title: "Test&Commissioning", vc: "DDTestVC")]
-            } else if json?["user"]["rolename"].string == "Engineer@STEE" || json?["user"]["roleid"].int == 7 {
-                return [DDHomeModel(icon: "Elevator", title: "Lift", vc: "DDEngineerVC1"),
-                        DDHomeModel(icon: "History", title: "History", vc: "DDEngineerVC2"),
-                        DDHomeModel(icon: "FavouriteCyan", title: "Favourite", vc: "DDEngineerVC3"),
+            } else if json?["user"]["rolename"].string == "Engineer@STEE" {
+                return [DDHomeModel(icon: "Elevator", title: "Lift", vc: "DDEngineerVC"),
+                        DDHomeModel(icon: "History", title: "History", vc: "DDAlarmHistoryVC"),
+                        DDHomeModel(icon: "FavouriteCyan", title: "Favourite", vc: "DDAlermFavouriteVC"),
                         DDHomeModel(icon: "Summary", title: "Summary of Lift Performances", vc: "DDSummaryVC")]
             } else {
-                return [DDHomeModel(icon: "Elevator", title: "Lift", vc: "DDEngineerVC1"),
-                        DDHomeModel(icon: "History", title: "History", vc: "DDEngineerVC2"),
-                        DDHomeModel(icon: "FavouriteCyan", title: "Favourite", vc: "DDEngineerVC3"),
+                return [DDHomeModel(icon: "Elevator", title: "Lift", vc: "DDEngineerVC"),
+                        DDHomeModel(icon: "History", title: "History", vc: "DDAlarmHistoryVC"),
+                        DDHomeModel(icon: "FavouriteCyan", title: "Favourite", vc: "DDAlermFavouriteVC"),
                         DDHomeModel(icon: "Summary", title: "Summary of Lift Performances", vc: "DDSummaryVC")]
             }
         }

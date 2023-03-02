@@ -7,6 +7,8 @@
 
 import UIKit
 import DDYSwiftyExtension
+import SwiftyJSON
+import Kingfisher
 
 class DDAlertDetailItem: UIView {
 
@@ -63,6 +65,8 @@ class DDAlertDetailItem: UIView {
     }
     
     private lazy var dashView: DDDashLineView = DDDashLineView()
+    
+    private lazy var dataArray: [String] = []
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -112,24 +116,28 @@ class DDAlertDetailItem: UIView {
         }
     }
     
-    public func loadData() {
-        avatarView.backgroundColor = .lightGray
-        nameLabel.text = "Molly";
+    public func loadData(_ json: JSON) {
+        DDWebImage.setAvatar(json["userPortrait"].stringValue, imageView: avatarView)
+        nameLabel.text = json["updatedesc"].stringValue
         funcLabel.text = "Update"
-        dateLabel.text = "09/11 10:06:00"
-        textView.text = "Maintenance/1200 Brakes and Gear box/1201 Examine for abormal noise, contamination, damage,"
+        dateLabel.text = DDAppInfo.dateStr(json["updatetime"].stringValue, dateFormat: "yyyy/MM/dd HH:mm:ss")
+        textView.text = json["updatedesc"].stringValue
+        let imgs = json["imgs"].stringValue.components(separatedBy: ",")
+        dataArray = imgs.isEmpty ? ["", ""] : imgs
+        collectionView.reloadData()
+        // imgs "<null>"
     }
 }
 
 extension DDAlertDetailItem: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
         
         public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-            return 2
+            return dataArray.count
         }
         
         public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
             let cell = collectionView.ddy_dequeueReusableCell(InnerCell.self, for: indexPath)
-            cell.loadData()
+            cell.loadData(dataArray[indexPath.item])
             return cell
         }
         public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -154,7 +162,7 @@ fileprivate class InnerCell: UICollectionViewCell {
         }
     }
     
-    func loadData() {
-        imgView.backgroundColor = .lightGray
+    func loadData(_ img: String) {
+        DDWebImage.setImage(img, imageView: imgView)
     }
 }

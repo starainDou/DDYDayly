@@ -44,6 +44,8 @@
 		03594A7B29AB8D8F0015D3C5 /* DDMainteDetail4MPUView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03594A7A29AB8D8F0015D3C5 /* DDMainteDetail4MPUView.swift */; };
 		03594A7D29AB8DA50015D3C5 /* DDMainteDetail4PEU0View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03594A7C29AB8DA50015D3C5 /* DDMainteDetail4PEU0View.swift */; };
 		03594A7F29AB94D40015D3C5 /* DDMainteDetail4ItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03594A7E29AB94D40015D3C5 /* DDMainteDetail4ItemView.swift */; };
+		03594A8329B0F26E0015D3C5 /* DDAlarmNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03594A8229B0F26E0015D3C5 /* DDAlarmNavigator.swift */; };
+		03594A8529B10D200015D3C5 /* DDWebImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03594A8429B10D200015D3C5 /* DDWebImage.swift */; };
 		03FCDC9229AA2DA9008B3500 /* kpiimage.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03FCDC9129AA2DA9008B3500 /* kpiimage.xcassets */; };
 		041032D0299B3EE700542586 /* DDSummaryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041032CF299B3EE700542586 /* DDSummaryVC.swift */; };
 		041032D2299B4E9300542586 /* DDSammarySubVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041032D1299B4E9300542586 /* DDSammarySubVC.swift */; };
@@ -166,6 +168,8 @@
 		03594A7A29AB8D8F0015D3C5 /* DDMainteDetail4MPUView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDMainteDetail4MPUView.swift; sourceTree = "<group>"; };
 		03594A7C29AB8DA50015D3C5 /* DDMainteDetail4PEU0View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDMainteDetail4PEU0View.swift; sourceTree = "<group>"; };
 		03594A7E29AB94D40015D3C5 /* DDMainteDetail4ItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDMainteDetail4ItemView.swift; sourceTree = "<group>"; };
+		03594A8229B0F26E0015D3C5 /* DDAlarmNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDAlarmNavigator.swift; sourceTree = "<group>"; };
+		03594A8429B10D200015D3C5 /* DDWebImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDWebImage.swift; sourceTree = "<group>"; };
 		03FCDC9129AA2DA9008B3500 /* kpiimage.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = kpiimage.xcassets; sourceTree = "<group>"; };
 		041032CF299B3EE700542586 /* DDSummaryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDSummaryVC.swift; sourceTree = "<group>"; };
 		041032D1299B4E9300542586 /* DDSammarySubVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDSammarySubVC.swift; sourceTree = "<group>"; };
@@ -298,6 +302,7 @@
 				034FB78A29978FDB003985AD /* DDEngineerSubVC.swift */,
 				034FB78C2997901A003985AD /* DDEngineerCell.swift */,
 				034FB78E29979327003985AD /* DDEngineerHeader.swift */,
+				03594A8229B0F26E0015D3C5 /* DDAlarmNavigator.swift */,
 			);
 			name = LiftList;
 			path = "New Group";
@@ -665,6 +670,7 @@
 				0483288629779D6D002BE7B2 /* DDPostApi.swift */,
 				048328912977D022002BE7B2 /* DDUploadApi.swift */,
 				04BB927029A4FBCB00B98764 /* DDDownloadApi.swift */,
+				03594A8429B10D200015D3C5 /* DDWebImage.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -871,6 +877,7 @@
 				04D80A852999FBA30047DA15 /* DDDashLineView.swift in Sources */,
 				04CE0A4B298AA2ED00795592 /* DDMainteStateView.swift in Sources */,
 				04F559FE2987969300EF237D /* DDVerifyDetailVC.swift in Sources */,
+				03594A8529B10D200015D3C5 /* DDWebImage.swift in Sources */,
 				03594A7B29AB8D8F0015D3C5 /* DDMainteDetail4MPUView.swift in Sources */,
 				041032D0299B3EE700542586 /* DDSummaryVC.swift in Sources */,
 				04CE0A152988D32900795592 /* DDDetailButtonView.swift in Sources */,
@@ -888,6 +895,7 @@
 				03594A7F29AB94D40015D3C5 /* DDMainteDetail4ItemView.swift in Sources */,
 				04E008592975134B00EE0DBF /* ViewController.swift in Sources */,
 				04EE67C629B0D02400286819 /* DDAlermFavouriteVC.swift in Sources */,
+				03594A8329B0F26E0015D3C5 /* DDAlarmNavigator.swift in Sources */,
 				04CE0A252989314000795592 /* DDCommisionHeader.swift in Sources */,
 				04CE0A172988D4D700795592 /* DDDetailMenuView.swift in Sources */,
 				034FB79E2999252F003985AD /* DDAlertDetailSection.swift in Sources */,

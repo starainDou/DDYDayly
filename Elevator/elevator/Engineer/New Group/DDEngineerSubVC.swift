@@ -134,7 +134,7 @@ extension DDEngineerSubVC: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-extension DDEngineerSubVC: JXPagingViewListViewDelegate {
+extension DDEngineerSubVC: JXPagingViewListViewDelegate, JXSegmentedListContainerViewListDelegate {
     func listScrollView() -> UIScrollView {
         return self.tableView
     }

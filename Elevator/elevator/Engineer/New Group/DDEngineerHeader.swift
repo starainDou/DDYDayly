@@ -62,7 +62,7 @@ class DDEngineerHeader: UIView {
         $0.backgroundColor = UIColor(hex: "#999999")
     }
     
-    private lazy var searchView: UIImageView = UIImageView(image: UIImage(named: ""))
+    private lazy var searchView: UIImageView = UIImageView(image: UIImage(named: "Search"))
     
     private(set) lazy var textFiled: UITextField = UITextField().then {
         $0.placeholder = "search for lifts"
@@ -124,7 +124,7 @@ class DDEngineerHeader: UIView {
             make.size.equalTo(CGSize(width: 15, height: 28))
         }
         backView.snp.makeConstraints { make in
-            make.bottom.equalTo(navigatorBar.snp.bottom).inset(7)
+            make.bottom.equalTo(navigatorBar.snp.bottom).inset(12)
             make.height.equalTo(28)
             make.leading.equalTo(backStackView.snp.trailing)
             make.trailing.equalTo(searchStackView.snp.leading)
@@ -165,7 +165,7 @@ class DDEngineerHeader: UIView {
         back1Button.isHidden = !isChange
         searchButton.isHidden = !isChange
         back2Button.isHidden = isChange
-        lineView.isHidden = isChange
+        lineView.alpha = isChange ? 0 : 1
     }
 
     public func loadData(_ json: JSON?) {

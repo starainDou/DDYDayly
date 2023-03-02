@@ -121,7 +121,7 @@ class DDEngineerCell: UITableViewCell {
         timeLabel.text = DDAppInfo.dateStr(json["createtime"].stringValue)
         brandLabel.text = json["brand"].stringValue.isEmpty ? "-" : json["brand"].stringValue
         addressLabel.text = json["address"].stringValue.isEmpty ? "-" : json["address"].stringValue
-        colorView.image = UIImage(named: "Icon31")
+        colorView.image = UIImage(named: "alert_\(json["severity"].stringValue.lowercased())") ?? UIImage(named: "alert_unkonwn")
 //        titleLabel.text = "2#2#A001" // item.number
 //        stateLabel.text = tag == 1 ? "Alert" : (tag == 5 ? " Normal" : "Alarm")
 //        timeLabel.text = "09/11/2020 12:12" // DDAppInfo.dateStr(item.createtime)
