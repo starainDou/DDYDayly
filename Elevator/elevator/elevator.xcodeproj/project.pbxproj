@@ -118,6 +118,8 @@
 		04EE67C029B0AEC300286819 /* JXPagingSmoothView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EE67BB29B0AEC200286819 /* JXPagingSmoothView.swift */; };
 		04EE67C129B0AEC300286819 /* JXPagingMainTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EE67BC29B0AEC300286819 /* JXPagingMainTableView.swift */; };
 		04EE67C229B0AEC300286819 /* JXPagingListContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EE67BD29B0AEC300286819 /* JXPagingListContainerView.swift */; };
+		04EE67C429B0CFFD00286819 /* DDAlarmHistoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EE67C329B0CFFD00286819 /* DDAlarmHistoryVC.swift */; };
+		04EE67C629B0D02400286819 /* DDAlermFavouriteVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EE67C529B0D02400286819 /* DDAlermFavouriteVC.swift */; };
 		04F559FC29876B8600EF237D /* DDAppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F559FB29876B8600EF237D /* DDAppInfo.swift */; };
 		04F559FE2987969300EF237D /* DDVerifyDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F559FD2987969300EF237D /* DDVerifyDetailVC.swift */; };
 		04F55A0029879DB300EF237D /* DDVerifyDetailTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F559FF29879DB300EF237D /* DDVerifyDetailTopView.swift */; };
@@ -239,6 +241,8 @@
 		04EE67BB29B0AEC200286819 /* JXPagingSmoothView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JXPagingSmoothView.swift; sourceTree = "<group>"; };
 		04EE67BC29B0AEC300286819 /* JXPagingMainTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JXPagingMainTableView.swift; sourceTree = "<group>"; };
 		04EE67BD29B0AEC300286819 /* JXPagingListContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JXPagingListContainerView.swift; sourceTree = "<group>"; };
+		04EE67C329B0CFFD00286819 /* DDAlarmHistoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDAlarmHistoryVC.swift; sourceTree = "<group>"; };
+		04EE67C529B0D02400286819 /* DDAlermFavouriteVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDAlermFavouriteVC.swift; sourceTree = "<group>"; };
 		04F559FB29876B8600EF237D /* DDAppInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDAppInfo.swift; sourceTree = "<group>"; };
 		04F559FD2987969300EF237D /* DDVerifyDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDVerifyDetailVC.swift; sourceTree = "<group>"; };
 		04F559FF29879DB300EF237D /* DDVerifyDetailTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDVerifyDetailTopView.swift; sourceTree = "<group>"; };
@@ -289,6 +293,8 @@
 			isa = PBXGroup;
 			children = (
 				034FB78729978F93003985AD /* DDEngineerVC.swift */,
+				04EE67C329B0CFFD00286819 /* DDAlarmHistoryVC.swift */,
+				04EE67C529B0D02400286819 /* DDAlermFavouriteVC.swift */,
 				034FB78A29978FDB003985AD /* DDEngineerSubVC.swift */,
 				034FB78C2997901A003985AD /* DDEngineerCell.swift */,
 				034FB78E29979327003985AD /* DDEngineerHeader.swift */,
@@ -878,8 +884,10 @@
 				0483288929779FE0002BE7B2 /* DDNetwork.swift in Sources */,
 				034FB7A829A22335003985AD /* DDTestSubVC.swift in Sources */,
 				04CE0A1F2988FEBE00795592 /* DDInstallImageSectionView.swift in Sources */,
+				04EE67C429B0CFFD00286819 /* DDAlarmHistoryVC.swift in Sources */,
 				03594A7F29AB94D40015D3C5 /* DDMainteDetail4ItemView.swift in Sources */,
 				04E008592975134B00EE0DBF /* ViewController.swift in Sources */,
+				04EE67C629B0D02400286819 /* DDAlermFavouriteVC.swift in Sources */,
 				04CE0A252989314000795592 /* DDCommisionHeader.swift in Sources */,
 				04CE0A172988D4D700795592 /* DDDetailMenuView.swift in Sources */,
 				034FB79E2999252F003985AD /* DDAlertDetailSection.swift in Sources */,

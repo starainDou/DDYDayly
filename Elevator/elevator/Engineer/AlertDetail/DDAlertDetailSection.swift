@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class DDAlertDetailSection: UIView {
     
@@ -120,14 +121,14 @@ class DDAlertDetailSection: UIView {
         }
     }
     
-    public func loadData() {
-        colorView.image = UIImage(named: "Icon31")
-        deviceIdLabel.text = "HWASKDHSJKDH5552"
+    public func loadData(_ json: JSON) {
+        colorView.image = UIImage(named: "alert_\(json["severity"].stringValue.lowercased())") ?? UIImage(named: "alert_unkonwn")
+        deviceIdLabel.text = json["deviceId"].stringValue
         avatarView.backgroundColor = .lightGray
-        nameLabel.text = "Bob";
-        funcLabel.text = "Acknowledged"
-        dateLabel.text = "09/11 10:06:00"
-        textView.text = "Lifts with rope tension issue"
+        nameLabel.text = json["acknowledgedBy"].stringValue // "Bob";
+        funcLabel.text = json["acknowledgeDesc"].stringValue // "Acknowledged"
+        dateLabel.text = DDAppInfo.dateStr(json["acknowledgeTime"].stringValue, dateFormat: "yyyy/MM/dd HH:mm:ss") // "09/11 10:06:00"
+        textView.text = json["message"].stringValue // "Lifts with rope tension issue"
         for index in 1...3 {
             let item = DDAlertDetailItem()
             item.loadData()

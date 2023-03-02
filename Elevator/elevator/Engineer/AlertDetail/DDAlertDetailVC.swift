@@ -47,7 +47,9 @@ class DDAlertDetailVC: UIViewController {
         navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
-    var alarmJson: JSON = JSON()
+    var baseJson: JSON = JSON()
+    
+    var tagIndex: Int = 0 // 0:Alert,1:alarm,2:normal
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -97,7 +99,7 @@ class DDAlertDetailVC: UIViewController {
         }
     }
     
-    private func setClosre() {
+    private func setClosre() {       
         headerView.acknowlegeButton.addTarget(self, action: #selector(ackAction), for: .touchUpInside)
         headerView.updateButton.addTarget(self, action: #selector(updateAction), for: .touchUpInside)
         headerView.resolveButton.addTarget(self, action: #selector(resolveAction), for: .touchUpInside)
@@ -126,11 +128,24 @@ class DDAlertDetailVC: UIViewController {
     }
     
     private func loadData() {
-        let id = alarmJson["_id"].stringValue
+        let id = baseJson["_id"].stringValue
         guard let userId = DDShared.shared.json?["user"]["id"].stringValue else { return }
+        ProgressHUD.show()
         DDGet(target: .getDetailOfAlarm(id: id, userId: userId), success: { [weak self] result, msg in
             print("正确 \(result) \(msg ?? "NoMsg")")
             ProgressHUD.dismiss()
+            guard let `self` = self else { return }
+            let json = JSON(result)["data"]
+            self.headerView.loadData(json, tagIndex: self.tagIndex)
+            for operateRecord in json["operateRecords"].arrayValue {
+                let section = DDAlertDetailSection()
+                section.loadData(_ operateRecord)
+                stackView.addArrangedSubview(section)
+                section.snp.makeConstraints { make in
+                    make.leading.trailing.equalToSuperview()
+                    make.height.greaterThanOrEqualTo(50)
+                }
+            }
         }, failure: { [weak self] code, msg in
             print("错误 \(code) \(msg ?? "NoMsg")")
             ProgressHUD.showFailed(msg ?? "Fail", interaction: false, delay: 3)
@@ -138,12 +153,34 @@ class DDAlertDetailVC: UIViewController {
         
         for index in 1...3 {
             let section = DDAlertDetailSection()
-            section.loadData()
+            //section.loadData()
             stackView.addArrangedSubview(section)
             section.snp.makeConstraints { make in
                 make.leading.trailing.equalToSuperview()
                 make.height.greaterThanOrEqualTo(50)
             }
+        }
+    }
+    
+    public func updateImg(_ tag: String, imgView: UIImageView) {
+        if tag == "1" {
+            imgView.image = UIImage(named: "alert_critical")
+        } else if tag == "2" {
+            imgView.image = UIImage(named: "alert_major")
+        } else if tag == "3" {
+            imgView.image = UIImage(named: "alert_minor")
+        } else if tag == "4" {
+            imgView.image = UIImage(named: "alert_info")
+        } else if tag == "5" {
+            imgView.image = UIImage(named: "alert_debug")
+        } else if tag == "6" {
+            imgView.image = UIImage(named: "alert_clear")
+        } else if tag == "11" {
+            imgView.image = UIImage(named: "alert_unkonwn")
+        } else if tag == "12" {
+            imgView.image = UIImage(named: "alert_ok")
+        } else {
+            imgView.image = UIImage(named: "Tick")
         }
     }
 }

@@ -60,15 +60,15 @@ class DDEngineerVC: UIViewController {
     }
 
     private lazy var alertVC: DDEngineerSubVC = DDEngineerSubVC().then {
-        $0.tagIndex = 1
+        $0.tagIndex = 0
     }
     
     private lazy var alarmVC: DDEngineerSubVC = DDEngineerSubVC().then {
-        $0.tagIndex = 3
+        $0.tagIndex = 1
     }
     
     private lazy var normalVC: DDEngineerSubVC = DDEngineerSubVC().then {
-        $0.tagIndex = 5
+        $0.tagIndex = 2
     }
     
     private var currentVC: DDEngineerSubVC?
@@ -98,6 +98,7 @@ class DDEngineerVC: UIViewController {
         setViewConstraints()
         setClosure()
         loadData()
+        currentVC = alertVC
     }
     
     private func setViewConstraints() {

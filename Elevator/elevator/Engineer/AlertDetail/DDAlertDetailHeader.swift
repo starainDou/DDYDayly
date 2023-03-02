@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 import IQKeyboardManagerSwift
 
 class DDAlertDetailHeader: UIView {
@@ -194,15 +195,15 @@ class DDAlertDetailHeader: UIView {
         }
     }
     
-    public func loadData() { // DDLiftModel
-        titleLabel.text = "2#2#A001" // item.number
-        stateLabel.text = tag == 1 ? "Alert" : (tag == 5 ? " Normal" : "Alarm")
-        timeLabel.text = "09/11/2020 12:12" // DDAppInfo.dateStr(item.createtime)
-        brandLabel.text = "SASU"//item.brand.isEmpty ? "-" : item.brand
-        addressLabel.text = "Singapore 1224 street" // item.address.isEmpty ? "-" : item.address
-        colorView.image = UIImage(named: "Icon31")
-        idLabel.text = "HWASKDHSJKDH5552"
-        textView.text = "The elevator IOT box needs monthly mainte"
+    public func loadData(_ json: JSON, tagIndex: Int) { // DDLiftModel
+        stateLabel.text = tagIndex == 0 ? "Alert" : (tagIndex == 2 ? " Normal" : "Alarm")
+        titleLabel.text = json["liftnumber"].stringValue // "2#2#A001" // item.number
+        timeLabel.text = DDAppInfo.dateStr(json["createtime"].stringValue, dateFormat: "yyyy/MM/dd HH:mm") //"09/11/2020 12:12" //
+        brandLabel.text =  json["brand"].stringValue// "SASU"//item.brand.isEmpty ? "-" : item.brand
+        addressLabel.text = json["address"].stringValue // "Singapore 1224 street" // item.address.isEmpty ? "-" : item.address
+        idLabel.text = json["deviceId"].stringValue // "HWASKDHSJKDH5552"
+        textView.text = json["description"].stringValue // "The elevator IOT box needs monthly mainte"
+        colorView.image = UIImage(named: "alert_\(json["severity"].stringValue.lowercased())") ?? UIImage(named: "alert_unkonwn")
     }
 
 }
