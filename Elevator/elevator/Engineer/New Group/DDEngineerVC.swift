@@ -12,11 +12,23 @@ import SwiftyJSON
 import JXSegmentedView
 import Then
 
+extension JXPagingListContainerView: JXSegmentedViewListContainer {}
+
 class DDEngineerVC: UIViewController {
+    
+    private let titles: [String]  =  ["Alert", "Alarm", "Normal"]
+    
+    let headerHeight = 270
+    
+    let segbackHeight = 44
     
     private lazy var headerView: DDEngineerHeader = DDEngineerHeader()
     
-    private lazy var segBackView: UIView = UIView().then {
+    private lazy var pageView: JXPagingListRefreshView = JXPagingListRefreshView(delegate: self).then {
+        $0.pinSectionHeaderVerticalOffset = Int(DDScreen.statusBarHeight + 44)
+    }
+    
+    private lazy var segBackView: UIView = UIView(frame: CGRect(x: 0, y: 0, width: DDScreen.width, height: 44)).then {
         $0.backgroundColor = UIColor(hex: "#FFFFFF")
         $0.layer.cornerRadius = 4
         $0.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
@@ -32,22 +44,20 @@ class DDEngineerVC: UIViewController {
     private lazy var segmentView: JXSegmentedView = JXSegmentedView().then {
         $0.delegate = self
         $0.dataSource = segmentDataSource
-        $0.listContainer = containerView
-        $0.backgroundColor = UIColor(hex: "#FFFFFF")
+        $0.listContainer = pageView.listContainerView
         $0.indicators = [JXSegmentedIndicatorLineView().then { indicator in
             indicator.indicatorWidth = JXSegmentedViewAutomaticDimension
+            indicator.indicatorColor = UIColor(hex: "#168991")
         }]
     }
     private lazy var segmentDataSource = JXSegmentedTitleDataSource().then {
-        $0.titles = ["Alert", "Alarm", "Normal"]
+        $0.titles = titles
         $0.isItemSpacingAverageEnabled = true
         $0.titleNormalFont = UIFont.systemFont(ofSize: 14, weight: .regular)
         $0.titleNormalColor = UIColor(hex: "#666666")
         $0.titleSelectedFont = UIFont.systemFont(ofSize: 15, weight: .semibold)
         $0.titleSelectedColor = UIColor(hex: "#168991")
     }
-    
-    private lazy var containerView: JXSegmentedListContainerView = JXSegmentedListContainerView(dataSource: self)
 
     private lazy var alertVC: DDEngineerSubVC = DDEngineerSubVC().then {
         $0.tagIndex = 1
@@ -83,7 +93,7 @@ class DDEngineerVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(hex: "#F1F5FF")
-        view.addSubviews(headerView, segBackView, containerView)
+        view.addSubviews(pageView)
         segBackView.addSubviews(segmentView, sortButton)
         setViewConstraints()
         setClosure()
@@ -91,22 +101,12 @@ class DDEngineerVC: UIViewController {
     }
     
     private func setViewConstraints() {
-        headerView.snp.makeConstraints { make in
-            make.leading.trailing.top.equalToSuperview()
-            make.height.equalTo(250 + DDScreen.statusBarHeight)
-        }
-        segBackView.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview()
-            make.height.equalTo(44)
-            make.top.equalTo(headerView.snp.bottom).offset(-10)
-        }
-        containerView.snp.makeConstraints { make in
-            make.leading.bottom.trailing.equalToSuperview()
-            make.top.equalTo(segBackView.snp.bottom)
+        pageView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
         }
         segmentView.snp.makeConstraints { make in
             make.leading.top.bottom.equalToSuperview()
-            make.trailing.equalTo(segBackView.snp.centerX).offset(20)
+            make.trailing.equalTo(segBackView.snp.centerX).offset(50)
         }
         sortButton.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
@@ -116,18 +116,20 @@ class DDEngineerVC: UIViewController {
     }
     
     private func setClosure() {
-        headerView.alertButton.addTarget(self, action: #selector(selectAction(_:)), for: .touchUpInside)
-        headerView.alarmButton.addTarget(self, action: #selector(selectAction(_:)), for: .touchUpInside)
-        headerView.normalButton.addTarget(self, action: #selector(selectAction(_:)), for: .touchUpInside)
-        headerView.backButton.addTarget(self, action: #selector(backAction), for: .touchUpInside)
-        headerView.sortButton.addTarget(self, action: #selector(sortAction), for: .touchUpInside)
+        headerView.back1Button.addTarget(self, action: #selector(backAction), for: .touchUpInside)
+        headerView.back2Button.addTarget(self, action: #selector(backAction), for: .touchUpInside)
+        headerView.bookButton.addTarget(self, action: #selector(booktAction), for: .touchUpInside)
+        headerView.locationButton.addTarget(self, action: #selector(localAction), for: .touchUpInside)
         headerView.searchButton.addTarget(self, action: #selector(searchAction), for: .touchUpInside)
+        headerView.textFiled.delegate = self
     }
     
-    @objc private func selectAction(_ button: UIButton) {
+    @objc private func booktAction() {
         view.endEditing(true)
-        headerView.selectIndex(button.tag)
-        scrollVew.setContentOffset(CGPoint(x: DDScreen.width * CGFloat(button.tag), y: 0), animated: true)
+    }
+    
+    @objc private func localAction() {
+        view.endEditing(true)
     }
     
     private func loadData() {
@@ -135,17 +137,27 @@ class DDEngineerVC: UIViewController {
     }
     
     @objc private func backAction() {
+        view.endEditing(true)
         navigationController?.popViewController(animated: true)
     }
     
     @objc private func searchAction() {
-        let vc = DDEngineerSearchVC(alarmType)
-        navigationController?.pushViewController(vc, animated: true)
+        view.endEditing(true)
+        currentVC?.searchWord = headerView.textFiled.text
     }
     
     @objc private func sortAction() {
-        guard let vc = currentVC else { return }
-        currentVC?.sortType = !vc.sortType
+        view.endEditing(true)
+        DDListView.show(in: view, array: ["Default", "By Alphabet", "By Town Council"], action: { [weak self] (text, idx) in
+            self?.currentVC?.sortType = idx
+        })
+    }
+}
+
+extension DDEngineerVC: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        searchAction()
+        return true
     }
 }
 
@@ -161,18 +173,40 @@ extension DDEngineerVC: JXSegmentedViewDelegate {
     }
 }
 
-extension DDEngineerVC: JXSegmentedListContainerViewDataSource {
-    func numberOfLists(in listContainerView: JXSegmentedListContainerView) -> Int {
-        return segmentDataSource.dataSource.count
+
+extension DDEngineerVC: JXPagingViewDelegate {
+    
+    func tableHeaderViewHeight(in pagingView: JXPagingView) -> Int {
+        return headerHeight
     }
 
-    func listContainerView(_ listContainerView: JXSegmentedListContainerView, initListAt index: Int) -> JXSegmentedListContainerViewListDelegate {
+    func tableHeaderView(in pagingView: JXPagingView) -> UIView {
+        return headerView
+    }
+
+    func heightForPinSectionHeader(in pagingView: JXPagingView) -> Int {
+        return segbackHeight
+    }
+
+    func viewForPinSectionHeader(in pagingView: JXPagingView) -> UIView {
+        return segBackView
+    }
+
+    func numberOfLists(in pagingView: JXPagingView) -> Int {
+        return titles.count
+    }
+
+    func pagingView(_ pagingView: JXPagingView, initListAtIndex index: Int) -> JXPagingViewListViewDelegate {
         if index == 0 {
             return alertVC
         } else if index == 1 {
             return alarmVC
-        } else if index == 2 {
+        } else {
             return normalVC
         }
+    }
+
+    func mainTableViewDidScroll(_ scrollView: UIScrollView) {
+        headerView.scrollViewDidScroll(contentOffsetY: scrollView.contentOffset.y)
     }
 }

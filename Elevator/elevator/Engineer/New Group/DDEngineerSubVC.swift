@@ -28,15 +28,17 @@ class DDEngineerSubVC: UIViewController {
         $0.keyboardDismissMode = .onDrag
     }
     
+    private var listViewDidScrollCallback: ((UIScrollView) -> ())?
+    
     private(set) lazy var dataArray: [JSON] = []
     
-    var tagIndex: Int = 0;
+    var tagIndex: Int = 0; // 0:Alert,1:alarm,2:normal
     
     var page: Int = 1
     
-    var alarmType: Int = 0
+    var alarmType: Int = 0 // 1:未处理的alarm,2:已处理的alarm(历史alarm),3:收藏的alarm
     
-    var searchWord: String = "" {
+    var searchWord: String? {
         didSet {
             page = 1
             loadData()
@@ -59,6 +61,10 @@ class DDEngineerSubVC: UIViewController {
         loadData()
     }
     
+    deinit {
+        listViewDidScrollCallback = nil
+    }
+    
     private func setViewConstraints() {
         tableView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
@@ -67,15 +73,16 @@ class DDEngineerSubVC: UIViewController {
     
     private func loadData() {
         guard let userId = DDShared.shared.json?["user"]["id"].stringValue else { return }
-        DDPost(target: .getAlarmsOfLift(userid: userId, page: "\(page)", limit: "20", alarmType: "\(alarmType)", severityType: "\(tagIndex)", value: searchWord, sortType: "\(sortType)", dateRange: ["",""]), success: { [weak self] result, msg in
+        ProgressHUD.show()
+        DDPost(target: .getAlarmsOfLift(userid: userId, page: "\(page)", limit: "20", alarmType: "\(alarmType)", severityType: "\(tagIndex)", value: searchWord, sortType: "\(sortType)", dateRange: nil), success: { [weak self] result, msg in
             print("正确 \(result) \(msg ?? "NoMsg")")
             ProgressHUD.dismiss()
             if let `self` = self {
                 if (self.page == 1) {
                     self.dataArray = []
                 }
-                self.dataArray += JSON(result)["data"]["rows"].arrayValue
-                if self.dataArray.count < JSON(result)["data"]["total"].intValue {
+                self.dataArray += JSON(result)["data"].arrayValue
+                if JSON(result)["data"].arrayValue.count >= 20 {
                     self.page += 1
                 }
             }
@@ -101,6 +108,10 @@ class DDEngineerSubVC: UIViewController {
             self?.loadData()
         })
     }
+    
+    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        listViewDidScrollCallback?(scrollView)
+    }
 }
 
 
@@ -122,7 +133,15 @@ extension DDEngineerSubVC: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-extension DDEngineerSubVC: JXSegmentedListContainerViewListDelegate {
+extension DDEngineerSubVC: JXPagingViewListViewDelegate {
+    func listScrollView() -> UIScrollView {
+        return self.tableView
+    }
+    
+    func listViewDidScrollCallback(callback: @escaping (UIScrollView) -> ()) {
+        listViewDidScrollCallback = callback
+    }
+    
     func listView() -> UIView {
         return view
     }

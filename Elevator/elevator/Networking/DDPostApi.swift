@@ -30,7 +30,7 @@ public enum DDPostApi {
     /// 解除绑定
     case removeBinding(liftNumber: String, deviceId: String)
     /// 查找指定用户下的警报
-    case getAlarmsOfLift(userid: String, page: String, limit: String, alarmType: String, severityType: String, value: String, sortType: String, dateRange: [String])
+    case getAlarmsOfLift(userid: String, page: String, limit: String, alarmType: String, severityType: String, value: String?, sortType: String?, dateRange: [String]?)
     /// 收藏警报
     case favoriteAlarm(deviceId: String, userId: String, isFavourite: String)
     /// 更新警报

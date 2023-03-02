@@ -22,8 +22,6 @@
 		034FB78B29978FDB003985AD /* DDEngineerSubVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034FB78A29978FDB003985AD /* DDEngineerSubVC.swift */; };
 		034FB78D2997901A003985AD /* DDEngineerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034FB78C2997901A003985AD /* DDEngineerCell.swift */; };
 		034FB78F29979329003985AD /* DDEngineerHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034FB78E29979327003985AD /* DDEngineerHeader.swift */; };
-		034FB7912997A9E0003985AD /* DDEngineerSearchHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034FB7902997A9E0003985AD /* DDEngineerSearchHeader.swift */; };
-		034FB7932998C597003985AD /* DDEngineerSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034FB7922998C596003985AD /* DDEngineerSearchVC.swift */; };
 		034FB7962998CF25003985AD /* DDAlertDetailHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034FB7952998CF25003985AD /* DDAlertDetailHeader.swift */; };
 		034FB7982998FFE0003985AD /* DDAlertDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034FB7972998FFE0003985AD /* DDAlertDetailVC.swift */; };
 		034FB79E2999252F003985AD /* DDAlertDetailSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034FB79D2999252F003985AD /* DDAlertDetailSection.swift */; };
@@ -115,6 +113,11 @@
 		04EE679A29ADC55800286819 /* DDMainteDetail4Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EE679929ADC55800286819 /* DDMainteDetail4Cell.swift */; };
 		04EE679C29ADCCE200286819 /* DDMainteDetail4PEU1View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EE679B29ADCCE200286819 /* DDMainteDetail4PEU1View.swift */; };
 		04EE67A929AE3BDA00286819 /* DDMainteDetail3Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EE67A829AE3BDA00286819 /* DDMainteDetail3Header.swift */; };
+		04EE67BE29B0AEC300286819 /* JXPagingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EE67B929B0AEC200286819 /* JXPagingView.swift */; };
+		04EE67BF29B0AEC300286819 /* JXPagingListRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EE67BA29B0AEC200286819 /* JXPagingListRefreshView.swift */; };
+		04EE67C029B0AEC300286819 /* JXPagingSmoothView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EE67BB29B0AEC200286819 /* JXPagingSmoothView.swift */; };
+		04EE67C129B0AEC300286819 /* JXPagingMainTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EE67BC29B0AEC300286819 /* JXPagingMainTableView.swift */; };
+		04EE67C229B0AEC300286819 /* JXPagingListContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EE67BD29B0AEC300286819 /* JXPagingListContainerView.swift */; };
 		04F559FC29876B8600EF237D /* DDAppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F559FB29876B8600EF237D /* DDAppInfo.swift */; };
 		04F559FE2987969300EF237D /* DDVerifyDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F559FD2987969300EF237D /* DDVerifyDetailVC.swift */; };
 		04F55A0029879DB300EF237D /* DDVerifyDetailTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F559FF29879DB300EF237D /* DDVerifyDetailTopView.swift */; };
@@ -139,8 +142,6 @@
 		034FB78A29978FDB003985AD /* DDEngineerSubVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDEngineerSubVC.swift; sourceTree = "<group>"; };
 		034FB78C2997901A003985AD /* DDEngineerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDEngineerCell.swift; sourceTree = "<group>"; };
 		034FB78E29979327003985AD /* DDEngineerHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDEngineerHeader.swift; sourceTree = "<group>"; };
-		034FB7902997A9E0003985AD /* DDEngineerSearchHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDEngineerSearchHeader.swift; sourceTree = "<group>"; };
-		034FB7922998C596003985AD /* DDEngineerSearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDEngineerSearchVC.swift; sourceTree = "<group>"; };
 		034FB7952998CF25003985AD /* DDAlertDetailHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDAlertDetailHeader.swift; sourceTree = "<group>"; };
 		034FB7972998FFE0003985AD /* DDAlertDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDAlertDetailVC.swift; sourceTree = "<group>"; };
 		034FB79D2999252F003985AD /* DDAlertDetailSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDAlertDetailSection.swift; sourceTree = "<group>"; };
@@ -233,6 +234,11 @@
 		04EE679929ADC55800286819 /* DDMainteDetail4Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDMainteDetail4Cell.swift; sourceTree = "<group>"; };
 		04EE679B29ADCCE200286819 /* DDMainteDetail4PEU1View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DDMainteDetail4PEU1View.swift; sourceTree = "<group>"; };
 		04EE67A829AE3BDA00286819 /* DDMainteDetail3Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDMainteDetail3Header.swift; sourceTree = "<group>"; };
+		04EE67B929B0AEC200286819 /* JXPagingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JXPagingView.swift; sourceTree = "<group>"; };
+		04EE67BA29B0AEC200286819 /* JXPagingListRefreshView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JXPagingListRefreshView.swift; sourceTree = "<group>"; };
+		04EE67BB29B0AEC200286819 /* JXPagingSmoothView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JXPagingSmoothView.swift; sourceTree = "<group>"; };
+		04EE67BC29B0AEC300286819 /* JXPagingMainTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JXPagingMainTableView.swift; sourceTree = "<group>"; };
+		04EE67BD29B0AEC300286819 /* JXPagingListContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JXPagingListContainerView.swift; sourceTree = "<group>"; };
 		04F559FB29876B8600EF237D /* DDAppInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDAppInfo.swift; sourceTree = "<group>"; };
 		04F559FD2987969300EF237D /* DDVerifyDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDVerifyDetailVC.swift; sourceTree = "<group>"; };
 		04F559FF29879DB300EF237D /* DDVerifyDetailTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDVerifyDetailTopView.swift; sourceTree = "<group>"; };
@@ -284,10 +290,8 @@
 			children = (
 				034FB78729978F93003985AD /* DDEngineerVC.swift */,
 				034FB78A29978FDB003985AD /* DDEngineerSubVC.swift */,
-				034FB7922998C596003985AD /* DDEngineerSearchVC.swift */,
 				034FB78C2997901A003985AD /* DDEngineerCell.swift */,
 				034FB78E29979327003985AD /* DDEngineerHeader.swift */,
-				034FB7902997A9E0003985AD /* DDEngineerSearchHeader.swift */,
 			);
 			name = LiftList;
 			path = "New Group";
@@ -529,6 +533,7 @@
 		048328782976D7A6002BE7B2 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				04EE67B829B0AEB400286819 /* PageView */,
 				0483287C2976D7F3002BE7B2 /* Controller */,
 				0483287B2976D7CC002BE7B2 /* Model */,
 				0483287A2976D7C5002BE7B2 /* View */,
@@ -656,6 +661,18 @@
 				04BB927029A4FBCB00B98764 /* DDDownloadApi.swift */,
 			);
 			path = Networking;
+			sourceTree = "<group>";
+		};
+		04EE67B829B0AEB400286819 /* PageView */ = {
+			isa = PBXGroup;
+			children = (
+				04EE67BD29B0AEC300286819 /* JXPagingListContainerView.swift */,
+				04EE67BA29B0AEC200286819 /* JXPagingListRefreshView.swift */,
+				04EE67BC29B0AEC300286819 /* JXPagingMainTableView.swift */,
+				04EE67BB29B0AEC200286819 /* JXPagingSmoothView.swift */,
+				04EE67B929B0AEC200286819 /* JXPagingView.swift */,
+			);
+			path = PageView;
 			sourceTree = "<group>";
 		};
 		184B248616FF28E6AB5CF7ED /* Frameworks */ = {
@@ -797,6 +814,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				034FB77F298F8AEC003985AD /* DDMainteDetail3Cell.swift in Sources */,
+				04EE67BF29B0AEC300286819 /* JXPagingListRefreshView.swift in Sources */,
 				034FB779298653C9003985AD /* DDLabelCell.swift in Sources */,
 				034FB781298F8B06003985AD /* DDMainteDetail3Item.swift in Sources */,
 				04E6FC172990E33900666FE6 /* DDInstallSegmentView.swift in Sources */,
@@ -811,10 +829,10 @@
 				041032DC299B54E800542586 /* DDSummarySectionFooter.swift in Sources */,
 				034FB7B729A23F45003985AD /* DDMainteDetailVC.swift in Sources */,
 				034FB76F29850D8F003985AD /* DDVerifyVC.swift in Sources */,
-				034FB7912997A9E0003985AD /* DDEngineerSearchHeader.swift in Sources */,
 				041032D6299B506B00542586 /* DDSummaryHeader.swift in Sources */,
 				04E6FC0E2990C38800666FE6 /* DDInstallSubVC.swift in Sources */,
 				034FB7BB29A23F45003985AD /* DDMainteDetail2VC.swift in Sources */,
+				04EE67C029B0AEC300286819 /* JXPagingSmoothView.swift in Sources */,
 				04CE0A29298931F700795592 /* DDCommisionFooter.swift in Sources */,
 				04CE0A1B2988E06A00795592 /* DDInstallImageCell.swift in Sources */,
 				041032D2299B4E9300542586 /* DDSammarySubVC.swift in Sources */,
@@ -826,12 +844,12 @@
 				04832898297802E7002BE7B2 /* DDQRCodeVC.swift in Sources */,
 				034FB7B129A23F34003985AD /* DDMainteDetail0VC.swift in Sources */,
 				034FB78F29979329003985AD /* DDEngineerHeader.swift in Sources */,
-				034FB7932998C597003985AD /* DDEngineerSearchVC.swift in Sources */,
 				04BB92D429A8795B00B98764 /* DDDocumentPreviewVC.swift in Sources */,
 				0483283429768A78002BE7B2 /* DDMaintenanceCell.swift in Sources */,
 				034FB7B929A23F45003985AD /* DDMainteDetail4VC.swift in Sources */,
 				03594A7D29AB8DA50015D3C5 /* DDMainteDetail4PEU0View.swift in Sources */,
 				04EE679A29ADC55800286819 /* DDMainteDetail4Cell.swift in Sources */,
+				04EE67C229B0AEC300286819 /* JXPagingListContainerView.swift in Sources */,
 				04103373299D085100542586 /* DDListView.swift in Sources */,
 				034FB7962998CF25003985AD /* DDAlertDetailHeader.swift in Sources */,
 				04CE0A23298930E500795592 /* DDCommisionVC.swift in Sources */,
@@ -892,12 +910,14 @@
 				048328922977D022002BE7B2 /* DDUploadApi.swift in Sources */,
 				04CE0A1D2988E08100795592 /* DDBeforeInstallVC.swift in Sources */,
 				0483288729779D6E002BE7B2 /* DDPostApi.swift in Sources */,
+				04EE67BE29B0AEC300286819 /* JXPagingView.swift in Sources */,
 				03594A7329AB60AD0015D3C5 /* DDMainteDetail3Section.swift in Sources */,
 				034FB783298FEE11003985AD /* DDShared.swift in Sources */,
 				034FB7A729A22335003985AD /* DDTestCell.swift in Sources */,
 				04E008552975134B00EE0DBF /* AppDelegate.swift in Sources */,
 				034FB78529900781003985AD /* DDEvent.swift in Sources */,
 				04D80A8A299A16AF0047DA15 /* DDAlertSelectView.swift in Sources */,
+				04EE67C129B0AEC300286819 /* JXPagingMainTableView.swift in Sources */,
 				03594A7729AB8D4C0015D3C5 /* DDMainteDetail4MapView.swift in Sources */,
 				034FB77729864563003985AD /* DDInstallationCell.swift in Sources */,
 				034FB78829978F93003985AD /* DDEngineerVC.swift in Sources */,
