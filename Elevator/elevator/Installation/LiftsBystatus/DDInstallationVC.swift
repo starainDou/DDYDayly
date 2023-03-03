@@ -26,6 +26,7 @@ class DDInstallationVC: UIViewController {
     
     private lazy var scrollView: UIScrollView = UIScrollView().then {
         $0.isScrollEnabled = false
+        $0.keyboardDismissMode = .onDrag
     }
     
     private lazy var notInsVC: DDInstallSubVC = DDInstallSubVC().then {

@@ -98,7 +98,6 @@ class DDVerifyDetailVC: UIViewController {
     private func loadData() {
         guard let leftId = liftBaseJson?["id"].stringValue else { return }
         DDPost(target: .getLiftDetail(liftId: leftId), success: { [weak self] result, msg in
-            print("正确 \(result) \(msg ?? "NoMsg")")
             ProgressHUD.dismiss()
             self?.liftJson = JSON(result)["data"]
             if self?.liftJson?["deviceid"].string == nil, let deviceid = self?.sensorJson?["deviceId"].string {
@@ -107,7 +106,6 @@ class DDVerifyDetailVC: UIViewController {
             self?.refreshView()
             self?.loadLiftModels()
         }, failure: { code, msg in
-            print("错误 \(code) \(msg ?? "NoMsg")")
             ProgressHUD.showFailed(msg ?? "Fail", interaction: false, delay: 3)
         })
     }
@@ -118,11 +116,9 @@ class DDVerifyDetailVC: UIViewController {
             return
         }
         DDPost(target: .getLiftModelList(page: "1", limit: "20", modelId: modelId), success: { [weak self] result, msg in
-            print("正确 \(result) \(msg ?? "NoMsg")")
             self?.liftModelList = JSON(result)["data"]["rows"].arrayValue
             completion?(true)
         }, failure: { code, msg in
-            print("错误 \(code) \(msg ?? "NoMsg")")
             completion?(false)
         })
     }
@@ -132,11 +128,9 @@ class DDVerifyDetailVC: UIViewController {
             return
         }
         DDPost(target: .getPlanList(page: "1", limit: "20", planId: planId), success: { [weak self] result, msg in
-            print("正确 \(result) \(msg ?? "NoMsg")")
             self?.planList = JSON(result)["data"]["rows"].arrayValue
             completion?(true)
         }, failure: { code, msg in
-            print("错误 \(code) \(msg ?? "NoMsg")")
             completion?(false)
         })
     }

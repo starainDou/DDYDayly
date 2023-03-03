@@ -21,6 +21,7 @@ class DDAlertUpdateVC: UIViewController {
     
     private lazy var scrollView: UIScrollView = UIScrollView().then {
         $0.showsVerticalScrollIndicator = false
+        $0.keyboardDismissMode = .onDrag
     }
     
     private lazy var backView: UIView = UIView().then {
@@ -29,9 +30,13 @@ class DDAlertUpdateVC: UIViewController {
         $0.layer.masksToBounds = true
     }
     
-    private lazy var photo1View: DDAlertImageView = DDAlertImageView()
+    private lazy var photo1View: DDAlertImageView = DDAlertImageView().then {
+        $0.vc = self
+    }
     
-    private lazy var photo2View: DDAlertImageView = DDAlertImageView()
+    private lazy var photo2View: DDAlertImageView = DDAlertImageView().then {
+        $0.vc = self
+    }
     
     private lazy var titleLabel: UILabel = UILabel().then {
         $0.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
@@ -214,11 +219,9 @@ class DDAlertUpdateVC: UIViewController {
         let id = baseJson["_id"].stringValue
         ProgressHUD.show(interaction: false)
         DDPost(target: .updateStatusOfAlarm(userid: userId, id: id, status: "\(alarmState)", desc: desc, natureOfTask: remark1Str, component: remark2Str, task: remark3Str, images: images), success: { [weak self] result, msg in
-            print("正确 \(result) \(msg ?? "NoMsg")")
             ProgressHUD.showSuccess("Success")
             self?.backAction()
         }, failure: { [weak self] code, msg in
-            print("错误 \(code) \(msg ?? "NoMsg")")
             ProgressHUD.showFailed(msg ?? "Fail", interaction: false, delay: 3)
         })
     }
@@ -226,7 +229,6 @@ class DDAlertUpdateVC: UIViewController {
     private func loadRemark(row: Int, id: String, completion: (([JSON]?) -> Void)? = nil) {
         ProgressHUD.show(interaction: false)
         DDGet(target: .getAlarmRemark(parentId: id), success: { [weak self] result, msg in
-            print("正确 \(result) \(msg ?? "NoMsg")")
             ProgressHUD.dismiss()
             let list = JSON(result)["data"].arrayValue
             if row == 1 {
@@ -238,7 +240,6 @@ class DDAlertUpdateVC: UIViewController {
             }
             completion?(list)
         }, failure: { code, msg in
-            print("错误 \(code) \(msg ?? "NoMsg")")
             completion?(nil)
             ProgressHUD.showFailed(msg ?? "Fail", interaction: false, delay: 3)
         })

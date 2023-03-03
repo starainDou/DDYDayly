@@ -15,6 +15,7 @@ class DDMainteDetail4VC: UIViewController {
     
     private lazy var scrollView: UIScrollView = UIScrollView().then {
         $0.showsVerticalScrollIndicator = false
+        $0.keyboardDismissMode = .onDrag
     }
     
     private lazy var topView: DDMainteDetail4TopView = DDMainteDetail4TopView()

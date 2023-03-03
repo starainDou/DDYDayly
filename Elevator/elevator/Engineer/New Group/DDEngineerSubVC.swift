@@ -78,7 +78,6 @@ class DDEngineerSubVC: UIViewController {
         guard let userId = DDShared.shared.json?["user"]["id"].stringValue else { return }
         ProgressHUD.show(interaction: false)
         DDPost(target: .getAlarmsOfLift(userid: userId, page: "\(page)", limit: "20", alarmType: "\(alarmType)", severityType: "\(tagIndex)", value: searchWord, sortType: "\(sortType)", dateRange: nil), success: { [weak self] result, msg in
-            print("正确 \(result) \(msg ?? "NoMsg")")
             ProgressHUD.dismiss()
             if let `self` = self {
                 if (self.page == 1) {
@@ -93,7 +92,6 @@ class DDEngineerSubVC: UIViewController {
             self?.tableView.mj_header?.endRefreshing()
             self?.tableView.mj_footer?.endRefreshing()
         }, failure: { [weak self] code, msg in
-            print("错误 \(code) \(msg ?? "NoMsg")")
             ProgressHUD.showFailed(msg ?? "Fail", interaction: false, delay: 3)
             self?.tableView.mj_header?.endRefreshing()
             self?.tableView.mj_footer?.endRefreshing()

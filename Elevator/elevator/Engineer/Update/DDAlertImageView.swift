@@ -104,12 +104,10 @@ class DDAlertImageView: UIView {
         let name = UUID().uuidString + ".jpg"
         ProgressHUD.show(interaction: false)
         DDUpload(target: .uploadImageOfLift(data, name), success: { [weak self] result, msg in
-            print("正确 \(result) \(msg ?? "NoMsg")")
             ProgressHUD.showSuccess("Success")
             self?.load(image: image)
             self?.fileName = name
         }, failure: { [weak self] code, msg in
-            print("错误 \(code) \(msg ?? "NoMsg")")
             ProgressHUD.showFailed(msg ?? "Fail", interaction: false, delay: 3)
         })
     }

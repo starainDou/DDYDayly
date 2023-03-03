@@ -26,6 +26,7 @@ class DDImageEditVC: UIViewController {
         $0.layer.masksToBounds = true
         $0.bounces = false
         $0.showsVerticalScrollIndicator = false
+        $0.keyboardDismissMode = .onDrag
     }
     
     private lazy var tipLabel: UILabel = UILabel().then {

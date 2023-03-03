@@ -97,10 +97,8 @@ class DDBeforeInstallVC: UIViewController {
         let liftId = json["id"].string ?? json["liftId"].stringValue
         let dict = json.dictionaryObject ?? [:]
         DDPost(target: .updateDetailOfLift(liftId: liftId, dict: dict), success: { [weak self] result, msg in
-            print("正确 \(result) \(msg ?? "NoMsg")")
             self?.pushAfterVC()
         }, failure: { code, msg in
-            print("错误 \(code) \(msg ?? "NoMsg")")
             ProgressHUD.showFailed(msg ?? "Fail", interaction: false, delay: 3)
         })
     }
@@ -127,10 +125,8 @@ class DDBeforeInstallVC: UIViewController {
     
     private func uploadImages(group: DispatchGroup, data: Data, name: String, json: JSON) {
         DDUpload(target: .uploadImageOfLift(data, name), success: { [weak self] result, msg in
-            print("正确 \(result) \(msg ?? "NoMsg")")
             self?.saveMessage(group: group, name: name, json: json)
         }, failure: { code, msg in
-            print("错误 \(code) \(msg ?? "NoMsg")")
             group.leave()
         })
     }
@@ -143,10 +139,8 @@ class DDBeforeInstallVC: UIViewController {
         let profile = DDShared.shared.liftProfile(cacheKey(json)) ?? " "
         let before = json["before"].stringValue
         DDPost(target: .saveMessageOfImage(id: id, type: type, subType: subType, liftNumber: liftNumber, fileName: name, description: profile, before: before), success: { result, msg in
-            print("正确 \(result) \(msg ?? "NoMsg")")
             group.leave()
         }, failure: { code, msg in
-            print("错误 \(code) \(msg ?? "NoMsg")")
             group.leave()
         })
     }

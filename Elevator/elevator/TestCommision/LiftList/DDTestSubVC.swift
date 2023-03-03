@@ -72,7 +72,6 @@ class DDTestSubVC: UIViewController {
     private func loadData() {
         ProgressHUD.show(interaction: false)
         DDGet(target: .getLiftsBystatus(status: "\(tagIndex)", page: "\(page)", limit: "20", liftnumber: searchWord), success: { [weak self] result, msg in
-            print("正确 \(result) \(msg ?? "NoMsg")")
             ProgressHUD.dismiss()
             if let `self` = self {
                 if (self.page == 1) {
@@ -88,7 +87,6 @@ class DDTestSubVC: UIViewController {
             self?.tableView.mj_header?.endRefreshing()
             self?.tableView.mj_footer?.endRefreshing()
         }, failure: { [weak self] code, msg in
-            print("错误 \(code) \(msg ?? "NoMsg")")
             ProgressHUD.showFailed(msg ?? "Fail", interaction: false, delay: 3)
             self?.tableView.mj_header?.endRefreshing()
             self?.tableView.mj_footer?.endRefreshing()
@@ -150,7 +148,6 @@ extension DDTestSubVC {
         guard !FileManager.default.fileExists(atPath: path) else { return previewPdf(path, fileName) }
         ProgressHUD.show("Downloading", interaction: false)
         DDDownload(target: .getTcReport(fileName: fileName, liftNumber: liftNum, mapImgBase64: "", dateVal: dateVal), success: { [weak self] result, msg in
-            print("正确 \(result) \(msg ?? "NoMsg")")
             if FileManager.default.fileExists(atPath: path) {
                 ProgressHUD.dismiss()
                 self?.previewPdf(path, fileName)
@@ -158,7 +155,6 @@ extension DDTestSubVC {
                 ProgressHUD.showFailed("Fail", interaction: false, delay: 3)
             }
         }, failure: { [weak self] code, msg in
-            print("错误 \(code) \(msg ?? "NoMsg")")
             if FileManager.default.fileExists(atPath: path) {
                 ProgressHUD.dismiss()
                 self?.previewPdf(path, fileName)

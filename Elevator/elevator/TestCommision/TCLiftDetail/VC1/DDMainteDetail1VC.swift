@@ -52,12 +52,10 @@ class DDMainteDetail1VC: UIViewController {
     func loadData() {
         let liftNumber = liftBaseJson["liftnumber"].stringValue
         DDGet(target: .getDetailsOfLiftAlarm(liftNumber: liftNumber), success: { [weak self] result, msg in
-            print("正确 \(result) \(msg ?? "NoMsg")")
             ProgressHUD.dismiss()
             self?.dataArray = JSON(result)["data"].arrayValue
             self?.tableView.reloadData()
         }, failure: { [weak self] code, msg in
-            print("错误 \(code) \(msg ?? "NoMsg")")
             ProgressHUD.showFailed(msg ?? "Fail", interaction: false, delay: 3)
         })
     }

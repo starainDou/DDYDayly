@@ -115,7 +115,6 @@ class DDMainteDetail3VC: UIViewController {
             page = 1
         }
         DDPost(target: .getSingleRide2(liftnumber: liftNumber, starttime: time.start, endtime: time.end, userid: userId, page: "\(page)", limit: "20"), success: { [weak self] result, msg in
-            print("正确 \(result) \(msg ?? "NoMsg")")
             ProgressHUD.dismiss()
             if let `self` = self {
                 if (self.page == 1) {
@@ -131,7 +130,6 @@ class DDMainteDetail3VC: UIViewController {
             self?.tableView.mj_header?.endRefreshing()
             self?.tableView.mj_footer?.endRefreshing()
         }, failure: { [weak self] code, msg in
-            print("错误 \(code) \(msg ?? "NoMsg")")
             ProgressHUD.showFailed(msg ?? "Fail", interaction: false, delay: 3)
             self?.tableView.mj_header?.endRefreshing()
             self?.tableView.mj_footer?.endRefreshing()

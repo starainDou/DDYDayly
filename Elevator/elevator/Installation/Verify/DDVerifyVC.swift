@@ -83,13 +83,11 @@ class DDVerifyVC: UIViewController {
         guard let deviceId = sensorJson?["deviceId"].string else { return } //  "HWW014600000274"
         ProgressHUD.show(interaction: false)
         DDGet(target: .getSensor(deviceId: deviceId), success: { [weak self] result, msg in
-            print("正确 \(result) \(msg ?? "NoMsg")")
             ProgressHUD.dismiss()
             self?.dataArray = JSON(result)["data"].arrayValue
             self?.tableView.reloadData()
             self?.checkNext()
         }, failure: { code, msg in
-            print("错误 \(code) \(msg ?? "NoMsg")")
             ProgressHUD.showFailed(msg ?? "Fail", interaction: false, delay: 3)
         })
     }
@@ -127,12 +125,10 @@ class DDVerifyVC: UIViewController {
         guard let liftNumber = dataArray.first?["liftNumber"].string else { return }
         ProgressHUD.show(interaction: false)
         DDPost(target: .removeBinding(liftNumber: liftNumber, deviceId: deviceId), success: { [weak self] result, msg in
-            print("正确 \(result) \(msg ?? "NoMsg")")
             ProgressHUD.dismiss()
             self?.nextButton.isEnabled = false
             self?.loadData()
         }, failure: { code, msg in
-            print("错误 \(code) \(msg ?? "NoMsg")")
             ProgressHUD.showFailed(msg ?? "Fail", interaction: false, delay: 3)
         })
     }

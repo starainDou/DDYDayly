@@ -175,12 +175,10 @@ class DDLoginViewController: UIViewController {
         }
         ProgressHUD.show(interaction: false)
         DDPost(target: .doAppLogin(username: name, password: pswd), success: { [weak self] result, msg in
-            print("正确 \(result) \(msg ?? "NoMsg")")
             ProgressHUD.dismiss()
             DDShared.shared.saveLoginData(result)
             self?.handleData(JSON(result))
         }, failure: { code, msg in
-            print("错误 \(code) \(msg ?? "NoMsg")")
             ProgressHUD.showFailed(msg ?? "Fail", interaction: false, delay: 3)
         })
     }

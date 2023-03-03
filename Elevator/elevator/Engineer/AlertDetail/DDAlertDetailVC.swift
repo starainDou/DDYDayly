@@ -25,6 +25,7 @@ class DDAlertDetailVC: UIViewController {
     
     private lazy var scrollView: UIScrollView = UIScrollView().then {
         $0.showsVerticalScrollIndicator = false
+        $0.keyboardDismissMode = .onDrag
     }
     
     private lazy var headerView: DDAlertDetailHeader = DDAlertDetailHeader().then {
@@ -114,11 +115,9 @@ class DDAlertDetailVC: UIViewController {
         let save = saveButton.isSelected ? "0" : "1"
         ProgressHUD.show(interaction: false)
         DDPost(target: .favoriteAlarm(deviceId: id, userId: userId, isFavourite: save), success: { [weak self] result, msg in
-            print("正确 \(result) \(msg ?? "NoMsg")")
             self?.saveButton.isSelected = (save == "1")
             ProgressHUD.showSuccess("Success")
         }, failure: { [weak self] code, msg in
-            print("错误 \(code) \(msg ?? "NoMsg")")
             ProgressHUD.showFailed(msg ?? "Fail", interaction: false, delay: 3)
         })
     }
@@ -142,7 +141,6 @@ class DDAlertDetailVC: UIViewController {
         guard let userId = DDShared.shared.json?["user"]["id"].stringValue else { return }
         ProgressHUD.show(interaction: false)
         DDGet(target: .getDetailOfAlarm(id: id, userId: userId), success: { [weak self] result, msg in
-            print("正确 \(result) \(msg ?? "NoMsg")")
             ProgressHUD.dismiss()
             guard let `self` = self else { return }
             let json = JSON(result)["data"]
@@ -158,7 +156,6 @@ class DDAlertDetailVC: UIViewController {
                 }
             }
         }, failure: { [weak self] code, msg in
-            print("错误 \(code) \(msg ?? "NoMsg")")
             ProgressHUD.showFailed(msg ?? "Fail", interaction: false, delay: 3)
         })
     }

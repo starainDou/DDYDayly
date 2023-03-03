@@ -9,6 +9,7 @@ import UIKit
 import SwiftyJSON
 import JXSegmentedView
 import ProgressHUD
+import EmptyDataSet_Swift
 
 class DDSammarySubVC: UIViewController {
     
@@ -30,11 +31,11 @@ class DDSammarySubVC: UIViewController {
         $0.ddy_zeroPadding()
         $0.ddy_register(cellClass: DDSammaryCell.self)
         $0.keyboardDismissMode = .onDrag
+        $0.emptyDataSetSource = self
+        $0.emptyDataSetDelegate = self
     }
     
     private(set) lazy var dataArray: [JSON] = []
-    
-    private var selectIndex: Int?
     
     var summaryType: Int = 1
 
@@ -53,25 +54,20 @@ class DDSammarySubVC: UIViewController {
     }
 
     private func loadData() {
-//        guard let url = Bundle.main.url(forResource: "Local", withExtension: "json") else { return }
-//        guard let data = try? Data(contentsOf: url), let str = String(data: data, encoding: .utf8) else { return }
-//        let json = JSON(parseJSON: str)
-//        dataArray = json["data"]["values"].arrayValue
-//        headerView.rightLabel.text = json["data"]["total"].stringValue
-//        tableView.reloadData()
         
         ProgressHUD.show(interaction: false)
         DDGet(target: .summaryOfLiftPerformance(summaryType: "\(summaryType)", showType: "1"), success: { [weak self] result, msg in
-            print("正确 \(result) \(msg ?? "NoMsg")")
             ProgressHUD.dismiss()
-            let json = JSON(result)
-            self?.dataArray = json["data"]["values"].arrayValue
-            self?.headerView.rightLabel.text = json["data"]["total"].stringValue
-            self?.tableView.reloadData()
+            self?.reloadTableView(JSON(result)["data"])
         }, failure: { code, msg in
-            print("错误 \(code) \(msg ?? "NoMsg")")
             ProgressHUD.showFailed(msg ?? "Fail", interaction: false, delay: 3)
         })
+    }
+    
+    private func reloadTableView(_ json: JSON) {
+        dataArray = json["values"].arrayValue
+        headerView.rightLabel.text = json["total"].stringValue
+        tableView.reloadData()
     }
 }
 
@@ -83,14 +79,14 @@ extension DDSammarySubVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return section == selectIndex ? dataArray[section]["values"].arrayValue.count : 0
+        return dataArray[section]["isFold"].boolValue ? 0 : dataArray[section]["values"].arrayValue.count
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = DDSummarySectionHeader()
-        header.loadData(dataArray[section], isSelected: section == selectIndex, action: { [weak self] in
+        header.loadData(dataArray[section], isFold: dataArray[section]["isFold"].boolValue, action: { [weak self] in
             guard let weakSelf = self else { return }
-            weakSelf.selectIndex = (section == weakSelf.selectIndex) ? -1 : section
+            weakSelf.dataArray[section]["isFold"].bool = !weakSelf.dataArray[section]["isFold"].boolValue
             weakSelf.tableView.reloadData()
         })
         return header
@@ -114,5 +110,15 @@ extension DDSammarySubVC: UITableViewDelegate, UITableViewDataSource {
 extension DDSammarySubVC: JXSegmentedListContainerViewListDelegate {
     func listView() -> UIView {
         return view
+    }
+}
+
+
+extension DDSammarySubVC: EmptyDataSetSource, EmptyDataSetDelegate {
+    func image(forEmptyDataSet scrollView: UIScrollView) -> UIImage? {
+        return UIImage(named: "Icon218")
+    }
+    func emptyDataSet(_ scrollView: UIScrollView, didTapView view: UIView) {
+        loadData()
     }
 }

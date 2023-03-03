@@ -88,12 +88,10 @@ class DDMainteDetail2VC: UIViewController {
 //            ProgressHUD.showFailed(msg ?? "Fail", interaction: false, delay: 3)
 //        })
         DDPost(target: .getKpisByLiftId(liftId: liftNumber), success: { [weak self] result, msg in
-            print("正确 \(result) \(msg ?? "NoMsg")")
             ProgressHUD.dismiss()
             self?.kpiJson = JSON(result)["data"]["kpis"]
             self?.collectionView.reloadData()
         }, failure: { [weak self] code, msg in
-            print("错误 \(code) \(msg ?? "NoMsg")")
             ProgressHUD.showFailed(msg ?? "Fail", interaction: false, delay: 3)
         })
     }
@@ -106,7 +104,6 @@ class DDMainteDetail2VC: UIViewController {
         guard !FileManager.default.fileExists(atPath: path) else { return previewPdf(path, fileName) }
         ProgressHUD.show("Downloading", interaction: false)
         DDDownload(target: .kpiNew(fileName: fileName, liftNumber: liftNum, dateVal: dateVal, flag: "1"), success: { [weak self] result, msg in
-            print("正确 \(result) \(msg ?? "NoMsg")")
             if FileManager.default.fileExists(atPath: path) {
                 ProgressHUD.dismiss()
                 self?.previewPdf(path, fileName)
@@ -114,7 +111,6 @@ class DDMainteDetail2VC: UIViewController {
                 ProgressHUD.showFailed("Fail", interaction: false, delay: 3)
             }
         }, failure: { [weak self] code, msg in
-            print("错误 \(code) \(msg ?? "NoMsg")")
             if FileManager.default.fileExists(atPath: path) {
                 ProgressHUD.dismiss()
                 self?.previewPdf(path, fileName)

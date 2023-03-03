@@ -21,11 +21,11 @@ class DDSummaryHeader: UIView {
         $0.font =  UIFont.systemFont(ofSize: 15, weight: .semibold)
     }
     
-    private lazy var dashLineView: DDDashLineView = DDDashLineView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        addSubviews(leftLabel, rightLabel, dashLineView)
+        backgroundColor = UIColor(hex: "#FFFFFF")
+        addSubviews(leftLabel, rightLabel)
         setViewConstraints()
     }
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
@@ -38,11 +38,6 @@ class DDSummaryHeader: UIView {
         rightLabel.snp.makeConstraints { make in
             make.trailing.equalToSuperview().inset(30)
             make.centerY.equalToSuperview()
-        }
-        dashLineView.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview().inset(15)
-            make.bottom.equalToSuperview()
-            make.height.equalTo(1)
         }
     }
 }

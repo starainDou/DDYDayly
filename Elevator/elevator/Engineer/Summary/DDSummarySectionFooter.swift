@@ -13,6 +13,7 @@ class DDSummarySectionFooter: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        backgroundColor = UIColor(hex: "#FFFFFF")
         addSubviews(dashLineView)
         dashLineView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(15)
