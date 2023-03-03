@@ -18,7 +18,7 @@ public enum DDGetApi {
     /// 根据状态查询电梯
     case getLiftsBystatus(status: String, page: String, limit: String, liftnumber: String?)
     /// 查询lift的状态信息
-    case getStatusOfLift(id: String)
+    //case getStatusOfLift(id: String)
     /// 查询警报详情
     case getDetailOfAlarm(id: String, userId: String)
     /// 梯性能统计
@@ -56,8 +56,8 @@ extension DDGetApi {
             baseParams["liftNumber"] = liftnumber
             return (DDBaseUrl + "/liftapp/getLiftsBystatus/\(status)/\(page)/\(limit)", baseParams)
             
-        case let .getStatusOfLift(id):
-            return (DDBaseUrl + "/liftapp/getStatusOfLift/\(id)", baseParams)
+//        case let .getStatusOfLift(id):
+//            return (DDBaseUrl + "/liftapp/getStatusOfLift/\(id)", baseParams)
             
         case let .getDetailOfAlarm(id, userId):
             return (DDBaseUrl + "/alarmapp/getDetailOfAlarm/\(id)/\(userId)", baseParams)

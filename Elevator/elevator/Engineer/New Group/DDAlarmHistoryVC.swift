@@ -38,9 +38,9 @@ class DDAlarmHistoryVC: UIViewController {
     
     private lazy var containerView: JXSegmentedListContainerView = JXSegmentedListContainerView(dataSource: self)
     
-    private lazy var sortButton: UIButton = UIButton(type: .custom).then {
+    private lazy var timeButton: UIButton = UIButton(type: .custom).then {
         $0.setImage(UIImage(named: "MapDown"), for: .normal)
-        $0.addTarget(self, action: #selector(sortAction), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(timeAction), for: .touchUpInside)
         $0.contentEdgeInsets = UIEdgeInsets(top: 3, left: 3, bottom: 3, right: 3)
     }
     
@@ -64,7 +64,7 @@ class DDAlarmHistoryVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(hex: "#F1F5FF")
-        view.addSubviews(navigationBar, segBackView, segmentView, sortButton, containerView)
+        view.addSubviews(navigationBar, segBackView, segmentView, timeButton, containerView)
         setViewConstraints()
     }
     
@@ -83,7 +83,7 @@ class DDAlarmHistoryVC: UIViewController {
             make.trailing.equalTo(self.view.snp.centerX)
             make.height.equalTo(44)
         }
-        sortButton.snp.makeConstraints { make in
+        timeButton.snp.makeConstraints { make in
             make.centerY.equalTo(segBackView)
             make.trailing.equalToSuperview().inset(20)
             make.width.height.equalTo(24)
@@ -104,11 +104,9 @@ class DDAlarmHistoryVC: UIViewController {
         currentVC?.searchWord = navigationBar.textFiled.text
     }
     
-    @objc private func sortAction() {
+    @objc private func timeAction() {
         view.endEditing(true)
-        DDListView.show(in: view, array: ["Default", "By Alphabet", "By Town Council"], action: { [weak self] (text, idx) in
-            self?.currentVC?.sortType = idx
-        })
+        currentVC?.showDoubleTimeView()
     }
 }
 

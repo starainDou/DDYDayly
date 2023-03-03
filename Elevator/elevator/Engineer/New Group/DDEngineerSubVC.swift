@@ -41,17 +41,17 @@ class DDEngineerSubVC: UIViewController {
     
     var alarmType: Int = 0 // 1:未处理的alarm,2:已处理的alarm(历史alarm),3:收藏的alarm
     
+    var time:(start: String, end: String) = ("", "")
+    
     var searchWord: String? {
         didSet {
-            page = 1
-            loadData()
+            loadData(restart: true)
         }
     }
     
     var sortType: Int = 0 {
         didSet {
-            page = 1
-            loadData()
+            loadData(restart: true)
         }
     }
     
@@ -61,7 +61,7 @@ class DDEngineerSubVC: UIViewController {
         view.addSubviews(tableView)
         setViewConstraints()
         setupRefresh()
-        loadData()
+        loadData(restart: true)
     }
     
     deinit {
@@ -74,10 +74,15 @@ class DDEngineerSubVC: UIViewController {
         }
     }
     
-    private func loadData() {
+    private func loadData(restart: Bool) {
+        if restart {
+            page = 1
+        }
         guard let userId = DDShared.shared.json?["user"]["id"].stringValue else { return }
         ProgressHUD.show(interaction: false)
-        DDPost(target: .getAlarmsOfLift(userid: userId, page: "\(page)", limit: "20", alarmType: "\(alarmType)", severityType: "\(tagIndex)", value: searchWord, sortType: "\(sortType)", dateRange: nil), success: { [weak self] result, msg in
+        let dateRange: [String]? = alarmType == 2 ? [time.start, time.end] : nil
+        let tempType: String? = alarmType == 2 ? nil : "\(sortType)"
+        DDPost(target: .getAlarmsOfLift(userid: userId, page: "\(page)", limit: "20", alarmType: "\(alarmType)", severityType: "\(tagIndex)", value: searchWord, sortType: tempType, dateRange: dateRange), success: { [weak self] result, msg in
             ProgressHUD.dismiss()
             if let `self` = self {
                 if (self.page == 1) {
@@ -101,17 +106,23 @@ class DDEngineerSubVC: UIViewController {
     private func setupRefresh() {
         // 下拉刷新
         tableView.mj_header = MJRefreshNormalHeader.init(refreshingBlock: { [weak self] in
-            self?.page = 1
-            self?.loadData()
+            self?.loadData(restart: true)
         })
         // 上拉加载更多
         tableView.mj_footer = MJRefreshBackNormalFooter.init(refreshingBlock: { [weak self] in
-            self?.loadData()
+            self?.loadData(restart: false)
         })
     }
     
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         listViewDidScrollCallback?(scrollView)
+    }
+    
+    public func showDoubleTimeView() {
+        DDDoubleDatePicker.show(in: view, date: time, sure: { [weak self] (start, end) in
+            self?.time = (start, end)
+            self?.loadData(restart: true)
+        })
     }
 }
 
@@ -154,6 +165,6 @@ extension DDEngineerSubVC: EmptyDataSetSource, EmptyDataSetDelegate {
         return UIImage(named: "Icon218")
     }
     func emptyDataSet(_ scrollView: UIScrollView, didTapView view: UIView) {
-        loadData()
+        loadData(restart: true)
     }
 }
