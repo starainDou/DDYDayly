@@ -81,7 +81,7 @@ class DDVerifyVC: UIViewController {
     
     func loadData() {
         guard let deviceId = sensorJson?["deviceId"].string else { return } //  "HWW014600000274"
-        ProgressHUD.show()
+        ProgressHUD.show(interaction: false)
         DDGet(target: .getSensor(deviceId: deviceId), success: { [weak self] result, msg in
             print("正确 \(result) \(msg ?? "NoMsg")")
             ProgressHUD.dismiss()
@@ -125,7 +125,7 @@ class DDVerifyVC: UIViewController {
     private func unbindAction() {
         guard let deviceId = sensorJson?["deviceId"].string else { return }
         guard let liftNumber = dataArray.first?["liftNumber"].string else { return }
-        ProgressHUD.show()
+        ProgressHUD.show(interaction: false)
         DDPost(target: .removeBinding(liftNumber: liftNumber, deviceId: deviceId), success: { [weak self] result, msg in
             print("正确 \(result) \(msg ?? "NoMsg")")
             ProgressHUD.dismiss()

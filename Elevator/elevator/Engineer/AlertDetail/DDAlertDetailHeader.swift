@@ -71,6 +71,14 @@ class DDAlertDetailHeader: UIView {
         $0.backgroundColor = UIColor(hex: "#F1F5FF")
     }
     
+    private lazy var stackView: UIStackView = UIStackView(arrangedSubviews: [block1View, updateButton, block2View]).then {
+        $0.axis = .vertical
+    }
+    
+    private lazy var block1View: UIView = UIView()
+    
+    private lazy var block2View: UIView = UIView()
+    
     private(set) lazy var acknowlegeButton: UIButton = UIButton(type: .custom).then {
         $0.setTitle("Acknowledged", for: .normal)
         $0.setTitleColor(UIColor(hex:"#FFFFFF"), for: .normal)
@@ -101,7 +109,7 @@ class DDAlertDetailHeader: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubviews(backView, iconView, titleLabel, stateLabel, brandView, brandLabel, addressView, addressLabel, timeView)
-        addSubviews(timeLabel, idView, idLabel, colorView, grayView, textView, acknowlegeButton, updateButton, resolveButton)
+        addSubviews(timeLabel, idView, idLabel, colorView, grayView, textView, acknowlegeButton, stackView, resolveButton)
         setViewConstraints()
     }
     
@@ -109,8 +117,7 @@ class DDAlertDetailHeader: UIView {
     
     private func setViewConstraints() {
         backView.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview().inset(15)
-            make.top.bottom.equalToSuperview().inset(10)
+            make.edges.equalToSuperview().inset(UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15))
         }
         iconView.snp.makeConstraints { make in
             make.leading.equalTo(backView).inset(15)
@@ -170,7 +177,7 @@ class DDAlertDetailHeader: UIView {
         grayView.snp.makeConstraints { make in
             make.leading.trailing.equalTo(backView).inset(15)
             make.top.equalTo(idView.snp.bottom).offset(13)
-            make.bottom.equalTo(acknowlegeButton.snp.top).offset(-12)
+            make.height.equalTo(85)
         }
         textView.snp.makeConstraints { make in
             make.edges.equalTo(grayView).inset(UIEdgeInsets(top: 3, left: 10, bottom: 3, right: 10))
@@ -181,11 +188,23 @@ class DDAlertDetailHeader: UIView {
             make.bottom.equalTo(backView.snp.bottom).inset(14)
             make.trailing.equalTo(updateButton.snp.leading).offset(-8)
         }
+        stackView.snp.makeConstraints { make in
+            make.width.equalTo(100)
+            make.centerX.equalToSuperview().offset(10)
+            make.top.equalTo(grayView.snp.bottom)
+            make.bottom.equalTo(backView.snp.bottom)
+        }
+        block1View.snp.makeConstraints { make in
+            make.width.equalTo(100)
+            make.height.equalTo(12)
+        }
+        block2View.snp.makeConstraints { make in
+            make.width.equalTo(100)
+            make.height.equalTo(14)
+        }
         updateButton.snp.makeConstraints { make in
             make.width.equalTo(100)
             make.height.equalTo(32)
-            make.centerX.equalToSuperview()
-            make.bottom.equalTo(backView.snp.bottom).inset(14)
         }
         resolveButton.snp.makeConstraints { make in
             make.width.equalTo(100)

@@ -11,6 +11,7 @@ import JXSegmentedView
 import ProgressHUD
 import SwiftyJSON
 import MJRefresh
+import EmptyDataSet_Swift
 
 class DDEngineerSubVC: UIViewController {
 
@@ -26,6 +27,8 @@ class DDEngineerSubVC: UIViewController {
         $0.ddy_zeroPadding()
         $0.ddy_register(cellClass: DDEngineerCell.self)
         $0.keyboardDismissMode = .onDrag
+        $0.emptyDataSetSource = self
+        $0.emptyDataSetDelegate = self
     }
     
     private var listViewDidScrollCallback: ((UIScrollView) -> ())?
@@ -73,7 +76,7 @@ class DDEngineerSubVC: UIViewController {
     
     private func loadData() {
         guard let userId = DDShared.shared.json?["user"]["id"].stringValue else { return }
-        ProgressHUD.show()
+        ProgressHUD.show(interaction: false)
         DDPost(target: .getAlarmsOfLift(userid: userId, page: "\(page)", limit: "20", alarmType: "\(alarmType)", severityType: "\(tagIndex)", value: searchWord, sortType: "\(sortType)", dateRange: nil), success: { [weak self] result, msg in
             print("正确 \(result) \(msg ?? "NoMsg")")
             ProgressHUD.dismiss()
@@ -145,5 +148,14 @@ extension DDEngineerSubVC: JXPagingViewListViewDelegate, JXSegmentedListContaine
     
     func listView() -> UIView {
         return view
+    }
+}
+
+extension DDEngineerSubVC: EmptyDataSetSource, EmptyDataSetDelegate {
+    func image(forEmptyDataSet scrollView: UIScrollView) -> UIImage? {
+        return UIImage(named: "Icon218")
+    }
+    func emptyDataSet(_ scrollView: UIScrollView, didTapView view: UIView) {
+        loadData()
     }
 }

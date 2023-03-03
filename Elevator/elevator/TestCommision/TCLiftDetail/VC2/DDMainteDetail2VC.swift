@@ -104,7 +104,7 @@ class DDMainteDetail2VC: UIViewController {
         let dateVal = DDAppInfo.dateStr(DDAppInfo.timeStamp(), dateFormat: "yyyy-MM") ?? ""
         let path = DDAppInfo.ducumentPath + "/kpiNew/" + fileName
         guard !FileManager.default.fileExists(atPath: path) else { return previewPdf(path, fileName) }
-        ProgressHUD.show("Downloading")
+        ProgressHUD.show("Downloading", interaction: false)
         DDDownload(target: .kpiNew(fileName: fileName, liftNumber: liftNum, dateVal: dateVal, flag: "1"), success: { [weak self] result, msg in
             print("正确 \(result) \(msg ?? "NoMsg")")
             if FileManager.default.fileExists(atPath: path) {

@@ -108,7 +108,7 @@ class DDBeforeInstallVC: UIViewController {
     private func uploadGroup() {
         let group = DispatchGroup()
         let queue = DispatchQueue(label: "com.ddy.serialQueue")
-        ProgressHUD.show()
+        ProgressHUD.show(interaction: false)
         for section in dataArray {
             for json in section["items"].arrayValue {
                 if let data = DDShared.shared.liftImage(cacheKey(json))?.jpegData(compressionQuality: 0.7) {

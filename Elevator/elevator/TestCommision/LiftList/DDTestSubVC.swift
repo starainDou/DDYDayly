@@ -70,7 +70,7 @@ class DDTestSubVC: UIViewController {
     }
     
     private func loadData() {
-        ProgressHUD.show()
+        ProgressHUD.show(interaction: false)
         DDGet(target: .getLiftsBystatus(status: "\(tagIndex)", page: "\(page)", limit: "20", liftnumber: searchWord), success: { [weak self] result, msg in
             print("正确 \(result) \(msg ?? "NoMsg")")
             ProgressHUD.dismiss()
@@ -148,7 +148,7 @@ extension DDTestSubVC {
         let dateVal = "" //DDAppInfo.dateStr(DDAppInfo.timeStamp(), dateFormat: "yyyy-MM") ?? ""
         let path = DDAppInfo.ducumentPath + "/getAppTcReport/" + fileName
         guard !FileManager.default.fileExists(atPath: path) else { return previewPdf(path, fileName) }
-        ProgressHUD.show("Downloading")
+        ProgressHUD.show("Downloading", interaction: false)
         DDDownload(target: .getTcReport(fileName: fileName, liftNumber: liftNum, mapImgBase64: "", dateVal: dateVal), success: { [weak self] result, msg in
             print("正确 \(result) \(msg ?? "NoMsg")")
             if FileManager.default.fileExists(atPath: path) {

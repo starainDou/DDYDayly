@@ -26,7 +26,8 @@ class DDListView: UIView {
         $0.delegate = self
         $0.dataSource = self
         $0.tableFooterView = UIView()
-        $0.rowHeight = 40
+        $0.rowHeight = UITableView.automaticDimension
+        $0.estimatedRowHeight = 40
         $0.separatorStyle = .none
         $0.backgroundColor = .clear
         $0.keyboardDismissMode = .onDrag
@@ -92,6 +93,7 @@ fileprivate class InnerCell: UITableViewCell {
     private lazy var contentLabel: UILabel = UILabel().then {
         $0.textColor = UIColor(hex: "#999999")
         $0.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
+        $0.numberOfLines = 0
     }
     private lazy var lineView: UIView = UIView().then {
         $0.backgroundColor = UIColor(hex: "#EEEEEE")
@@ -102,7 +104,10 @@ fileprivate class InnerCell: UITableViewCell {
         selectionStyle = .none
         contentView.addSubviews(contentLabel, lineView)
         contentLabel.snp.makeConstraints { make in
-            make.center.equalToSuperview()
+            make.top.bottom.equalToSuperview().inset(13)
+            make.centerX.equalToSuperview()
+            make.leading.greaterThanOrEqualToSuperview().inset(5)
+            make.trailing.lessThanOrEqualToSuperview().inset(5)
         }
         lineView.snp.makeConstraints { make in
             make.leading.top.trailing.equalToSuperview()

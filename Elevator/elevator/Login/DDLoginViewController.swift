@@ -173,7 +173,7 @@ class DDLoginViewController: UIViewController {
             ProgressHUD.showFailed("Please input password", interaction: false, delay: 3)
             return
         }
-        ProgressHUD.show()
+        ProgressHUD.show(interaction: false)
         DDPost(target: .doAppLogin(username: name, password: pswd), success: { [weak self] result, msg in
             print("正确 \(result) \(msg ?? "NoMsg")")
             ProgressHUD.dismiss()

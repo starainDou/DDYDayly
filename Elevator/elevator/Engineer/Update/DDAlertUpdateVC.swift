@@ -6,11 +6,16 @@
 //
 
 import UIKit
+import SwiftyJSON
+import ProgressHUD
+import ZLPhotoBrowser
+import DDYSwiftyExtension
+import IQKeyboardManagerSwift
 
 class DDAlertUpdateVC: UIViewController {
 
     private lazy var navigationBar: DDNavigationBar = DDNavigationBar().then {
-        $0.titleLabel.text = "Verify"
+        $0.titleLabel.text = "Update"
         $0.backButton.addTarget(self, action: #selector(backAction), for: .touchUpInside)
     }
     
@@ -34,19 +39,27 @@ class DDAlertUpdateVC: UIViewController {
         $0.text = "Resolved category"
     }
     
-    private lazy var natureView: DDAlertSelectView = DDAlertSelectView().then  {
-        $0.textLabel.text = "Nature of taski"
-        $0.arrowButton.addTarget(self, action: #selector(natureAction), for: .touchUpInside)
+    private lazy var stackView: UIStackView = UIStackView(arrangedSubviews: [remark1View, remark2View, remark3View]).then {
+        $0.axis = .vertical
+        $0.spacing = 12
     }
     
-    private lazy var componentView: DDAlertSelectView = DDAlertSelectView().then  {
+    private lazy var remark1View: DDAlertSelectView = DDAlertSelectView().then  {
+        $0.textLabel.text = "Nature of task"
+        $0.arrowButton.addTarget(self, action: #selector(remark1Action), for: .touchUpInside)
+        //$0.isHidden = true
+    }
+    
+    private lazy var remark2View: DDAlertSelectView = DDAlertSelectView().then  {
         $0.textLabel.text = "Compaonent"
-        $0.arrowButton.addTarget(self, action: #selector(componentAction), for: .touchUpInside)
+        $0.arrowButton.addTarget(self, action: #selector(remark2Action), for: .touchUpInside)
+        $0.isHidden = true
     }
     
-    private lazy var taskView: DDAlertSelectView = DDAlertSelectView().then  {
+    private lazy var remark3View: DDAlertSelectView = DDAlertSelectView().then  {
         $0.textLabel.text = "Task"
-        $0.arrowButton.addTarget(self, action: #selector(taskAction), for: .touchUpInside)
+        $0.arrowButton.addTarget(self, action: #selector(remark3Action), for: .touchUpInside)
+        $0.isHidden = true
     }
     
     private lazy var grayView: UIView = UIView().then {
@@ -55,10 +68,11 @@ class DDAlertUpdateVC: UIViewController {
         $0.layer.cornerRadius = 4
     }
     
-    private lazy var textView: UITextView = UITextView().then {
+    private lazy var textView: IQTextView = IQTextView().then {
         $0.textColor = UIColor(hex: "#666666")
         $0.font = UIFont.systemFont(ofSize: 13, weight: .regular)
         $0.backgroundColor = UIColor(hex: "#F3F3F3")
+        $0.placeholder = "Please Input Description"
     }
     
     private lazy var submitView: UIView = UIView().then {
@@ -75,14 +89,26 @@ class DDAlertUpdateVC: UIViewController {
         $0.addTarget(self, action: #selector(submitAction), for: .touchUpInside)
     }
     
+    var baseJson: JSON = JSON()
+    
+    var alarmState: Int = 0
+    
+    var remark1Array: [JSON] = []
+    var remark1SelectJson: JSON = JSON()
+    var remark2Array: [JSON] = []
+    var remark2SelectJson: JSON = JSON()
+    var remark3Array: [JSON] = []
+    var remark3SelectJson: JSON = JSON()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(hex: "#F1F5FF")
         view.addSubviews(navigationBar, scrollView, submitView, submitButton)
         scrollView.addSubviews(backView)
-        backView.addSubviews(photo1View, photo2View, titleLabel, natureView, componentView, taskView, grayView, textView)
+        backView.addSubviews(photo1View, photo2View, titleLabel, stackView, grayView, textView)
         setViewConstraints()
-        textView.text = "Other supplementary instructions"
+        loadRemark(row: 1, id: "0")
+        configPhotoPicker()
     }
     
     private func setViewConstraints() {
@@ -114,23 +140,21 @@ class DDAlertUpdateVC: UIViewController {
             make.top.equalTo(photo1View.snp.bottom).offset(25)
             make.leading.trailing.equalToSuperview().inset(15)
         }
-        natureView.snp.makeConstraints { make in
+        stackView.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(15)
             make.top.equalTo(titleLabel.snp.bottom).offset(25)
-            make.leading.trailing.equalToSuperview().inset(15)
-            make.height.equalTo(32)
         }
-        componentView.snp.makeConstraints { make in
-            make.top.equalTo(natureView.snp.bottom).offset(12)
-            make.leading.trailing.equalToSuperview().inset(15)
-            make.height.equalTo(32)
+        remark1View.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview()
         }
-        taskView.snp.makeConstraints { make in
-            make.top.equalTo(componentView.snp.bottom).offset(12)
-            make.leading.trailing.equalToSuperview().inset(15)
-            make.height.equalTo(32)
+        remark2View.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview()
+        }
+        remark3View.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview()
         }
         grayView.snp.makeConstraints { make in
-            make.top.equalTo(taskView.snp.bottom).offset(25)
+            make.top.equalTo(stackView.snp.bottom).offset(25)
             make.leading.trailing.equalToSuperview().inset(19)
             make.height.equalTo(155)
             make.bottom.equalToSuperview().inset(40)
@@ -152,18 +176,132 @@ class DDAlertUpdateVC: UIViewController {
         navigationController?.popViewController(animated: true)
     }
     
-    @objc private func natureAction() {
-        
+    @objc private func remark1Action() {
+        showList(row: 1, parentID: "0", jsonArray: remark1Array)
     }
     
-    @objc private func componentAction() {
-        
+    @objc private func remark2Action() {
+        showList(row: 2, parentID: remark1SelectJson["id"].stringValue, jsonArray: remark2Array)
     }
     
-    @objc private func taskAction() {
-        
+    @objc private func remark3Action() {
+        showList(row: 3, parentID: remark2SelectJson["id"].stringValue, jsonArray: remark3Array)
     }
+    
     @objc private func submitAction() {
+        guard let userId = DDShared.shared.json?["user"]["id"].stringValue else { return }
+        guard let remark1Str = remark1SelectJson["name"].string, !remark1Str.isEmpty else {
+            ProgressHUD.showFailed("Please select Nature of task", interaction: false, delay: 3)
+            return
+        }
+        guard let remark2Str = remark2SelectJson["name"].string, !remark2Str.isEmpty else {
+            ProgressHUD.showFailed("Please select Component", interaction: false, delay: 3)
+            return
+        }
+        guard let remark3Str = remark3SelectJson["name"].string, !remark3Str.isEmpty else {
+            ProgressHUD.showFailed("Please select Task", interaction: false, delay: 3)
+            return
+        }
+        guard let desc = textView.text, !desc.isEmpty else {
+            ProgressHUD.showFailed("Please Input Description", interaction: false, delay: 3)
+            return
+        }
+        guard let image1 = photo1View.fileName, let image2 = photo2View.fileName else {
+            ProgressHUD.showFailed("Please take photos", interaction: false, delay: 3)
+            return
+        }
+        let images = image1 + "," + image2
+        let id = baseJson["_id"].stringValue
+        ProgressHUD.show(interaction: false)
+        DDPost(target: .updateStatusOfAlarm(userid: userId, id: id, status: "\(alarmState)", desc: desc, natureOfTask: remark1Str, component: remark2Str, task: remark3Str, images: images), success: { [weak self] result, msg in
+            print("正确 \(result) \(msg ?? "NoMsg")")
+            ProgressHUD.showSuccess("Success")
+            self?.backAction()
+        }, failure: { [weak self] code, msg in
+            print("错误 \(code) \(msg ?? "NoMsg")")
+            ProgressHUD.showFailed(msg ?? "Fail", interaction: false, delay: 3)
+        })
+    }
+    
+    private func loadRemark(row: Int, id: String, completion: (([JSON]?) -> Void)? = nil) {
+        ProgressHUD.show(interaction: false)
+        DDGet(target: .getAlarmRemark(parentId: id), success: { [weak self] result, msg in
+            print("正确 \(result) \(msg ?? "NoMsg")")
+            ProgressHUD.dismiss()
+            let list = JSON(result)["data"].arrayValue
+            if row == 1 {
+                self?.remark1Array = list
+            } else if row == 2 {
+                self?.remark2Array = list
+            } else if row == 3 {
+                self?.remark3Array = list
+            }
+            completion?(list)
+        }, failure: { code, msg in
+            print("错误 \(code) \(msg ?? "NoMsg")")
+            completion?(nil)
+            ProgressHUD.showFailed(msg ?? "Fail", interaction: false, delay: 3)
+        })
+    }
+    
+    fileprivate func showSelectView(row: Int, list: [JSON]) {
+        let array = list.compactMap { $0["name"].stringValue }
+        DDListView.show(in: view, array: array) { [weak self] selectStr, index in
+            if (row == 1) {
+                self?.remark1SelectJson = list[index]
+                self?.remark1View.textLabel.text = list[index]["name"].stringValue
+                self?.remark2View.isHidden = false
+                self?.remark2View.textLabel.text = "Compaonent"
+                self?.remark2Array = []
+                self?.remark2SelectJson = JSON()
+                self?.remark3View.isHidden = true
+                self?.remark3View.textLabel.text = "Task"
+                self?.remark3Array = []
+                self?.remark3SelectJson = JSON()
+            } else if (row == 2) {
+                self?.remark2SelectJson = list[index]
+                self?.remark2View.textLabel.text = list[index]["name"].stringValue
+                self?.remark3View.isHidden = false
+                self?.remark3View.textLabel.text = "Task"
+                self?.remark3Array = []
+                self?.remark3SelectJson = JSON()
+            } else if (row == 3) {
+                self?.remark3SelectJson = list[index]
+                self?.remark3View.textLabel.text = list[index]["name"].stringValue
+            }
+        }
+    }
+    
+    fileprivate func showList(row: Int, parentID: String, jsonArray: [JSON]) {
         
+        if !jsonArray.isEmpty {
+            showSelectView(row: row, list: jsonArray)
+        } else {
+            loadRemark(row: row, id: parentID, completion: { [weak self] result in
+                if let list = result, !list.isEmpty {
+                    self?.showSelectView(row: row, list: list)
+                } else {
+                    ProgressHUD.showFailed("Request alarm remark list failed", interaction: false, delay: 3)
+                }
+            })
+        }
+    }
+}
+
+extension DDAlertUpdateVC {
+    private func configPhotoPicker() {
+        ZLPhotoUIConfiguration.default().navBarColor(UIColor(hex: "#1792AC"))
+        ZLPhotoConfiguration.default().allowRecordVideo = false
+        ZLPhotoConfiguration.default().allowSelectVideo = false
+        ZLPhotoConfiguration.default().allowSelectGif = false
+        ZLPhotoConfiguration.default().allowTakePhoto = true
+        ZLPhotoConfiguration.default().allowMixSelect = false
+        ZLPhotoConfiguration.default().maxSelectCount = 1
+        ZLPhotoConfiguration.default().allowTakePhotoInLibrary = false
+        ZLPhotoConfiguration.default().editAfterSelectThumbnailImage = true
+        
+        let config = ZLPhotoConfiguration.default().editImageConfiguration
+        config.tools([.clip, .draw, .imageSticker, .textSticker, .mosaic, .filter, .adjust]).clipRatios([.wh1x1])
+        ZLPhotoConfiguration.default().editImageConfiguration(config)
     }
 }

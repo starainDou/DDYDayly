@@ -68,7 +68,7 @@ class DDInstallSubVC: UIViewController {
     }
     
     private func loadData() {
-        ProgressHUD.show()
+        ProgressHUD.show(interaction: false)
         DDGet(target: .getLiftsBystatus(status: "\(tagIndex)", page: "\(page)", limit: "20", liftnumber: searchWord), success: { [weak self] result, msg in
             print("正确 \(result) \(msg ?? "NoMsg")")
             ProgressHUD.dismiss()

@@ -60,7 +60,7 @@ class DDSammarySubVC: UIViewController {
 //        headerView.rightLabel.text = json["data"]["total"].stringValue
 //        tableView.reloadData()
         
-        ProgressHUD.show()
+        ProgressHUD.show(interaction: false)
         DDGet(target: .summaryOfLiftPerformance(summaryType: "\(summaryType)", showType: "1"), success: { [weak self] result, msg in
             print("正确 \(result) \(msg ?? "NoMsg")")
             ProgressHUD.dismiss()

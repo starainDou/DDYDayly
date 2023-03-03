@@ -88,7 +88,7 @@ class DDHomeVC: UIViewController {
     }
     
     private func logOut() {
-        ProgressHUD.show()
+        ProgressHUD.show(interaction: false)
         guard let id = DDShared.shared.json?["user"]["id"].stringValue else { return delayLogout() }
         perform(#selector(delayLogout), with: nil, afterDelay: 1)
         DDGet(target: .doApplogout(id: id), success: { [weak self] result, msg in

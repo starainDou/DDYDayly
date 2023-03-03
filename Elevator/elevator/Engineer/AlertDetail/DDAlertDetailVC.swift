@@ -18,6 +18,7 @@ class DDAlertDetailVC: UIViewController {
     
     private lazy var saveButton: UIButton = UIButton(type: .custom).then {
         $0.setImage(UIImage(named: "FavourateLight"), for: .normal)
+        $0.setImage(UIImage(named: "FavouriteRed"), for: .selected)
         $0.addTarget(self, action: #selector(saveAction), for: .touchUpInside)
         $0.contentEdgeInsets = UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4)
     }
@@ -26,7 +27,11 @@ class DDAlertDetailVC: UIViewController {
         $0.showsVerticalScrollIndicator = false
     }
     
-    private lazy var headerView: DDAlertDetailHeader = DDAlertDetailHeader()
+    private lazy var headerView: DDAlertDetailHeader = DDAlertDetailHeader().then {
+        $0.acknowlegeButton.addTarget(self, action: #selector(ackAction), for: .touchUpInside)
+        $0.updateButton.addTarget(self, action: #selector(updateAction), for: .touchUpInside)
+        $0.resolveButton.addTarget(self, action: #selector(resolveAction), for: .touchUpInside)
+    }
     
     private lazy var containerView: UIView = UIView().then {
         $0.backgroundColor = UIColor(hex: "#FFFFFF")
@@ -49,6 +54,8 @@ class DDAlertDetailVC: UIViewController {
     
     var baseJson: JSON = JSON()
     
+    var alarmType: Int = 0 // 1:未处理的alarm,2:已处理的alarm(历史alarm),3:收藏的alarm
+    
     var tagIndex: Int = 0 // 0:Alert,1:alarm,2:normal
     
     override func viewDidLoad() {
@@ -59,7 +66,6 @@ class DDAlertDetailVC: UIViewController {
         scrollView.addSubviews(headerView, containerView)
         containerView.addSubviews(dashView, stackView)
         setViewConstraints()
-        setClosre()
         loadData()
     }
     
@@ -81,7 +87,6 @@ class DDAlertDetailVC: UIViewController {
             make.leading.trailing.equalToSuperview()
             make.width.equalTo(DDScreen.width)
             make.top.equalToSuperview().inset(15)
-            make.height.equalTo(315)
         }
         containerView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(15)
@@ -99,12 +104,6 @@ class DDAlertDetailVC: UIViewController {
         }
     }
     
-    private func setClosre() {       
-        headerView.acknowlegeButton.addTarget(self, action: #selector(ackAction), for: .touchUpInside)
-        headerView.updateButton.addTarget(self, action: #selector(updateAction), for: .touchUpInside)
-        headerView.resolveButton.addTarget(self, action: #selector(resolveAction), for: .touchUpInside)
-    }
-    
     @objc private func backAction() {
         navigationController?.popViewController(animated: true)
     }
@@ -113,11 +112,11 @@ class DDAlertDetailVC: UIViewController {
         guard let userId = DDShared.shared.json?["user"]["id"].stringValue else { return }
         let id = baseJson["_id"].stringValue
         let save = saveButton.isSelected ? "0" : "1"
-        ProgressHUD.show()
+        ProgressHUD.show(interaction: false)
         DDPost(target: .favoriteAlarm(deviceId: id, userId: userId, isFavourite: save), success: { [weak self] result, msg in
             print("正确 \(result) \(msg ?? "NoMsg")")
-            ProgressHUD.dismiss()
             self?.saveButton.isSelected = (save == "1")
+            ProgressHUD.showSuccess("Success")
         }, failure: { [weak self] code, msg in
             print("错误 \(code) \(msg ?? "NoMsg")")
             ProgressHUD.showFailed(msg ?? "Fail", interaction: false, delay: 3)
@@ -141,7 +140,7 @@ class DDAlertDetailVC: UIViewController {
     private func loadData() {
         let id = baseJson["_id"].stringValue
         guard let userId = DDShared.shared.json?["user"]["id"].stringValue else { return }
-        ProgressHUD.show()
+        ProgressHUD.show(interaction: false)
         DDGet(target: .getDetailOfAlarm(id: id, userId: userId), success: { [weak self] result, msg in
             print("正确 \(result) \(msg ?? "NoMsg")")
             ProgressHUD.dismiss()

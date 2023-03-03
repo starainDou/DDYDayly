@@ -105,7 +105,7 @@ class DDMainteDetail0VC: UIViewController {
         
         let group = DispatchGroup()
         let queue = DispatchQueue(label: "com.ddy.serialQueue")
-        ProgressHUD.show()
+        ProgressHUD.show(interaction: false)
         group.enter()
         queue.async {
             DDPost(target: .getLiftStatus(liftnumber: liftNumber, userid: userId), success: { [weak self] result, msg in
