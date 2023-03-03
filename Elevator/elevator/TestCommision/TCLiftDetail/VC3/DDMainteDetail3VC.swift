@@ -145,10 +145,9 @@ extension DDMainteDetail3VC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.ddy_dequeueReusableCell(DDMainteDetail3Cell.self, for: indexPath)
-        var json = dataArray[indexPath.row]
+        let json = dataArray[indexPath.row]
         cell.loadData(json, action: { [weak self] in
             self?.dataArray[indexPath.row]["isFold"].bool = !json["isFold"].boolValue
-            let json2 = self?.dataArray[indexPath.row]
             self?.tableView.reloadData()
         })
         return cell

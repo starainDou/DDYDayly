@@ -91,7 +91,7 @@ class DDMainteDetail2VC: UIViewController {
             ProgressHUD.dismiss()
             self?.kpiJson = JSON(result)["data"]["kpis"]
             self?.collectionView.reloadData()
-        }, failure: { [weak self] code, msg in
+        }, failure: { code, msg in
             ProgressHUD.showFailed(msg ?? "Fail", interaction: false, delay: 3)
         })
     }

@@ -96,7 +96,7 @@ class DDAlertUpdateVC: UIViewController {
     
     var baseJson: JSON = JSON()
     
-    var alarmState: Int = 0
+    var alarmState: Int = 0 // 1：ack,2:resolve,3:update
     
     var remark1Array: [JSON] = []
     var remark1SelectJson: JSON = JSON()
@@ -221,7 +221,7 @@ class DDAlertUpdateVC: UIViewController {
         DDPost(target: .updateStatusOfAlarm(userid: userId, id: id, status: "\(alarmState)", desc: desc, natureOfTask: remark1Str, component: remark2Str, task: remark3Str, images: images), success: { [weak self] result, msg in
             ProgressHUD.showSuccess("Success")
             self?.backAction()
-        }, failure: { [weak self] code, msg in
+        }, failure: { code, msg in
             ProgressHUD.showFailed(msg ?? "Fail", interaction: false, delay: 3)
         })
     }

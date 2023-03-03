@@ -117,23 +117,30 @@ class DDAlertDetailVC: UIViewController {
         DDPost(target: .favoriteAlarm(deviceId: id, userId: userId, isFavourite: save), success: { [weak self] result, msg in
             self?.saveButton.isSelected = (save == "1")
             ProgressHUD.showSuccess("Success")
-        }, failure: { [weak self] code, msg in
+        }, failure: { code, msg in
             ProgressHUD.showFailed(msg ?? "Fail", interaction: false, delay: 3)
         })
     }
     
     
     @objc private func ackAction() {
-        
+        let vc = DDAlertUpdateVC()
+        vc.baseJson = baseJson
+        vc.alarmState = 1
+        navigationController?.pushViewController(vc, animated: true)
     }
     @objc private func updateAction() {
         let vc = DDAlertUpdateVC()
-        
+        vc.baseJson = baseJson
+        vc.alarmState = 3
         navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc private func resolveAction() {
-        
+        let vc = DDAlertUpdateVC()
+        vc.baseJson = baseJson
+        vc.alarmState = 2
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     private func loadData() {
@@ -155,7 +162,7 @@ class DDAlertDetailVC: UIViewController {
                     make.height.greaterThanOrEqualTo(50)
                 }
             }
-        }, failure: { [weak self] code, msg in
+        }, failure: { code, msg in
             ProgressHUD.showFailed(msg ?? "Fail", interaction: false, delay: 3)
         })
     }

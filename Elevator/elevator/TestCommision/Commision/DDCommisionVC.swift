@@ -86,7 +86,7 @@ class DDCommisionVC: UIViewController {
         DDPost(target: .updateLiftStatus(liftId: liftBaseJson["id"].stringValue, status: "4"), success: { [weak self] result, msg in
             ProgressHUD.dismiss()
             self?.backAction()
-        }, failure: { [weak self] code, msg in
+        }, failure: { code, msg in
             ProgressHUD.showFailed(msg ?? "Fail", interaction: false, delay: 3)
         })
     }

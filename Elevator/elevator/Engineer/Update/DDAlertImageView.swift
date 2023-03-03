@@ -107,7 +107,7 @@ class DDAlertImageView: UIView {
             ProgressHUD.showSuccess("Success")
             self?.load(image: image)
             self?.fileName = name
-        }, failure: { [weak self] code, msg in
+        }, failure: { code, msg in
             ProgressHUD.showFailed(msg ?? "Fail", interaction: false, delay: 3)
         })
     }

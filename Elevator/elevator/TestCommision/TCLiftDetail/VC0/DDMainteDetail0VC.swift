@@ -113,7 +113,7 @@ class DDMainteDetail0VC: UIViewController {
                 print("正确 \(result) \(msg ?? "NoMsg")")
                 self?.stateJson = JSON(result)["data"]
                 group.leave()
-            }, failure: { [weak self] code, msg in
+            }, failure: { code, msg in
                 print("错误 \(code) \(msg ?? "NoMsg")")
                 group.leave()
             })

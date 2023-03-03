@@ -200,7 +200,12 @@ class DDYQRCodeScanView: UIView {
     // MARK:- 私有方法 布局数据
     // MARK: 状态栏高度
     private func statusBarHeight() -> CGFloat {
-        return (UIApplication.shared.statusBarFrame.height)
+        if #available(iOS 13.0, *) {
+            let window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
+            return window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
+        } else {
+            return UIApplication.shared.statusBarFrame.height
+        }
     }
 
     // MARK: 导航栏高度

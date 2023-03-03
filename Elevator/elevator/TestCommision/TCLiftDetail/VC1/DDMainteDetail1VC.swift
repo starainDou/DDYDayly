@@ -55,7 +55,7 @@ class DDMainteDetail1VC: UIViewController {
             ProgressHUD.dismiss()
             self?.dataArray = JSON(result)["data"].arrayValue
             self?.tableView.reloadData()
-        }, failure: { [weak self] code, msg in
+        }, failure: { code, msg in
             ProgressHUD.showFailed(msg ?? "Fail", interaction: false, delay: 3)
         })
     }

@@ -53,7 +53,6 @@
 		041032D6299B506B00542586 /* DDSummaryHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041032D5299B506B00542586 /* DDSummaryHeader.swift */; };
 		041032D8299B51BE00542586 /* DDSummarySectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041032D7299B51BE00542586 /* DDSummarySectionHeader.swift */; };
 		041032DC299B54E800542586 /* DDSummarySectionFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041032DB299B54E800542586 /* DDSummarySectionFooter.swift */; };
-		041032DE299B61C400542586 /* Local.json in Resources */ = {isa = PBXBuildFile; fileRef = 041032DD299B61C400542586 /* Local.json */; };
 		041032ED299CA30100542586 /* DDVerifyDetailMapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041032EC299CA30100542586 /* DDVerifyDetailMapVC.swift */; };
 		0410335A299CD11F00542586 /* DDDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04103359299CD11F00542586 /* DDDatePicker.swift */; };
 		04103373299D085100542586 /* DDListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04103372299D085100542586 /* DDListView.swift */; };
@@ -177,7 +176,6 @@
 		041032D5299B506B00542586 /* DDSummaryHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDSummaryHeader.swift; sourceTree = "<group>"; };
 		041032D7299B51BE00542586 /* DDSummarySectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDSummarySectionHeader.swift; sourceTree = "<group>"; };
 		041032DB299B54E800542586 /* DDSummarySectionFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDSummarySectionFooter.swift; sourceTree = "<group>"; };
-		041032DD299B61C400542586 /* Local.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Local.json; sourceTree = "<group>"; };
 		041032EC299CA30100542586 /* DDVerifyDetailMapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDVerifyDetailMapVC.swift; sourceTree = "<group>"; };
 		04103359299CD11F00542586 /* DDDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDDatePicker.swift; sourceTree = "<group>"; };
 		04103372299D085100542586 /* DDListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDListView.swift; sourceTree = "<group>"; };
@@ -285,7 +283,6 @@
 			isa = PBXGroup;
 			children = (
 				041032CB299B3B8200542586 /* Summary */,
-				04D80A8E299A684A0047DA15 /* Favorite */,
 				04D80A86299A15B30047DA15 /* Update */,
 				034FB7942998CDC9003985AD /* AlertDetail */,
 				034FB78929978FB4003985AD /* LiftList */,
@@ -437,7 +434,6 @@
 		041032CB299B3B8200542586 /* Summary */ = {
 			isa = PBXGroup;
 			children = (
-				041032DD299B61C400542586 /* Local.json */,
 				041032CF299B3EE700542586 /* DDSummaryVC.swift */,
 				041032D1299B4E9300542586 /* DDSammarySubVC.swift */,
 				041032D3299B4EAE00542586 /* DDSammaryCell.swift */,
@@ -604,13 +600,6 @@
 			path = Update;
 			sourceTree = "<group>";
 		};
-		04D80A8E299A684A0047DA15 /* Favorite */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Favorite;
-			sourceTree = "<group>";
-		};
 		04E008482975134B00EE0DBF = {
 			isa = PBXGroup;
 			children = (
@@ -771,7 +760,6 @@
 				04E0086C2975846C00EE0DBF /* Resources.xcassets in Resources */,
 				03FCDC9229AA2DA9008B3500 /* kpiimage.xcassets in Resources */,
 				04E0085E2975134C00EE0DBF /* Assets.xcassets in Resources */,
-				041032DE299B61C400542586 /* Local.json in Resources */,
 				04E0085C2975134B00EE0DBF /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
