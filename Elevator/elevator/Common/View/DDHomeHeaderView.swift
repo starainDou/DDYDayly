@@ -28,6 +28,7 @@ class DDHomeHeaderView: UIView {
         backgroundColor = .red
         addSubviews(backImageView, avatarView, nameLabel, roleLabel)
         setViewConstraints()
+        loadData()
     }
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
     
@@ -48,5 +49,9 @@ class DDHomeHeaderView: UIView {
             make.top.equalTo(avatarView.snp.centerY).offset(3)
             make.leading.equalTo(avatarView.snp.trailing).offset(10)
         }
+    }
+    private func loadData() {
+        guard let userId = DDShared.shared.json?["user"]["id"].stringValue else { return }
+        DDWebImage.setAvatar("User_\(userId).jpg" , imageView: avatarView)
     }
 }

@@ -107,7 +107,6 @@
 		04E0086C2975846C00EE0DBF /* Resources.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04E0086B2975846C00EE0DBF /* Resources.xcassets */; };
 		04E0086F2975879D00EE0DBF /* LaunchScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 04E0086E2975879D00EE0DBF /* LaunchScreen.png */; };
 		04E0087329758D5C00EE0DBF /* DDLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E0087229758D5C00EE0DBF /* DDLoginViewController.swift */; };
-		04E008792976534F00EE0DBF /* ElevatorInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 04E008782976534F00EE0DBF /* ElevatorInfo.plist */; };
 		04E6FC0E2990C38800666FE6 /* DDInstallSubVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E6FC0D2990C38800666FE6 /* DDInstallSubVC.swift */; };
 		04E6FC172990E33900666FE6 /* DDInstallSegmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E6FC162990E33900666FE6 /* DDInstallSegmentView.swift */; };
 		04EBCB1A29A3AF79006B796B /* DDPdfVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EBCB1929A3AF79006B796B /* DDPdfVC.swift */; };
@@ -756,7 +755,6 @@
 			files = (
 				04E008612975134C00EE0DBF /* LaunchScreen.storyboard in Resources */,
 				04E0086F2975879D00EE0DBF /* LaunchScreen.png in Resources */,
-				04E008792976534F00EE0DBF /* ElevatorInfo.plist in Resources */,
 				04E0086C2975846C00EE0DBF /* Resources.xcassets in Resources */,
 				03FCDC9229AA2DA9008B3500 /* kpiimage.xcassets in Resources */,
 				04E0085E2975134C00EE0DBF /* Assets.xcassets in Resources */,
