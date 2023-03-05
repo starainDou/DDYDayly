@@ -46,6 +46,7 @@
 		03594A7F29AB94D40015D3C5 /* DDMainteDetail4ItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03594A7E29AB94D40015D3C5 /* DDMainteDetail4ItemView.swift */; };
 		03594A8329B0F26E0015D3C5 /* DDAlarmNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03594A8229B0F26E0015D3C5 /* DDAlarmNavigator.swift */; };
 		03594A8529B10D200015D3C5 /* DDWebImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03594A8429B10D200015D3C5 /* DDWebImage.swift */; };
+		03594A8729B33ED70015D3C5 /* DDAlarmColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03594A8629B33ED70015D3C5 /* DDAlarmColorView.swift */; };
 		03FCDC9229AA2DA9008B3500 /* kpiimage.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03FCDC9129AA2DA9008B3500 /* kpiimage.xcassets */; };
 		041032D0299B3EE700542586 /* DDSummaryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041032CF299B3EE700542586 /* DDSummaryVC.swift */; };
 		041032D2299B4E9300542586 /* DDSammarySubVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041032D1299B4E9300542586 /* DDSammarySubVC.swift */; };
@@ -168,6 +169,7 @@
 		03594A7E29AB94D40015D3C5 /* DDMainteDetail4ItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDMainteDetail4ItemView.swift; sourceTree = "<group>"; };
 		03594A8229B0F26E0015D3C5 /* DDAlarmNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDAlarmNavigator.swift; sourceTree = "<group>"; };
 		03594A8429B10D200015D3C5 /* DDWebImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDWebImage.swift; sourceTree = "<group>"; };
+		03594A8629B33ED70015D3C5 /* DDAlarmColorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDAlarmColorView.swift; sourceTree = "<group>"; };
 		03FCDC9129AA2DA9008B3500 /* kpiimage.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = kpiimage.xcassets; sourceTree = "<group>"; };
 		041032CF299B3EE700542586 /* DDSummaryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDSummaryVC.swift; sourceTree = "<group>"; };
 		041032D1299B4E9300542586 /* DDSammarySubVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDSammarySubVC.swift; sourceTree = "<group>"; };
@@ -299,6 +301,7 @@
 				034FB78C2997901A003985AD /* DDEngineerCell.swift */,
 				034FB78E29979327003985AD /* DDEngineerHeader.swift */,
 				03594A8229B0F26E0015D3C5 /* DDAlarmNavigator.swift */,
+				03594A8629B33ED70015D3C5 /* DDAlarmColorView.swift */,
 			);
 			name = LiftList;
 			path = "New Group";
@@ -409,7 +412,6 @@
 				034FB780298F8B06003985AD /* DDMainteDetail3Item.swift */,
 				03594A7229AB60AD0015D3C5 /* DDMainteDetail3Section.swift */,
 				04EE67A829AE3BDA00286819 /* DDMainteDetail3Header.swift */,
-				03594A7029AB50380015D3C5 /* DDDoubleDatePicker.swift */,
 			);
 			path = VC3;
 			sourceTree = "<group>";
@@ -463,8 +465,6 @@
 				04CE0A142988D32900795592 /* DDDetailButtonView.swift */,
 				04CE0A162988D4D700795592 /* DDDetailMenuView.swift */,
 				04CE0A182988D97400795592 /* DDDetailInputView.swift */,
-				04103359299CD11F00542586 /* DDDatePicker.swift */,
-				04103372299D085100542586 /* DDListView.swift */,
 				041032EC299CA30100542586 /* DDVerifyDetailMapVC.swift */,
 			);
 			path = VerifyDetail;
@@ -554,6 +554,9 @@
 				048328802976DD1F002BE7B2 /* DDHomeHeaderView.swift */,
 				048328842977956E002BE7B2 /* DDNavigationBar.swift */,
 				04D80A842999FBA30047DA15 /* DDDashLineView.swift */,
+				03594A7029AB50380015D3C5 /* DDDoubleDatePicker.swift */,
+				04103359299CD11F00542586 /* DDDatePicker.swift */,
+				04103372299D085100542586 /* DDListView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -867,6 +870,7 @@
 				03594A7B29AB8D8F0015D3C5 /* DDMainteDetail4MPUView.swift in Sources */,
 				041032D0299B3EE700542586 /* DDSummaryVC.swift in Sources */,
 				04CE0A152988D32900795592 /* DDDetailButtonView.swift in Sources */,
+				03594A8729B33ED70015D3C5 /* DDAlarmColorView.swift in Sources */,
 				04F559FC29876B8600EF237D /* DDAppInfo.swift in Sources */,
 				034FB7B829A23F45003985AD /* DDMainteDetail3VC.swift in Sources */,
 				034FB7982998FFE0003985AD /* DDAlertDetailVC.swift in Sources */,

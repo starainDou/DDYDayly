@@ -122,25 +122,24 @@ class DDAlertDetailVC: UIViewController {
         })
     }
     
+    private func alarmUpdata(_ index: Int) {
+        let vc = DDAlertUpdateVC()
+        vc.baseJson = baseJson
+        vc.alarmState = index
+        vc.refreshBlock = { [weak self] in
+            self?.loadData()
+        }
+        navigationController?.pushViewController(vc, animated: true)
+    }
     
     @objc private func ackAction() {
-        let vc = DDAlertUpdateVC()
-        vc.baseJson = baseJson
-        vc.alarmState = 1
-        navigationController?.pushViewController(vc, animated: true)
+        alarmUpdata(1)
+    }
+    @objc private func resolveAction() {
+        alarmUpdata(2)
     }
     @objc private func updateAction() {
-        let vc = DDAlertUpdateVC()
-        vc.baseJson = baseJson
-        vc.alarmState = 3
-        navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    @objc private func resolveAction() {
-        let vc = DDAlertUpdateVC()
-        vc.baseJson = baseJson
-        vc.alarmState = 2
-        navigationController?.pushViewController(vc, animated: true)
+        alarmUpdata(3)
     }
     
     private func loadData() {

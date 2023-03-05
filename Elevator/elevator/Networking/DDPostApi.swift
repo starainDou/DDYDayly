@@ -185,7 +185,7 @@ extension DDPostApi: TargetType {
     
     public var headers: [String : String]? {
         guard let token = DDShared.shared.token, let cookie = DDShared.shared.cookie else { return nil }
-        return ["Authorization": token, "Cookie": cookie]
+        return ["Authorization": token, "Cookie": cookie, "Content-Type": "application/json; charset=utf-8"]
     }
     
     public var description: String {

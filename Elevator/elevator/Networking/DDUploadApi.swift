@@ -18,17 +18,17 @@ extension DDUploadApi {
         var baseParams = Array<MultipartFormData>()
         switch self {
         case let .uploadImageOfLift(data, fileName):
-            baseParams.append(MultipartFormData(provider: .data(data), name: "file", fileName: "\(fileName).jpg", mimeType: "image/jpeg"))
+            baseParams.append(MultipartFormData(provider: .data(data), name: "multipartFile", fileName: fileName, mimeType: "image/jpeg"))
             return (DDBaseUrl + "/fileApp/uploadImageOfLift", baseParams)
         case let .uploadAllImagesOfLift(datas, names):
             for (index, data) in datas.enumerated() {
                 if index < names.count {
-                    baseParams.append(MultipartFormData(provider: .data(data), name: "file", fileName: "\(names[index]).jpg", mimeType: "image/jpeg"))
+                    baseParams.append(MultipartFormData(provider: .data(data), name: "multipartFile", fileName: names[index], mimeType: "image/jpeg"))
                 } else  {
                     fatalError("图片数大于名字数")
                 }
             }
-            return (DDBaseUrl + "/fileApp/uploadImageOfLift", baseParams)
+            return (DDBaseUrl + "/fileApp/uploadAllImagesOfLift", baseParams)
         }
     }
 }
@@ -57,6 +57,6 @@ extension DDUploadApi: TargetType {
     
     public var headers: [String : String]? {
         guard let token = DDShared.shared.token, let cookie = DDShared.shared.cookie else { return nil }
-        return ["Authorization": token, "Cookie": cookie]
+        return ["Authorization": token, "Cookie": cookie, "Content-type" : "multipart/form-data"] // , "Content-Type": "multipart/form-data"
     }
 }

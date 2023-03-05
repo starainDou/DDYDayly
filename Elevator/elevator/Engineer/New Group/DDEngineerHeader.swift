@@ -18,7 +18,7 @@ class DDEngineerHeader: UIView {
     
     private lazy var mapView: MKMapView = MKMapView().then {
         $0.mapType = .standard
-        $0.isUserInteractionEnabled = false
+        //$0.isUserInteractionEnabled = false
     }
     
     private(set) lazy var back1Button: UIButton = UIButton(type: .custom).then {
@@ -172,13 +172,13 @@ class DDEngineerHeader: UIView {
         let lat: Double = json?["lat"].doubleValue ?? 0
         let lng: Double = json?["lng"].doubleValue ?? 0
         let regionCenter = CLLocationCoordinate2DMake(CLLocationDegrees(lat), CLLocationDegrees(lng)) // 32 118
-        let regionSpan = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+        let regionSpan = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
         let region = MKCoordinateRegion(center: regionCenter, span: regionSpan)
         mapView.setRegion(region, animated: true)
         
-//        let annotion = MKPointAnnotation()
-//        annotion.coordinate = regionCenter
-//        mapView.addAnnotation(annotion)
+        let annotion = MKPointAnnotation()
+        annotion.coordinate = regionCenter
+        mapView.addAnnotation(annotion)
     }
     func scrollViewDidScroll(contentOffsetY: CGFloat) {
         var frame = navigationBarFrame

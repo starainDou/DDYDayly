@@ -66,6 +66,7 @@ class DDAlermFavouriteVC: UIViewController {
         view.backgroundColor = UIColor(hex: "#F1F5FF")
         view.addSubviews(navigationBar, segBackView, segmentView, sortButton, containerView)
         setViewConstraints()
+        currentVC = alertVC
     }
     
     private func setViewConstraints() {

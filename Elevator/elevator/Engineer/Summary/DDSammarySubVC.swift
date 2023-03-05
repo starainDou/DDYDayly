@@ -68,6 +68,7 @@ class DDSammarySubVC: UIViewController {
         dataArray = json["values"].arrayValue
         headerView.rightLabel.text = json["total"].stringValue
         tableView.reloadData()
+        tableView.reloadEmptyDataSet()
     }
 }
 
@@ -116,7 +117,7 @@ extension DDSammarySubVC: JXSegmentedListContainerViewListDelegate {
 
 extension DDSammarySubVC: EmptyDataSetSource, EmptyDataSetDelegate {
     func image(forEmptyDataSet scrollView: UIScrollView) -> UIImage? {
-        return UIImage(named: "Icon218")
+        return dataArray.count > 0 ? nil : UIImage(named: "Icon218")
     }
     func emptyDataSet(_ scrollView: UIScrollView, didTapView view: UIView) {
         loadData()

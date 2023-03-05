@@ -13,6 +13,8 @@ import DDYSwiftyExtension
 import IQKeyboardManagerSwift
 
 class DDAlertUpdateVC: UIViewController {
+    
+    var refreshBlock: (() -> Void)?
 
     private lazy var navigationBar: DDNavigationBar = DDNavigationBar().then {
         $0.titleLabel.text = "Update"
@@ -220,6 +222,7 @@ class DDAlertUpdateVC: UIViewController {
         ProgressHUD.show(interaction: false)
         DDPost(target: .updateStatusOfAlarm(userid: userId, id: id, status: "\(alarmState)", desc: desc, natureOfTask: remark1Str, component: remark2Str, task: remark3Str, images: images), success: { [weak self] result, msg in
             ProgressHUD.showSuccess("Success")
+            self?.refreshBlock?()
             self?.backAction()
         }, failure: { code, msg in
             ProgressHUD.showFailed(msg ?? "Fail", interaction: false, delay: 3)

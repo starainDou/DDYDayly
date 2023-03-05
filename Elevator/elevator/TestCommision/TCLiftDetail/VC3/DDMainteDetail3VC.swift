@@ -20,7 +20,10 @@ class DDMainteDetail3VC: UIViewController {
         $0.layer.masksToBounds = true
     }
     
-    private lazy var headerView: DDMainteDetail3Header = DDMainteDetail3Header()
+    private lazy var headerView: DDMainteDetail3Header = DDMainteDetail3Header().then {
+        $0.timeButton.addTarget(self, action: #selector(timeAction), for: .touchUpInside)
+        $0.nameLabel.text = liftBaseJson["liftnumber"].stringValue
+    }
     
     private lazy var tableView: UITableView = UITableView().then {
         $0.delegate = self
@@ -89,8 +92,6 @@ class DDMainteDetail3VC: UIViewController {
     }
     
     private func baseInit() {
-        headerView.timeButton.addTarget(self, action: #selector(timeAction), for: .touchUpInside)
-        headerView.nameLabel.text = liftBaseJson["liftnumber"].stringValue
         guard let today = DDAppInfo.dateStr(DDAppInfo.timeStamp(), dateFormat: "yyyy-MM-dd") else { return }
         guard let date = DateFormatter().then({ $0.dateFormat = "yyyy-MM-dd" }).date(from: today) else { return }
         time = (String(Int(date.timeIntervalSince1970 * 1000) - 86400000), String(Int(date.timeIntervalSince1970 * 1000)))
@@ -102,7 +103,8 @@ class DDMainteDetail3VC: UIViewController {
 //        print("66666 \(today) \(today00) \(today24)")
     }
     @objc private func timeAction() {
-        DDDoubleDatePicker.show(in: view, date: time, sure: { [weak self] (start, end) in
+        let sv = parent?.view ?? view
+        DDDoubleDatePicker.show(in: sv!, date: time, sure: { [weak self] (start, end) in
             self?.time = (start, end)
             self?.loadData(restart: true)
         })

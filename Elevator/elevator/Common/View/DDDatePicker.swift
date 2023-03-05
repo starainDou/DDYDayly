@@ -40,7 +40,7 @@ class DDDatePicker: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: DDScreen.bounds)
-        backgroundColor = UIColor(hex: "#66666666")
+        backgroundColor = UIColor(hex: "#666666").withAlphaComponent(0.75)
         addSubviews(backView, cancelButton, sureButton, datePicker)
         setViewConstraints()
     }

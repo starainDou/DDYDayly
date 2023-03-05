@@ -41,7 +41,7 @@ class DDMainteDetail4MapView: UIView {
         let lat: Double = json?["lat"].doubleValue ?? 0
         let lng: Double = json?["lng"].doubleValue ?? 0
         let regionCenter = CLLocationCoordinate2DMake(CLLocationDegrees(lat), CLLocationDegrees(lng)) // 32 118
-        let regionSpan = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+        let regionSpan = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
         let region = MKCoordinateRegion(center: regionCenter, span: regionSpan)
         mapView.setRegion(region, animated: true)
         

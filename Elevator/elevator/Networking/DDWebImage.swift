@@ -7,8 +7,14 @@
 
 import UIKit
 import Kingfisher
+import SwiftyJSON
+import ProgressHUD
 
 class DDWebImage: NSObject {
+    
+    static func imgBase(_ img: String) -> URL? {
+        return URL(string: "http://steecd.imwork.net:54265/lift-mgmt-server/file/getImages/\(img)?random=0.0786746724668026")
+    }
     
     static var modifier = AnyModifier { request in
         var r = request
@@ -19,11 +25,6 @@ class DDWebImage: NSObject {
             r.setValue(cookie , forHTTPHeaderField: "Cookie")
         }
         return r
-    }
-    
-    static func setImage(_ img: String, imageView: UIImageView) {
-        let url = URL(string: DDBaseUrl + "/fileApp/getImageOfLift/\(img)")
-        imageView.kf.setImage(with: url, placeholder: UIImage(named: "Icon218"), options: [.requestModifier(modifier)])
     }
     
     static func setAvatar(_ img: String, imageView: UIImageView) {

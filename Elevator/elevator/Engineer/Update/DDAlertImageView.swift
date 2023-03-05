@@ -101,7 +101,7 @@ class DDAlertImageView: UIView {
             ProgressHUD.showFailed("The image parse failed, please retry", interaction: false, delay: 3)
             return
         }
-        let name = UUID().uuidString + ".jpg"
+        let name = "lift_" + UUID().uuidString.replacingOccurrences(of: "-", with: "") + ".jpg"
         ProgressHUD.show(interaction: false)
         DDUpload(target: .uploadImageOfLift(data, name), success: { [weak self] result, msg in
             ProgressHUD.showSuccess("Success")

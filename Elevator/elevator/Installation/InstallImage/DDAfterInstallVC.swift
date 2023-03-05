@@ -78,7 +78,8 @@ class DDAfterInstallVC: UIViewController {
                 if let data = DDShared.shared.liftImage(cacheKey(json))?.jpegData(compressionQuality: 0.7) {
                     group.enter()
                     queue.async {
-                        self.uploadImages(group: group, data: data, name: UUID().uuidString, json: json)
+                        let name = "lift_" + UUID().uuidString.replacingOccurrences(of: "-", with: "") + ".jpg"
+                        self.uploadImages(group: group, data: data, name: name, json: json)
                     }
                 }
             }

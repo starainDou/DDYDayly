@@ -163,6 +163,10 @@ fileprivate class InnerCell: UICollectionViewCell {
     }
     
     func loadData(_ img: String) {
-        DDWebImage.setImage(img, imageView: imgView)
+        DDGet(target: .getImageOfLift(fileName: img), success: { [weak self] result, msg in
+            self?.imgView.image = DDAppInfo.base64ToImage(JSON(result)["data"].stringValue)
+        }, failure: {  code, msg in
+            
+        })
     }
 }

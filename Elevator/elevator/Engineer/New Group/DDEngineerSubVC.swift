@@ -43,6 +43,15 @@ class DDEngineerSubVC: UIViewController {
     
     var time:(start: String, end: String) = ("", "")
     
+    var dateRange: [String]? {
+        get {
+            guard alarmType == 2 else { return nil }
+            guard let start = DDAppInfo.dateStr(time.start, dateFormat: "yyyy-MM-dd HH:mm:ss") else { return nil }
+            guard let end = DDAppInfo.dateStr(time.end, dateFormat: "yyyy-MM-dd HH:mm:ss") else { return nil }
+            return [start, end]
+        }
+    }
+    
     var searchWord: String? {
         didSet {
             loadData(restart: true)
@@ -61,6 +70,7 @@ class DDEngineerSubVC: UIViewController {
         view.addSubviews(tableView)
         setViewConstraints()
         setupRefresh()
+        baseInit()
         loadData(restart: true)
     }
     
@@ -74,13 +84,18 @@ class DDEngineerSubVC: UIViewController {
         }
     }
     
+    private func baseInit() {
+        guard let today = DDAppInfo.dateStr(DDAppInfo.timeStamp(), dateFormat: "yyyy-MM-dd") else { return }
+        guard let date = DateFormatter().then({ $0.dateFormat = "yyyy-MM-dd" }).date(from: today) else { return }
+        time = (String(Int(date.timeIntervalSince1970 * 1000) - 86400000), String(Int(date.timeIntervalSince1970 * 1000)))
+    }
+    
     private func loadData(restart: Bool) {
         if restart {
             page = 1
         }
         guard let userId = DDShared.shared.json?["user"]["id"].stringValue else { return }
         ProgressHUD.show(interaction: false)
-        let dateRange: [String]? = alarmType == 2 ? [time.start, time.end] : nil
         let tempType: String? = alarmType == 2 ? nil : "\(sortType)"
         DDPost(target: .getAlarmsOfLift(userid: userId, page: "\(page)", limit: "20", alarmType: "\(alarmType)", severityType: "\(tagIndex)", value: searchWord, sortType: tempType, dateRange: dateRange), success: { [weak self] result, msg in
             ProgressHUD.dismiss()
@@ -118,8 +133,8 @@ class DDEngineerSubVC: UIViewController {
         listViewDidScrollCallback?(scrollView)
     }
     
-    public func showDoubleTimeView() {
-        DDDoubleDatePicker.show(in: view, date: time, sure: { [weak self] (start, end) in
+    public func showDoubleTimeView(in sv: UIView) {
+        DDDoubleDatePicker.show(in: sv, date: time, sure: { [weak self] (start, end) in
             self?.time = (start, end)
             self?.loadData(restart: true)
         })

@@ -40,6 +40,7 @@ class DDListView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: DDScreen.bounds)
+        backgroundColor = UIColor(hex: "#666666").withAlphaComponent(0.75)
         addSubviews(topButton, backView, tableView)
     }
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }

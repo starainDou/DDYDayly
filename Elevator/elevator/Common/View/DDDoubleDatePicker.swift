@@ -63,7 +63,7 @@ class DDDoubleDatePicker: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: DDScreen.bounds)
-        backgroundColor = UIColor(hex: "#66666666")
+        backgroundColor = UIColor(hex: "#666666").withAlphaComponent(0.75)
         addSubview(backView)
         backView.addSubviews(cancelButton, sureButton, fromPicker, endPicker, fromLabel, endLabel)
         setViewConstraints()
@@ -73,7 +73,7 @@ class DDDoubleDatePicker: UIView {
     private func setViewConstraints() {
         backView.snp.makeConstraints { make in
             make.leading.trailing.bottom.equalToSuperview()
-            make.height.equalTo(645)
+            make.height.equalTo(520)
         }
         cancelButton.snp.makeConstraints { make in
             make.leading.equalToSuperview().inset(10)
@@ -132,7 +132,7 @@ class DDDoubleDatePicker: UIView {
     }
     
     @objc private func sureAction() {
-        sureBlock?(String(Int(fromPicker.date.timeIntervalSince1970 * 1000)), String(Int(fromPicker.date.timeIntervalSince1970 * 1000)))
+        sureBlock?(String(Int(fromPicker.date.timeIntervalSince1970 * 1000)), String(Int(endPicker.date.timeIntervalSince1970 * 1000)))
         removeFromSuperview()
     }
 }

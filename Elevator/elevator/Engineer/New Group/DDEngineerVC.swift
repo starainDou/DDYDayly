@@ -11,6 +11,7 @@ import DDYSwiftyExtension
 import SwiftyJSON
 import JXSegmentedView
 import Then
+import ProgressHUD
 
 extension JXPagingListContainerView: JXSegmentedViewListContainer {}
 
@@ -22,7 +23,14 @@ class DDEngineerVC: UIViewController {
     
     let segbackHeight = 44
     
-    private lazy var headerView: DDEngineerHeader = DDEngineerHeader()
+    private lazy var headerView: DDEngineerHeader = DDEngineerHeader().then {
+        $0.back1Button.addTarget(self, action: #selector(backAction), for: .touchUpInside)
+        $0.back2Button.addTarget(self, action: #selector(backAction), for: .touchUpInside)
+        $0.bookButton.addTarget(self, action: #selector(booktAction(_:)), for: .touchUpInside)
+        $0.locationButton.addTarget(self, action: #selector(locationAction), for: .touchUpInside)
+        $0.searchButton.addTarget(self, action: #selector(searchAction), for: .touchUpInside)
+        $0.textFiled.delegate = self
+    }
     
     private lazy var pageView: JXPagingListRefreshView = JXPagingListRefreshView(delegate: self).then {
         $0.pinSectionHeaderVerticalOffset = Int(DDScreen.statusBarHeight + 44)
@@ -74,6 +82,14 @@ class DDEngineerVC: UIViewController {
         $0.alarmType = 1
     }
     
+    private lazy var locationManager = CLLocationManager().then {
+        $0.delegate = self
+        $0.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        $0.distanceFilter = 50
+    }
+    
+    private lazy var locationJson: JSON = JSON()
+    
     private var currentVC: DDEngineerSubVC?
     
     override func viewDidLoad() {
@@ -82,8 +98,8 @@ class DDEngineerVC: UIViewController {
         view.addSubviews(pageView)
         segBackView.addSubviews(segmentView, sortButton)
         setViewConstraints()
-        setClosure()
         loadData()
+        locationAction()
         currentVC = alertVC
     }
     
@@ -102,21 +118,11 @@ class DDEngineerVC: UIViewController {
         }
     }
     
-    private func setClosure() {
-        headerView.back1Button.addTarget(self, action: #selector(backAction), for: .touchUpInside)
-        headerView.back2Button.addTarget(self, action: #selector(backAction), for: .touchUpInside)
-        headerView.bookButton.addTarget(self, action: #selector(booktAction), for: .touchUpInside)
-        headerView.locationButton.addTarget(self, action: #selector(localAction), for: .touchUpInside)
-        headerView.searchButton.addTarget(self, action: #selector(searchAction), for: .touchUpInside)
-        headerView.textFiled.delegate = self
-    }
-    
-    @objc private func booktAction() {
+    @objc private func booktAction(_ button: UIButton) {
         view.endEditing(true)
-    }
-    
-    @objc private func localAction() {
-        view.endEditing(true)
+        let originPoint = CGPoint(x: button.frame.minX, y: button.frame.maxY)
+        let targetPoint = headerView.convert(originPoint, to: view)
+        DDAlarmColorView.show(in: view, point: targetPoint)
     }
     
     private func loadData() {
@@ -138,6 +144,45 @@ class DDEngineerVC: UIViewController {
         DDListView.show(in: view, array: ["Default", "By Alphabet", "By Town Council"], action: { [weak self] (text, idx) in
             self?.currentVC?.sortType = idx
         })
+    }
+}
+
+extension DDEngineerVC: CLLocationManagerDelegate {
+    @objc private func locationAction() {
+        view.endEditing(true)
+        let authState: CLAuthorizationStatus
+        if #available(iOS 14.0, *) {
+            authState = locationManager.authorizationStatus
+        } else {
+            authState = CLLocationManager.authorizationStatus()
+        }
+        switch authState {
+        case .notDetermined:
+            locationManager.requestWhenInUseAuthorization()
+        case .restricted, .denied:
+            ProgressHUD.showFailed("Please open the location authorization in system setting", interaction: false, delay: 3)
+        case .authorizedAlways, .authorizedWhenInUse, .authorized:
+            locationManager.startUpdatingLocation()
+        @unknown default:
+            ProgressHUD.showFailed("Location failed", interaction: false, delay: 3)
+        }
+        locationManager.requestWhenInUseAuthorization()
+    }
+    
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        locationAction()
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        manager.stopUpdatingLocation()
+        guard let coordinate = locations.first?.coordinate else { return }
+        locationJson["lat"].double = coordinate.latitude.ddy_round(6)
+        locationJson["lng"].double = coordinate.longitude.ddy_round(6)
+        headerView.loadData(locationJson)
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        ProgressHUD.showFailed("Location failed", interaction: false, delay: 3)
     }
 }
 

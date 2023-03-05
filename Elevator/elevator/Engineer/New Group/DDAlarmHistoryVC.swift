@@ -39,7 +39,7 @@ class DDAlarmHistoryVC: UIViewController {
     private lazy var containerView: JXSegmentedListContainerView = JXSegmentedListContainerView(dataSource: self)
     
     private lazy var timeButton: UIButton = UIButton(type: .custom).then {
-        $0.setImage(UIImage(named: "MapDown"), for: .normal)
+        $0.setImage(UIImage(named: "Calendar"), for: .normal)
         $0.addTarget(self, action: #selector(timeAction), for: .touchUpInside)
         $0.contentEdgeInsets = UIEdgeInsets(top: 3, left: 3, bottom: 3, right: 3)
     }
@@ -66,6 +66,7 @@ class DDAlarmHistoryVC: UIViewController {
         view.backgroundColor = UIColor(hex: "#F1F5FF")
         view.addSubviews(navigationBar, segBackView, segmentView, timeButton, containerView)
         setViewConstraints()
+        currentVC = alertVC
     }
     
     private func setViewConstraints() {
@@ -86,7 +87,7 @@ class DDAlarmHistoryVC: UIViewController {
         timeButton.snp.makeConstraints { make in
             make.centerY.equalTo(segBackView)
             make.trailing.equalToSuperview().inset(20)
-            make.width.height.equalTo(24)
+            make.width.height.equalTo(30)
         }
         containerView.snp.makeConstraints { make in
             make.leading.bottom.trailing.equalToSuperview()
@@ -106,7 +107,7 @@ class DDAlarmHistoryVC: UIViewController {
     
     @objc private func timeAction() {
         view.endEditing(true)
-        currentVC?.showDoubleTimeView()
+        currentVC?.showDoubleTimeView(in: view)
     }
 }
 
