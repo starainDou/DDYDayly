@@ -101,6 +101,12 @@
 * [使用 Jenkins 从 Unity 工程自动化导出 iOS 包](https://sunsetroads.github.io/2019/11/11/untiy-export-ipa/)
 * 解析修改pbxproj文件[PBXProjectManager](https://github.com/JinhuiLu/PBXProjectManager)
 * [Xcode 工程文件解析](https://juejin.cn/post/7004440657343283213)
+* [IOS OC中使用Charts的半圆饼图 + 旋转指针](https://blog.csdn.net/ycf03211230/article/details/76910922)
+* [Apple Search Ads 归因 API 完整方案](https://www.liangjianghu.com/docs/apple-search-ads-attribution-api-iad-and-adservices-framework.html)
+* [iOS - Speech Recognition 获取音量](https://blog.csdn.net/siwen1990/article/details/87601660)
+* [GPUIamage_demo git](https://github.com/chenXming/GPUIamage_demo)
+* [高仿QQ录音功能模块](https://www.jianshu.com/p/8b3414712df3)
+* [ios 使用脚本打包](https://www.jianshu.com/p/ad68d7b0c957)
 
 > #### 博主 
 
