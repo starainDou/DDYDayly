@@ -75,7 +75,7 @@ class DDVerifyCell: UITableViewCell {
     public func loadData(json: JSON) {
         titleLabel.text = json["deviceId"].stringValue
         stateLabel.text = getState(json["status"].stringValue)
-        timeLabel.text = json["lastUpdateTime"].stringValue
+        timeLabel.text = DDAppInfo.dateStr(json["lastUpdateTime"].stringValue, dateFormat: "yyyy-MM-dd HH:mm")
     }
     private func getState(_ status: String) -> String {
         if status == "1" {

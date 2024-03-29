@@ -154,8 +154,10 @@ class DDImageEditVC: UIViewController {
         ZLPhotoConfiguration.default().maxSelectCount = 1
         ZLPhotoConfiguration.default().allowTakePhotoInLibrary = false
         ZLPhotoConfiguration.default().editAfterSelectThumbnailImage = true
+        ZLPhotoConfiguration.default().showClipDirectlyIfOnlyHasClipTool = true
         
         let config = ZLPhotoConfiguration.default().editImageConfiguration
+        //config.tools([.clip]).clipRatios([.wh1x1])
         config.tools([.clip, .draw, .imageSticker, .textSticker, .mosaic, .filter, .adjust]).clipRatios([.wh1x1])
         ZLPhotoConfiguration.default().editImageConfiguration(config)
     }

@@ -37,6 +37,7 @@ struct DDAppInfo {
 
     static func dateStr(_ timeStamp: String?, dateFormat: String = "MM/dd/yyyy HH:mm:ss") -> String? {
         guard let timeStamp = timeStamp else { return nil }
+        guard timeStamp.trimmingCharacters(in: CharacterSet.decimalDigits).count == 0 else { return timeStamp }
         let dateString = timeStamp.count > 10 ? String(timeStamp.prefix(10)) : timeStamp
         guard dateString.count == 10, let dateDouble = Double(dateString) else { return nil }
         let date = Date(timeIntervalSince1970: dateDouble)

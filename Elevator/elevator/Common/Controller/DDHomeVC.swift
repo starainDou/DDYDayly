@@ -79,9 +79,9 @@ class DDHomeVC: UIViewController {
     }
     
     @objc private func logoutAction() {
-        let alert = UIAlertController(title: "Tip", message: "Are you sure to quit?", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
-        alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { [weak self] (action) in
+        let alert = UIAlertController(title: "Tip", message: "Are you sure you want to logout?", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Sure", style: .default, handler: { [weak self] (action) in
             self?.logOut()
         }))
         self.present(alert, animated: true, completion: nil)

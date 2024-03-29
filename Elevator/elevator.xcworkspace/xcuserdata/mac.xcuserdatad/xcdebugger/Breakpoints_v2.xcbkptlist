@@ -18,6 +18,38 @@
             endingLineNumber = "140"
             landmarkName = "map(_:atKeyPath:using:failsOnEmptyData:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "6D43A5F8-293A-4372-9550-BC592875FB46 - 60e1b684f045bddf"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Any) throws -&gt; Swift.Optional&lt;Foundation.Data&gt; in Moya.Response.map&lt;&#x3c4;_0_0 where &#x3c4;_0_0: Swift.Decodable&gt;(_: &#x3c4;_0_0.Type, atKeyPath: Swift.Optional&lt;Swift.String&gt;, using: Foundation.JSONDecoder, failsOnEmptyData: Swift.Bool) throws -&gt; &#x3c4;_0_0"
+                  moduleName = "elevator"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mac/Documents/github/DDYDayly/Elevator/Pods/Moya/Sources/Moya/Response.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "140"
+                  endingLineNumber = "140"
+                  offsetFromSymbolStart = "964">
+               </Location>
+               <Location
+                  uuid = "6D43A5F8-293A-4372-9550-BC592875FB46 - 60e1b684f045bddf"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Any) throws -&gt; Swift.Optional&lt;Foundation.Data&gt; in Moya.Response.map&lt;&#x3c4;_0_0 where &#x3c4;_0_0: Swift.Decodable&gt;(_: &#x3c4;_0_0.Type, atKeyPath: Swift.Optional&lt;Swift.String&gt;, using: Foundation.JSONDecoder, failsOnEmptyData: Swift.Bool) throws -&gt; &#x3c4;_0_0"
+                  moduleName = "elevator"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mac/Documents/github/DDYDayly/Elevator/Pods/Moya/Sources/Moya/Response.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "140"
+                  endingLineNumber = "140"
+                  offsetFromSymbolStart = "1044">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

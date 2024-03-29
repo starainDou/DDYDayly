@@ -9,7 +9,7 @@
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.hbgy.inormal</string>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -31,12 +31,12 @@
 	</dict>
 	<key>NSCameraUsageDescription</key>
 	<string>App will access your camera,so that you can scan qr code to show your page</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>App will access your location, so that you can get current location where you are</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>App wants to use your microphone, do you agree?</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>App needs access your photo Album, so that you can save or select image</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>App will access your location, so that you can get current location where you are</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIPrerenderedIcon</key>
